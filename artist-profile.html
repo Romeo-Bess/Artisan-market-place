@@ -199,15 +199,16 @@
 </section>
 <!-- Tabs Navigation -->
 <section class="mt-section-gap border-b border-outline-variant">
-<div class="max-w-container-max mx-auto px-margin-desktop flex gap-12">
-<button class="relative font-label-md text-label-md text-primary py-4 tab-active">Available Work</button>
-<button class="relative font-label-md text-label-md text-on-surface-variant py-4 hover:text-primary transition-colors">Portfolio</button>
-<button class="relative font-label-md text-label-md text-on-surface-variant py-4 hover:text-primary transition-colors">Reviews</button>
+<div class="max-w-container-max mx-auto px-margin-desktop flex gap-12" id="profile-tabs-header">
+<button class="relative font-label-md text-label-md text-primary py-4 tab-active" data-tab="available">Available Work</button>
+<button class="relative font-label-md text-label-md text-on-surface-variant py-4 hover:text-primary transition-colors" data-tab="portfolio">Portfolio</button>
+<button class="relative font-label-md text-label-md text-on-surface-variant py-4 hover:text-primary transition-colors" data-tab="reviews">Reviews</button>
 </div>
 </section>
 <!-- Art Grid (Bento Style) -->
 <section class="max-w-container-max mx-auto px-margin-desktop py-section-gap">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div id="tab-content-available" class="tab-pane">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter" id="art-grid">
 <!-- Large Piece -->
 <div class="md:col-span-8 group cursor-pointer">
 <div class="aspect-[16/10] overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
@@ -250,6 +251,19 @@
 <h3 class="font-headline-md text-headline-md text-primary">Architect's Dream</h3>
 <p class="font-headline-md text-headline-md text-secondary">R 1,200</p>
 </div>
+</div>
+</div>
+</div>
+
+<div id="tab-content-portfolio" class="tab-pane hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="portfolio-grid">
+<!-- Portfolio items will go here -->
+</div>
+</div>
+
+<div id="tab-content-reviews" class="tab-pane hidden">
+<div class="space-y-8 max-w-3xl mx-auto" id="reviews-container">
+<!-- Reviews will go here -->
 </div>
 </div>
 </section>
@@ -357,15 +371,31 @@
             }
         }
 
-        // Tab switching logic (simple visual only)
-        document.querySelectorAll('section button.relative.font-label-md').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelectorAll('section button.relative.font-label-md').forEach(btn => {
+        // Tab switching logic
+        function switchProfileTab(tabName) {
+            document.querySelectorAll('#profile-tabs-header button').forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabName) {
+                    btn.classList.add('tab-active', 'text-primary');
+                    btn.classList.remove('text-on-surface-variant');
+                } else {
                     btn.classList.remove('tab-active', 'text-primary');
                     btn.classList.add('text-on-surface-variant');
-                });
-                button.classList.add('tab-active', 'text-primary');
-                button.classList.remove('text-on-surface-variant');
+                }
+            });
+
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+            const activePane = document.getElementById(`tab-content-${tabName}`);
+            if (activePane) {
+                activePane.classList.remove('hidden');
+            }
+        }
+
+        document.querySelectorAll('#profile-tabs-header button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                switchProfileTab(tabName);
             });
         });
 
@@ -401,6 +431,32 @@
                         price: 'R 1,500',
                         image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCfx9ruBCEOpDLInT276IUBS1sa-EWLQSFPJPr61kwD_juH_cuzLqAi7UrQ3Q4DNSztn2fMHjS7WsL2AErDXNWSYTxGff8jlbmR5u3lPkmT-pxmwRTGQy__Ps_hckraISsbPtgggyOME0Xx0199HnQDEp3jNIwIEbJ-Yj1LdIQABzAAnsUIcMSfMuU-GZE15oejl66wBJRhzcX0lpO-nR9iKpMLzDZC6USUYYFohgd4y6a1I8vARxUUZNIzk89XNxX4A2x7sPcLBQDe'
                     }
+                ],
+                portfolio: [
+                    {
+                        title: 'Liminal Shadows',
+                        details: 'Oil on Linen, 110x140cm',
+                        status: 'Sold (Private Collection, Paris)',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDFy043LSZ3es6q0AIRzyLc16WBpNpP8Dw-lpBu52izNjc4YuhKsXzdjh8WuKgMgRFp3c7sMH68S74TzgV2tAxgdqfnhokuigXWWNFF6xpekYb6DyclsQCIKSOrkwviyTBUcRDj1NU-iZ6DU6bEj8-Hs7dmab11TrasIxWx0OhiUmjk6ctR7-tBRgpYOo0BStyCHnNlVSb2UOd_OzRICN_4igY6MpcxS2HY5X_3sAciWgcgyxD7Glrc1qE7NNddil8fQuTefFaGuh-U'
+                    },
+                    {
+                        title: 'Concrete Echo I',
+                        details: 'Oil on Canvas, 90x120cm',
+                        status: 'Sold (Acquired by Museum of Modern Art)',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA2AtVEYSw_FpeAcKJ4MujBRNb85rXxbWo0YGNskbILTOWQiqgYs6oxBM5s3m1u5-CA701v0VryTBFYdBQOYQKL2sJHXAFzmdrdpmkNwWpah7Tsx2f_U1UN1wMs6giyrPxMJKj5o3Defcf4Fbpvm-zvJRGVIFC3KYvgT9B75y3lfQ8f5ESdkLN8AmKzOI9dZJ-IKLhUqt38IdRLEOtFOKnDVzp6E4JRezh1hoKqlylBYYjOl5Y5Ssc--4ybLKDoIQTBse-sUypgqHZo'
+                    }
+                ],
+                reviews: [
+                    {
+                        collector: 'Alistair K. (London)',
+                        rating: 5,
+                        text: 'Ethereal and powerful. The brushwork has a physical presence that photo scans simply cannot capture. A phenomenal addition to our collection.'
+                    },
+                    {
+                        collector: 'Clara M. (Berlin)',
+                        rating: 5,
+                        text: 'We commissioned a custom piece from the Liminal Structures series. Elena communicated beautifully throughout the entire process.'
+                    }
                 ]
             },
             'julian-thorne': {
@@ -433,6 +489,32 @@
                         price: 'R 3,100',
                         image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDGxGytPwCo_2ez2NRJRIHDJ97gCIZEk-htYUMpOlz_vdo97z1llylLMMPKdrKIECftrYqPOzOKlFX4WbxpQCJq6lE9DeAwX8DdZGLRz-jLso9TKrLdMOu_OvGdAjHpyF3F9OydMUlg4fv9MyFfpTcSTAcNZsSMAB91yN5dt8RFEhx6D3ZGM172_mq8Od4EPXP5AHoJ9r9h_SCVr6iTCewDdECM1yUBbZpfy8TSklVR2hkaEHhThytu6NpSouEgoXnNxAp6t99TUYy1'
                     }
+                ],
+                portfolio: [
+                    {
+                        title: 'Tension & Void',
+                        details: 'Bronze, 50x50x120cm',
+                        status: 'Sold (Private Collection, Tokyo)',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCtK78c5QYn0I74prJjQBXmq9fEgYpAzvijmnF553PpDhiURp_DHyB0OAPZvUhjPt8dES2_DASsj2apsVbpdTfdcMuzUP50U1Mulsgl9bWlGYwNmWiQSv84dfG5BX-TaSf6KQRsdJXbmXi6w7xnDcVB18xlykxR4NcWmYKMeEEF9qXAgtmCK_rBzntc85w0o2LLZFgJeSBXlIbMT_Uy86Fnv-gdEEh3FLyJmG6ZCIHGtGp3ByBg-MEVZC0U5JIYZWgK7dp-QLZmJJsG'
+                    },
+                    {
+                        title: 'Geometric Rest',
+                        details: 'Carrara Marble, 40x40x80cm',
+                        status: 'Sold (Acquired by Tate Modern)',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCHYSfoD17rFtRV3wOaoxIv6f87bsFJJxrkVOmuEk7nkaezxqX_g_PqaJnkvyZblAkOYA82hBLVbK7p1n0y0UISIK7C-w5PbJTfX5hqXIhK6fFPnv8MkKaU_s7GybuerdD9ZWP56d_VoUG_vy8M_QzbVp6bO4gOVrhMwUA6uisSH9yvA2_5xF4O7NuQDs09F1Y_BtVcxuptMlcXRM-NnRRZA-ywYZ-zFna59r8MsUsghHa9dVDwmpLlmkyRsvHehJ4y_l9hLzoiGFDF'
+                    }
+                ],
+                reviews: [
+                    {
+                        collector: 'Dr. Kenzo S. (Kyoto)',
+                        rating: 5,
+                        text: 'The purity of the marble forms is breathtaking. Thorne’s sculptures hold the space in a way that feels sacred.'
+                    },
+                    {
+                        collector: 'Eleanor W. (New York)',
+                        rating: 5,
+                        text: 'An absolute masterpiece. The bronze patina is incredibly rich under gallery spots.'
+                    }
                 ]
             },
             'amara-okafor': {
@@ -464,6 +546,32 @@
                         details: 'Digital Print, 80x80cm',
                         price: 'R 1,800',
                         image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDre2PewgD-GE392RVOjsFYsj7flenEX6ZNDqNtuVdKqR6Lie9YSlLHa4VbuoEj8kkotyCkk-kfvMg_gMVCljvezDGVNlzlWodRnDhjMM1_TEg8GyIwxMXYB_TJJstP1cG98ZFJyYDIRPQ81XIi723tpLDKAGaiGZX2jKZ_d3pvfci6Prcll_sBf5oaLxbn1rlJwRmYJDt_pgE6gMWhHnsNi88Hm640Lz7NVZ3Rl2lm3KkiILuqL2hxX7-GsOTGimBU4rR2l1EuAPwZ'
+                    }
+                ],
+                portfolio: [
+                    {
+                        title: 'Ancestral Dreamstate',
+                        details: 'Digital Print on Archival Paper, 100x100cm',
+                        status: 'Sold (Limited Edition 5/5)',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBVdDTjtEM3QCRWs80Y0_Z90zW-TeDixO3S9LA1uXigSnKaV_fKq7Lk2JeT5ARXkvi3qhj7Kys7K7BfS9YaKX_L01gEufXCtLXqvzWA_WTXtW0pSxHgqdp3o3MOCARuiM0Sd_kX0_L0FYBVVAKAVMpXWcqvKc_pQMbO0XEJGQp1tflLfmH1xhAS9vNq8qeWPjOTTDIBDc4ubI5-GmfmzjQ_eHXO0Uas0SyFLmaDY3xiqArW7PEn0HwmWsrAb0Pw9fDMosOxkZCaFuBQ'
+                    },
+                    {
+                        title: 'Neon Symmetry',
+                        details: 'Digital Art Giclée, 80x80cm',
+                        status: 'Sold (Limited Edition 1/1)',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuABysw-F2cau1IahlXYcNFTwZFN253rvuXkGfwsJnxXre3vXVNV7omVAJNsCb_1mRF3zSEmY_g0xn3YBLd7zkvScIesHAhrYUhCPPOOwyblnmausjPxcIlUNPIIm9UBwYy3nII3ZYevIDKF1818v7lXK3H94V8kv-bW0sIkro8H_JgBwiGS-b-NuA99a78YynNa9NQLEkA69kagKuwx8urF6mvGMTTw4KfHSnxyeyRCNLSFmTCZzgmOatExljRjPNB4YYbogbj1DSPR'
+                    }
+                ],
+                reviews: [
+                    {
+                        collector: 'Chinedu O. (Lagos)',
+                        rating: 5,
+                        text: "Amara's synthesis of Yoruba symbology with cyberpunk design is brilliant. The colors are incredibly vibrant."
+                    },
+                    {
+                        collector: 'Sarah D. (San Francisco)',
+                        rating: 5,
+                        text: 'High-quality print and superb client service. The narrative depth in her art is fascinating.'
                     }
                 ]
             }
@@ -514,7 +622,7 @@
             }
 
             // Update artworks grid
-            const gridContainer = document.querySelector('div.grid.grid-cols-1.md\\:grid-cols-12');
+            const gridContainer = document.getElementById('art-grid');
             if (gridContainer && data.artworks) {
                 let gridHtml = '';
                 data.artworks.forEach(item => {
@@ -558,6 +666,52 @@
                     }
                 });
                 gridContainer.innerHTML = gridHtml;
+            }
+
+            // Update Portfolio
+            const portfolioContainer = document.getElementById('portfolio-grid');
+            if (portfolioContainer && data.portfolio) {
+                let portHtml = '';
+                data.portfolio.forEach(item => {
+                    portHtml += `
+                    <div class="group border border-outline-variant p-4 bg-surface hover:border-primary transition-all duration-300">
+                        <div class="aspect-square overflow-hidden bg-surface-container mb-4 relative">
+                            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${item.image}"/>
+                            <span class="absolute top-3 right-3 bg-inverse-surface text-inverse-on-surface text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded-sm">
+                                Sold
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-md text-lg text-primary mb-1">${item.title}</h3>
+                            <p class="font-label-sm text-xs text-on-surface-variant mb-2">${item.details}</p>
+                            <p class="font-label-md text-xs text-secondary font-semibold italic">${item.status}</p>
+                        </div>
+                    </div>`;
+                });
+                portfolioContainer.innerHTML = portHtml;
+            }
+
+            // Update Reviews
+            const reviewsContainer = document.getElementById('reviews-container');
+            if (reviewsContainer && data.reviews) {
+                let revHtml = '';
+                data.reviews.forEach(item => {
+                    let starsHtml = '';
+                    for (let i = 0; i < item.rating; i++) {
+                        starsHtml += '<span class="material-symbols-outlined text-[18px] text-amber-500" style="font-variation-settings: \'FILL\' 1;">star</span>';
+                    }
+                    revHtml += `
+                    <div class="border-b border-outline-variant pb-6 mb-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h4 class="font-label-md text-primary text-sm font-bold">${item.collector}</h4>
+                            <div class="flex gap-0.5">${starsHtml}</div>
+                        </div>
+                        <p class="font-body-md text-on-surface-variant italic text-sm leading-relaxed">
+                            "${item.text}"
+                        </p>
+                    </div>`;
+                });
+                reviewsContainer.innerHTML = revHtml;
             }
         }
     </script>
