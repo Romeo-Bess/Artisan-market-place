@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Auction History | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fd9e7b",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#436087",
+                        "surface-container-low": "#f4f3f1",
+                        "surface": "#faf9f7",
+                        "secondary": "#94492d",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#abc8f5",
+                        "outline": "#74777f",
+                        "surface-dim": "#dadad8",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "surface-variant": "#e3e2e0",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f1f1ef",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary-container": "#773319",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-primary-fixed": "#001c39",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e8e6",
+                        "on-surface-variant": "#43474e",
+                        "primary": "#123358",
+                        "surface-container": "#efeeec",
+                        "on-primary-container": "#9cbae6",
+                        "background": "#faf9f7",
+                        "tertiary-container": "#5f4407",
+                        "primary-container": "#2c4a70",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2f3130",
+                        "on-tertiary-container": "#d9b26d",
+                        "on-secondary-fixed-variant": "#763218",
+                        "outline-variant": "#c3c6cf",
+                        "surface-bright": "#faf9f7",
+                        "tertiary": "#442e00",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1a1c1b",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "tertiary-fixed": "#ffdea7",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-secondary-fixed": "#380d00",
+                        "on-background": "#1a1c1b",
+                        "primary-fixed-dim": "#abc8f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "section-gap": "120px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "headline-lg": ["EB Garamond"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #faf9f7; color: #1a1c1b; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .active-tab-indicator { position: relative; }
+        .active-tab-indicator::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: #123358; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #faf9f7; }
+        ::-webkit-scrollbar-thumb { background: #c3c6cf; border-radius: 3px; }
+    </style>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="font-body-md text-body-md">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline p-unit z-50">
+<div class="px-4 py-8 mb-8">
+<h1 class="font-display-lg text-display-lg text-primary dark:text-primary-fixed mb-1">Artisane</h1>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Elite Collector</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all font-label-md text-label-md tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Overview
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all font-label-md text-label-md tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+                Active Bids
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-all font-label-md text-label-md tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+                Saved Artists
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary dark:text-primary-fixed font-bold bg-surface-variant dark:bg-primary-container transition-all font-label-md text-label-md tracking-widest uppercase" href="auction-history.html">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                Auction History
+            </a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-all font-label-md text-label-md uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                Help
+            </a>
+<button class="w-full mt-4 bg-primary text-on-primary font-label-md text-label-md uppercase py-3 px-4 rounded-DEFAULT hover:opacity-90 transition-opacity">
+                View Gallery
+            </button>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<main class="md:ml-64 min-h-screen bg-surface">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline px-6 md:px-gutter py-4 flex justify-between items-center w-full">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-DEFAULT pl-10 pr-4 py-2 text-body-md focus:ring-1 focus:ring-primary transition-all" placeholder="Search archive..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="favorite">favorite</button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 font-label-md text-label-md uppercase rounded-DEFAULT hover:opacity-90 transition-opacity">
+                    Place Bid
+                </button>
+<img alt="Curator Profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional close-up portrait of a gallery curator with a sophisticated, minimalist aesthetic. The lighting is soft and even, highlighting a serene and intelligent expression. She is wearing a structured navy blazer, consistent with a high-end art gallery professional identity. The background is a blurred, bright white gallery space with subtle architectural lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYb2eJshu8JfPGrjUIqGTdoRRNRFkqu-KOJqHtESUgc5uRmEEGHugtT2JdnZ4pUf9a-pu7lA3z4C5UW_aBW-1-kFkizSLbZKqdQuwdRlsoMZou3p_Dx3wYMidn0JcRol4htgj6cHrBFA5BbffRMlmTABykasy5ocbc7e8rZqSxWe5pAvWZVOMwFsw6Y2U5bWDrOe5WN3oBUCCRaAKUiMt_FnF1tGeDnYr7Krg1o2lDUjkADSh-1TA6wYWwvgO-mKQ0a5kj329M9vtc"/>
+</div>
+</header>
+<!-- Content Area -->
+<div class="px-6 md:px-gutter py-12 max-w-container-max mx-auto">
+<!-- Page Header -->
+<div class="mb-section-gap">
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Auction History</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">A comprehensive record of your acquisitions and participation in Artisane's exclusive seasonal auctions.</p>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-16">
+<div class="bg-surface-container-low p-8 border border-outline-variant rounded-DEFAULT flex flex-col justify-between h-48">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Total Acquisitions</p>
+<div>
+<span class="font-display-lg text-display-lg text-primary">27</span>
+<span class="font-label-md text-label-md text-on-surface-variant ml-2">items</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 border border-outline-variant rounded-DEFAULT flex flex-col justify-between h-48">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Total Invested</p>
+<div>
+<span class="font-display-lg text-display-lg text-primary">R 412,800</span>
+<span class="font-label-md text-label-md text-on-surface-variant ml-2">ZAR</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 border border-outline-variant rounded-DEFAULT flex flex-col justify-between h-48">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Winning Rate</p>
+<div>
+<span class="font-display-lg text-display-lg text-primary">68%</span>
+<span class="font-label-md text-label-md text-on-surface-variant ml-2">efficiency</span>
+</div>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-outline-variant pb-6">
+<div class="flex gap-4 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto">
+<button class="font-label-md text-label-md uppercase tracking-widest text-primary border-b-2 border-primary px-2 py-1">All History</button>
+<button class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary px-2 py-1 transition-colors">Won</button>
+<button class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary px-2 py-1 transition-colors">Outbid</button>
+<button class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary px-2 py-1 transition-colors">2023</button>
+<button class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary px-2 py-1 transition-colors">2022</button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md uppercase tracking-widest">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+<span>Sort by: Date Descending</span>
+</div>
+</div>
+<!-- History Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="py-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest w-1/3">Artwork &amp; Title</th>
+<th class="py-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Artist</th>
+<th class="py-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Date Concluded</th>
+<th class="py-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest text-right">Hammer Price</th>
+<th class="py-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Item 1 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-8">
+<div class="flex items-center gap-6">
+<img alt="Visions of the Inland Sea" class="w-20 h-20 object-cover border border-outline-variant grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A contemporary abstract painting titled Visions of the Inland Sea. The artwork features flowing, ethereal shapes in a spectrum of deep blues, teals, and soft whites, reminiscent of water and tide. The visual style is refined and minimalist, presented in high resolution with soft, natural lighting. The overall mood is tranquil and meditative, perfectly fitting a sophisticated collector's dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVlZpvSYRbLZg_HmoHD7l51rAIWH6tS6zzl4VwRFad3jd9q0f0Xt3RTS6tir59SlEaU_N9EpIMH215Fj20WM25ogZLQVQhymiKzTSjuEPZc6DpAWrl9LmsYxJSTx4ScUFFcabv-HCoy23KJEaoKZCVoH41NOBWLFeuowlMDAqINu5Cjm_TfFD98IrFn6i9zQ3WpYT9v0YYuTWOG6ocA_jGXzmB74_Fy89QnVlkHlykWFma0ML4WpKlGBVQ2X7gd5nN4fz7VJtB4S5p"/>
+<div>
+<p class="font-headline-md text-headline-md text-primary">Visions of the Inland Sea</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Oil on Canvas, 120 x 120 cm</p>
+</div>
+</div>
+</td>
+<td class="py-8 font-body-md text-body-md text-primary">Elena Kostrova</td>
+<td class="py-8 font-body-md text-body-md text-on-surface-variant">Oct 14, 2023</td>
+<td class="py-8 font-body-md text-body-md text-primary text-right font-bold">R 84,000</td>
+<td class="py-8 text-right">
+<span class="inline-block px-3 py-1 bg-surface-variant text-primary font-label-sm text-label-sm uppercase rounded-DEFAULT border border-primary/10">Won - Delivered</span>
+</td>
+</tr>
+<!-- Item 2 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-8">
+<div class="flex items-center gap-6">
+<img alt="Structural Integrity 03" class="w-20 h-20 object-cover border border-outline-variant grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A minimalist architectural photograph titled Structural Integrity 03. It captures sharp, clean geometric lines of a modern concrete building against a cloudless, pale sky. The lighting creates strong, high-contrast shadows that emphasize the form and texture. The aesthetic is extremely clean and editorial, reflecting a professional art gallery curation style with a focus on form and structure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhRCcg0R0knzS1EdVX47W3lGYKYp7TPUSyAG4cHEI0aRDpvpFNrp4UPSLLDOy5Lll8ywM3aPYDovyxnvHG0W5kkqM6LUPbNriTuNTxDWhbJGqbMz_nRSdHNmyNgNTgjwgWHOVvH9kFQmIyRtaRXrc7j-NpGmu2XFeosi4UaOz3w7kxr3d-sepMCeydRj5Vx_fMHwhR0ZulpSzhSPfzcL_WdW7xHEDDiorbsdoJPmqbq-7bh7NcaHAfiwyNWgX7xd3nHZbwPlq0Bj0O"/>
+<div>
+<p class="font-headline-md text-headline-md text-primary">Structural Integrity 03</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Archival Pigment Print, Ed. 1 of 5</p>
+</div>
+</div>
+</td>
+<td class="py-8 font-body-md text-body-md text-primary">Marcus Thorne</td>
+<td class="py-8 font-body-md text-body-md text-on-surface-variant">Sep 28, 2023</td>
+<td class="py-8 font-body-md text-body-md text-primary text-right font-bold">R 12,500</td>
+<td class="py-8 text-right">
+<span class="inline-block px-3 py-1 bg-surface-variant text-primary font-label-sm text-label-sm uppercase rounded-DEFAULT border border-primary/10">Won - In Transit</span>
+</td>
+</tr>
+<!-- Item 3 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-8">
+<div class="flex items-center gap-6">
+<img alt="The Silent Chamber" class="w-20 h-20 object-cover border border-outline-variant grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A sophisticated sculptural piece titled The Silent Chamber, made from polished black marble and brushed brass. The sculpture is set in a pristine, bright gallery environment with soft, diffuse lighting that creates subtle highlights on the surfaces. The overall composition is balanced and elegant, emphasizing the contrast between the dark stone and the golden metal. The aesthetic is contemporary and elite." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5sdT0ba4N25YtY-wkoHe4Ryuk-MmFKA_j1Wjr-QeTLI6M9eVemZ3PwnrtIWRAHVaB1DRSu0Hb3EwcUtm4xuu_sCyEeL2tG5kRJWSnDPFqYoLSUNJqfMVCZ-Yl5Ds4n5UbF_WqJ_wtuqxcMVXmv7a8n_nzxfz_bJu-AwDJ3xOguBMnc0JOxqO5BQhhJ06yO_bqktKAIkfoMJbYq65B7vj88RdJ3wgw1667Rk5iJnefYUOB2ss3F3K5w2sPbIsRhGIrGSBhXsHzVunB"/>
+<div>
+<p class="font-headline-md text-headline-md text-primary">The Silent Chamber</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Carrara Marble &amp; Brass</p>
+</div>
+</div>
+</td>
+<td class="py-8 font-body-md text-body-md text-primary">Sienna Wu</td>
+<td class="py-8 font-body-md text-body-md text-on-surface-variant">Aug 12, 2023</td>
+<td class="py-8 font-body-md text-body-md text-on-surface-variant text-right">R 45,000</td>
+<td class="py-8 text-right">
+<span class="inline-block px-3 py-1 bg-transparent text-on-surface-variant font-label-sm text-label-sm uppercase rounded-DEFAULT border border-outline-variant">Outbid</span>
+</td>
+</tr>
+<!-- Item 4 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-8">
+<div class="flex items-center gap-6">
+<img alt="Convergence No. 12" class="w-20 h-20 object-cover border border-outline-variant grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A vibrant digital art piece titled Convergence No. 12, featuring a complex interplay of light and geometry. The colors are rich and varied, with deep navy and vibrant gold intersecting in a structured yet organic way. The lighting is dramatic, highlighting the depth and texture of the digital strokes. This piece represents high-end, contemporary digital art in a professional collector's archive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6FeNgwLib-Mrmwi5boAyBRYlhz5CZ9szm0hH8tnya5Pa2Mvh0Stp9V-EQLM52Ef5LMDXTk3b5daVSqseOgMitr70fQWHklInE0EA79pgCIq3jX4tnjv6dXZiITVw-0SmWUPnMi2Yaa5UhvnMABO8kz_5_k5H0MUxFFSMDed4hunrW94vOYC0G6ATEjtuWjd9bISuKu5pozxL_xJIib5CHhMLf-bJPK0dejRg0tj9kdjwOucbUnVOkWV4cMtRIudQ3OWhBzMFoigNS"/>
+<div>
+<p class="font-headline-md text-headline-md text-primary">Convergence No. 12</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Digital Art (NFT + Physical Print)</p>
+</div>
+</div>
+</td>
+<td class="py-8 font-body-md text-body-md text-primary">Julian Vose</td>
+<td class="py-8 font-body-md text-body-md text-on-surface-variant">Jul 05, 2023</td>
+<td class="py-8 font-body-md text-body-md text-primary text-right font-bold">R 28,000</td>
+<td class="py-8 text-right">
+<span class="inline-block px-3 py-1 bg-surface-variant text-primary font-label-sm text-label-sm uppercase rounded-DEFAULT border border-primary/10">Won - Delivered</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-between items-center pt-8 border-t border-outline-variant">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Showing 1-4 of 27 participations</span>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                        Previous
+                    </button>
+<button class="flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-primary hover:gap-4 transition-all">
+                        Next
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple search interactivity
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-1', 'ring-primary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-1', 'ring-primary');
+        });
+
+        // Hover effects for table rows to trigger grayscale removal
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.querySelector('img').classList.remove('grayscale');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.querySelector('img').classList.add('grayscale');
+            });
+        });
+    </script>
+</body></html>

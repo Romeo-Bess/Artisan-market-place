@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Auction Registration | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdbcf",
+                    "tertiary-container": "#5f4407",
+                    "on-tertiary-fixed": "#271900",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f3130",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#abc8f5",
+                    "on-secondary-container": "#773319",
+                    "surface": "#faf9f7",
+                    "inverse-on-surface": "#f1f1ef",
+                    "primary": "#123358",
+                    "secondary": "#94492d",
+                    "surface-variant": "#e3e2e0",
+                    "on-primary": "#ffffff",
+                    "outline": "#74777f",
+                    "on-surface-variant": "#43474e",
+                    "on-background": "#1a1c1b",
+                    "tertiary": "#442e00",
+                    "outline-variant": "#c3c6cf",
+                    "surface-container-high": "#e9e8e6",
+                    "surface-bright": "#faf9f7",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#763218",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "on-tertiary-container": "#d9b26d",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1a1c1b",
+                    "on-primary-fixed": "#001c39",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "primary-fixed-dim": "#abc8f5",
+                    "primary-fixed": "#d4e3ff",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#fd9e7b",
+                    "primary-container": "#2c4a70",
+                    "surface-container-highest": "#e3e2e0",
+                    "surface-dim": "#dadad8",
+                    "on-primary-container": "#9cbae6",
+                    "background": "#faf9f7",
+                    "surface-container": "#efeeec",
+                    "on-secondary-fixed": "#380d00",
+                    "tertiary-fixed": "#ffdea7",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "surface-container-low": "#f4f3f1",
+                    "surface-tint": "#436087",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "section-gap": "120px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "display-lg": ["EB Garamond"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "headline-md": ["EB Garamond"],
+                    "headline-lg": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      .white-cube-shadow {
+        box-shadow: 0 10px 40px -10px rgba(18, 51, 88, 0.04);
+      }
+      input:focus {
+        outline: none;
+        border-bottom-color: #123358 !important;
+      }
+      .active-step-line {
+        height: 2px;
+        background: #123358;
+      }
+    </style>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary-fixed-dim">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight">Artisane</div>
+<nav class="hidden md:flex items-center space-gap gap-8">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 font-label-md text-label-md" href="browse-gallery.html">Browse</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 font-label-md text-label-md" href="artists.html">Artists</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 font-label-md text-label-md" href="#">Collections</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 font-label-md text-label-md" href="#">Exhibitions</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer scale-95 active:opacity-80 transition-all" data-icon="shopping_cart">shopping_cart</span>
+<span class="material-symbols-outlined text-primary cursor-pointer scale-95 active:opacity-80 transition-all" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<main class="min-h-screen py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Step Indicator Header -->
+<div class="mb-16 text-center max-w-2xl mx-auto">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-12">Auction Registration</h1>
+<div class="flex items-center justify-between relative px-2">
+<!-- Progress Line Background -->
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant -z-10"></div>
+<!-- Steps -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm text-label-sm shadow-md">1</div>
+<span class="font-label-md text-label-md text-primary">Identity</span>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface border border-outline-variant text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm">2</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Payment</span>
+</div>
+<div class="flex flex-col items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface border border-outline-variant text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm">3</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Terms</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Registration Form Canvas -->
+<div class="lg:col-span-7 bg-surface border border-[#E5E5E5] p-8 md:p-12 white-cube-shadow">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">Personal Information</h2>
+<form class="space-y-10">
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors" for="full_name">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/40 transition-all" id="full_name" placeholder="As it appears on your ID" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors" for="phone">Phone Number</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 px-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/40 transition-all" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-4">Government ID Verification</label>
+<div class="border border-dashed border-outline-variant p-10 flex flex-col items-center justify-center group hover:border-primary transition-colors cursor-pointer bg-surface-container-low/30">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors mb-4" data-icon="cloud_upload" style="font-size: 32px;">cloud_upload</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">
+<span class="text-primary font-semibold">Click to upload</span> or drag and drop<br/>
+<span class="text-label-sm text-on-surface-variant/60">JPG, PNG, or PDF (max. 10MB)</span>
+</p>
+</div>
+<p class="mt-3 font-label-sm text-label-sm text-on-surface-variant/70 italic flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+                            Your sensitive data is encrypted and stored securely.
+                        </p>
+</div>
+<div class="pt-8 flex justify-end">
+<button class="bg-primary text-on-primary px-10 py-4 font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center gap-2 group" type="button">
+                            Continue to Payment
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Sidebar -->
+<aside class="lg:col-span-5 space-y-gutter">
+<!-- Bidder Benefits Card -->
+<div class="bg-primary-container p-8 relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-primary-container mb-4">Bidder Benefits</h3>
+<p class="font-body-md text-body-md text-on-primary-container/90 mb-6">
+                            Verified bidders enjoy early access to exhibition previews and exclusive invitations to private viewing events.
+                        </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified" data-weight="fill">verified</span>
+<span class="font-label-md text-label-md text-on-primary-container">Priority Bidding Status</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="event" data-weight="fill">event</span>
+<span class="font-label-md text-label-md text-on-primary-container">Private Collection Tours</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome" data-weight="fill">auto_awesome</span>
+<span class="font-label-md text-label-md text-on-primary-container">Dedicated Concierge Service</span>
+</li>
+</ul>
+</div>
+<div class="absolute -bottom-10 -right-10 opacity-10">
+<span class="material-symbols-outlined text-[200px]" data-icon="gavel">gavel</span>
+</div>
+</div>
+<!-- Featured Work Image (Atmospheric) -->
+<div class="h-[400px] relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+<img class="w-full h-full object-cover" data-alt="A high-end contemporary art gallery with pristine white walls and soft track lighting. In the center, a large-scale abstract expressionist painting featuring deep navies and warm ochre tones is displayed prominently. The environment feels extremely minimalist and professional, capturing the 'White Cube' aesthetic of a top-tier auction house. The lighting is crisp and clear, creating a calm, curator-like atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbcAxrxgWYJ2iF0HM48ElgPirmzna-TEWVJo23JhIfKXcAeKontciQ_E3DxzubzxVv_tgGO5TU8fMyoT9GdY65unkBjzfgIIgeZO9eqLgeBWKOcQL6z6Bv1ZhM1g33pASncU6IaGM-TjOsZnKRAr7hzojU-AnpN41rMEUONwryUP24LPdn-iP2y9ECbF5AJWxe2zKU_6fZnbyZjaRwGp6yGdauuSiuoc7NrdlzLuXL3cE-ZC3hH9UvGxyVWOhaikzq7TkE7WmAalxg"/>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-on-surface/80 to-transparent">
+<span class="font-label-sm text-label-sm text-on-primary uppercase tracking-widest block mb-1">Upcoming Highlight</span>
+<p class="font-headline-md text-headline-md text-on-primary">L'horizon Silencieux</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Artisane</div>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant/80">
+                    The quiet curator of digital and physical fine art.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Artist Resources</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Community Guidelines</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Secure Payments</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Contact Support</a>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 text-center">
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant/80">© 2024 Artisane Gallery. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for input fields
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').style.transform = 'translateY(-2px)';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple button active state micro-interaction
+        const btn = document.querySelector('button');
+        btn.addEventListener('mousedown', () => btn.style.transform = 'scale(0.98)');
+        btn.addEventListener('mouseup', () => btn.style.transform = 'scale(1)');
+    </script>
+</body></html>

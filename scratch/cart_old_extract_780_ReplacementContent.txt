@@ -1,0 +1,1 @@
+"    # Scripts to inject in the head\n    helper_scripts = \"\"\"\n<!-- Global Site Interaction Helpers -->\n<script type=\"module\" src=\"./js/theme-toggle-helper.js\"></script>\n<script type=\"module\" src=\"./js/cart-helper.js\"></script>\n<script type=\"module\" src=\"./js/follow-helper.js\"></script>\n</head>\n\"\"\""

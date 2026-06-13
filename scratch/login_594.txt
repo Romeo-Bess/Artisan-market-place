@@ -1,0 +1,68 @@
+Created At: 2026-06-13T08:17:53Z
+Completed At: 2026-06-13T08:17:53Z
+File Path: `file:///C:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/login/index.html`
+Total Lines: 81
+Total Bytes: 3178
+Showing lines 1 to 60
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: <!DOCTYPE html>
+2: <html lang="en">
+3: <head>
+4: <meta charset="utf-8"/>
+5: <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+6: <title>Sign In | Artisane</title>
+7: <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+8: <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+9: <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+10: <style>
+11:     :root {
+12:         --color-background: 250 249 247;
+13:         --color-on-background: 26 28 27;
+14:         --color-primary: 18 51 88;
+15:         --color-on-primary: 255 255 255;
+16:         --color-secondary: 148 73 45;
+17:         --color-on-secondary: 255 255 255;
+18:         --color-surface: 250 249 247;
+19:         --color-on-surface: 26 28 27;
+20:         --color-surface-container: 239 238 236;
+21:         --color-surface-container-low: 244 243 241;
+22:         --color-outline: 116 119 127;
+23:         --color-outline-variant: 195 198 207;
+24:         --color-error: 186 26 26;
+25:         --color-error-container: 255 218 214;
+26:         --color-on-error-container: 147 0 10;
+27:     }
+28:     html.dark {
+29:         --color-background: 15 17 21;
+30:         --color-on-background: 226 226 228;
+31:         --color-primary: 168 199 250;
+32:         --color-on-primary: 6 46 92;
+33:         --color-secondary: 253 158 123;
+34:       
+35:                 Sign In
+36:             </button>
+37:         </form>
+38:     </div>
+39: </main>
+40: 
+41: <footer class="bg-surface border-t border-outline-variant/30 py-8 text-center">
+42:     <p class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 Artisane Gallery. All rights reserved.</p>
+43: </footer>
+44: 
+45: <script type="module">
+46:     import { supabase } from '../js/supabase-auth.js';
+47: 
+48:     const errorEl = document.getElementById('auth-error');
+49:     const form = document.getElementById('form-login');
+50:     const btn = document.getElementById('btn-login');
+51: 
+52:     form.addEventListener('submit', async (e) => {
+53:         e.preventDefault();
+54:         errorEl.classList.add('hidden');
+55:         btn.disabled = true;
+56:         btn.textContent = 'Signing In...';
+57: 
+58:         const email = document.getElementById('login-email').value.trim();
+59:         const password = document.getElementById('login-password').value;
+60: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

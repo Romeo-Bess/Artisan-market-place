@@ -1,0 +1,109 @@
+Created At: 2026-05-31T15:24:48Z
+Completed At: 2026-05-31T15:24:48Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/testsprite_tests/testsprite_frontend_test_plan.json`
+Total Lines: 1449
+Total Bytes: 41635
+Showing lines 1 to 800
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: [
+2:   {
+3:     "id": "TC001",
+4:     "title": "Keep the selected theme after returning to the homepage",
+5:     "description": "A visitor can switch the theme and the selected appearance remains active after reloading the homepage.",
+6:     "category": "Homepage Hero & Navigation",
+7:     "steps": [
+8:       {
+9:         "type": "action",
+10:         "description": "Navigate to /index.html"
+11:       },
+12:       {
+13:         "type": "action",
+14:         "description": "Click the theme toggle to switch the page appearance"
+15:       },
+16:       {
+17:         "type": "action",
+18:         "description": "Reload the page"
+19:       },
+20:       {
+21:         "type": "assertion",
+22:         "description": "Verify the selected theme remains active"
+23:       }
+24:     ],
+25:     "priority": "High"
+26:   },
+27:   {
+28:     "id": "TC002",
+29:     "title": "Place a valid bid in the live bidding room",
+30:     "description": "An authenticated bidder can enter the live bidding room, submit a higher bid, and see the bid activity update.",
+31:     "category": "Live Bidding Room",
+32:     "steps": [
+33:       {
+34:         "type": "action",
+35:         "description": "Navigate to /login"
+36:       },
+37:       {
+38:         "type": "action",
+39:         "description": "Fill in the user credentials with {{LOGIN_USER}}"
+40:       },
+41:       {
+42:         "type": "action",
+43:         "description": "Fill in the password with {{LOGIN_PASSWORD}}"
+44:       },
+45:       {
+46:         "type": "action",
+47:         "description": 
+<truncated 23717 bytes>
+"type": "action",
+749:         "description": "Complete the acquisition"
+750:       },
+751:       {
+752:         "type": "assertion",
+753:         "description": "Verify the shipping tracking page is displayed"
+754:       }
+755:     ],
+756:     "priority": "High"
+757:   },
+758:   {
+759:     "id": "TC025",
+760:     "title": "Start auction registration from artist profile",
+761:     "description": "A visitor can move from an artist profile with auctions to the auction registration form for an available listing.",
+762:     "category": "Artist Profile & Commission Request",
+763:     "steps": [
+764:       {
+765:         "type": "action",
+766:         "description": "Navigate to /artist-profile-auctions.html"
+767:       },
+768:       {
+769:         "type": "action",
+770:         "description": "Click the registration action for an available auction"
+771:       },
+772:       {
+773:         "type": "assertion",
+774:         "description": "Verify the auction registration form is displayed"
+775:       },
+776:       {
+777:         "type": "assertion",
+778:         "description": "Verify auction participation details are displayed"
+779:       }
+780:     ],
+781:     "priority": "High"
+782:   },
+783:   {
+784:     "id": "TC026",
+785:     "title": "Follow and unfollow an artist from the directory",
+786:     "description": "A visitor can follow an artist and later unfollow them, with the button state reflecting the current choice.",
+787:     "category": "Artist Directory & Follow",
+788:     "steps": [
+789:       {
+790:         "type": "action",
+791:         "description": "Navigate to /artists.html"
+792:       },
+793:       {
+794:         "type": "action",
+795:         "description": "Follow an artist from the directory"
+796:       },
+797:       {
+798:         "type": "action",
+799:         "description": "Unfollow the same artist"
+800:       },
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisane | Curation Review Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+            border-radius: 10px;
+        }
+        .glass-panel {
+            background: rgba(250, 249, 247, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#94492d",
+                        "on-primary-fixed": "#001c39",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#d9b26d",
+                        "surface-variant": "#e3e2e0",
+                        "background": "#faf9f7",
+                        "surface-dim": "#dadad8",
+                        "secondary-container": "#fd9e7b",
+                        "on-surface-variant": "#43474e",
+                        "on-background": "#1a1c1b",
+                        "surface-container-high": "#e9e8e6",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdbcf",
+                        "primary-fixed-dim": "#abc8f5",
+                        "on-primary-container": "#9cbae6",
+                        "on-tertiary-fixed": "#271900",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "surface-tint": "#436087",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e3e2e0",
+                        "surface-container": "#efeeec",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdea7",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-secondary-fixed-variant": "#763218",
+                        "primary-fixed": "#d4e3ff",
+                        "tertiary": "#442e00",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "inverse-on-surface": "#f1f1ef",
+                        "primary": "#123358",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f4f3f1",
+                        "primary-container": "#2c4a70",
+                        "on-secondary-container": "#773319",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "tertiary-container": "#5f4407",
+                        "on-secondary-fixed": "#380d00",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c3c6cf",
+                        "on-surface": "#1a1c1b",
+                        "inverse-surface": "#2f3130",
+                        "inverse-primary": "#abc8f5",
+                        "outline": "#74777f",
+                        "surface-bright": "#faf9f7",
+                        "surface": "#faf9f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["EB Garamond"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface fixed full-width top-0 z-50 flex justify-between items-center w-full px-gutter py-4 border-b border-outline-variant">
+<div class="flex items-center gap-12">
+<span class="font-display-lg text-display-lg text-primary">Artisane</span>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">DASHBOARD</a>
+<a class="text-primary font-label-md border-b-2 border-primary" href="#">CURATION</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">COLLECTIONS</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full"></span>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+<img alt="Curator Profile" class="w-10 h-10 rounded-full object-cover grayscale brightness-110" data-alt="A professional headshot of a sophisticated art curator with a warm smile and clear, intelligent eyes. She is wearing a modern black blazer against a soft-focus minimalist gallery background. The lighting is high-key and elegant, reflecting the clean and professional Artisane brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1sdhmZGo2thJGR-LVW_Kmp12c0biMIyL7oGYD__wdja9DwRHenMKkO4IbYuZFUFZSz21Ma2bemcZWhi59nBOoBBzPJxDqWlyvA5xXKE_dijNajIJVSXpvEzVKYVxTOwtlXtEsIQta4_E8yb65t0lQhERoCOE8NY1yNX_gjg25D8ACV_JIyV5XEAblDjUa3RWXo5pdDzq_nJ8KVA3pL1CzbIgCiG4odJmWnumev_92ekL0329-DrMeN0WHfCcq5-6KVhWaRavGj4LO"/>
+<div class="hidden lg:block">
+<p class="font-label-md text-primary leading-none">Elena Rossi</p>
+<p class="font-label-sm text-on-surface-variant">Senior Curator</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-24 bg-surface-container-low border-r border-outline-variant z-40 hidden md:flex flex-col p-unit">
+<div class="flex flex-col gap-1 px-2 mb-8">
+<button class="flex items-center gap-3 p-3 w-full text-left font-label-md tracking-widest uppercase text-primary font-bold bg-surface-variant rounded-lg">
+<span class="material-symbols-outlined">dashboard</span> Overview
+            </button>
+<button class="flex items-center gap-3 p-3 w-full text-left font-label-md tracking-widest uppercase text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg">
+<span class="material-symbols-outlined">gavel</span> Active Bids
+            </button>
+<button class="flex items-center gap-3 p-3 w-full text-left font-label-md tracking-widest uppercase text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg">
+<span class="material-symbols-outlined">star</span> Saved Artists
+            </button>
+<button class="flex items-center gap-3 p-3 w-full text-left font-label-md tracking-widest uppercase text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg">
+<span class="material-symbols-outlined">history</span> Auction History
+            </button>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-4 px-2">
+<button class="flex items-center gap-3 p-3 w-full text-left font-label-md tracking-widest uppercase text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg mb-2">
+<span class="material-symbols-outlined">settings</span> Settings
+            </button>
+<button class="flex items-center gap-3 p-3 w-full text-left font-label-md tracking-widest uppercase text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg">
+<span class="material-symbols-outlined">help_outline</span> Help
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 h-screen flex flex-col">
+<div class="flex h-full">
+<!-- Left Pane: Applicant List -->
+<section class="w-full md:w-96 flex flex-col border-r border-outline-variant bg-surface-bright overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-end">
+<div>
+<h1 class="font-headline-md text-headline-md text-primary">Applicant Review</h1>
+<p class="font-label-sm text-on-surface-variant">12 pending submissions</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Applicant Item: Active -->
+<div class="p-6 bg-surface-container border-b border-outline-variant cursor-pointer border-l-4 border-l-secondary">
+<div class="flex justify-between mb-2">
+<span class="font-label-sm bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">HIGH PRIORITY</span>
+<span class="font-label-sm text-on-surface-variant">2h ago</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-1 text-primary">Julian Vossen</h3>
+<p class="font-body-md text-on-surface-variant mb-4">Sculpture &amp; Installation</p>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-on-surface-variant">Berlin, DE</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="font-label-sm text-on-surface-variant">8 Artworks</span>
+</div>
+</div>
+<!-- Applicant Item -->
+<div class="p-6 hover:bg-surface-container-low border-b border-outline-variant cursor-pointer transition-colors group">
+<div class="flex justify-between mb-2">
+<span class="font-label-sm bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded">NEW</span>
+<span class="font-label-sm text-on-surface-variant">5h ago</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-1 text-on-surface group-hover:text-primary transition-colors">Miriam Chen</h3>
+<p class="font-body-md text-on-surface-variant mb-4">Digital Generative Art</p>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-on-surface-variant">Tokyo, JP</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="font-label-sm text-on-surface-variant">12 Artworks</span>
+</div>
+</div>
+<!-- Applicant Item -->
+<div class="p-6 hover:bg-surface-container-low border-b border-outline-variant cursor-pointer transition-colors group">
+<div class="flex justify-between mb-2">
+<span class="font-label-sm bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded">PENDING</span>
+<span class="font-label-sm text-on-surface-variant">1d ago</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-1 text-on-surface group-hover:text-primary transition-colors">David Arshadi</h3>
+<p class="font-body-md text-on-surface-variant mb-4">Oil on Linen</p>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-on-surface-variant">Paris, FR</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="font-label-sm text-on-surface-variant">15 Artworks</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Portfolio Review -->
+<section class="flex-1 flex flex-col overflow-y-auto bg-background">
+<!-- Header Actions -->
+<div class="sticky top-0 z-30 p-8 glass-panel border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-6">
+<img alt="Artist Profile" class="w-16 h-16 rounded grayscale object-cover" data-alt="A side-profile portrait of Julian Vossen, an artist with a contemplative expression. He is photographed in black and white, highlighting his sharp features and the architectural quality of the lighting. The style is editorial and sophisticated, fitting for a premium art marketplace like Artisane." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg66gJBCMvNVbSzS074AJxnsDlyQ8roFOKCgRCb0yJ20QkdiHgckTc09oLoxpeJGHpjd9igYAXevfDAoi6Wt9Ow_o8ZH-90J_mFv7FS41KRFmKUtvpvnHGfVubHQ-ZHUViHijU6kOESa14-uVCymnzubHsFcEssCEOItdSmlXH26L2TXsKNZepb5ZMnxIdeIoZd7Ja7hgZm-m8Yu64X_t_l2kB4gn49qoJcoUOoaQBgx5X5XRqeNpxVDsj0iYES-PtHuwEfliszlJB"/>
+<div>
+<h2 class="font-display-lg text-display-lg text-primary leading-tight">Julian Vossen</h2>
+<p class="font-body-lg text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span> Berlin, Germany
+                            </p>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 border border-outline text-primary font-label-md rounded hover:bg-surface-container transition-all">
+                            REQUEST MORE INFO
+                        </button>
+<button class="px-6 py-2 bg-primary text-on-primary font-label-md rounded hover:opacity-90 transition-all">
+                            APPROVE ARTIST
+                        </button>
+</div>
+</div>
+<!-- Review Content -->
+<div class="p-12 max-w-5xl mx-auto w-full">
+<!-- Bio Section -->
+<div class="mb-16">
+<h4 class="font-label-md text-secondary tracking-widest uppercase mb-4">Artist Statement</h4>
+<p class="font-headline-md text-headline-md text-on-surface leading-relaxed max-w-3xl">
+                            "My work explores the intersection of brutalist architecture and organic fragility. I aim to create sculptures that demand space while simultaneously acknowledging their own eventual decay."
+                        </p>
+</div>
+<!-- Portfolio Grid: Asymmetric -->
+<div class="mb-20">
+<h4 class="font-label-md text-secondary tracking-widest uppercase mb-8">Selected Submissions</h4>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Large Featured Work -->
+<div class="col-span-8 flex flex-col gap-4">
+<div class="relative overflow-hidden group border border-outline-variant">
+<img alt="Portfolio Work 1" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A large-scale minimalist sculpture consisting of a textured concrete monolith contrasted with a delicate, translucent silk draping. The piece is set in a cavernous, bright white gallery with dramatic shadows and high-key lighting. The aesthetic is clean, sophisticated, and deeply artistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbYcE12weCNULBBGmm5R8TPCXCOakptSj7_q-3T6QdfQoO8R2H3qyrpPoxh63qzPr59eT8Lmk_fxEF_edOOyLtbzcl2U_-rGshQC653u2tFsptlHhSpvGoxAKJUKq8Mcbx4KgW2zG-6kz7yV7kFsT_wX5ntkmSsjLlQq85bYWfUKe7lPcQ8UCoEcxQFVVoYs7X0U2fIY8NApNPhosYvPWpqnTmUimPpb2T4JM-dJWsAgtE43aMb434lZkEcxQmA_2PVQ6c9wkaCAG_"/>
+<div class="absolute bottom-4 right-4 bg-white/90 px-4 py-2 font-label-sm">
+                                        TITLED: MONOLITH IV
+                                    </div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-headline-md text-primary">Monolith IV</p>
+<span class="font-label-sm text-on-surface-variant bg-surface-container px-2 py-1">CONCRETE &amp; SILK</span>
+</div>
+<p class="font-label-md text-primary">€12,400</p>
+</div>
+</div>
+<!-- Vertical Secondary Works -->
+<div class="col-span-4 flex flex-col gap-12">
+<div class="flex flex-col gap-4">
+<div class="relative overflow-hidden border border-outline-variant aspect-[3/4]">
+<img alt="Portfolio Work 2" class="w-full h-full object-cover" data-alt="A minimalist abstract painting featuring a single, thick brushstroke of ochre on a vast, textured cream-colored linen canvas. The lighting is soft and directional, emphasizing the texture of the paint and fabric. The mood is serene, intentional, and high-end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8jSP1obKcpEAu3mKk7-eqPQrhL5OXwYUWp-3_CqeCCFNyx2-_rPRg561FAu13Tg-bDVUK-Zas0DJ6Nz_26bsN-4BYE5vwy5FifUcW5IhmIbStsID7fQ7SsFWMmWKVwoTQXQf_jX2ZKpM65uNvSZZnqbcPbiHkQgoMqM_osMoHsmzX4bBEVpjGrYBAL4kwMlLvDtUwXKtxfiVEH4xt8bKIYDcN2bBVTp6GUcn9tycD9QS6TXJzvcRtu01s3d5OJO8xYh0kZTHw4nzC"/>
+</div>
+<p class="font-label-md text-primary">Ochre Form (Study)</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="relative overflow-hidden border border-outline-variant aspect-[3/4]">
+<img alt="Portfolio Work 3" class="w-full h-full object-cover" data-alt="A delicate wire-mesh sculpture that resembles a frozen ripple in water, suspended by invisible threads in a brightly lit studio. The soft shadows create a complex geometric pattern on the floor. High-end, contemporary gallery style with a quiet, sophisticated atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIy0i0SD2fQ0qX8ourmgslLp_b1hDALkQ5c9rB8EcPcWLAlc5pCH2oBhmad-hXg-7TzCLvuoIrEGLuhs7fXT5YzQ1ikXxjYuZkw1cWh96nKnA9AJZCKV-V2otG5WWFjZo2iYK2DpALEKp9c0XZ9xEzrZAWTz-OlMEahRF5Ff4_tdF45PHT4K2iazPIVITJizt-_0zdXkBTmvYX-GDWhZRto7WDMEc-VGyd0IOV08VXumHCcAteaQME_C3K-vySlKmvbo5Yl7DKwH3k"/>
+</div>
+<p class="font-label-md text-primary">Ripples in Suspension</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Details Accordion-style -->
+<div class="border-t border-outline-variant pt-12 grid grid-cols-2 gap-12">
+<div>
+<h4 class="font-label-md text-secondary tracking-widest uppercase mb-6">Exhibition History</h4>
+<ul class="space-y-6">
+<li>
+<p class="font-label-md text-primary">2023 • KUNSTHALLE BERLIN</p>
+<p class="font-body-md text-on-surface-variant">The Future of Void (Solo Show)</p>
+</li>
+<li>
+<p class="font-label-md text-primary">2021 • VENICE BIENNALE</p>
+<p class="font-body-md text-on-surface-variant">Participating Artist (Pavilion of Discovery)</p>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-secondary tracking-widest uppercase mb-6">Curation Notes</h4>
+<div class="bg-surface-container-low p-6 rounded border border-outline-variant">
+<p class="font-body-md text-on-surface italic">
+                                    "Julian's work aligns perfectly with our 'Architectural Silence' collection for the upcoming Autumn season. His use of materials is exceptional. Recommend approval for the Elite tier."
+                                </p>
+<p class="mt-4 font-label-sm text-on-surface-variant text-right">— Sarah M., Lead Curator</p>
+</div>
+</div>
+</div>
+<div class="h-40"></div> <!-- Spacing at bottom -->
+</div>
+</section>
+</div>
+</main>
+<!-- Interactive Layer for Curator Micro-interactions -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple selection logic for applicant list
+            const applicants = document.querySelectorAll('section:first-of-type .overflow-y-auto > div');
+            applicants.forEach(app => {
+                app.addEventListener('click', () => {
+                    applicants.forEach(a => {
+                        a.classList.remove('bg-surface-container', 'border-l-4', 'border-l-secondary');
+                        a.classList.add('hover:bg-surface-container-low');
+                    });
+                    app.classList.add('bg-surface-container', 'border-l-4', 'border-l-secondary');
+                    app.classList.remove('hover:bg-surface-container-low');
+                });
+            });
+
+            // Smooth header visibility on scroll
+            const mainContent = document.querySelector('section.flex-1');
+            const glassHeader = document.querySelector('.glass-panel');
+            mainContent.addEventListener('scroll', () => {
+                if (mainContent.scrollTop > 10) {
+                    glassHeader.style.boxShadow = '0 4px 40px rgba(0,0,0,0.04)';
+                } else {
+                    glassHeader.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,65 @@
+Created At: 2026-06-01T07:11:41Z
+Completed At: 2026-06-01T07:11:41Z
+File Path: `file:///c:/Users/USER-PC/.gemini/antigravity-ide/brain/23d8fb62-1759-45bf-8c48-9578d9eeb7d3/implementation_plan.md`
+Total Lines: 80
+Total Bytes: 4995
+Showing lines 1 to 80
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: # Implementation Plan — Cart, Gallery Filters, & Navbar Consistency Fixes
+2: 
+3: This plan outlines the design and implementation details to resolve the broken filters, checkout redirection bugs, and navbar inconsistencies.
+4: 
+5: ## User Review Required
+6: 
+7: > [!IMPORTANT]
+8: > **No Automated Tests**: All automated tests are suspended. We will rely purely on manual browser verification and compiling/building via Vite.
+9: > **Direct Redirect Elimination**: Clicking "Add to Bag" on `index.html` or `browse-gallery.html` will trigger the interactive slide-out cart drawer instead of navigating to `checkout.html`.
+10: > **Interactive Gallery Filters**: We are implementing client-side filtering on `browse-gallery.html` for:
+11: > - **Category Buttons** (All Works, Sculpture, Painting, Digital Art, Photography)
+12: > - **Price Range Slider** (with real-time labels updating dynamically based on active currency)
+13: > - **Search Bar** (real-time matching by title, artist, and medium)
+14: > - **Sorting Menu** (Featured, Price: Low-to-High, Price: High-to-Low)
+15: 
+16: ---
+17: 
+18: ## Proposed Changes
+19: 
+20: ### 1. Add to Bag Redirect & Inline Click Handler Fixes
+21: 
+22: #### [MODIFY] [index.html](file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/index.html)
+23: - Add `data-artwork-id` attributes to the three "New Arrivals" cards in the HTML:
+24:   - "Violet Dunes" -> `data-artwork-id="e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d"` (Brutalist Rhythm, Photography)
+25:   - "Cyber Pulse" -> `data-artwork-id="7115b796-b396-49
+<truncated 1787 bytes>
+ currency) and applies filters.
+51:   - **Search Input**: Filters cards matching text in title/artist/medium.
+52:   - **Sort Clicks**: Reorders the DOM nodes of cards inside the grid based on price values.
+53: 
+54: ---
+55: 
+56: ### 3. Unified Navigation Tabs
+57: 
+58: #### [MODIFY] [js/follow-helper.js](file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js)
+59: - Add logic on `DOMContentLoaded` to detect and rewrite the desktop navbar links if present.
+60: - Standardize on 5 links:
+61:   - **Discover** (`browse-gallery.html`)
+62:   - **Artists** (`artists.html`)
+63:   - **Auctions** (`live-auctions.html`)
+64:   - **Commissions** (`commissions.html`)
+65:   - **Journal** (`journal.html`)
+66: - Apply appropriate active class highlights based on current location path.
+67: 
+68: ---
+69: 
+70: ## Verification Plan
+71: 
+72: ### Manual Verification
+73: 1. **Add to Bag**: Click "Add to Bag" on the home page and gallery page. Verify the cart slide-out drawer opens, item count updates, and we are NOT redirected to `checkout.html`.
+74: 2. **Category Filter**: Click Sculpture, Painting, Digital Art, Photography on `browse-gallery.html`. Verify only matching works are displayed.
+75: 3. **Price Range**: Slide the price range input. Verify the label text displays user-friendly values (e.g., "Up to ZAR 150k") and only works under that price remain visible.
+76: 4. **Search Filter**: Type "Elena" or "Marble" in the search input. Verify the grid dynamically filters the matches.
+77: 5. **Sorting Filter**: Click "Sort: Featured" and select "Price: Low to High" or "Price: High to Low". Verify the grid cards reorder correctly in real-time.
+78: 6. **Navbar Consistency**: Navigate between pages and confirm that the navbar always renders the exact same five tabs with the correct active tab highlighted.
+79: 7. **Rebuild**: Run `npm run build` to verify there are no compilation errors and the production build is fully updated.
+80: 
+The above content shows the entire, complete file contents of the requested file.

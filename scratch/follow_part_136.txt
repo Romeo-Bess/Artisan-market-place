@@ -1,0 +1,65 @@
+Created At: 2026-06-01T06:28:49Z
+Completed At: 2026-06-01T06:28:49Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js`
+Total Lines: 57
+Total Bytes: 2478
+Showing lines 1 to 57
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: document.addEventListener('DOMContentLoaded', () => {
+2:     // Locate all follow buttons
+3:     const followButtons = document.querySelectorAll('button, a');
+4:     
+5:     followButtons.forEach(btn => {
+6:         const text = btn.textContent.trim().toLowerCase();
+7:         if (text === 'follow artist' || text === 'following') {
+8:             btn.classList.add('follow-artist-btn');
+9:             
+10:             // Set initial state
+11:             btn.setAttribute('data-following', 'false');
+12:             
+13:             // Set up follow counter reference
+14:             let followersEl = null;
+15:             const labels = document.querySelectorAll('p, span, div');
+16:             for (let label of labels) {
+17:                 if (label.textContent.trim().toLowerCase() === 'followers') {
+18:                     let parent = label.parentElement;
+19:                     if (parent) {
+20:                         followersEl = parent.querySelector('.font-headline-md, p:nth-child(2), span:nth-child(2)');
+21:                     }
+22:                     break;
+23:                 }
+24:             }
+25: 
+26:             btn.addEventListener('click', (e) => {
+27:                 e.preventDefault();
+28:                 e.stopPropagation();
+29: 
+30:                 const isFollowing = btn.getAttribute('data-following') === 'true';
+31:                 
+32:                 if (isFollowing) {
+33:                     btn.setAttribute('data-following', 'false');
+34:                     btn.textContent = 'FOLLOW ARTIST';
+35:                     btn.className = btn.className.replace(/\bbg-primary\b/, '').replace(/\btext-on-primary\b/, '');
+36:                     if (!btn.className.includes('border-primary')) {
+37:                         btn.className += ' border border-primary text-primary';
+38:                     }
+39:                     if (followersEl) {
+40:                         followersEl.textContent = '12.4K';
+41:                     }
+42:                 } else {
+43:                     btn.setAttribute('data-following', 'true');
+44:                     btn.textContent = 'FOLLOWING';
+45:                     btn.className = btn.className.replace(/\bborder\s+border-primary\s+text-primary\b/, '').replace(/\bborder-primary\b/, '').replace(/\btext-primary\b/, '');
+46:                     if (!btn.className.includes('bg-primary')) {
+47:                         btn.className += ' bg-primary text-on-primary';
+48:                     }
+49:                     if (followersEl) {
+50:                         followersEl.textContent = '12.5K';
+51:                     }
+52:                 }
+53:             });
+54:         }
+55:     });
+56: });
+57: 
+The above content shows the entire, complete file contents of the requested file.

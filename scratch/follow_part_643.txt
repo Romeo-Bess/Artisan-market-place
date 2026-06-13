@@ -1,0 +1,83 @@
+Created At: 2026-06-01T07:10:55Z
+Completed At: 2026-06-01T07:10:55Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js`
+Total Lines: 411
+Total Bytes: 20793
+Showing lines 301 to 411
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+301:             if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE' || parent.tagName === 'NOSCRIPT')) {
+302:                 continue;
+303:             }
+304:             const text = node.nodeValue;
+305:             if (zarRegex.test(text)) {
+306:                 priceElements.push({
+307:                     node: node,
+308:                     originalText: text
+309:                 });
+310:             }
+311:         }
+312:     }
+313: 
+314:     function updatePrices(currency) {
+315:         priceElements.forEach(item => {
+316:             if (currency === 'EUR') {
+317:                 item.node.nodeValue = convertZARtoEUR(item.originalText);
+318:             } else {
+319:                 item.node.nodeValue = item.originalText;
+320:             }
+321:         });
+322:     }
+323: 
+324:     window.scanPrices = scanPrices;
+325:     window.updatePrices = updatePrices;
+326: 
+327:     function showCurrencyToast(msg) {
+328:         let toast = document.getElementById('currency-toast');
+329:         if (!toast) {
+330:             toast = document.createElement('div');
+331:             toast.id = 'currency-toast';
+332:             toast.className = 'fixed bottom-8 right-8 bg-primary text-on-primary border border-outline-variant px-6 py-4 rounded shadow-xl flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4 z-[999]';
+333:             document.body.appendChild(toast);
+334:         }
+335:         toast.innerHTML = `<span class="material-symbols-outlined text-[18px] text-emerald-400">check_circle</span><span class="
+<truncated 2029 bytes>
+ currencyTargets = [];
+374:         
+375:         elements.forEach(el => {
+376:             const text = el.textContent.trim().toUpperCase();
+377:             if (text === 'ZAR (R)' || text === 'EUR (€)' || text === 'ZAR' || text === 'EUR' || el.classList.contains('currency-toggle-trigger') || el.classList.contains('currency-selector')) {
+378:                 if (!currencyTargets.includes(el) && el.id !== 'header-currency-btn') {
+379:                     currencyTargets.push(el);
+380:                 }
+381:             }
+382:         });
+383: 
+384:         currencyTargets.forEach(el => {
+385:             el.classList.add('cursor-pointer');
+386:             el.addEventListener('click', (e) => {
+387:                 e.preventDefault();
+388:                 e.stopPropagation();
+389:                 
+390:                 const currentCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
+391:                 const newCurrency = currentCurrency === 'ZAR' ? 'EUR' : 'ZAR';
+392:                 localStorage.setItem('artisane_currency', newCurrency);
+393:                 
+394:                 updateCurrencyToggleDisplays(newCurrency);
+395:                 updatePrices(newCurrency);
+396:                 window.dispatchEvent(new CustomEvent('currencyChanged', { detail: { currency: newCurrency } }));
+397:                 showCurrencyToast(`Currency changed to ${newCurrency === 'ZAR' ? 'ZAR (R)' : 'EUR (€)'}`);
+398:             });
+399:         });
+400:     }
+401: 
+402:     // Run unified navbar, scan, and set active states
+403:     highlightActiveNavbar();
+404:     injectCurrencyToggle();
+405:     scanPrices();
+406:     const savedCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
+407:     updateCurrencyToggleDisplays(savedCurrency);
+408:     updatePrices(savedCurrency);
+409:     setupCurrencyToggles();
+410: });
+411: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

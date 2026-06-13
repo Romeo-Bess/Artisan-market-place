@@ -1,0 +1,27 @@
+Created At: 2026-06-13T08:12:22Z
+Completed At: 2026-06-13T08:12:23Z
+
+				The command completed successfully.
+				Output:
+				Created At: 2026-06-01T07:10:55Z
+Completed At: 2026-06-01T07:10:55Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js`
+Total Lines: 411
+Total Bytes: 20793
+Showing lines 301 to 411
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+301:             if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE' || parent.tagName === 'NOSCRIPT')) {
+302:                 continue;
+303:             }
+...
+403:     highlightActiveNavbar();
+404:     injectCurrencyToggle();
+405:     scanPrices();
+406:     const savedCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
+407:     updateCurrencyToggleDisplays(savedCurrency);
+408:     updatePrices(savedCurrency);
+409:     setupCurrencyToggles();
+410: });
+411: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+

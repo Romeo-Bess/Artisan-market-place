@@ -1,0 +1,82 @@
+Created At: 2026-06-13T08:18:08Z
+Completed At: 2026-06-13T08:18:09Z
+
+				The command completed successfully.
+				Output:
+				Number of lines in step 247 view: 91
+0 'Created At: 2026-05-31T18:42:33Z'
+1 'Completed At: 2026-05-31T18:42:33Z'
+2 'File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/login/index.html`'
+3 'Total Lines: 188'
+4 'Total Bytes: 10337'
+5 'Showing lines 1 to 188'
+6 'The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.'
+7 '1: <!DOCTYPE html>'
+8 '2: <html lang="en">'
+9 '3: <head>'
+10 '4: <meta charset="utf-8"/>'
+11 '5: <meta content="width=device-width, initial-scale=1.0" name="viewport"/>'
+12 '6: <title>Sign In | Artisane</title>'
+13 '7: <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>'
+14 '8: <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>'
+15 '9: <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>'
+16 '10: <style>'
+17 '11:     :root {'
+18 '12:         --color-background: 250 249 247;'
+19 '13:         --color-on-background: 26 28 27;'
+20 '14:         --color-primary: 18 51 88;'
+21 '15:         --color-on-primary: 255 255 255;'
+22 '16:         --color-secondary: 148 73 45;'
+23 '17:         --color-on-secondary: 255 255 255;'
+24 '18:         --color-surface: 250 249 247;'
+25 '19:         --color-on-surface: 26 28 27;'
+26 '20:         --color-surface-container: 239 238 236;'
+27 '21:         --color-surface-container-low: 244 243 241;'
+28 '22:         --color-outline: 116 119 127;'
+29 '23:         --color-outline-variant: 195 198 207;'
+30 '24:         --color-error: 186 26 26;'
+31 '25:         --
+<truncated 725 bytes>
+tline-variant/30 py-8 text-center">'
+50 '149:     <p class="font-label-sm text-label-sm text-on-surface-variant/60">� 2024 Artisane Gallery. All rights reserved.</p>'
+51 '150: </footer>'
+52 '151: '
+53 '152: <script type="module">'
+54 "153:     import { supabase } from '../js/supabase-auth.js';"
+55 '154: '
+56 "155:     const errorEl = document.getElementById('auth-error');"
+57 "156:     const form = document.getElementById('form-login');"
+58 "157:     const btn = document.getElementById('btn-login');"
+59 '158: '
+60 "159:     form.addEventListener('submit', async (e) => {"
+61 '160:         e.preventDefault();'
+62 "161:         errorEl.classList.add('hidden');"
+63 '162:         btn.disabled = true;'
+64 "163:         btn.textContent = 'Signing In...';"
+65 '164: '
+66 "165:         const email = document.getElementById('login-email').value.trim();"
+67 "166:         const password = document.getElementById('login-password').value;"
+68 '167: '
+69 '168:         const { data, error } = await supabase.auth.signInWithPassword({ email, password });'
+70 '169: '
+71 '170:         if (error) {'
+72 '171:             errorEl.textContent = error.message;'
+73 "172:             errorEl.classList.remove('hidden');"
+74 '173:             btn.disabled = false;'
+75 "174:             btn.textContent = 'Sign In';"
+76 '175:         } else {'
+77 '176:             // Link cart to authenticated user if cart exists'
+78 "177:             const cartId = localStorage.getItem('artisane_cart_id');"
+79 "178:             if (cartId && cartId !== 'undefined') {"
+80 "179:                 await supabase.from('carts').update({ user_id: data.user.id }).eq('id', cartId);"
+81 '180:             }'
+82 '181:             // Redirect to collector dashboard'
+83 "182:             window.location.href = '../collector-dashboard.html';"
+84 '183:         }'
+85 '184:     });'
+86 '185: </script>'
+87 '186: </body>'
+88 '187: </html>'
+89 '188: '
+90 'The above content shows the entire, complete file contents of the requested file.'
+

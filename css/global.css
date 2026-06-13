@@ -1,0 +1,53 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin:wght@400;500;600;700&display=swap');
+
+:root {
+    --color-primary: 124 58 237; /* #7C3AED */
+    --color-on-primary: 255 255 255; /* #FFFFFF */
+    --color-secondary: 167 139 250; /* #A78BFA */
+    --color-accent: 22 163 74; /* #16A34A */
+    --color-background: 250 245 255; /* #FAF5FF */
+    --color-foreground: 76 29 149; /* #4C1D95 */
+    --color-muted: 236 238 249; /* #ECEEF9 */
+    --color-border: 221 214 254; /* #DDD6FE */
+    --color-destructive: 220 38 38; /* #DC2626 */
+    --color-ring: 124 58 237; /* #7C3AED */
+    
+    /* Fallbacks for existing variable names to prevent breaking */
+    --color-on-background: 76 29 149;
+    --color-on-secondary: 255 255 255;
+    --color-surface: 255 255 255;
+    --color-on-surface: 76 29 149;
+    --color-surface-container: 250 245 255;
+    --color-surface-container-low: 255 255 255;
+    --color-surface-container-high: 236 238 249;
+    --color-outline-variant: 221 214 254;
+    --color-outline: 167 139 250;
+    --color-on-surface-variant: 76 29 149;
+    --color-surface-bright: 255 255 255;
+    --color-inverse-surface: 76 29 149;
+    --color-inverse-on-surface: 250 245 255;
+}
+
+html.dark {
+    /* Dark mode inverse palette */
+    --color-background: 15 23 42;
+    --color-on-background: 250 245 255;
+    --color-primary: 167 139 250;
+    --color-on-primary: 76 29 149;
+    --color-secondary: 124 58 237;
+    --color-surface: 30 41 59;
+    --color-on-surface: 250 245 255;
+    --color-surface-container: 15 23 42;
+    --color-surface-container-low: 15 23 42;
+    --color-surface-container-high: 51 65 85;
+    --color-outline-variant: 71 85 105;
+    --color-outline: 148 163 184;
+    --color-on-surface-variant: 250 245 255;
+    --color-surface-bright: 30 41 59;
+    --color-inverse-surface: 250 245 255;
+    --color-inverse-on-surface: 15 23 42;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}

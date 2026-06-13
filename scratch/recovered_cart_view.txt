@@ -1,0 +1,95 @@
+Created At: 2026-06-01T06:28:32Z
+Completed At: 2026-06-01T06:28:32Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/cart-helper.js`
+Total Lines: 461
+Total Bytes: 18837
+Showing lines 1 to 461
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import { supabase } from './supabase-auth.js';
+2: 
+3: // Setup cart session ID
+4: async function getOrCreateCartId() {
+5:     let cartId = localStorage.getItem('artisane_cart_id');
+6:     if (!cartId || cartId === 'undefined') {
+7:         const { data, error } = await supabase
+8:             .from('carts')
+9:             .insert([{}])
+10:             .select('id')
+11:             .single();
+12:         if (error) {
+13:             console.error('Error creating cart session:', error);
+14:             cartId = crypto.randomUUID();
+15:             localStorage.setItem('artisane_cart_id', cartId);
+16:         } else {
+17:             cartId = data.id;
+18:             localStorage.setItem('artisane_cart_id', cartId);
+19:         }
+20:     }
+21:     return cartId;
+22: }
+23: 
+24: // Function to update cart badge from database
+25: async function syncCartBadge() {
+26:     const cartId = await getOrCreateCartId();
+27:     const { error, count } = await supabase
+28:         .from('cart_items')
+29:         .select('id', { count: 'exact', head: true })
+30:         .eq('cart_id', cartId);
+31: 
+32:     if (error) {
+33:         console.error('Error fetching cart items count:', error);
+34:         return;
+35:     }
+36: 
+37:     const cartIcons = document.querySelectorAll('.material-symbols-outlined');
+38:     let cartLink = null;
+39:     for (let icon of cartIcons) {
+40:         const text = icon.textContent.trim();
+41:         if (text === 'shopping_cart' || text === 'shopping_bag') {
+42:             if (icon.tagName === 'A') {
+43:                 cartLink = icon;
+44:
+<truncated 17487 bytes>
+     let cartLink = null;
+421:             if (icon.tagName === 'A') {
+422:                 cartLink = icon;
+423:             } else if (icon.parentElement && icon.parentElement.tagName === 'A') {
+424:                 cartLink = icon.parentElement;
+425:             } else {
+426:                 cartLink = icon;
+427:             }
+428:             if (cartLink) {
+429:                 cartLink.addEventListener('click', (e) => {
+430:                     e.preventDefault();
+431:                     e.stopPropagation();
+432:                     openCartDrawer();
+433:                 });
+434:             }
+435:         }
+436:     });
+437: 
+438:     // 3. Wire add to bag buttons
+439:     const addButtons = document.querySelectorAll('button, a');
+440:     addButtons.forEach(btn => {
+441:         const innerText = btn.textContent.trim();
+442:         const hasCartIcon = btn.innerHTML.includes('add_shopping_cart') || btn.innerHTML.includes('add_shopping_bag') || btn.innerHTML.includes('shopping_cart');
+443:         const isCartBtn = innerText.toLowerCase().includes('add to bag') || innerText.toLowerCase().includes('add to cart') || (hasCartIcon && (btn.tagName === 'BUTTON' || btn.classList.contains('material-symbols-outlined')));
+444:         
+445:         if (isCartBtn) {
+446:             const artworkId = btn.getAttribute('data-artwork-id') || btn.closest('[data-artwork-id]')?.getAttribute('data-artwork-id');
+447:             if (artworkId) {
+448:                 if (btn.hasAttribute('onclick') && btn.getAttribute('onclick').includes('checkout.html')) {
+449:                     btn.removeAttribute('onclick');
+450:                 }
+451:                 
+452:                 btn.addEventListener('click', (e) => {
+453:                     e.preventDefault();
+454:                     e.stopPropagation();
+455:                     addArtworkToCart(artworkId);
+456:                 });
+457:             }
+458:         }
+459:     });
+460: });
+461: 
+The above content shows the entire, complete file contents of the requested file.

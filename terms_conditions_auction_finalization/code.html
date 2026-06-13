@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terms &amp; Conditions - Auction Protocol | Artisane</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "on-primary-fixed": "#001c39",
+                    "surface-container-high": "#e9e8e6",
+                    "on-surface-variant": "#43474e",
+                    "tertiary-container": "#5f4407",
+                    "primary-container": "#2c4a70",
+                    "background": "#faf9f7",
+                    "surface-container": "#efeeec",
+                    "on-primary-container": "#9cbae6",
+                    "primary": "#123358",
+                    "inverse-surface": "#2f3130",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c3c6cf",
+                    "on-surface-variant": "#43474e",
+                    "tertiary": "#442e00",
+                    "surface-bright": "#faf9f7",
+                    "surface-container-highest": "#e3e2e0",
+                    "on-secondary-fixed": "#380d00",
+                    "tertiary-fixed": "#ffdea7",
+                    "on-surface": "#1a1c1b",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#abc8f5",
+                    "on-background": "#1a1c1b",
+                    "surface-tint": "#436087",
+                    "surface-container-low": "#f4f3f1",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#fd9e7b",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#abc8f5",
+                    "surface": "#faf9f7",
+                    "secondary": "#94492d",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "surface-dim": "#dadad8",
+                    "outline": "#74777f",
+                    "surface-variant": "#e3e2e0",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ffdbcf",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f1f1ef",
+                    "on-tertiary-fixed": "#271900",
+                    "on-secondary-container": "#773319",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "primary-fixed": "#d4e3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "display-lg": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "headline-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-md": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #123358;
+        }
+        /* Underline effect for Artisane inputs */
+        .art-checkbox {
+            @apply appearance-none w-5 h-5 border border-outline bg-surface checked:bg-primary checked:border-primary transition-all cursor-pointer relative rounded-none;
+        }
+        .art-checkbox:checked::after {
+            content: 'check';
+            font-family: 'Material Symbols Outlined';
+            @apply absolute inset-0 text-white text-sm flex items-center justify-center;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight cursor-pointer">Artisane</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Browse</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Artists</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Collections</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Exhibitions</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-all">shopping_cart</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-all">person</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Progress Indicator -->
+<div class="flex justify-center mb-16">
+<div class="flex items-center w-full max-w-3xl">
+<!-- Step 1: Complete -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-label-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md mt-2 text-primary">Identity</span>
+</div>
+<div class="h-[1px] flex-1 bg-primary mb-6"></div>
+<!-- Step 2: Complete -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-label-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-md text-label-md mt-2 text-primary">Payment</span>
+</div>
+<div class="h-[1px] flex-1 bg-primary mb-6"></div>
+<!-- Step 3: Current -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center font-label-md">3</div>
+<span class="font-label-md text-label-md mt-2 text-primary">Terms</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Terms Content -->
+<div class="lg:col-span-8">
+<h1 class="font-display-lg text-display-lg text-primary mb-8">Terms &amp; Conditions - Auction Protocol</h1>
+<div class="bg-surface-container-lowest border border-outline-variant p-8 mb-8">
+<div class="h-[500px] overflow-y-auto pr-6 custom-scrollbar">
+<div class="space-y-8">
+<section>
+<h3 class="font-headline-md text-headline-md mb-4">1. Auction Terms of Service</h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    By participating in an Artisane Gallery auction, you acknowledge that you are entering into a legally binding contract. All bids are final and cannot be retracted. The Artisane platform serves as a curated facilitator for fine art transactions between international collectors and artists.
+                                </p>
+</section>
+<section>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-3">Bidding Increments</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    Bidding follows a standardized progression. Increments are determined by the current high bid: $0 - $1,000 ($50), $1,000 - $5,000 ($250), $5,000+ ($500). Artisane reserves the right to adjust increments during live sessions to maintain momentum.
+                                </p>
+</section>
+<section>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-3">Buyer's Premium</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    A buyer's premium of 15% will be added to the hammer price of each lot and is payable by the purchaser as part of the total purchase price. This premium supports our curation, authenticity verification, and global white-glove logistics.
+                                </p>
+</section>
+<section>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-3">Payment &amp; Automated Settlements</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    Winning bidders are required to complete payment within 48 hours of the auction close. By registering, you authorize Artisane to automatically charge your pre-authorized payment method for the total amount (Hammer Price + Premium + Shipping) immediately upon the conclusion of the auction if other payment is not received.
+                                </p>
+</section>
+<section>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-3">Authenticity Guarantees</h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                                    Artisane guarantees the authenticity of all works for a period of 5 years from the date of sale. Every piece is accompanied by a blockchain-backed Certificate of Authenticity (CoA) registered to the new owner's profile.
+                                </p>
+</section>
+</div>
+</div>
+</div>
+<!-- Checkboxes -->
+<div class="space-y-6">
+<label class="flex items-start gap-4 group cursor-pointer">
+<input class="art-checkbox mt-1" type="checkbox"/>
+<span class="font-body-md text-on-surface group-hover:text-primary transition-colors">I have read and agree to the Auction Terms of Service and Bidder Agreement.</span>
+</label>
+<label class="flex items-start gap-4 group cursor-pointer">
+<input class="art-checkbox mt-1" type="checkbox"/>
+<span class="font-body-md text-on-surface group-hover:text-primary transition-colors">I understand the 15% buyer's premium will be applied to the final hammer price.</span>
+</label>
+<label class="flex items-start gap-4 group cursor-pointer">
+<input class="art-checkbox mt-1" type="checkbox"/>
+<span class="font-body-md text-on-surface group-hover:text-primary transition-colors">I agree to the automated payment settlement for any winning bids placed during this session.</span>
+</label>
+</div>
+</div>
+<!-- Right Column: Sidebar Summary -->
+<div class="lg:col-span-4">
+<div class="sticky top-32 space-y-gutter">
+<!-- Profile Summary Card -->
+<div class="bg-surface-container-low border border-outline-variant p-8">
+<h3 class="font-headline-md text-headline-md mb-6">Bidder Profile</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container/20 flex items-center justify-center rounded-none text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Identity</p>
+<p class="font-body-md font-medium">Verified Identity</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container/20 flex items-center justify-center rounded-none text-primary">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Payment Method</p>
+<p class="font-body-md font-medium">Visa •••• 4242</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant">
+<a class="inline-flex items-center gap-2 text-primary font-label-md hover:underline decoration-primary/30 underline-offset-4" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                                Review Previous Steps
+                            </a>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="bg-primary p-8 text-on-primary">
+<h4 class="font-headline-md text-headline-md mb-2">Registration Finalization</h4>
+<p class="font-body-md opacity-80 mb-8">Confirming your agreement will grant immediate access to the Artisane Live Auction Floor.</p>
+<button class="w-full bg-on-primary text-primary py-4 font-label-md text-label-md uppercase tracking-[0.2em] hover:bg-primary-fixed-dim transition-all active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-on-primary focus:ring-offset-2 focus:ring-offset-primary">
+                            Complete Registration
+                        </button>
+<p class="text-center mt-6 text-[11px] font-label-md opacity-60 uppercase tracking-widest">Secure Bank-Level Encrypted Protocol</p>
+</div>
+<!-- Atmospheric Detail -->
+<div class="p-6 border border-outline-variant bg-white">
+<img alt="A detailed view of a high-end art gallery exhibition featuring white minimalist walls and atmospheric lighting. Large scale abstract oil paintings in deep blue and gold tones hang spaced perfectly apart. The scene is quiet, professional, and evokes a sense of exclusivity and curation." class="w-full h-48 object-cover grayscale opacity-80 mb-4" data-alt="A striking minimalist view of an upscale gallery showroom. The space is flooded with soft ambient light, highlighting the texture of a singular large-scale abstract masterpiece on the far wall. The floor is polished concrete, reflecting the subtle warm and cool tones of the artwork. The overall mood is sophisticated, serene, and deeply intentional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGEHVNkgRQV_iGeotdb-lWRVeevVcTf3wVleEO9e4IcLXFEWOFBtrBEnMS6_FmUe3JIwCq6bj3H7IAKnW8-fAx9RaBMTyAeg4d-EgyluVVLPLY9k_l-6BukZbkhFwA0bzV5VTf4oLQ54k4oSLFRGU9Xjj2bVRFQFlDY8ry6OU3AtB4V8O1loplzIJpVuBIrwTVzVoJkFo_wwh_2PNRUhv2D_hjWfV2FcMCbxJwfyEdhC5som5RFNcvQ4ujXF8x7W3ARitU_EW89Ibz"/>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic">Registration grants access to the Private Spring Collection starting March 15th.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest mt-20">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Artisane</div>
+<p class="font-body-md text-on-surface-variant">The global destination for refined collectors and contemporary masters.</p>
+<p class="font-label-md text-on-surface-variant/80">© 2024 Artisane Gallery. All rights reserved.</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:col-span-2">
+<div class="space-y-4">
+<p class="font-label-md text-primary uppercase tracking-widest">Resources</p>
+<nav class="flex flex-col gap-3">
+<a class="font-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Artist Resources</a>
+<a class="font-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Community Guidelines</a>
+<a class="font-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Secure Payments</a>
+</nav>
+</div>
+<div class="space-y-4">
+<p class="font-label-md text-primary uppercase tracking-widest">Legal</p>
+<nav class="flex flex-col gap-3">
+<a class="font-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Contact Support</a>
+</nav>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the Complete Registration button
+        document.querySelector('button')?.addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.art-checkbox');
+            const allChecked = Array.from(checkboxes).every(c => c.checked);
+            
+            if(!allChecked) {
+                alert("Please acknowledge all terms to proceed with registration.");
+                checkboxes.forEach(c => {
+                    if(!c.checked) {
+                        c.parentElement.classList.add('text-error');
+                        setTimeout(() => c.parentElement.classList.remove('text-error'), 1000);
+                    }
+                });
+                return;
+            }
+
+            this.innerHTML = `<span class="flex items-center justify-center gap-2">
+                <svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Finalizing...
+            </span>`;
+            
+            setTimeout(() => {
+                this.innerHTML = "Registration Complete";
+                this.classList.replace('bg-on-primary', 'bg-secondary');
+                this.classList.replace('text-primary', 'text-on-primary');
+            }, 1500);
+        });
+    </script>
+</body></html>

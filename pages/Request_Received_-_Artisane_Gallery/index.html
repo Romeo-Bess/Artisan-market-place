@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Request Received | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#94492d",
+                        "on-secondary-fixed-variant": "#763218",
+                        "on-secondary-container": "#773319",
+                        "tertiary-fixed": "#ffdea7",
+                        "outline-variant": "#c3c6cf",
+                        "on-tertiary-container": "#d9b26d",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "inverse-on-surface": "#f1f1ef",
+                        "inverse-surface": "#2f3130",
+                        "surface-variant": "#e3e2e0",
+                        "inverse-primary": "#abc8f5",
+                        "on-surface-variant": "#43474e",
+                        "secondary-container": "#fd9e7b",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "on-error": "#ffffff",
+                        "surface": "#faf9f7",
+                        "primary-fixed-dim": "#abc8f5",
+                        "primary-container": "#2c4a70",
+                        "primary": "#123358",
+                        "outline": "#74777f",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f4f3f1",
+                        "on-primary-container": "#9cbae6",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-bright": "#faf9f7",
+                        "on-background": "#1a1c1b",
+                        "background": "#faf9f7",
+                        "tertiary-container": "#5f4407",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-primary-fixed": "#001c39",
+                        "surface-tint": "#436087",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-surface": "#1a1c1b",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container-high": "#e9e8e6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#efeeec",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#442e00",
+                        "surface-dim": "#dadad8",
+                        "surface-container-highest": "#e3e2e0",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "section-gap": "120px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .reveal-up {
+            animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top Navigation (Reduced Focus for Confirmation Screen) -->
+<header class="w-full sticky top-0 z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-display-lg text-display-lg text-primary tracking-tight">Artisane</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">shopping_bag</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">account_circle</button>
+</div>
+</div>
+</header>
+<main class="min-h-[819px] flex flex-col items-center pt-16 md:pt-24 px-margin-mobile">
+<!-- Confirmation Hero -->
+<div class="max-w-3xl w-full text-center mb-16 reveal-up">
+<div class="mb-8 inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-container bg-opacity-10 text-primary">
+<span class="material-symbols-outlined !text-4xl" style="font-variation-settings: 'wght' 200;">check_circle</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-[64px] mb-6 text-primary">Inquiry Received</h1>
+<p class="font-headline-md text-headline-md text-on-surface-variant max-w-xl mx-auto italic">
+                Your vision is now in the hands of our curators. We are reviewing your commission details with the utmost care.
+            </p>
+</div>
+<!-- Summary & Timeline Asymmetric Layout -->
+<div class="max-w-container-max w-full grid grid-cols-1 md:grid-cols-12 gap-gutter mb-section-gap">
+<!-- Visual Anchor -->
+<div class="md:col-span-5 reveal-up stagger-1">
+<div class="aspect-[4/5] bg-surface-container overflow-hidden relative group">
+<img class="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700" data-alt="A serene, high-end contemporary art gallery space with vast white walls and soft natural light. A single minimalist canvas with textured blue and gold strokes hangs prominently. The atmosphere is quiet, sophisticated, and editorial, reflecting a curated professional environment for art commissions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2c3iKbQnwp0gb4tqWUSqX2DYJVPfFE6tPsoDzG9cTchM7Mw93902Rx-GbIzxq3g6JynXi46AAD3fhZS0o39oL4h-f12_EmcsGGoDDabGSDAAQwwJipYjpW2w_ecAEBbCNkSzHzgAiEDOkXZ99R-QI4yiUXOfeg3EYvLJQPh29NPtNZzG5grYxdKUWHBntzgqGbY9BUudhyAHEgoGwjRAvNC5WgiS95mvefVP_6Rv5HIkavAfhgGQ-COvXz4EfWBEfkIbymWptzEAN"/>
+<div class="absolute bottom-6 left-6 text-white z-10">
+<p class="font-label-md text-label-md uppercase tracking-widest opacity-80">Reference ID</p>
+<p class="font-headline-md text-headline-md">#ART-29402-C</p>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+</div>
+<!-- Content Details -->
+<div class="md:col-span-6 md:col-start-7 flex flex-col justify-center reveal-up stagger-2">
+<div class="space-y-12">
+<!-- Timeline Block -->
+<section>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-secondary mb-4">Next Steps</h3>
+<div class="border-l border-primary pl-8 py-2">
+<p class="font-headline-lg text-headline-lg mb-2">First Consultation</p>
+<p class="text-on-surface-variant mb-4">A dedicated curation specialist will reach out to discuss your requirements, medium preferences, and spatial dimensions.</p>
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">schedule</span>
+<span class="font-label-md text-label-md">2-3 BUSINESS DAYS</span>
+</div>
+</div>
+</section>
+<!-- Summary Block -->
+<section class="bg-surface-container-low p-8 border border-outline-variant">
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-6">Request Summary</h3>
+<dl class="grid grid-cols-2 gap-y-6 gap-x-4">
+<div>
+<dt class="font-label-sm text-label-sm text-outline uppercase">Artist Category</dt>
+<dd class="font-body-md text-body-md text-on-surface">Abstract Contemporary</dd>
+</div>
+<div>
+<dt class="font-label-sm text-label-sm text-outline uppercase">Medium</dt>
+<dd class="font-body-md text-body-md text-on-surface">Oil on Linen</dd>
+</div>
+<div>
+<dt class="font-label-sm text-label-sm text-outline uppercase">Dimensions</dt>
+<dd class="font-body-md text-body-md text-on-surface">120cm x 150cm</dd>
+</div>
+<div>
+<dt class="font-label-sm text-label-sm text-outline uppercase">Budget Tier</dt>
+<dd class="font-body-md text-body-md text-on-surface">Investment (High)</dd>
+</div>
+</dl>
+</section>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<a class="bg-primary text-on-primary px-10 py-4 font-label-md text-label-md tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all text-center" href="#">
+                            RETURN TO DASHBOARD
+                        </a>
+<a class="border border-primary text-primary px-10 py-4 font-label-md text-label-md tracking-widest hover:bg-primary hover:text-on-primary transition-all text-center" href="#">
+                            EXPLORE MORE ARTISTS
+                        </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Artist Teaser (The "Air" section) -->
+<div class="w-full max-w-container-max py-section-gap border-t border-outline-variant reveal-up stagger-3">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="max-w-xl">
+<h2 class="font-display-lg text-display-lg mb-4 text-primary">While You Wait</h2>
+<p class="text-on-surface-variant">Discover our latest editorial journal featuring interviews with the collective's master sculptors and digital pioneers.</p>
+</div>
+<a class="font-label-md text-label-md text-secondary border-b border-secondary pb-1 hover:opacity-70 transition-opacity" href="#">VIEW THE JOURNAL</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Bento Journal 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-square mb-6 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An artistic close-up of a sculptor's hands working with raw clay. The lighting is dramatic and moody, with dust motes dancing in shafts of sunlight. The aesthetic is tactile, raw, and highly artistic, maintaining the gallery-like atmosphere of the Artisane brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0gyJvJpAji10Idb4n3sPpFN6H3t93NQ023CvDyvxzkf4Up-wjaucne1of0qeGpRYjoDrAFHt_Ds5XNimmlL0ZJqQdHHNi2gGNGFm-_r6p0RZaPL3Wl3k-djV5r3AfAFumUoO3KdItFGrWGhi73_Ch_Ux3oRk7wOdhnVoHDKuKV7_qeweq7vc7IHn9d-DfX1JS7zcLJlKYHGKvHV6uhIxmWuhugg4CbnRTBdZV44nEiIczdv9nemFAPO6txQYkYEbmx1Q5asVBvkEl"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed px-2 py-1 mb-3 inline-block">PROCESS</span>
+<h4 class="font-headline-md text-headline-md text-primary">The Tactile Silence of Clay</h4>
+</div>
+<!-- Bento Journal 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-square mb-6 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A minimalist living room with high ceilings and architectural features. On the main wall, a large-scale abstract painting with neutral tones and deep blue accents serves as the centerpiece. The room is styled with editorial elegance, emphasizing vast whitespace and curated luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwd27vQSKJYdJ-1z3qZ_uPVsq-7iJS0563s5gouwLYiCYMLgRYYdaqjYBqh3JV9av5b8g-2nt_1uAp_ftbpfJPSFlyZLwLplLyn-R26je9YobPJN93sW01HZ3CsWxN9MAoXiFkHYBi4pOqGk4Ph88w3puKEBqgSL7-RoW5mZEw9vKB7ZA6bXhoZOjEGPRtzmz-cvS-gs9IQTubaoRQfoN0gILIn9BPR-KYGIRT_tp9UFCBZuoLoYLJ7Cwc68z-PicTORlJK1e9mdmU"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed px-2 py-1 mb-3 inline-block">CURATION</span>
+<h4 class="font-headline-md text-headline-md text-primary">Living with Scale</h4>
+</div>
+<!-- Bento Journal 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-square mb-6 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A collection of vibrant artist brushes and paint tubes arranged on a pristine white marble surface. The colors are rich and saturated, focused on deep blues and earth tones. The shot is overhead, clean, and modern, echoing the quiet curator visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdX5fBvnsmQVZRo333-Vdn5AyfneeHQSqhdFwNoygWKv-5PoUEhSpHiBzHNcG9IuSwN-_31KJAkITwI1SOWijTBo0k3deTYDDwcgl81908luQ1zNWH_kYR3S54FI6Mst5YIV_GQZrdXkTRfdWg01H4MrXRGIL1ail0zAkQgvvsCt9po-j1Ynfp_RCcDikdFCPha5LB5Ts_vyqy_cV4WeB0XxtYNt27TaiGA5m-QhM-QJMyTYd1EKHADbzbI1OvlW-S4bfmG3YhuF1"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed px-2 py-1 mb-3 inline-block">ARTIST SPOTLIGHT</span>
+<h4 class="font-headline-md text-headline-md text-primary">The Alchemy of Pigment</h4>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container w-full mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-md text-headline-md text-primary mb-6">Artisane</div>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80">Curating silence and intention through the world's most evocative contemporary artists.</p>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-6 tracking-widest uppercase">Platform</h5>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Artist Resources</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Gallery Locations</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Commission Flow</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-6 tracking-widest uppercase">Legal</h5>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-6 tracking-widest uppercase">Connect</h5>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Instagram</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Journal</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-outline-variant px-margin-mobile md:px-margin-desktop py-8 max-w-container-max mx-auto text-center md:text-left">
+<p class="font-body-md text-body-md text-on-surface-variant text-sm opacity-60">
+                © 2024 Artisane. All rights reserved. Curating silence and intention.
+            </p>
+</div>
+</footer>
+<script>
+        // Atmospheric interaction: Smooth scroll and gentle reveal triggers
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal-up');
+            
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            reveals.forEach(el => observer.observe(el));
+        });
+    </script>
+</body></html>

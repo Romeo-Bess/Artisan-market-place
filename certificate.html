@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Certificate of Authenticity | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1a1c1b",
+                    "surface-bright": "#faf9f7",
+                    "tertiary-container": "#5f4407",
+                    "background": "#faf9f7",
+                    "surface-container-low": "#f4f3f1",
+                    "on-tertiary-fixed": "#271900",
+                    "on-primary-container": "#9cbae6",
+                    "on-surface": "#1a1c1b",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "on-primary-fixed": "#001c39",
+                    "secondary-fixed": "#ffdbcf",
+                    "surface-tint": "#436087",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "on-secondary-fixed": "#380d00",
+                    "surface-container-high": "#e9e8e6",
+                    "primary-fixed": "#d4e3ff",
+                    "tertiary": "#442e00",
+                    "surface-dim": "#dadad8",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#763218",
+                    "on-secondary-container": "#773319",
+                    "secondary": "#94492d",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "inverse-on-surface": "#f1f1ef",
+                    "inverse-surface": "#2f3130",
+                    "tertiary-fixed": "#ffdea7",
+                    "outline-variant": "#c3c6cf",
+                    "on-tertiary-container": "#d9b26d",
+                    "secondary-container": "#fd9e7b",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "on-surface-variant": "#43474e",
+                    "surface-variant": "#e3e2e0",
+                    "inverse-primary": "#abc8f5",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "primary-container": "#2c4a70",
+                    "primary": "#123358",
+                    "outline": "#74777f",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#faf9f7",
+                    "primary-fixed-dim": "#abc8f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "section-gap": "120px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["EB Garamond"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-md": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .serif-font { font-family: 'EB Garamond', serif; }
+        .certificate-paper {
+            background-color: #fdfdfb;
+            background-image: radial-gradient(#e5e5e5 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.04);
+        }
+        .fine-border {
+            border: 1px solid #e5e5e5;
+            padding: 2px;
+            outline: 1px solid #e5e5e5;
+            outline-offset: 8px;
+        }
+        .signature {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+        }
+        @media print {
+            .no-print { display: none; }
+            body { background: white; padding: 0; margin: 0; }
+            .certificate-paper { box-shadow: none; border: 1px solid #000; outline: none; }
+        }
+    </style>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-background flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 no-print">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors group" onclick="history.back()">
+<span class="material-symbols-outlined text-[20px] transition-transform group-active:scale-90">arrow_back</span>
+<span class="font-label-md text-label-md">Back to History</span>
+</button>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Artisane</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all scale-100 active:scale-95" onclick="window.print()">
+<span class="material-symbols-outlined text-[18px]">print</span>
+                Download PDF
+            </button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</header>
+<main class="min-h-screen pt-[120px] pb-section-gap px-margin-mobile flex justify-center items-start">
+<!-- The Certificate Document -->
+<article class="certificate-paper w-full max-w-[840px] p-12 md:p-20 relative border border-outline-variant fine-border animate-in fade-in slide-in-from-bottom-4 duration-1000">
+<!-- Header Section -->
+<div class="text-center mb-16">
+<p class="font-headline-md text-headline-md text-primary tracking-[0.2em] mb-4">ARTISANE</p>
+<div class="h-px w-24 bg-outline mx-auto mb-8"></div>
+<h2 class="font-display-lg text-display-lg uppercase tracking-widest text-on-surface">Certificate of Authenticity</h2>
+</div>
+<!-- Content Grid -->
+<div class="grid md:grid-cols-12 gap-12">
+<!-- Image Side -->
+<div class="md:col-span-5 flex flex-col gap-6">
+<div class="aspect-square bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="Visions of the Inland Sea by Elena Kostrova" class="w-full h-full object-cover" data-alt="A profound contemporary oil painting titled Visions of the Inland Sea, featuring abstract deep blue and teal waves merging with atmospheric golden horizons. The brushwork is expressive and layered, suggesting deep coastal waters under a hazy, ethereal light. The overall mood is contemplative and serene, captured in a high-end art gallery photography style with a crisp white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB20sup-lp3ZuGQujPkL7_8ygHSxOwct3vlDoyh-dg5MIic1c6lXQ1caMRapnAFFpTrQWS_8OnqZfrSTYYyKaEosNk8zxom0XWGKcrN2blfXJdsm4sBQMju9AvmZxTbvRfIYoySn0slBATTofwc7UJiiDOC4_V0iT12h32_LdoxgiyrJxmUTPevpTZF6JtCyI59V5yYiIupUpIz_do-sHOGVE5YwRM_QOXSEvin6OcTA6rMJdd-EdFEsYmarh8BcDuxrEKpV_BATZ8_"/>
+</div>
+<div class="space-y-4">
+<h3 class="font-label-md text-label-md text-primary uppercase border-b border-outline-variant pb-2">Provenance</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed italic">
+                            Originally conceived and executed in Elena Kostrova's private studio in Moscow. First introduced to the public and subsequently acquired through the Artisane Autumn Auction, October 2023.
+                        </p>
+</div>
+</div>
+<!-- Specifications Side -->
+<div class="md:col-span-7 flex flex-col justify-between">
+<div class="space-y-8">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Title</span>
+<h4 class="font-headline-md text-headline-md text-on-surface">Visions of the Inland Sea</h4>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Artist</span>
+<h4 class="font-headline-md text-headline-md text-on-surface">Elena Kostrova</h4>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Medium</span>
+<p class="font-body-md text-body-md text-on-surface">Oil on Canvas</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Year</span>
+<p class="font-body-md text-body-md text-on-surface">2023</p>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Dimensions</span>
+<p class="font-body-md text-body-md text-on-surface">120 x 120 cm</p>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                This document certifies that the artwork described above is a unique, original work created by the artist. All rights to the image remain with the artist.
+                            </p>
+</div>
+</div>
+<!-- Verification & Signature -->
+<div class="mt-12 flex items-end justify-between border-t border-outline-variant pt-8">
+<div class="space-y-4">
+<div class="bg-white p-2 border border-outline-variant w-24 h-24">
+<div class="w-full h-full bg-on-background opacity-10 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-on-surface text-[40px]">qr_code_2</span>
+<!-- Aesthetic QR Placeholder -->
+<div class="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-1 p-1">
+<div class="bg-black col-span-1 row-span-1"></div>
+<div class="bg-black col-start-4 row-start-1"></div>
+<div class="bg-black col-start-1 row-start-4"></div>
+<div class="bg-black col-start-2 row-start-2"></div>
+<div class="bg-black col-start-3 row-start-3"></div>
+</div>
+</div>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block">Certificate ID</span>
+<code class="font-label-md text-label-md text-primary">ART-COA-2023-VOS-001</code>
+</div>
+</div>
+<div class="text-right">
+<div class="signature font-display-lg text-headline-lg text-primary mb-1">Elena Kostrova</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase border-t border-outline-variant pt-1">Artist Signature</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Watermark decorative elements -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-5 pointer-events-none no-print">
+<span class="font-headline-lg text-[120px] uppercase tracking-[0.5em] text-outline">AUTHENTIC</span>
+</div>
+</article>
+</main>
+<!-- Footer -->
+<footer class="w-full py-unit-section-gap px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center bg-surface-container-lowest border-t border-outline-variant no-print">
+<div class="mb-8 md:mb-0">
+<span class="font-headline-md text-headline-md text-primary">Artisane</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<nav class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Authentication Verification</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</nav>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Artisane Art Marketplace. All Rights Reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the print button effect
+        const printBtn = document.querySelector('button[onclick="window.print()"]');
+        if(printBtn) {
+            printBtn.addEventListener('mouseenter', () => {
+                printBtn.style.transform = 'translateY(-2px)';
+            });
+            printBtn.addEventListener('mouseleave', () => {
+                printBtn.style.transform = 'translateY(0)';
+            });
+        }
+
+        // Atmosphere effect: subtle parallax on the certificate
+        document.addEventListener('mousemove', (e) => {
+            const cert = document.querySelector('.certificate-paper');
+            if (window.innerWidth > 1024) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 100;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 100;
+                cert.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            }
+        });
+    </script>
+</body></html>

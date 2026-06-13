@@ -1,0 +1,58 @@
+﻿version: "2"
+type: frontend
+tech_stack:
+  - language: HTML5
+  - language: JavaScript (ES Modules)
+  - framework: Vite 5
+  - ui_library: TailwindCSS (CDN, v3)
+  - ui_library: Google Material Symbols (icon font)
+  - other: EB Garamond + Hanken Grotesk (Google Fonts)
+  - other: Supabase (auth)
+
+routes:
+  - path: /index.html
+    file: index.html
+    auth_required: false
+    description: Main homepage (dark theme) with hero, featured artworks, and newsletter
+  - path: /home-light.html
+    file: home-light.html
+    auth_required: false
+    description: Homepage variant with light gallery theme
+  - path: /home-mobile.html
+    file: home-mobile.html
+    auth_required: false
+    description: Mobile-optimised homepage
+  - path: /browse-gallery.html
+    file: browse-gallery.html
+    auth_required: false
+    description: Browse and filter artworks gallery (dark theme)
+  - path: /browse-gallery-light.html
+    file: browse-gallery-light.html
+    auth_required: false
+    description: Browse and filter artworks gallery (light theme)
+  - path: /artists.html
+    file: artists.html
+    auth_required: false
+    description: Artists directory with follow/unfollow toggles
+  - path: /artist-profile.html
+    file: artist-profile.html
+    auth_required: false
+    description: Individual artist profile with portfolio grid and Commission CTA
+  - path: /artist-profile-auctions.html
+    file: artist-profile-auctions.html
+    auth_required: false
+    description: Artist profile extended with live auction listings
+  - path: /artist-profile-mobile.html
+    file: artist-profile-mobile.html
+    auth_required: false
+    description: Mobile artist profile layout
+  - path: /artist-portfolio-updated.html
+    file: artist-portfolio-updated.html
+    auth_required: false
+    description: Updated artist portfolio page
+  - path: /live-auctions.html
+    file: live-auctions.html
+    auth_required: false
+    description: Live auction listings with countdown timers and category sidebar
+  - path: /live
+<truncated 12299 bytes>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .zoom-lens {
+            cursor: zoom-in;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .zoom-lens:hover {
+            transform: scale(1.02);
+        }
+        .room-overlay {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .hidden-room {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fd9e7b",
+                        "primary-fixed": "#d4e3ff",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "tertiary-fixed": "#ffdea7",
+                        "on-secondary-container": "#773319",
+                        "surface-container": "#efeeec",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf9f7",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#faf9f7",
+                        "primary": "#123358",
+                        "on-surface-variant": "#43474e",
+                        "surface-dim": "#dadad8",
+                        "inverse-primary": "#abc8f5",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#74777f",
+                        "on-background": "#1a1c1b",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c3c6cf",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-tint": "#436087",
+                        "on-tertiary-container": "#d9b26d",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "surface-container-low": "#f4f3f1",
+                        "surface": "#faf9f7",
+                        "inverse-on-surface": "#f1f1ef",
+                        "tertiary": "#442e00",
+                        "primary-container": "#2c4a70",
+                        "tertiary-container": "#5f4407",
+                        "surface-container-highest": "#e3e2e0",
+                        "surface-variant": "#e3e2e0",
+                        "surface-container-high": "#e9e8e6",
+                        "secondary-fixed": "#ffdbcf",
+                        "primary-fixed-dim": "#abc8f5",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary-fixed-variant": "#763218",
+                        "secondary": "#94492d",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "on-surface": "#1a1c1b",
+                        "inverse-surface": "#2f3130",
+                        "on-primary-fixed": "#001c39",
+                        "on-primary-container": "#9cbae6",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "section-gap": "120px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["EB Garamond"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed font-body-md text-body-md">
+<!-- Top Navigation -->
+<nav class="bg-surface w-full top-0 sticky border-b border-outline-variant z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="font-display-lg text-display-lg text-primary tracking-tight">Artisane</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="browse-gallery.html">Gallery</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="artists.html">Artists</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="live-auctions.html">Auctions</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="collector-dashboard.html">Dashboard</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="payments">payments</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="dark_mode">dark_mode</span>
+<button class="bg-primary text-on-primary px-6 py-2 rounded font-label-md text-label-md hover:opacity-90 transition-opacity">Commission</button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section: Artwork Primary View -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-12 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Image Side -->
+<div class="lg:col-span-7 space-y-gutter">
+<div class="relative group aspect-[4/5] bg-surface-container-low overflow-hidden cursor-crosshair">
+<img class="w-full h-full object-cover zoom-lens" data-alt="A high-resolution detail of an abstract oil painting titled Ethereal Tides. The composition features fluid, sweeping brushstrokes in shades of deep ocean blue, seafoam green, and soft ivory. The texture of the canvas and the impasto technique are visible, highlighting the physical depth of the paint. The lighting is soft and directional, typical of a high-end art gallery, emphasizing the rich pigments and professional minimalist aesthetic." id="main-artwork" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCldbZr7Ew0eC5cF135NkA_6mo3_cIQTroQrSJbB7xyMBiFj33OC0v2IH4C75YYfgCzih-lIbNlMut20_cxulmTrda4N6AyVIyue4brV5N4x7iw1BIzkoosoHFtTK_rWGlGkeU3-2kIUyF8SVNFbcdhQKZMloj3znbvlcyeB3cbqXq0QoFPbiKp56TUwpZEjZyJpW2o23Ae88wz8WkRgrckEk84sBJgE62Q-pyCSzHeZhax_IEBaWXalpwi7Ca4T80MqceGKVTUd9FE"/>
+<div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="zoom_in">zoom_in</span>
+<span class="font-label-sm text-label-sm">Hover to inspect detail</span>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<button class="aspect-square bg-surface-container border border-primary overflow-hidden">
+<img class="w-full h-full object-cover opacity-100" data-alt="A thumbnail view of a large abstract canvas painting in a minimalist gallery setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAqXGLURuch9E7s9RKVhs3XzcAVv6-Mm9-znLywX5wkWUpX7vavMvnvC29ip_7y7vH5GAbe6ZT24S7v1wGdHQFM8PlkF_qIfl8yg5HkbgFp6Der6c92u1fshGG3V3gu9cDGzjeoV8GR8jR7QHCzzSZb309vloKfn-dnn8B9v4zzUeeOelmCfT6bKIbSnQMwrMMQrWpf3_pChmowSDOGiQLLBOJYxPDj7yYHeV-N4plD02KrXJmgPkqwTjquecI0oOxgu26NUaMPOVe"/>
+</button>
+<button class="aspect-square bg-surface-container-low border border-outline-variant overflow-hidden hover:border-primary transition-colors">
+<img class="w-full h-full object-cover" data-alt="Close up texture shot of an oil painting with heavy brushstrokes and blue pigments." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIZ-0w3lPS3T9yZQIVi_phl-MM4BR9nlP_g00jo-pj68ofKxCRjwlApR6k8781z4aJcQgpJPUnjAxMmKLgKts6v4rYEzXLfOLepGkNuAqpfbU9UKuAmCMoiay3lA4iT2RsHKES4W8HUV2TxaUqAnZt-qd_oFDGyOVOuboy6cVYggM71Z6v30aEJThtjZQXDJmb1QS0VQFpvsaZGQz0Hyd3U9VO4F01ifou_G6-2-GU4B0IykHXFF-veLiIUzbo5gFYsr0mncd6h9sM"/>
+</button>
+<button class="aspect-square bg-surface-container-low border border-outline-variant overflow-hidden hover:border-primary transition-colors">
+<img class="w-full h-full object-cover" data-alt="A modernist interior room featuring the artwork hanging on a clean white wall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPoWrdSsGNAL91-gGe-gL1ttlyjmbIMvfuL70K8dK2VFrB2UV1D1Ar7GN8VLjLnK6aIM7Ua9fNyZRaeu2CCUU_y_1OmKiGliNms_uWmN_wKryTJBDuMmKyAH9sr6HxcFTdHf6NnYDuxCrjdfPnP53aVw6t1qbNkqluDDIxt7ugZXrHqMj7hUOAEDxXSyXB_AOtGRrGFFWSEaMojVUPTnWb0XZty1LQv0nSXIH7sSvbGvg31CE3ZOz_ZOZKYRVZqExU4H88e2hPS6o7"/>
+</button>
+<button class="aspect-square bg-surface-container-low border border-outline-variant overflow-hidden hover:border-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-outline" data-icon="3d_rotation">3d_rotation</span>
+</button>
+</div>
+</div>
+<!-- Details Side -->
+<div class="lg:col-span-5 sticky top-28">
+<div class="border-b border-outline-variant pb-8 mb-8">
+<h1 class="font-display-lg text-display-lg text-primary mb-2">Ethereal Tides</h1>
+<div class="flex items-center gap-2 text-on-surface-variant mb-6">
+<span class="font-body-md text-body-md">by</span>
+<a class="font-label-md text-label-md text-primary underline underline-offset-4 decoration-outline-variant hover:decoration-primary" href="#">Elena Voce</a>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        A profound exploration of fluid dynamics and emotional resonance. Voce utilizes a rare mineral-based pigment to achieve a depth of blue that shifts under different lighting conditions.
+                    </p>
+</div>
+<div class="space-y-6 mb-10">
+<div class="flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">CURRENT VALUATION</span>
+<span class="font-headline-lg text-headline-lg text-primary">R 18,400.00</span>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center text-success text-green-600 gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                                +12.4% Annual Growth
+                            </span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary py-4 px-8 rounded font-label-md text-label-md hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                            Secure Purchase
+                        </button>
+<button class="flex-1 border border-outline text-primary py-4 px-8 rounded font-label-md text-label-md hover:bg-surface-container-low transition-all">
+                            Request Private Viewing
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-6 border-t border-outline-variant pt-8">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">MEDIUM</span>
+<span class="font-body-md text-body-md">Oil &amp; Mineral Pigment on Canvas</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">DIMENSIONS</span>
+<span class="font-body-md text-body-md">120 x 150 cm (47 x 59 in)</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">PROVENANCE</span>
+<span class="font-body-md text-body-md">Artist's Studio, Milan</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">CERTIFICATION</span>
+<span class="font-body-md text-body-md">Hand-signed CoA Included</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Room View Interaction -->
+<section class="bg-surface-container-low py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-6">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">The Room View</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Visualize 'Ethereal Tides' in your own space. Toggle between curated architectural settings to see how the light and scale interact with various interiors.</p>
+</div>
+<div class="flex bg-surface p-1 rounded border border-outline-variant">
+<button class="room-btn active px-6 py-2 font-label-md text-label-md rounded bg-primary text-on-primary transition-all" onclick="switchRoom('modernist')">Modernist Living</button>
+<button class="room-btn px-6 py-2 font-label-md text-label-md rounded text-on-surface-variant hover:text-primary transition-all" onclick="switchRoom('minimalist')">Minimalist Office</button>
+</div>
+</div>
+<div class="relative aspect-video bg-white overflow-hidden rounded-lg shadow-soft group">
+<!-- Modernist Living Room -->
+<div class="room-overlay absolute inset-0 w-full h-full" id="room-modernist">
+<img class="w-full h-full object-cover" data-alt="A luxury modernist living room with floor-to-ceiling windows, white leather furniture, and polished concrete floors. The artwork Ethereal Tides is mounted centrally on the primary wall. The room is flooded with natural daylight, casting soft shadows. The aesthetic is extremely clean, high-end, and gallery-like." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9U54Cm1rnYRzV7ynzKu-uBydI29RXXHLT7RKnyZS37AYyrRD09Rs2u160_5IbOWA7Yk830hekjX90FgcMbCgWvbfOlbRM42fFMB_Z8eXOPA6jOB4pwEkfALPPBz4k7fuuxVEcCs8lXsCbrGY5YEWl2gRkpD0YeWHC23s_Gk9-_ywGdrvOhrC-SJM38PqltciBwdJbbLNSbhXc89PDLCPOW8hc6pIrfrKOsTomquDgKXoS5BAEIDNEN7DmXXNpvD86PdbMjCSRElKi"/>
+<div class="absolute top-[25%] left-[38%] w-[22%] h-[28%] bg-white shadow-xl overflow-hidden border-[4px] border-white">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDgk2WYbMDcM3D2AFVbHqk4plLtegt0bll8ewYQaZyIIG2uBQ2z35PA-nThWSKfG26tmXrrSEkTG9w4qFh98gieu1XO2n0pQ5xxoFrbvgV8LvAZ8ozrOUdL-tUbZ1MGXhVOEtvdhMyqMLo4_ZxZ_hT99W1cD-bGCV3ldvDg_7TxNYR0sFma2JneqSOLSvjAHPx3HEKYNJnbdDQG0DM2PfOv3XeqylKvpZNaK3USSkXBPdZxaSgw3PRQJBlHx65IiVymEVYKcSr0T7p"/>
+</div>
+</div>
+<!-- Minimalist Office -->
+<div class="room-overlay absolute inset-0 w-full h-full hidden-room" id="room-minimalist">
+<img class="w-full h-full object-cover" data-alt="A sleek minimalist office space with a dark oak desk, a designer ergonomic chair, and a slate gray feature wall. The artwork Ethereal Tides hangs on the gray wall, providing a vibrant contrast of blue and ivory. The lighting is warm and artificial, coming from recessed ceiling spots, creating a moody and professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQqCNoW977QhFIlcUzV-iy1mWEQ1mdoRyRlAKukFKKFiw94htKhuQd0EhECsoMoR1Xak0Px1r_3k08OXKFOv6rJAHsf0CObryYf-dbePasERDFRSpLT_nAGQl3Wa2Vff7AvkNko5NpmazUco6P6pLCJR7pzphJN5VpZjYRlCV2Wb-l3QkmhOIfF1TBXjpR6bCQApIGEQK9s1-wAw8m7MHIqpCXAi4RFOdb3TaKQnIlcWiUMQeh44TCkFq-V1YoC145UHxbZx19EEfz"/>
+<div class="absolute top-[20%] left-[60%] w-[18%] h-[24%] bg-white shadow-xl overflow-hidden border-[3px] border-white">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7AU6cm2ME7GDcSVwC6MOjYeTJlx5bpAvS5bM3zntWRQvpPNNcPzXSpP79N8RPCbAajpzHIZ_vNC2vthRgTlm4Capl9HGcTrU_F8NlGEvACeT9dyVZOOpDUZMbY8_imLVLNkFBn6dACwimoWrjq44rQGbVNnj2-lxQ1UO4Tlj2C16vZ9yTh-LbL6hdfbYf1kEWqDIJSnAVbXPhGkcmysQOJqoc4nKRPIZBzn1d-qsXA8_5q0gQ1H7-aqwJdgPaEUhWjhWHb4tKGZVN"/>
+</div>
+</div>
+<div class="absolute bottom-8 right-8 flex gap-4">
+<div class="bg-white/90 backdrop-blur px-4 py-2 rounded shadow-sm border border-outline-variant">
+<span class="font-label-sm text-label-sm text-primary">SCALED TO REAL-LIFE DIMENSIONS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specification Bento -->
+<section class="py-section-gap max-w-container-max mx-auto px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-12 text-center">Technical Specifications</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Col 1 -->
+<div class="space-y-gutter">
+<div class="bg-surface border border-outline-variant p-8 h-fit">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="palette">palette</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Pigment Profile</h3>
+<p class="text-on-surface-variant font-body-md">Hand-ground Lapis Lazuli and synthetic ultramarine suspended in archival cold-pressed linseed oil. Features a semi-matte varnish finish.</p>
+</div>
+<div class="bg-surface border border-outline-variant p-8 h-fit">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="inventory_2">inventory_2</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Packaging</h3>
+<p class="text-on-surface-variant font-body-md">Crated in custom climate-controlled timber casing. Includes museum-grade hanging hardware and mounting template.</p>
+</div>
+</div>
+<!-- Col 2 (Large Center) -->
+<div class="md:row-span-1 bg-surface-container border border-outline-variant p-8 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="history_edu">history_edu</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">The Provenance</h3>
+<p class="text-on-surface-variant font-body-md mb-6">Completed over 14 months in Elena Voce's Milan studio. This piece was the centerpiece of the 'Silent Tide' exhibition at the 2023 Venice Biennale Fringe. It has never been held by a private collector, moving directly from the artist's personal archive to Artisane.</p>
+</div>
+<div class="pt-6 border-t border-outline-variant mt-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of Elena Voce, a professional contemporary artist with a serene expression, in her sunlit art studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe6ws5J2O-25-ra8LnvkApI7BT2hr0EKs8_EWCKox7jN0gQPkQzczyc5NHi6cTSDeIa1bzEabU0aiORB2zNKZKJornsythyhDg4Vf82PLHfjIPSUsGNF-yStrlyfgSJylMpRcaRSF60rpzvluVmaELPYJBgu3Y3fcf-wuIxhRbManCMGa_qt0mRF6ZuD08VXWwC6D-JiCguhrgzops92OQGoOl0LU6q8Xz5v2ZHsXjkIcaIF68QX92rakGn_Xw5_04my5GVwTILFFI"/>
+</div>
+<div>
+<span class="font-label-md text-label-md text-primary block">Elena Voce</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Artist, Milan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Col 3 -->
+<div class="space-y-gutter">
+<div class="bg-surface border border-outline-variant p-8 h-fit">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="analytics">analytics</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Market Analysis</h3>
+<p class="text-on-surface-variant font-body-md">Current secondary market demand for Voce’s large-scale abstracts is at an all-time high, with a 94% sell-through rate at auction.</p>
+</div>
+<div class="bg-surface-container-highest p-8 h-fit">
+<h3 class="font-label-md text-label-md text-primary mb-4">INVESTMENT SCORE</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">A+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Exceptional Stability</span>
+</div>
+<div class="w-full bg-outline-variant h-1 mt-4">
+<div class="bg-primary h-full w-[92%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Guarantee Section -->
+<section class="bg-primary text-on-primary py-16">
+<div class="max-w-container-max mx-auto px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-12">
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[64px]" data-icon="verified_user">verified_user</span>
+<div>
+<h3 class="font-headline-md text-headline-md mb-1">Artisane Assurance</h3>
+<p class="font-body-md text-primary-fixed opacity-90">Every acquisition is backed by a lifetime authenticity guarantee and secure escrow protection.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="bg-white text-primary px-8 py-4 rounded font-label-md text-label-md hover:bg-primary-fixed transition-colors">Learn about Shipping</button>
+<button class="border border-primary-fixed text-on-primary px-8 py-4 rounded font-label-md text-label-md hover:bg-white/10 transition-colors">Our Authentication</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low w-full mt-section-gap border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md text-primary mb-6">Artisane</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Bridging the gap between exceptional artists and the world's most discerning collectors.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Artisane. The Quiet Curator.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-6">COLLECTION</h4>
+<nav class="flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="browse-gallery.html">Gallery</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="artists.html">Artists</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="live-auctions.html">Auctions</a>
+</nav>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-6">RESOURCES</h4>
+<nav class="flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Support</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Community</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Artist FAQ</a>
+</nav>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-6">LEGAL</h4>
+<nav class="flex flex-col gap-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Shipping &amp; Returns</a>
+</nav>
+</div>
+</div>
+</footer>
+<script>
+        function switchRoom(room) {
+            // Update buttons
+            const buttons = document.querySelectorAll('.room-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-on-primary');
+                btn.classList.add('text-on-surface-variant');
+            });
+            event.target.classList.add('bg-primary', 'text-on-primary');
+            event.target.classList.remove('text-on-surface-variant');
+
+            // Update room overlays
+            const overlays = document.querySelectorAll('.room-overlay');
+            overlays.forEach(overlay => {
+                overlay.classList.add('hidden-room');
+            });
+            document.getElementById('room-' + room).classList.remove('hidden-room');
+        }
+
+        // Micro-interaction for Detail Zoom Simulation
+        const mainArt = document.getElementById('main-artwork');
+        mainArt.addEventListener('mousemove', (e) => {
+            const { left, top, width, height } = mainArt.getBoundingClientRect();
+            const x = ((e.clientX - left) / width) * 100;
+            const y = ((e.clientY - top) / height) * 100;
+            mainArt.style.transformOrigin = `${x}% ${y}%`;
+            mainArt.style.transform = 'scale(2)';
+        });
+
+        mainArt.addEventListener('mouseleave', () => {
+            mainArt.style.transform = 'scale(1)';
+        });
+    </script>
+</body></html>

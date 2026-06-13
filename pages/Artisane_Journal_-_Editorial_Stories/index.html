@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Journal | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&amp;family=Hanken+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-underline-offset {
+            text-underline-offset: 8px;
+        }
+        .white-cube-shadow {
+            box-shadow: 0 40px 40px -20px rgba(18, 51, 88, 0.04);
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#fd9e7b",
+                    "primary-fixed": "#d4e3ff",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "tertiary-fixed": "#ffdea7",
+                    "on-secondary-container": "#773319",
+                    "surface-container": "#efeeec",
+                    "on-secondary": "#ffffff",
+                    "background": "#faf9f7",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#faf9f7",
+                    "primary": "#123358",
+                    "on-surface-variant": "#43474e",
+                    "surface-dim": "#dadad8",
+                    "inverse-primary": "#abc8f5",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#74777f",
+                    "on-background": "#1a1c1b",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#c3c6cf",
+                    "on-secondary-fixed": "#380d00",
+                    "surface-tint": "#436087",
+                    "on-tertiary-container": "#d9b26d",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "surface-container-low": "#f4f3f1",
+                    "surface": "#faf9f7",
+                    "inverse-on-surface": "#f1f1ef",
+                    "tertiary": "#442e00",
+                    "primary-container": "#2c4a70",
+                    "tertiary-container": "#5f4407",
+                    "surface-container-highest": "#e3e2e0",
+                    "surface-variant": "#e3e2e0",
+                    "surface-container-high": "#e9e8e6",
+                    "secondary-fixed": "#ffdbcf",
+                    "primary-fixed-dim": "#abc8f5",
+                    "on-tertiary-fixed": "#271900",
+                    "on-secondary-fixed-variant": "#763218",
+                    "secondary": "#94492d",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "on-surface": "#1a1c1b",
+                    "inverse-surface": "#2f3130",
+                    "on-primary-fixed": "#001c39",
+                    "on-primary-container": "#9cbae6",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "section-gap": "120px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-md": ["EB Garamond"],
+                    "headline-lg-mobile": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md smooth-scroll">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-surface z-50 border-b border-outline-variant">
+<nav class="flex justify-between items-center w-full px-6 md:px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-10">
+<a class="font-display-lg text-display-lg text-primary tracking-tight" href="#">Artisane</a>
+<div class="hidden md:flex gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Gallery</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Artists</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Auctions</a>
+<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="#">Dashboard</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-outline mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md placeholder-outline-variant w-48" placeholder="Search the archive..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary transition-colors">payments</span>
+<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary transition-colors">dark_mode</span>
+<button class="hidden md:block font-label-md text-label-md bg-primary text-on-primary px-6 py-2.5 rounded hover:opacity-90 transition-opacity">Commission</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Collector Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgjfp7y_oyavZOySsfDfVCrVS0le8uhRBSN2sqJRJ3yRBwnH7T6HhRNIUbdJLj076VUjwo41yQGwh8e0Mm5lcCV-tg3kvcAwq6V7cXXah4348uAJj139-nxWjzAT5baI2ZCyld71hRuY4JJoX4vWRriiwVBdIcPR_zBvMemanFtSZdfkiq8c3qPEOPLWVASznXS7rFgS09xNYeBeOCpRIZUe8nJTBhfnd53YqNMvVrUgoQCp29coMtonilEq6z0p4UEw32D-RWdKWc"/>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<!-- Featured Story Hero -->
+<section class="relative w-full h-[870px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale brightness-90" data-alt="A serene wide-angle photograph of a modern minimalist architectural space with concrete walls and high ceilings. A large monochromatic canvas hangs solo on a central wall, illuminated by a single shaft of natural morning light. The overall mood is quiet, contemplative, and sophisticated, reflecting a high-end gallery aesthetic with soft shadows and vast whitespace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNVSKQe0wqBw6UKzggsIwI_2FXTRy3xw7V7k352N6vs2E3_Q_42bsF6wA4SbjZXkzjB0OjaCDNdjwgAjvFeQNGTXJgaXXPFgewyw5MIUCwaMubZuTAj8dUJlMijFL7M4w9oNW7tR8X5uCKx8GTpWCT5jUeq5kOrTkqoaTxp2aF4nhqnTKayELmcFfz_-dzDgr5grTw0zeeXHEPnGjPY_aHZbgYi2oa3PUwq48zFJtQODZO5SKokzQdMWX2Zz8af_FKvjhyR1D5jmLf"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+<div class="relative z-10 w-full px-6 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="max-w-2xl">
+<span class="font-label-md text-label-md text-primary uppercase tracking-[0.2em] mb-6 block">Volume IV: Intentional Spaces</span>
+<h1 class="font-display-lg text-display-lg md:text-[64px] text-primary mb-8 leading-tight">The Intersection of Bone and Canvas</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                        An exploration of how brutalist architecture serves as the ultimate silent partner for contemporary minimalist art. Discover the home of curator Elena Rossi.
+                    </p>
+<a class="inline-flex items-center gap-3 font-label-md text-label-md text-primary group border-b border-primary pb-2" href="#">
+                        READ THE STORY
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- The Philosophy Section (Whitespace heavy) -->
+<section class="py-section-gap px-6 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-start-4 md:col-span-6 text-center">
+<h2 class="font-headline-lg text-headline-lg mb-10 text-primary">The Quiet Curator's Manifesto</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8">
+                        In an era of digital saturation, 'Intentional Collecting' is an act of rebellion. It is the slow, deliberate process of choosing pieces that don't just fill a wall, but engage in a dialogue with the space they inhabit. 
+                    </p>
+<div class="w-12 h-[1px] bg-outline-variant mx-auto mb-8"></div>
+<p class="font-body-md text-body-md italic text-outline">
+                        "Art is not an object, it is a relationship." — Julian Thorne
+                    </p>
+</div>
+</div>
+</section>
+<!-- Artist Spotlights (Asymmetric Grid) -->
+<section class="py-section-gap bg-surface-container-low/30">
+<div class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary">Artist Spotlights</h2>
+<p class="text-on-surface-variant mt-2">In conversation with the creators of today.</p>
+</div>
+<div class="hidden md:block">
+<button class="p-3 border border-outline-variant rounded-full hover:bg-surface transition-colors mr-2">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-3 border border-outline-variant rounded-full hover:bg-surface transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Article 1 -->
+<article class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A portrait of a male artist in his sun-drenched studio. He is surrounded by large canvas frames leaning against whitewashed brick walls. The lighting is soft and directional, highlighting the texture of paint on his hands. The atmosphere is quiet, focused, and professional, echoing the sophisticated minimalism of the Artisane brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvxYar0n6G38C5kZDUTNNaQKZ3ryX8W4QhymOLjeE97ngl7HffAPtcmqW7q6QfiBS6V4pvWrxOguTgWy-rba0NQaS7kffO7-_CQ0NvG72pmMv7y0B_sTZLGJKLFUPDJhZ2x4dz0K7QlcfbLqkivB_l7AgNE9vO5BbDFStlyCvfDZG9kakqP9tl3gKJGeZBGFMSYtoZnOKCBFObOLTR14NH-vKr5Wh8zsHwKhZyz-mfjtfqlacJMpEUMK4V7152f2FYPDAVyjSdCNS0"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">Photography</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4 group-hover:text-secondary transition-colors">Marcello Vance: Capturing the Void</h3>
+<p class="text-on-surface-variant line-clamp-3 mb-6">How a three-year residency in the Atacama desert transformed Vance's approach to negative space and structural light.</p>
+<span class="font-label-md text-label-md border-b border-outline-variant pb-1 group-hover:border-primary transition-colors">5 min read</span>
+</article>
+<!-- Article 2 (Higher offset for asymmetry) -->
+<article class="group cursor-pointer md:mt-20">
+<div class="aspect-[4/5] overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A close-up of an abstract painting featuring heavy impasto textures in shades of gallery blue, charcoal, and cream. The lighting is cinematic, showing the depth of the oil paint layers. The style is contemporary and expensive, set against a clean, light-mode background to maintain brand consistency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGTr4nhh4t-0dtmRCetZxqME5CqzTOuxU6uGhijRosXbQ6hxg_Hcnfx-qxy6ZpsR0x6UuhsWsrVdUGOUokJMV856fkX_I-s2TOJUiGvrod0hbHC9Oaxay_Kot2FO9lbWR514Jvp--S09aP7sH8bBLHcg6IDm7Xd68Srba922T7DIwdt6wf62p-ZdKkDHpO5KRycsLIn5AkDoGOXTorFY6xz--rgyrknsFNbVsvjyw6-MQjl0sRdr2hcdxHTW0G2S3dIjSVNLjHR_fq"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">Process</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4 group-hover:text-secondary transition-colors">The Weight of Pigment</h3>
+<p class="text-on-surface-variant line-clamp-3 mb-6">Sarah Chen discusses the physical toll and meditative rewards of working with raw minerals and ancient binders.</p>
+<span class="font-label-md text-label-md border-b border-outline-variant pb-1 group-hover:border-primary transition-colors">8 min read</span>
+</article>
+<!-- Article 3 -->
+<article class="group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An wide interior shot of a brutalist concrete home featuring large glass windows looking out onto a misty forest. A sleek black sculpture stands on a pedestal in the center of the room. The image represents the intersection of art and architecture with a cold yet serene aesthetic, high-key lighting, and elegant composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADdoyNijSJVvYsczj8ZuNtetq2ej9rDA-CLkT6kcgi4XjFNbOeS40ud8eJdDjClUURFFGB_WDmBVprRx23fTalTmpQWwH3BVAMXb-JoZdCh67dG77xKlutvGamLqC-vBuWgCSlAvFngqtQ43VlJgzxlYS70O9gXPkVJZ5ihk4mkOh_tEGf7HY2DQNNVFKvDmzqj5pJ88cTlIlQvHFt_l6Xux1pSsgScpR7gIwCfd1Mst0QOlKvGo3vRO9vcZwrIJiThvcBZ40dsCNA"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3 block">Architecture</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4 group-hover:text-secondary transition-colors">Structures of Solitude</h3>
+<p class="text-on-surface-variant line-clamp-3 mb-6">A tour through the studio of architect Tadao Ando and how his use of concrete influences modern textile artists.</p>
+<span class="font-label-md text-label-md border-b border-outline-variant pb-1 group-hover:border-primary transition-colors">12 min read</span>
+</article>
+</div>
+</div>
+</section>
+<!-- Newsletter / The Archive Entrance -->
+<section class="py-section-gap px-6 md:px-margin-desktop max-w-container-max mx-auto border-t border-outline-variant">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-6">The Weekly Dispatch</h2>
+<p class="text-body-lg text-on-surface-variant mb-10 max-w-md">Curated essays, artist interviews, and exclusive early access to new collections delivered every Sunday.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg">
+<input class="flex-grow bg-transparent border-0 border-b border-outline focus:border-primary focus:ring-0 px-0 py-3 text-body-md" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary px-10 py-3 font-label-md text-label-md hover:opacity-90 transition-opacity">SUBSCRIBE</button>
+</form>
+</div>
+<div class="hidden lg:block relative">
+<div class="aspect-video bg-surface-container-high rounded-sm flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover opacity-80" data-alt="A desk arrangement showing a minimalist open journal, a fine-point pen, and a ceramic cup of black coffee on a textured stone surface. The lighting is soft side-light from a window. The aesthetic is clean, intellectual, and high-end, fitting the Artisane 'Quiet Curator' brand with muted tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHJr2PRW-4FqzNFU7Sd13BurKKcBDoHThaR47vSk4Z0GmaQO3S7spe8f_EDBAfGyHfun_5WwtIZQwN-GYtBG6CRnlsZ9tuoIBVyAygrykzwMYwtBhYTACZ4rwcg5lmjlzml5xgQNRqFPAkghlMdR4_DE9yojvWPDZy52cvZIBsZBmNv7yolaJJVaP9cTd6R-OjcQlMEoI3QQ1I67Ca1CZKrx-4D_Eg2rhRzMKJBme_8jUD_ppEwiYOLkPUMTIREjE0_4sDqTUEiNz4"/>
+</div>
+</div>
+</div>
+</section>
+<!-- The Archive (List View) -->
+<section class="py-section-gap bg-white">
+<div class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="font-headline-lg text-headline-lg text-primary">The Archive</h2>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+<span class="font-label-md text-label-md text-outline">Since 2021</span>
+</div>
+<div class="space-y-0">
+<!-- Row 1 -->
+<div class="group py-8 border-b border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:bg-surface transition-colors px-4 -mx-4 cursor-pointer">
+<div class="flex items-center gap-10">
+<span class="font-label-sm text-label-sm text-outline w-12">03.24</span>
+<div class="max-w-md">
+<h4 class="font-headline-md text-headline-md text-primary mb-1 group-hover:text-secondary transition-colors">The Alchemy of Clay</h4>
+<p class="text-on-surface-variant text-sm">Ceramics in the High-Modernist Interior</p>
+</div>
+</div>
+<div class="flex items-center gap-12">
+<span class="hidden md:block font-label-sm text-label-sm text-outline uppercase tracking-widest">Mediums</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">north_east</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="group py-8 border-b border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:bg-surface transition-colors px-4 -mx-4 cursor-pointer">
+<div class="flex items-center gap-10">
+<span class="font-label-sm text-label-sm text-outline w-12">02.24</span>
+<div class="max-w-md">
+<h4 class="font-headline-md text-headline-md text-primary mb-1 group-hover:text-secondary transition-colors">Living with Light</h4>
+<p class="text-on-surface-variant text-sm">A Profile on Lighting Designer Ingo Maurer</p>
+</div>
+</div>
+<div class="flex items-center gap-12">
+<span class="hidden md:block font-label-sm text-label-sm text-outline uppercase tracking-widest">Profiles</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">north_east</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="group py-8 border-b border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:bg-surface transition-colors px-4 -mx-4 cursor-pointer">
+<div class="flex items-center gap-10">
+<span class="font-label-sm text-label-sm text-outline w-12">01.24</span>
+<div class="max-w-md">
+<h4 class="font-headline-md text-headline-md text-primary mb-1 group-hover:text-secondary transition-colors">Minimalism as Therapy</h4>
+<p class="text-on-surface-variant text-sm">Visual rest in a chaotic world</p>
+</div>
+</div>
+<div class="flex items-center gap-12">
+<span class="hidden md:block font-label-sm text-label-sm text-outline uppercase tracking-widest">Philosophy</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">north_east</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="group py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:bg-surface transition-colors px-4 -mx-4 cursor-pointer">
+<div class="flex items-center gap-10">
+<span class="font-label-sm text-label-sm text-outline w-12">12.23</span>
+<div class="max-w-md">
+<h4 class="font-headline-md text-headline-md text-primary mb-1 group-hover:text-secondary transition-colors">The Digital Original</h4>
+<p class="text-on-surface-variant text-sm">Can screen-based art ever feel archival?</p>
+</div>
+</div>
+<div class="flex items-center gap-12">
+<span class="hidden md:block font-label-sm text-label-sm text-outline uppercase tracking-widest">Digital</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">north_east</span>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<button class="font-label-md text-label-md text-primary border border-primary px-12 py-4 hover:bg-primary hover:text-on-primary transition-all duration-300">VIEW ALL STORIES</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container-low border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-6 md:px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Artisane</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-8">
+                    © 2024 Artisane. The Quiet Curator. Elevating the relationship between creator and collector.
+                </p>
+<div class="flex gap-4">
+<a class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">camera</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-6 uppercase tracking-widest">Platform</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Gallery</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Artists</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Auctions</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Artist FAQ</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-6 uppercase tracking-widest">Community</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Journal</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Community</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-6 uppercase tracking-widest">Legal</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Shipping &amp; Returns</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md underline" href="#">Legal</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<!-- Micro-interaction script -->
+<script>
+        // Simple parallax effect on hero
+        window.addEventListener('scroll', function() {
+            const scrollPos = window.pageYOffset;
+            const heroImage = document.querySelector('img[data-alt*="monochromatic canvas"]');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrollPos * 0.3}px)`;
+            }
+        });
+
+        // Hover animation for list items
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(8px)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

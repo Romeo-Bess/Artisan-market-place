@@ -1,0 +1,51 @@
+Created At: 2026-06-13T08:13:58Z
+Completed At: 2026-06-13T08:13:59Z
+
+				The command completed successfully.
+				Output:
+				1: # Implementation Plan � Cart, Gallery Filters, & Navbar Consistency Fixes
+2: 
+3: This plan outlines the design and implementation details to resolve the broken filters, checkout redirection bugs, and navbar inconsistencies.
+4: 
+5: ## User Review Required
+6: 
+7: > [!IMPORTANT]
+8: > **No Automated Tests**: All automated tests are suspended. We will rely purely on manual browser verification and compiling/building via Vite.
+9: > **Direct Redirect Elimination**: Clicking "Add to Bag" on `index.html` or `browse-gallery.html` will trigger the interactive slide-out cart drawer instead of navigating to `checkout.html`.
+10: > **Interactive Gallery Filters**: We are implementing client-side filtering on `browse-gallery.html` for:
+11: > - **Category Buttons** (All Works, Sculpture, Painting, Digital Art, Photography)
+12: > - **Price Range Slider** (with real-time labels updating dynamically based on active currency)
+13: > - **Search Bar** (real-time matching by title, artist, and medium)
+14: > - **Sorting Menu** (Featured, Price: Low-to-High, Price: High-to-Low)
+15: 
+16: ---
+17: 
+18: ## Proposed Changes
+19: 
+20: ### 1. Add to Bag Redirect & Inline Click Handler Fixes
+21: 
+22: #### [MODIFY] [index.html](file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/index.html)
+23: - Add `data-artwork-id` attributes to the three "New Arrivals" cards in the HTML:
+24:   - "Violet Dunes" -> `data-artwork-id="e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d"` (Brutalist Rhythm, Photography)
+25:   - "Cyber Pulse" -> `data-artwork-id="7115b796-b396-49
+26:             btn.addEventListener('click', (e) => {
+27:                 e.preventDefault();
+28:                 e.stopPropagation();
+29: 
+30:                 const isFollowing = btn.getAttribute('data-following') === 'true';
+31:                 
+32:                 if (isFollowing) {
+33:                     btn.setAttribute('data-following', 'false');
+34:                     btn.textContent = 'FOLLOW ARTIST';
+35:                     btn.clas
+36:                     if (!btn.className.includes('border-primary')) {
+37:                         btn.className += ' border border-primary text-primary';
+38:                     }
+39:                     if (followersEl) {
+40:                         followersEl.textContent = '12.4K';
+41:                     }
+42:                 } else {
+43:                     btn.setAttribute('data-following', 'true');
+44:                     btn.textContent = 'FOLLOWING';
+45:                     btn.className = btn.className.replace(/\bborder\s+border-primary\s+text-primary\b/, '').replace(/\bborder-primary\b/, '').replace(/\btext-primary\b/, '');
+

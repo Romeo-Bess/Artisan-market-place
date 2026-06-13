@@ -1,0 +1,99 @@
+Created At: 2026-06-01T07:10:48Z
+Completed At: 2026-06-01T07:10:48Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/cart-helper.js`
+Total Lines: 461
+Total Bytes: 18837
+Showing lines 301 to 461
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+301:                 await updateItemQuantity(itemId, currentQty - 1);
+302:             }
+303:         });
+304:     });
+305: 
+306:     container.querySelectorAll('.delete-item-btn').forEach(btn => {
+307:         btn.addEventListener('click', async (e) => {
+308:             const itemId = btn.getAttribute('data-item-id');
+309:             await deleteCartItem(itemId);
+310:         });
+311:     });
+312: }
+313: 
+314: // Database helper functions
+315: async function updateItemQuantity(itemId, quantity) {
+316:     const { error } = await supabase
+317:         .from('cart_items')
+318:         .update({ quantity: quantity })
+319:         .eq('id', itemId);
+320: 
+321:     if (error) {
+322:         console.error('Error updating quantity:', error);
+323:     } else {
+324:         await syncCartBadge();
+325:         await loadCartDrawerItems();
+326:     }
+327: }
+328: 
+329: async function deleteCartItem(itemId) {
+330:     const { error } = await supabase
+331:         .from('cart_items')
+332:         .delete()
+333:         .eq('id', itemId);
+334: 
+335:     if (error) {
+336:         console.error('Error deleting cart item:', error);
+337:     } else {
+338:         await syncCartBadge();
+339:         await loadCartDrawerItems();
+340:     }
+341: }
+342: 
+343: // Function to add item to database cart
+344: export async function addArtworkToCart(artworkId) {
+345:     const cartId = await getOrCreateCartId();
+346:     
+347:     // Check if item already exists in cart, if so increment quantity
+348:     const { data: existing } = await supabase
+349:         .from('cart_items')
+3
+<truncated 2911 bytes>
+con;
+423:             } else if (icon.parentElement && icon.parentElement.tagName === 'A') {
+424:                 cartLink = icon.parentElement;
+425:             } else {
+426:                 cartLink = icon;
+427:             }
+428:             if (cartLink) {
+429:                 cartLink.addEventListener('click', (e) => {
+430:                     e.preventDefault();
+431:                     e.stopPropagation();
+432:                     openCartDrawer();
+433:                 });
+434:             }
+435:         }
+436:     });
+437: 
+438:     // 3. Wire add to bag buttons
+439:     const addButtons = document.querySelectorAll('button, a');
+440:     addButtons.forEach(btn => {
+441:         const innerText = btn.textContent.trim();
+442:         const hasCartIcon = btn.innerHTML.includes('add_shopping_cart') || btn.innerHTML.includes('add_shopping_bag') || btn.innerHTML.includes('shopping_cart');
+443:         const isCartBtn = innerText.toLowerCase().includes('add to bag') || innerText.toLowerCase().includes('add to cart') || (hasCartIcon && (btn.tagName === 'BUTTON' || btn.classList.contains('material-symbols-outlined')));
+444:         
+445:         if (isCartBtn) {
+446:             const artworkId = btn.getAttribute('data-artwork-id') || btn.closest('[data-artwork-id]')?.getAttribute('data-artwork-id');
+447:             if (artworkId) {
+448:                 if (btn.hasAttribute('onclick') && btn.getAttribute('onclick').includes('checkout.html')) {
+449:                     btn.removeAttribute('onclick');
+450:                 }
+451:                 
+452:                 btn.addEventListener('click', (e) => {
+453:                     e.preventDefault();
+454:                     e.stopPropagation();
+455:                     addArtworkToCart(artworkId);
+456:                 });
+457:             }
+458:         }
+459:     });
+460: });
+461: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

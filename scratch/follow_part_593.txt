@@ -1,0 +1,77 @@
+Created At: 2026-06-01T07:03:50Z
+Completed At: 2026-06-01T07:03:50Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js`
+Total Lines: 348
+Total Bytes: 17105
+Showing lines 165 to 348
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+165:             });
+166:         });
+167:     }
+168: 
+169:     // Non-invasive Navbar Active Link Highlighter
+170:     function highlightActiveNavbar() {
+171:         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+172:         
+173:         const headers = document.querySelectorAll('header, nav');
+174:         headers.forEach(header => {
+175:             const links = header.querySelectorAll('a[href]');
+176:             links.forEach(link => {
+177:                 const href = link.getAttribute('href');
+178:                 if (!href) return;
+179:                 
+180:                 const linkPath = href.split('?')[0].split('#')[0].split('/').pop();
+181:                 if (!linkPath) return;
+182: 
+183:                 let isActive = false;
+184:                 if (linkPath === currentPath) {
+185:                     isActive = true;
+186:                 } else if (currentPath === 'index.html' || currentPath === 'home-light.html' || currentPath === 'browse-gallery.html' || currentPath === 'browse-gallery-light.html' || currentPath === '') {
+187:                     if (linkPath === 'browse-gallery.html' || linkPath === 'browse-gallery-light.html' || linkPath === 'index.html' || linkPath === 'home-light.html') {
+188:                         isActive = true;
+189:                     }
+190:                 } else if (currentPath.startsWith('artist')) {
+191:                     if (linkPath === 'artists.html') {
+192:                         isActive = true;
+193:                     }
+194:                 } else if (curren
+<truncated 5881 bytes>
+an, footer span, header a, footer a, header button, footer button, nav span, nav a, nav button, .currency-toggle-trigger, [data-icon="currency"], .currency-selector');
+312:         const currencyTargets = [];
+313:         
+314:         elements.forEach(el => {
+315:             const text = el.textContent.trim().toUpperCase();
+316:             if (text === 'ZAR (R)' || text === 'EUR (€)' || text === 'ZAR' || text === 'EUR' || el.classList.contains('currency-toggle-trigger') || el.classList.contains('currency-selector')) {
+317:                 if (!currencyTargets.includes(el)) {
+318:                     currencyTargets.push(el);
+319:                 }
+320:             }
+321:         });
+322: 
+323:         currencyTargets.forEach(el => {
+324:             el.classList.add('cursor-pointer');
+325:             el.addEventListener('click', (e) => {
+326:                 e.preventDefault();
+327:                 e.stopPropagation();
+328:                 
+329:                 const currentCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
+330:                 const newCurrency = currentCurrency === 'ZAR' ? 'EUR' : 'ZAR';
+331:                 localStorage.setItem('artisane_currency', newCurrency);
+332:                 
+333:                 updateCurrencyToggleDisplays(newCurrency);
+334:                 updatePrices(newCurrency);
+335:                 showCurrencyToast(`Currency changed to ${newCurrency === 'ZAR' ? 'ZAR (R)' : 'EUR (€)'}`);
+336:             });
+337:         });
+338:     }
+339: 
+340:     // Run unified navbar, scan, and set active states
+341:     highlightActiveNavbar();
+342:     scanPrices();
+343:     const savedCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
+344:     updateCurrencyToggleDisplays(savedCurrency);
+345:     updatePrices(savedCurrency);
+346:     setupCurrencyToggles();
+347: });
+348: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

@@ -1,0 +1,74 @@
+Created At: 2026-06-01T07:10:51Z
+Completed At: 2026-06-01T07:10:51Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js`
+Total Lines: 411
+Total Bytes: 20793
+Showing lines 1 to 150
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: document.addEventListener('DOMContentLoaded', () => {
+2:     // Locate all follow buttons
+3:     const followButtons = document.querySelectorAll('button, a');
+4:     
+5:     followButtons.forEach(btn => {
+6:         const text = btn.textContent.trim().toLowerCase();
+7:         if (text === 'follow artist' || text === 'following') {
+8:             btn.classList.add('follow-artist-btn');
+9:             
+10:             // Set initial state
+11:             btn.setAttribute('data-following', 'false');
+12:             
+13:             // Set up follow counter reference
+14:             let followersEl = null;
+15:             const labels = document.querySelectorAll('p, span, div');
+16:             for (let label of labels) {
+17:                 if (label.textContent.trim().toLowerCase() === 'followers') {
+18:                     let parent = label.parentElement;
+19:                     if (parent) {
+20:                         followersEl = parent.querySelector('.font-headline-md, p:nth-child(2), span:nth-child(2)');
+21:                     }
+22:                     break;
+23:                 }
+24:             }
+25: 
+26:             btn.addEventListener('click', (e) => {
+27:                 e.preventDefault();
+28:                 e.stopPropagation();
+29: 
+30:                 const isFollowing = btn.getAttribute('data-following') === 'true';
+31:                 
+32:                 if (isFollowing) {
+33:                     btn.setAttribute('data-following', 'false');
+34:                     btn.textContent = 'FOLLOW ARTIST';
+35:                     btn.clas
+<truncated 5271 bytes>
+1 block">2 hours ago</span>
+122:                 </div>
+123:                 <div onclick="window.location.href='collector-dashboard.html'" class="p-4 hover:bg-surface-container-low dark:hover:bg-on-surface-variant/10 transition-colors cursor-pointer">
+124:                     <p class="font-label-md text-xs text-primary dark:text-primary-fixed font-semibold mb-1">Curation Approved</p>
+125:                     <p class="font-body-md text-[11px] text-on-surface-variant dark:text-inverse-on-surface/70 leading-normal">Your bidder application for the Elite Curation has been verified.</p>
+126:                     <span class="text-[9px] text-outline mt-1 block">Yesterday</span>
+127:                 </div>
+128:             </div>
+129:             <div class="px-4 py-2 border-t border-outline-variant dark:border-outline text-center bg-surface-container-low dark:bg-on-surface-variant/20">
+130:                 <button class="text-xs text-primary dark:text-primary-fixed hover:text-secondary font-label-md transition-colors w-full py-1">Mark all as read</button>
+131:             </div>
+132:         `;
+133:         document.body.appendChild(dropdown);
+134: 
+135:         // Click outside closes dropdown
+136:         document.addEventListener('click', (e) => {
+137:             if (!dropdown.contains(e.target) && !notifButtons.some(b => b.contains(e.target))) {
+138:                 dropdown.classList.remove('show');
+139:                 setTimeout(() => {
+140:                     dropdown.classList.add('hidden');
+141:                 }, 300);
+142:             }
+143:         });
+144: 
+145:         notifButtons.forEach(btn => {
+146:             btn.addEventListener('click', (e) => {
+147:                 e.preventDefault();
+148:                 e.stopPropagation();
+149:                 
+150:                 const rect = btn.getBoundingClientRect();
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

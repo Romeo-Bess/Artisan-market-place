@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#74777f",
+                        "on-background": "#1a1c1b",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dadad8",
+                        "inverse-primary": "#abc8f5",
+                        "on-surface-variant": "#43474e",
+                        "surface-bright": "#faf9f7",
+                        "primary": "#123358",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#436087",
+                        "on-secondary-fixed": "#380d00",
+                        "outline-variant": "#c3c6cf",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "secondary-container": "#fd9e7b",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "surface-container": "#efeeec",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf9f7",
+                        "on-secondary-container": "#773319",
+                        "tertiary-fixed": "#ffdea7",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "secondary": "#94492d",
+                        "primary-fixed-dim": "#abc8f5",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary-fixed-variant": "#763218",
+                        "surface-variant": "#e3e2e0",
+                        "surface-container-high": "#e9e8e6",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#001c39",
+                        "on-primary-container": "#9cbae6",
+                        "on-surface": "#1a1c1b",
+                        "inverse-surface": "#2f3130",
+                        "surface-container-low": "#f4f3f1",
+                        "surface": "#faf9f7",
+                        "inverse-on-surface": "#f1f1ef",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "on-tertiary-container": "#d9b26d",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e3e2e0",
+                        "tertiary-container": "#5f4407",
+                        "tertiary": "#442e00",
+                        "primary-container": "#2c4a70"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["EB Garamond"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #faf9f7;
+            color: #1a1c1b;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .reveal-up {
+            animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline z-50">
+<div class="flex justify-between items-center px-margin-desktop py-unit max-w-container-max mx-auto h-20">
+<h1 class="font-display-lg text-display-lg text-primary dark:text-on-primary-container">Artisane Gallery</h1>
+<nav class="hidden md:flex space-x-8 items-center">
+<a class="font-body-md text-body-md font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300">Auctions</a>
+<a class="font-body-md text-body-md font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300">Artists</a>
+<a class="font-body-md text-body-md font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300">Exhibitions</a>
+<a class="font-body-md text-body-md font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300">Private Sales</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer text-[28px]">account_circle</span>
+<span class="material-symbols-outlined text-primary cursor-pointer text-[28px]">notifications</span>
+</div>
+</div>
+</header>
+<main class="min-h-screen flex flex-col items-center">
+<!-- Hero Section -->
+<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24 flex flex-col md:flex-row items-center gap-12 md:gap-24">
+<div class="w-full md:w-1/2 reveal-up">
+<div class="mb-6 flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-md text-label-md tracking-widest uppercase">Identity Confirmed</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary mb-6">Welcome to the Inner Circle</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-[540px]">
+                    Your registration has been successfully processed. You are now a verified bidder, granting you exclusive access to our upcoming high-value auctions and private acquisitions.
+                </p>
+<!-- Bidder Status Card -->
+<div class="bg-surface-container-low border border-outline-variant p-8 mb-10 rounded-lg max-w-[480px]">
+<div class="grid grid-cols-2 gap-y-8">
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1 uppercase tracking-wider">Bidder Status</p>
+<p class="font-body-md text-body-md font-bold text-primary flex items-center gap-1">Verified</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1 uppercase tracking-wider">Bidder ID</p>
+<p class="font-body-md text-body-md font-bold text-primary">#ART-8821</p>
+</div>
+<div class="col-span-2">
+<p class="font-label-sm text-label-sm text-outline mb-1 uppercase tracking-wider">Pre-authorized Amount</p>
+<div class="flex items-center justify-between">
+<p class="font-headline-md text-headline-md text-primary">R 1,000.00 <span class="text-label-md text-on-surface-variant font-normal">Hold Active</span></p>
+<span class="material-symbols-outlined text-outline">info</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col sm:flex-row gap-4 items-center">
+<button class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary font-label-md text-label-md rounded hover:bg-surface-tint transition-all duration-300">
+                        Enter the Auction Floor
+                    </button>
+<div class="flex gap-6 mt-4 sm:mt-0">
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">View Dashboard</a>
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">Browse Artists</a>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 aspect-[4/5] relative overflow-hidden rounded-lg reveal-up" style="animation-delay: 0.2s;">
+<img class="w-full h-full object-cover" data-alt="A sophisticated, wide-angle interior shot of a contemporary high-end art gallery with vast white walls and polished concrete floors. The lighting is soft and ethereal, highlighting a single, large-scale abstract painting with vibrant textures. The atmosphere is quiet, elite, and deeply serene, reflecting a minimalist 'White Cube' aesthetic with generous space and professional elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWZU_bVbI1fQgHZjc0Z9g364bEkH2YkzrbkB4wl8mZ6O7gybXqH0G_Ubw6th0Oa85nBHvUFjMIswAGJKI5nl2cJo-d2VSIrvK5PcHN5rTeFgImQgYOyK8rxgFt-ZNJoz1xsFRX-N7EaNzCYV5l4gS07KDUOhZglxhpRBigS4vIUsfyZUJrZSk2n6JmNo0QgWArsLEVj8Iur5S60fymet9uDrTtBIUoeLIKcZzCKl1RAic9XLYkT77S3rQIl771EwtWpkvzzVCSS3Mi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none"></div>
+</div>
+</section>
+<!-- Secondary Informational Grid -->
+<section class="w-full bg-surface-container-low py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<h3 class="font-headline-lg text-headline-lg text-primary text-center mb-16">Your Membership Privileges</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="text-center group">
+<div class="w-16 h-16 bg-surface flex items-center justify-center mx-auto mb-6 rounded-full border border-outline-variant group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary">gavel</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-primary">Live Bidding</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time participation in global auctions with instantaneous bid updates and secure handling.</p>
+</div>
+<div class="text-center group">
+<div class="w-16 h-16 bg-surface flex items-center justify-center mx-auto mb-6 rounded-full border border-outline-variant group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-primary">Provenance Access</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Review complete ownership history and certificates of authenticity for every masterpiece in our collection.</p>
+</div>
+<div class="text-center group">
+<div class="w-16 h-16 bg-surface flex items-center justify-center mx-auto mb-6 rounded-full border border-outline-variant group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary">support_agent</span>
+</div>
+<h4 class="font-headline-md text-headline-md mb-4 text-primary">Curator Concierge</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Dedicated 24/7 support from our expert curatorial team to assist with private sales and auction inquiries.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant dark:border-outline">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-8">
+<div class="flex flex-col gap-4">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Artisane Gallery</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant max-w-[300px]">
+                    Curating the future of contemporary art for the world's most discerning collectors.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Auction Rules</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim underline transition-all" href="#">Contact Curator</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant">
+                © 2024 Artisane Gallery. All rights reserved.
+            </p>
+</div>
+</footer>
+<script>
+        // Atmospheric Micro-interaction for the Hero Card
+        const card = document.querySelector('.bg-surface-container-low.border');
+        if (card) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 50;
+                const rotateY = (centerX - x) / 50;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Auctions | Artisane</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#2c4a70",
+                    "inverse-surface": "#2f3130",
+                    "inverse-primary": "#abc8f5",
+                    "tertiary-container": "#5f4407",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "on-secondary-container": "#773319",
+                    "primary": "#123358",
+                    "surface-dim": "#dadad8",
+                    "tertiary": "#442e00",
+                    "inverse-on-surface": "#f1f1ef",
+                    "surface-container-highest": "#e3e2e0",
+                    "surface-tint": "#436087",
+                    "secondary-container": "#fd9e7b",
+                    "on-tertiary-container": "#d9b26d",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface": "#faf9f7",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#ffdbcf",
+                    "primary-fixed-dim": "#abc8f5",
+                    "surface-container-low": "#f4f3f1",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "on-primary-fixed": "#001c39",
+                    "primary-fixed": "#d4e3ff",
+                    "on-primary-container": "#9cbae6",
+                    "on-secondary-fixed-variant": "#763218",
+                    "on-secondary-fixed": "#380d00",
+                    "background": "#faf9f7",
+                    "outline": "#74777f",
+                    "surface-variant": "#e3e2e0",
+                    "tertiary-fixed": "#ffdea7",
+                    "on-surface-variant": "#43474e",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e9e8e6",
+                    "surface-container": "#efeeec",
+                    "on-surface": "#1a1c1b",
+                    "outline-variant": "#c3c6cf",
+                    "surface-bright": "#faf9f7",
+                    "on-background": "#1a1c1b",
+                    "on-tertiary-fixed": "#271900",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "secondary": "#94492d",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px",
+                    "container-max": "1280px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-md": ["EB Garamond"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "display-lg": ["EB Garamond"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .auction-card:hover .hover-action {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glow-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/10">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50">
+<nav class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-headline-md text-headline-md text-primary tracking-tight" href="#">Artisane</a>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-200" href="browse-gallery.html">Browse</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-200" href="artists.html">Artists</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-200" href="#">Collections</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Exhibitions</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-surface-container px-4 py-2 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48" placeholder="Search auctions..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-primary hover:scale-110 transition-transform" data-icon="shopping_cart">shopping_cart</button>
+<button class="material-symbols-outlined text-primary hover:scale-110 transition-transform" data-icon="person">person</button>
+</div>
+</nav>
+</header>
+<main class="pt-24 pb-section-gap">
+<!-- Hero Title Section -->
+<section class="px-margin-desktop max-w-container-max mx-auto mt-16 mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-4 block">Current Event</span>
+<h1 class="font-display-lg text-display-lg text-primary max-w-2xl">Modern Mastery: <br/>Summer Live Auction</h1>
+</div>
+<div class="flex items-center gap-4 border-l border-outline-variant pl-8 py-2">
+<div class="w-3 h-3 rounded-full bg-error glow-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Live Broadcast In Progress</span>
+</div>
+</div>
+</section>
+<!-- Auctions Layout -->
+<section class="px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar / Filters -->
+<aside class="lg:col-span-3 space-y-10">
+<div>
+<h3 class="font-label-md text-label-md text-primary mb-6 uppercase tracking-wider">Auction Categories</h3>
+<nav class="flex flex-col gap-4">
+<button class="flex items-center justify-between group">
+<span class="font-body-md text-primary font-medium">Live Now</span>
+<span class="bg-primary-container/10 text-primary px-2 py-0.5 rounded font-label-sm text-label-sm">12</span>
+</button>
+<button class="flex items-center justify-between text-on-surface-variant hover:text-primary transition-colors">
+<span class="font-body-md">Upcoming</span>
+<span class="text-outline font-label-sm text-label-sm">24</span>
+</button>
+<button class="flex items-center justify-between text-on-surface-variant hover:text-primary transition-colors">
+<span class="font-body-md">Recently Ended</span>
+<span class="text-outline font-label-sm text-label-sm">158</span>
+</button>
+</nav>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant">
+<h3 class="font-label-md text-label-md text-primary mb-4">Auction Guide</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">New to live bidding? Explore our guide to secure your favorite pieces with confidence.</p>
+<a class="font-label-md text-label-md text-primary underline underline-offset-4 hover:text-secondary transition-colors" href="#">Read Handbook</a>
+</div>
+</aside>
+<!-- Auction Grid -->
+<div class="lg:col-span-9">
+<!-- Grid Header -->
+<div class="flex items-center justify-between mb-8 pb-4 border-b border-outline-variant">
+<div class="flex gap-6">
+<button class="font-label-md text-label-md text-primary border-b-2 border-primary pb-4">All Items</button>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-4">Paintings</button>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-4">Sculpture</button>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="font-label-md text-label-md">Sort by:</span>
+<select class="bg-transparent border-none font-label-md text-label-md focus:ring-0 text-primary cursor-pointer">
+<option>Ending Soonest</option>
+<option>Price: High to Low</option>
+<option>Most Active</option>
+</select>
+</div>
+</div>
+<!-- The Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-gutter gap-y-12">
+<!-- Auction Item Card 1 -->
+<div class="group auction-card">
+<div class="relative overflow-hidden aspect-[4/5] mb-6 border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sophisticated abstract oil painting with deep azure blue and gold leaf accents on a large canvas. The texture of the paint is visible, creating a sense of three-dimensional depth. The lighting is soft and diffused, characteristic of a high-end art gallery setting. The overall mood is one of tranquil elegance, echoing a modern minimalist aesthetic with rich, luxurious color tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv8vmsnjgsYRR63afYJT6WCEAe31ZkPLeYzhn8F-4Ke-RwJMTs0eYzRiLMrTB9OrYtpFXdRnf4KXhGCrGcp12foMaECi_j8TAEZAy85jWkseZiutEUumIYqjwzxU0z5poy6pNtTldLY-SRayCGPnnMJLG6t3k6unpywTr4cFu2v1lF35MB2FLZdmB4jgxsv7EKkgFmQdqHYPi93atrDQp-afNtVK27oMiD0OlE5zvgdJO-ODvQp3K8I0LBjuJJUredMnsPtENV1GIl"/>
+<div class="absolute top-4 left-4 bg-error text-white px-3 py-1 font-label-sm text-label-sm tracking-widest uppercase">Live</div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-4 flex justify-between items-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<div class="countdown" data-time="3240">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Ends in</span>
+<span class="font-label-md text-label-md text-primary tabular-nums timer-display">00:54:02</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Current Bid</span>
+<span class="font-label-md text-label-md text-primary">R 12,400</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-md text-headline-md text-on-surface">Azure Reflection II</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-2">18 Bids</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Artist: Elena Voronova</p>
+<button class="w-full mt-4 py-3 bg-primary text-white font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-[0.98]">Place Bid</button>
+</div>
+</div>
+<!-- Auction Item Card 2 -->
+<div class="group auction-card">
+<div class="relative overflow-hidden aspect-[4/5] mb-6 border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist marble sculpture of a fluid, organic form presented on a dark wooden pedestal. The sculpture captures light beautifully, highlighting the smooth polished finish and the natural grey veining of the stone. The environment is a clean white gallery space with subtle soft shadows. The atmosphere is quiet and reverent, focusing on the purity of form and material." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY9ZRhPr5_RspOM6H7-AI8D8_0xZF7tTCrKDdVdCzjxr7wFU5PA1ud0PGR-xXj8QHPH4N_O0-RbqFJo7HnJjECVN9XiqprAEpjAEDMY9o2guiZgz965zsKrKE5LayuK_Py7Ob2QG2NNetNxEXXHdYgZtm5AqigcBW2C5Cgnu3EcH46VEP89Fs8aHQA9abryxymT15UrZNSYOhkAJUs6tCPfsNpLWfAJPf2rEEBoLnbqZgZ1ht9D5ZfiCe6nCNhquUowd_43OM7tzgw"/>
+<div class="absolute top-4 left-4 bg-error text-white px-3 py-1 font-label-sm text-label-sm tracking-widest uppercase">Live</div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-4 flex justify-between items-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<div class="countdown" data-time="185">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Ends in</span>
+<span class="font-label-md text-label-md text-error tabular-nums timer-display">00:03:05</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Current Bid</span>
+<span class="font-label-md text-label-md text-primary">R 8,900</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-md text-headline-md text-on-surface">Silent Monolith</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-2">12 Bids</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Artist: Julian Thorne</p>
+<button class="w-full mt-4 py-3 bg-primary text-white font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-[0.98]">Place Bid</button>
+</div>
+</div>
+<!-- Auction Item Card 3 -->
+<div class="group auction-card">
+<div class="relative overflow-hidden aspect-[4/5] mb-6 border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An intricate contemporary charcoal drawing depicting a series of intertwined architectural forms. The work is rendered with incredible detail, using a range of values from deep charcoal black to light grey. The paper has a slight tooth, adding texture to the minimalist composition. The overall feel is cerebral and structured, set within a sophisticated and modern curator's space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1pRZF1i6LzRnrg5blKAOu53fIIKSbAcbGkw1oBBJJU25iE2LoVG7mAKi8h1AZX4p9ecpXFssijJ_N4lueTrsGrPn3lYbTfnX2qyX3BlSbZwzuShcY6B-Tq8ya1bL-tJR9Homu_waw7e-xLesISU_rM29G_2P_GVAMIBFSv11PLs1kHwonMJPm-pY3mLC_0rIf23MLkQRmzbzI1Me0EGOwmEMNtSOBgKO_yvsNSSZREibmpnLu2iApKEkWpM3wNRl9-DfA11rwPibF"/>
+<div class="absolute top-4 left-4 bg-error text-white px-3 py-1 font-label-sm text-label-sm tracking-widest uppercase">Live</div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-4 flex justify-between items-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<div class="countdown" data-time="12450">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Ends in</span>
+<span class="font-label-md text-label-md text-primary tabular-nums timer-display">03:27:30</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Current Bid</span>
+<span class="font-label-md text-label-md text-primary">R 4,500</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-md text-headline-md text-on-surface">Urban Geometry IV</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-2">6 Bids</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Artist: Marcus Chen</p>
+<button class="w-full mt-4 py-3 bg-primary text-white font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-[0.98]">Place Bid</button>
+</div>
+</div>
+<!-- Auction Item Card 4 -->
+<div class="group auction-card">
+<div class="relative overflow-hidden aspect-[4/5] mb-6 border border-outline-variant bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A vibrant abstract mixed-media piece featuring layers of acrylic paint and collage elements in warm ochre, sienna, and cream. The artwork has an energetic, tactile quality with visible brushwork and material textures. The lighting highlights the complexity of the surface. The design aesthetic is eclectic yet controlled, suggesting a high-value community-focused art initiative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQlp-oakBdUVmMcMVWEwvO5av4X3ibuxYBcLOC13YD8h2d4SX50TJkJTJ-bPg2X9Dv03gAwDJR9Lzr0y88MZkoIBXE8jkrwM5I3SFNqENHplgh3eYexAt4L-T7-QrRA-ZG5EJTV6erd2P5Du-IDPacmOhzjCtWdOGO0RkDMXkSKHwPExIlBx3DECADMvIX9GxvWN3xIlzG_NiKhrkC-tRzYKoGkvpgVwR9U_I3XyDWqbqtcvvxCJCUngTR-pQ1qFxsa1W-dNWtguAv"/>
+<div class="absolute top-4 left-4 bg-error text-white px-3 py-1 font-label-sm text-label-sm tracking-widest uppercase">Live</div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm p-4 flex justify-between items-center transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<div class="countdown" data-time="86400">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Ends in</span>
+<span class="font-label-md text-label-md text-primary tabular-nums timer-display">24:00:00</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Current Bid</span>
+<span class="font-label-md text-label-md text-primary">R 3,200</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="font-headline-md text-headline-md text-on-surface">Earthbound Rhythm</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-2">21 Bids</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Artist: Sofia Lind</p>
+<button class="w-full mt-4 py-3 bg-primary text-white font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-[0.98]">Place Bid</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-section-gap flex justify-center items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="font-label-md text-label-md text-primary underline underline-offset-4">01</span>
+<span class="font-label-md text-label-md text-on-surface-variant">02</span>
+<span class="font-label-md text-label-md text-on-surface-variant">03</span>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recently Ended (Horizontal Scroll Section) -->
+<section class="mt-section-gap bg-surface-container-low py-section-gap">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Recently Ended</h2>
+<p class="font-body-md text-on-surface-variant">Missed out? See what else has been curated recently.</p>
+</div>
+<a class="font-label-md text-label-md text-primary underline underline-offset-8" href="#">View All Records</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Ended 1 -->
+<div class="opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-square bg-surface mb-4 border border-outline-variant">
+<img class="w-full h-full object-cover grayscale" data-alt="A delicate porcelain vase with contemporary hand-painted patterns in muted earth tones. The vase sits on a reflective glass surface against a soft beige background. Professional studio lighting highlights the craftsmanship and subtle texture of the piece. The atmosphere is sophisticated and highlights high-end collectibles in a museum-style presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4We3XvrHjVNN1zivYxgdQnF941JvT7dfLbUM3KTB0kjfts1DLgoRlvCK0ZzClUYMydQwIdVmrGBM2OcL4YtKTwQBGQ74Es3ppLDjCxuiq5e8s-M-ObW48J3qYD9TpXLcI1S-5rVm8EwGht9lXT6elsIiv_65EeoZhBrDZXBSQIYgasas95ennvg8EMXSymbjdXTY17coepDZwaVCG4ARDc541mN0juWwuzsdUG7hl8Ao_HW-NG1GaXseWoEoIyFhS4l3VJL9vF_YA"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface opacity-60">Echoes of Clay</h3>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-md text-label-md text-secondary">Final: R 5,200</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic uppercase">Sold</span>
+</div>
+</div>
+<!-- Ended 2 -->
+<div class="opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-square bg-surface mb-4 border border-outline-variant">
+<img class="w-full h-full object-cover grayscale" data-alt="An experimental digital photographic print capturing light trails in a night city landscape. The aesthetic is futuristic and high-energy, with a palette dominated by electric blues and deep purples. The presentation is minimalist and high-end, as if displayed in a darkened boutique gallery space. The mood is mysterious and contemplative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmIAiwU7IyZTl619BeUBqc6wfi82miSyvnF-jb-3NsKZ6H1AXjQWrKBdfhspBQbatTNpSPIKpT-ihJYTUZoaJWicktsr51o5x3LhUAqUpwaV1-eCOMDDdjGZjd9ysT2DqM2BDjqyoudSPKY2AG6ah0sFrOm44maqI6P0MxMs7FRfug19VBkkHLvfn_5dxIf8-ceYxl7yzRyfaXpfKWxTuZrRuKRXXkCvo5lqZZdEKGJctQWnyknUln7aEAI2Tq3vGLpNztLyXEX1x_"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface opacity-60">Luminous Path</h3>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-md text-label-md text-secondary">Final: R 2,800</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic uppercase">Sold</span>
+</div>
+</div>
+<!-- Ended 3 -->
+<div class="opacity-80 hover:opacity-100 transition-opacity">
+<div class="aspect-square bg-surface mb-4 border border-outline-variant">
+<img class="w-full h-full object-cover grayscale" data-alt="A striking minimalist tapestry featuring geometric wool weavings in a palette of slate grey, charcoal, and cream. The texture of the natural fibers is prominent. It hangs on a pristine white wall, lit by soft overhead track lighting. The style is quiet, luxury interior design, focusing on the quality of organic materials and handmade artistry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn7iRfEXZf_E84txNKINmSmfF2eFZxvy-SerV-JbPdfsXhDJLa25WSmVtQHniBDW0LIrdtdWj6t3ZFbZAuIAML14fwCnp8tn75I9NYgnG0uKKNKzTuxrnis1sddvf-r_n6EXTuE-Jg55zQxcimTXkBTz_qB5W4ZIeyjk4T5jDKQYWFaJUJQIBGvKtPnLyLm31H8YpHX9Mn-60JNH9-xN9LU6-Buwkg9e4fHJAwZVw9l_K2FZQknTH3npfZKAx-WgCJS2VyltuiliYW"/>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface opacity-60">Woven Silence</h3>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-md text-label-md text-secondary">Final: R 4,100</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic uppercase">Sold</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<a class="font-headline-md text-headline-md text-primary tracking-tight" href="#">Artisane</a>
+<p class="font-body-md text-on-surface-variant max-w-xs">Curating the finest contemporary art for the discerning collector. Join our community of creators and connoisseurs.</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest">Explore</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-body-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Artist Resources</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Community Guidelines</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Secure Payments</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest">Legal</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-body-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Contact Support</a>
+</nav>
+</div>
+</div>
+<div class="space-y-6">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-widest">Newsletter</h4>
+<div class="flex flex-col gap-4">
+<input class="bg-transparent border-b border-outline-variant py-2 focus:border-primary outline-none transition-colors font-body-md" placeholder="Email Address" type="email"/>
+<button class="bg-primary text-white py-3 font-label-md text-label-md tracking-widest uppercase hover:bg-primary-container transition-colors">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-8 px-margin-desktop text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 Artisane Gallery. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple countdown logic
+        function updateTimers() {
+            document.querySelectorAll('.countdown').forEach(container => {
+                let secondsRemaining = parseInt(container.getAttribute('data-time'));
+                if (secondsRemaining > 0) {
+                    secondsRemaining--;
+                    container.setAttribute('data-time', secondsRemaining);
+                    
+                    const h = Math.floor(secondsRemaining / 3600);
+                    const m = Math.floor((secondsRemaining % 3600) / 60);
+                    const s = secondsRemaining % 60;
+                    
+                    const display = container.querySelector('.timer-display');
+                    display.textContent = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                    
+                    if (secondsRemaining < 300) { // Under 5 minutes
+                        display.classList.add('text-error');
+                    }
+                } else {
+                    container.querySelector('.timer-display').textContent = "Ended";
+                }
+            });
+        }
+        setInterval(updateTimers, 1000);
+
+        // Subtle parallax/reveal for image loading
+        window.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100');
+                        entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.auction-card').forEach(card => {
+                card.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-4');
+                observer.observe(card);
+            });
+        });
+    </script>
+</body></html>

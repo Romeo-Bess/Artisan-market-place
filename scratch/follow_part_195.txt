@@ -1,0 +1,34 @@
+Created At: 2026-06-01T06:36:03Z
+Completed At: 2026-06-01T06:36:03Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/index.html`
+Total Lines: 604
+Total Bytes: 130894
+Showing lines 230 to 280
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+230:     </script>
+231: 
+232: <!-- Global Site Interaction Helpers -->
+233: <script type="module" src="./js/theme-toggle-helper.js"></script>
+234: <script type="module" src="./js/cart-helper.js"></script>
+235: <script type="module" src="./js/follow-helper.js"></script>
+236: </head>
+237: 
+238: <body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed transition-colors duration-500">
+239: <!-- TopNavBar -->
+240: <header class="bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-md border-b border-outline-variant dark:border-outline fixed top-0 left-0 right-0 z-50">
+241: <div class="flex justify-between items-center px-margin-desktop py-3 w-full max-w-container-max mx-auto">
+242: <div class="flex items-center gap-12">
+243: <a class="flex items-center gap-2" href="index.html">
+244: <img alt="Artisane" class="h-10 w-10 object-contain" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAQAElEQVR4Aezda7Bm2Xkf9L1Pz8jyBYNdSRFcVBHIKLJ6RjZ3Q6AclRJF6o4dIGHGlsyHgCEhBE2PHBPDFyrFpyDHnm7LqDAEYopygOlyrBlJ3TOyHCtAIXAVlYu7xxqVHZxCduVSiTSSopGn1WfnPd0z07fznvNe1tr7edb6dfqc8172Xut5fs/pJOffa1oHg18ECBAgQIAAAQIECBAgQIBA6wKDAKD5EWuQAAECBAgQIECAAAECBAgMAgDfBAQIECBAgAABAgQIECBAoHmBVYNOAKwQ/CZAgAABAgQIECBAgAABAi0LHPUmADhS8EGAAAECBAgQIECAAAECBNoVuNWZAOAWg08ECBAgQIAAAQIECBAgQKBVgdt9CQBuO/hMgAABAgQIECBAgAABAgTaFHitKwHAaxC+ECBAgAABAgQIECBAgACBFgVe70kA8LqErwQIECBAgAABAgQIECBAoD2BNzoSALxB4QEBAgQIECBAgAABAgQIEGhN4E4/AoA7Fh4RIECAAAECBAgQIECAAIG2BO7qRgBwF4aHBAgQIECAAAECBAgQIECgJYG7exEA3K3hMQECBAgQIECAAAE
+<truncated 42287 bytes>
+morning light pours in from skylights, casting gentle shadows. In the center, a large-scale abstract oil painting with deep blue and gold textures hangs prominently. The atmosphere is serene, airy, and sophisticated, embodying the Artisane brand aesthetic of quiet curation and professional luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSFL8c8B9rF6vnHKxtSsx37Bfdg_micacXHXfECgqKuKpwYggzz6wcGSijiL28zxSoNIP8hBg-Zo4GoTvUCnlyggnfRHjPTbuvyfJfnANcl3DX84BpZpnEfap5ycvl1WTkGYq4FgYQXaRHOIXn_MUNa3u-MjDxBIVVK7VofAT26jZmePZzixtDEJ5zM0QylroGrVlAFu85_aslpiv6NN42Okh7wqqvRdvGPI1DtNwhUvp5avmNrewhHoklx1wwhYFog6w1YNdvHSo3"/>
+272: <div class="absolute inset-0 bg-gradient-to-r from-surface/80 via-surface/20 to-transparent dark:from-inverse-surface/80 dark:via-inverse-surface/20"></div>
+273: </div>
+274: <div class="relative z-10 px-margin-desktop w-full max-w-container-max mx-auto">
+275: <div class="max-w-2xl">
+276: <span class="font-label-md text-label-md text-secondary dark:text-secondary-fixed uppercase tracking-[0.2em] mb-6 block">Exclusively Curated</span>
+277: <h1 class="font-display-lg text-display-lg mb-8 text-primary dark:text-primary-fixed-dim leading-tight">Art that speaks to the soul, <br/>curated for yours.</h1>
+278: <p class="font-body-lg text-body-lg text-on-surface-variant dark:text-surface-variant mb-10 max-w-lg">Discover an intentional collection of contemporary works from world-renowned emerging artists. Experience the gallery atmosphere from the comfort of your space.</p>
+279: <div class="flex items-center gap-6">
+280: <button class="bg-primary dark:bg-primary-fixed text-on-primary dark:text-on-primary-fixed font-label-md text-label-md px-10 py-4 rounded hover:bg-primary-container dark:hover:bg-primary-fixed-dim transition-all scale-95 active:scale-90" onclick="window.location.href='browse-gallery.html'">
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

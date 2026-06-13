@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Collector Concierge | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active .step-line { background: theme('colors.primary'); }
+        .step-pending .step-line { background: theme('colors.outline-variant'); }
+        
+        /* Subtle atmospheric effect */
+        .glass-panel {
+            background: rgba(250, 249, 247, 0.7);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fd9e7b",
+                        "primary-fixed": "#d4e3ff",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "tertiary-fixed": "#ffdea7",
+                        "on-secondary-container": "#773319",
+                        "surface-container": "#efeeec",
+                        "on-secondary": "#ffffff",
+                        "background": "#faf9f7",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#faf9f7",
+                        "primary": "#123358",
+                        "on-surface-variant": "#43474e",
+                        "surface-dim": "#dadad8",
+                        "inverse-primary": "#abc8f5",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#74777f",
+                        "on-background": "#1a1c1b",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c3c6cf",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-tint": "#436087",
+                        "on-tertiary-container": "#d9b26d",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "surface-container-low": "#f4f3f1",
+                        "surface": "#faf9f7",
+                        "inverse-on-surface": "#f1f1ef",
+                        "tertiary": "#442e00",
+                        "primary-container": "#2c4a70",
+                        "tertiary-container": "#5f4407",
+                        "surface-container-highest": "#e3e2e0",
+                        "surface-variant": "#e3e2e0",
+                        "surface-container-high": "#e9e8e6",
+                        "secondary-fixed": "#ffdbcf",
+                        "primary-fixed-dim": "#abc8f5",
+                        "on-tertiary-fixed": "#271900",
+                        "on-secondary-fixed-variant": "#763218",
+                        "secondary": "#94492d",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "on-surface": "#1a1c1b",
+                        "inverse-surface": "#2f3130",
+                        "on-primary-fixed": "#001c39",
+                        "on-primary-container": "#9cbae6",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "section-gap": "120px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["EB Garamond"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky z-50 bg-surface border-b border-outline-variant h-20">
+<nav class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-full">
+<div class="font-display-lg text-display-lg text-primary tracking-tight">Artisane</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#">Gallery</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#">Artists</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors duration-300" href="#">Auctions</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-body-md" href="#">Dashboard</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">payments</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">dark_mode</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded font-label-md hover:opacity-80 transition-opacity">Commission</button>
+<img alt="Collector Profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrL4kVR73okg0ZDRcLB_9bxQw92diCgCwSeiegqgGmnx96m0eZ6tYv0UEgzeraaMLVybn4oNezGoseC3d_x1FMfnU-aIiGmIR5T5Nh1Au2MtjoORzQQDojfwaFTgj8hxssoQdAaeCm5YwOztbeO6FNK2RfOPovLs2_GDPWdSDARczqJ_h98COlxQm-7xA52HZ3EJOfLvxIQI2CjVgSAB0zxTKf-Uz6hN5aLXsxb_HRnMJG_TAOqqBiy_-kY9cCSXypo2naBzHDFv4y"/>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-section-gap">
+<!-- Hero Section: Concierge Welcome -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end mb-16">
+<div class="lg:col-span-8">
+<span class="text-secondary font-label-md tracking-widest uppercase mb-4 block">Order #ART-882910</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6">Your acquisition is in expert hands.</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">
+                    Welcome to the Artisane Concierge experience. We are managing every detail of the journey for <span class="italic font-headline-md text-primary">"The Silence Between Cities"</span> from the London studio to your residence in New York.
+                </p>
+</div>
+<div class="lg:col-span-4 flex flex-col items-end">
+<div class="text-right">
+<p class="font-label-sm text-on-surface-variant uppercase">Estimated Arrival</p>
+<p class="font-headline-md text-primary">October 24, 2024</p>
+</div>
+</div>
+</div>
+<!-- Main Tracking Interface -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: The Journey -->
+<div class="lg:col-span-8 space-y-gutter">
+<div class="bg-surface-container-low p-10 border border-outline-variant rounded-lg">
+<h2 class="font-headline-md mb-12 flex items-center gap-3">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        White-Glove Delivery Journey
+                    </h2>
+<!-- Vertical Progress Stepper -->
+<div class="relative space-y-12 ml-4">
+<!-- Step 1: Completed -->
+<div class="flex gap-8 relative group">
+<div class="absolute left-[15px] top-8 bottom-[-48px] w-[1px] bg-primary"></div>
+<div class="z-10 flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-primary uppercase tracking-wider">Artisane Authentication</h3>
+<p class="font-headline-md text-on-surface mt-1">Verified &amp; Sealed</p>
+<p class="font-body-md text-on-surface-variant mt-2">Our master curators have completed a 48-point inspection. The Certificate of Authenticity is securely packaged within the archival envelope.</p>
+<span class="text-label-sm text-outline mt-2 block">Completed: Oct 12, 09:42 AM</span>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex gap-8 relative">
+<div class="absolute left-[15px] top-8 bottom-[-48px] w-[1px] bg-primary"></div>
+<div class="z-10 flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-primary uppercase tracking-wider">Custom Crating</h3>
+<p class="font-headline-md text-on-surface mt-1">Archival Protection Applied</p>
+<p class="font-body-md text-on-surface-variant mt-2">The piece has been encased in a museum-grade thermal-insulating crate, specifically sized to the artwork's dimensions.</p>
+<span class="text-label-sm text-outline mt-2 block">Completed: Oct 14, 02:15 PM</span>
+</div>
+</div>
+<!-- Step 3: Active -->
+<div class="flex gap-8 relative">
+<div class="absolute left-[15px] top-8 bottom-[-48px] w-[1px] bg-outline-variant border-dashed"></div>
+<div class="z-10 flex-shrink-0 w-8 h-8 rounded-full border-2 border-primary bg-surface flex items-center justify-center text-primary animate-pulse">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-primary uppercase tracking-wider">Climate-Controlled Transit</h3>
+<p class="font-headline-md text-on-surface mt-1">En Route to NY Logistics Hub</p>
+<p class="font-body-md text-on-surface-variant mt-2">Currently maintained at a constant 21°C and 50% humidity. Real-time telemetry monitoring is active.</p>
+<div class="mt-6 h-[300px] w-full rounded overflow-hidden relative border border-outline-variant">
+<div class="absolute inset-0 bg-surface-dim opacity-20"></div>
+<img class="w-full h-full object-cover" data-alt="A minimalist, high-end map interface showing a stylized flight path from London to New York over the Atlantic Ocean. The map uses a clean light-mode palette with subtle blue and gray tones, emphasizing a professional and luxurious logistics aesthetic. Thin, elegant lines represent the journey's progress, maintaining a sophisticated gallery-like visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCJMlYZtonxAIysxVqvUh8jP5UJSWbtOrG25LmJRAYWkZUsPB7A2rPHKzhXcDDGWbMEHHy1f8eOAo2YST_cJ7lNYD6gOuwhxchUCrxIbHB-kHJgirEvxuSyDbQiQBURHktjtHHuGNj37EUrvuX0JoUGHPOrctHgzksZ9ggRPP1-tIanAPNJCsCCWp3VyUAc43mgDke-SMPO1BQi4fi5lpRlT0AYXKbp4knBqGgAb2c_jTNr5h_nlNejLs1LPxxiPIG6aeV-vse2GyB"/>
+<div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded text-label-sm shadow-sm border border-outline-variant">
+                                        GPS: 40.7128° N, 74.0060° W
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Step 4: Upcoming -->
+<div class="flex gap-8 relative">
+<div class="z-10 flex-shrink-0 w-8 h-8 rounded-full border border-outline-variant bg-surface flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-outline uppercase tracking-wider">Scheduled Installation</h3>
+<p class="font-headline-md text-outline mt-1">Pending Arrival</p>
+<p class="font-body-md text-on-surface-variant/60 mt-2">Our installation team will contact you once the piece arrives in New York to finalize the placement in your gallery.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Contextual Actions -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Concierge Card -->
+<div class="bg-primary text-on-primary p-8 rounded-lg">
+<h3 class="font-headline-md mb-4">Curator Concierge</h3>
+<p class="font-body-md opacity-80 mb-8">Your dedicated representative, Julian Vance, is overseeing this delivery personally.</p>
+<div class="flex items-center gap-4 mb-8">
+<img alt="Concierge Profile" class="w-12 h-12 rounded-full object-cover border-2 border-on-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBKg-v3TWJbqef_uV9Ik9uzpjhmgknqhBSyeRMINsR9B-o-vi-cBGzF6dw0geO2YbKQL3MgcLZ7yrtoiMr7113iMZmgUwsRcCOLUMbM5xurUjH6wtj1pIzJ8pUtqXa3g7UlHnKqHCaqLyeCHKmYK7HxHSR7xbkJyHOKWPwEpPLnsIsGvwWzKjzDseFc8L0NO9bfRmJYRlNdL7QL_I1W8GOWhP54O82e_-PnuBIhZuGU6heiLHD6Zc7vKWmsEX4Gjyij30z7ByGdIp3"/>
+<div>
+<p class="font-label-md">Julian Vance</p>
+<p class="text-label-sm opacity-60">Senior Logistics Curator</p>
+</div>
+</div>
+<button class="w-full py-4 bg-on-primary text-primary font-label-md rounded hover:bg-primary-fixed transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">chat</span>
+                        Inquire Privately
+                    </button>
+</div>
+<!-- Documentation Card -->
+<div class="bg-surface border border-outline-variant p-8 rounded-lg">
+<h3 class="font-label-md text-primary uppercase tracking-widest mb-6">Documentation</h3>
+<div class="space-y-4">
+<a class="flex items-center justify-between p-4 border border-outline-variant rounded hover:border-primary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">security</span>
+<span class="font-body-md">Insurance Certificate</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</a>
+<a class="flex items-center justify-between p-4 border border-outline-variant rounded hover:border-primary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="font-body-md">Bill of Lading</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</a>
+<a class="flex items-center justify-between p-4 border border-outline-variant rounded hover:border-primary transition-all group" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">verified</span>
+<span class="font-body-md">Authentication Report</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</a>
+</div>
+</div>
+<!-- Shipping Details Detail -->
+<div class="bg-surface-container-high p-8 rounded-lg">
+<h3 class="font-label-md text-primary uppercase tracking-widest mb-6">Object Details</h3>
+<div class="space-y-4">
+<div class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-label-sm text-on-surface-variant">Medium</span>
+<span class="text-label-sm font-semibold">Oil on Canvas</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-label-sm text-on-surface-variant">Dimensions</span>
+<span class="text-label-sm font-semibold">120 x 180 cm</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-2">
+<span class="text-label-sm text-on-surface-variant">Value Protection</span>
+<span class="text-label-sm font-semibold text-primary">Fully Insured</span>
+</div>
+</div>
+<img class="mt-8 w-full h-40 object-cover rounded shadow-inner" data-alt="A detailed, macro view of high-quality oil painting textures with visible brushstrokes and rich, layered pigments. The scene is illuminated by soft, professional gallery lighting that highlights the depth and craftsmanship of the artwork. The aesthetic is clean and luxurious, suggesting a high-value piece under expert care in a contemporary setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUitfh7eeRz2eVEQWcCRIxUSgmVa18D489VqWe3MmCQmBrY47FXiqRPKzm121-zj9m_0zSXGi3hqRvjbBL-RLAMINkYz6qG95gFSVF3GdzkYx-aUJPwDboJSs4cEvfDz_w7Rw348eIfIo37SJppJLLEh3SXgyIx4dYeuk8PP2RHoRgbhvU3Pi_Omm-2e0-cXjqqgbiUEL0eQ6dVo3V0DIpJdc1hXrx8JK9olMBL42Go6gLTbf9VvCtNMu1h9iQiIkiEyLRujZtLiyW"/>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container-low border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="col-span-1">
+<div class="font-headline-md text-primary mb-4">Artisane</div>
+<p class="font-body-md text-on-surface-variant italic">The Quiet Curator.</p>
+<p class="font-label-sm text-on-surface-variant mt-8">© 2024 Artisane. All Rights Reserved.</p>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-md text-primary mb-6 uppercase tracking-wider">Acquisition</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Artist FAQ</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-md text-primary mb-6 uppercase tracking-wider">Collective</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Community</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Journal</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Exhibitions</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-md text-primary mb-6 uppercase tracking-wider">Legal</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for smooth transitions
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.opacity = '0.7';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.opacity = '1';
+            });
+        });
+
+        // Atmospheric parallax effect for the map container
+        const mapContainer = document.querySelector('.animate-pulse').parentElement.querySelector('img');
+        if (mapContainer) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                mapContainer.style.transform = `translateY(${scrolled * 0.05}px)`;
+            });
+        }
+    </script>
+</body></html>

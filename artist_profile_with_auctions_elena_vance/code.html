@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elena Vance | Artisane Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d4e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dadad8",
+                        "on-background": "#1a1c1b",
+                        "surface-bright": "#faf9f7",
+                        "secondary": "#94492d",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "inverse-on-surface": "#f1f1ef",
+                        "tertiary": "#442e00",
+                        "on-primary-fixed": "#001c39",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-variant": "#e3e2e0",
+                        "surface-container-high": "#e9e8e6",
+                        "tertiary-container": "#5f4407",
+                        "surface-container-highest": "#e3e2e0",
+                        "outline-variant": "#c3c6cf",
+                        "on-surface-variant": "#43474e",
+                        "secondary-fixed": "#ffdbcf",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fd9e7b",
+                        "on-secondary-container": "#773319",
+                        "tertiary-fixed": "#ffdea7",
+                        "error": "#ba1a1a",
+                        "surface-container": "#efeeec",
+                        "primary-fixed-dim": "#abc8f5",
+                        "on-primary": "#ffffff",
+                        "outline": "#74777f",
+                        "inverse-surface": "#2f3130",
+                        "primary": "#123358",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#9cbae6",
+                        "primary-container": "#2c4a70",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-tint": "#436087",
+                        "on-secondary-fixed": "#380d00",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf9f7",
+                        "on-error": "#ffffff",
+                        "background": "#faf9f7",
+                        "on-surface": "#1a1c1b",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-tertiary-container": "#d9b26d",
+                        "on-secondary-fixed-variant": "#763218",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "inverse-primary": "#abc8f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "section-gap": "120px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .white-cube-glow {
+            box-shadow: 0 40px 40px rgba(18, 51, 88, 0.04);
+        }
+        .tab-active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #123358;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 border-b border-outline-variant z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary tracking-tight">Artisane</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Browse</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Artists</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Collections</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Exhibitions</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-48" placeholder="Search artists..." type="text"/>
+</div>
+<button class="scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+</button>
+<button class="scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-primary">person</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full overflow-hidden">
+<div class="h-[614px] w-full relative">
+<img class="w-full h-full object-cover" data-alt="A wide, high-resolution photograph of a contemporary artist's studio. Sunlight streams through large industrial windows onto a pristine white floor. In the center, a large, unfinished abstract painting sits on a minimalist wooden easel. The space is uncluttered and sophisticated, dominated by soft whites and cool grays, reflecting a high-end gallery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFy043LSZ3es6q0AIRzyLc16WBpNpP8Dw-lpBu52izNjc4YuhKsXzdjh8WuKgMgRFp3c7sMH68S74TzgV2tAxgdqfnhokuigXWWNFF6xpekYb6DyclsQCIKSOrkwviyTBUcRDj1NU-iZ6DU6bEj8-Hs7dmab11TrasIxWx0OhiUmjk6ctR7-tBRgpYOo0BStyCHnNlVSb2UOd_OzRICN_4igY6MpcxS2HY5X_3sAciWgcgyxD7Glrc1qE7NNddil8fQuTefFaGuh-U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop -mt-48 relative z-10">
+<div class="bg-surface/90 backdrop-blur-sm p-12 border border-outline-variant white-cube-glow max-w-4xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] block mb-4">Featured Artist</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Elena Vance</h1>
+<div class="flex gap-12 border-t border-outline-variant pt-6">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Followers</p>
+<p class="font-headline-md text-headline-md text-primary">12.4K</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Works Sold</p>
+<p class="font-headline-md text-headline-md text-primary">184</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Medium</p>
+<p class="font-headline-md text-headline-md text-primary">Oil &amp; Acrylic</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md hover:opacity-90 transition-all flex items-center gap-2" onclick="toggleRequestSidebar()">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">add</span>
+                                MAKE A REQUEST
+                            </button>
+<button class="border border-primary text-primary px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-primary-fixed transition-all">
+                                FOLLOW ARTIST
+                            </button>
+</div>
+</div>
+<div class="mt-8 max-w-[600px]">
+<p class="font-body-lg text-body-lg text-on-surface">
+                            Based in Berlin, Elena's work explores the intersection of brutalist architecture and organic fluid dynamics. Her "Liminal Structures" series has been featured in leading contemporary galleries worldwide.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<section class="mt-section-gap border-b border-outline-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop flex gap-12">
+<button class="relative font-label-md text-label-md text-primary py-4 tab-active">Available Work</button>
+<button class="relative font-label-md text-label-md text-on-surface-variant py-4 hover:text-primary transition-colors">Portfolio</button>
+<button class="relative font-label-md text-label-md text-on-surface-variant py-4 hover:text-primary transition-colors">Reviews</button>
+<button class="relative font-label-md text-label-md text-on-surface-variant py-4 hover:text-primary transition-colors">Live Auction</button></div>
+</section>
+<!-- Art Grid (Bento Style) -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Piece -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A large-scale abstract oil painting titled 'Concrete Echo'. It features bold, textured strokes of Slate Gray and Gallery Blue juxtaposed against soft, ethereal washes of Sand and Bone. The composition mimics the play of light on a weathered concrete wall, creating a mood of industrial nostalgia and quiet contemplation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2AtVEYSw_FpeAcKJ4MujBRNb85rXxbWo0YGNskbILTOWQiqgYs6oxBM5s3m1u5-CA701v0VryTBFYdBQOYQKL2sJHXAFzmdrdpmkNwWpah7Tsx2f_U1UN1wMs6giyrPxMJKj5o3Defcf4Fbpvm-zvJRGVIFC3KYvgT9B75y3lfQ8f5ESdkLN8AmKzOI9dZJ-IKLhUqt38IdRLEOtFOKnDVzp6E4JRezh1hoKqlylBYYjOl5Y5Ssc--4ybLKDoIQTBse-sUypgqHZo"/>
+</div>
+<div class="flex justify-between items-baseline">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Concrete Echo</h3>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-1 rounded text-on-surface-variant">Oil on Canvas, 120x150cm</span>
+</div>
+<p class="font-headline-md text-headline-md text-secondary">$4,200</p>
+</div>
+</div>
+<!-- Vertical Piece -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A vertical abstract painting titled 'Fragmented Dawn'. The piece uses a sophisticated palette of deep navy and vibrant orange accents. Geometric shapes overlap with translucent layers, suggesting the silhouettes of a city waking up. The style is minimalist yet emotionally evocative, with a focus on clean lines and subtle gradients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHB_E_Kf8XIEi1SxRAAVqGq6IIQMDJUFoG2dhVqakW7Tmgcsl7_0fen7lwCDu1vSfMbLP_8Lhkr5JQJQXN8mT5cX1xGGkYYz0wYCDTbviW8biWEBvVWl4Oy5C_QgpOFEtuQNnDsBGb6rwpQdhaIqFnlJhpQJl5-NM6GvshYyJ4sVsw0I__udlLJIRB6sAaKEoWW-GfDB9WoDcQlUWpKHMt0phEBgzoJGbFvhpJdy_0bVXmlttSAayWtfb1cZ5iCdIFA011kju5m1za"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Fragmented Dawn</h3>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-1 rounded text-on-surface-variant">Acrylic on Wood, 60x80cm</span>
+<p class="font-headline-md text-headline-md text-secondary mt-2">$1,850</p>
+</div>
+</div>
+<!-- Two Small Pieces -->
+<div class="md:col-span-6 group cursor-pointer">
+<div class="aspect-square overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist abstract work titled 'Stillness II'. It consists of a single, sweeping brushstroke of Charcoal Black on a vast, textured off-white background. The simplicity of the composition emphasizes the texture of the linen canvas and the movement of the artist's hand, creating a Zen-like atmosphere of calm and focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN60uRO8545cCTo_wMBcpjStUf1zgVHC4YS4nyb22WvlhKk72aIPrPcF77IWrwldmuu0uYcGgAk1taMescg-0eCmCYkHfm9FS01aDjOgTg2VohAZ5ebv6E-AYlp75PwRODGazu5pVp-4jtpxYMg-WkA5-62bSmi8ZxRM4dM5WaX4kuC0xjUvYq4-pj8i3vPVaVhfZaOawrT3TkvGaA6K8q3qUiH-7Ku4vRxn-Hyk7vJASSBEKrBZ9LJalUozcId79Tfg7qjgiCyMU7"/>
+</div>
+<div class="flex justify-between">
+<h3 class="font-headline-md text-headline-md text-primary">Stillness II</h3>
+<p class="font-headline-md text-headline-md text-secondary">$950</p>
+</div>
+</div>
+<div class="md:col-span-6 group cursor-pointer">
+<div class="aspect-square overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An intricate mixed media piece titled 'The Architect's Dream'. It combines fine pencil sketches of structural blueprints with thick impasto layers of Terra Cotta and Ochre. The artwork explores the tension between planned structure and spontaneous creative expression, presented in a clean, modern frame." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8x9DPGMIVXalUOL5L2fuNfT0ae997VQR7x6gIryLPDHlC8n4CyhDUqPAdG0w85oRLkGUM6gZWzoD_6bqxEY0HC91JuUO73f09qA4hZGcc84sHtGSz7OksFBQOkRikAEEfAqjPRx26_AmFzSysMEuoy4bemJHOmDybusdfcPbD5iFpXqEZH-6COai6pww3vqK-OEcDOQQ-Dvm_ots-AZoLcBjbNcE46ON6Bahyn9bQvSUw0HHoqOqmoYjl-x5Ejn7rLLhNMEkbEsDA"/>
+</div>
+<div class="flex justify-between">
+<h3 class="font-headline-md text-headline-md text-primary">Architect's Dream</h3>
+<p class="font-headline-md text-headline-md text-secondary">$1,200</p>
+</div>
+</div>
+</div>
+</section><section class="max-w-container-max mx-auto px-margin-desktop py-section-gap bg-surface-container-low border border-outline-variant rounded-xl mb-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center p-8">
+<div class="relative aspect-square overflow-hidden bg-surface-container rounded-lg border border-outline-variant">
+<img alt="Auction Artwork" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9y3Hj8M1Gz_pS3X_fXzJ2b-R2kXp-X4m5H6j_9rL-p8n7m6l5k4j3h2g1"/>
+<div class="absolute top-4 left-4 bg-error text-on-error px-4 py-1.5 rounded-full font-label-sm flex items-center gap-2 animate-pulse">
+<span class="material-symbols-outlined text-[14px]">sensors</span>
+                LIVE AUCTION
+            </div>
+</div>
+<div class="space-y-8">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Urban Shadows (Special Edition)</h2>
+<p class="font-body-md text-on-surface-variant italic">Oil on canvas, unique piece from the Liminal Structures series.</p>
+</div>
+<div class="grid grid-cols-2 gap-8 border-y border-outline-variant py-8">
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase mb-1">Current Bid</p>
+<p class="font-headline-lg text-secondary">$5,400</p>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase mb-1">Time Left</p>
+<div class="flex items-baseline gap-1">
+<p class="font-headline-lg text-primary">02</p>
+<span class="font-label-sm text-on-surface-variant">H</span>
+<p class="font-headline-lg text-primary ml-2">14</p>
+<span class="font-label-sm text-on-surface-variant">M</span>
+<p class="font-headline-lg text-primary ml-2">45</p>
+<span class="font-label-sm text-on-surface-variant">S</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="flex-1 bg-surface-container px-4 py-4 rounded-lg border border-outline-variant">
+<span class="font-label-sm text-on-surface-variant mr-2">$</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 font-headline-md text-primary w-32" placeholder="5,500" type="number"/>
+</div>
+<button class="flex-[2] bg-primary text-on-primary py-4 px-8 rounded-lg font-label-md hover:opacity-90 transition-all uppercase tracking-wider">
+                        Place Bid
+                    </button>
+</div>
+<p class="font-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                    Minimum bid increment: $100
+                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Make a Request Sidebar (Hidden by default) -->
+<div class="fixed inset-0 z-[100] translate-x-full transition-transform duration-500 flex justify-end" id="request-sidebar">
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-sm" onclick="toggleRequestSidebar()"></div>
+<div class="relative w-full max-w-xl bg-surface h-full shadow-2xl p-margin-desktop flex flex-col overflow-y-auto">
+<div class="flex justify-between items-center mb-12">
+<h2 class="font-headline-lg text-headline-lg text-primary">Custom Commission</h2>
+<button class="text-on-surface-variant hover:text-primary" onclick="toggleRequestSidebar()">
+<span class="material-symbols-outlined text-[32px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-12">
+                    Request a bespoke piece from Elena Vance. Commissions typically take 4-8 weeks to complete depending on complexity.
+                </p>
+<form class="space-y-8">
+<div>
+<label class="font-label-md text-label-md text-primary uppercase block mb-2">Art Medium</label>
+<select class="w-full border-0 border-b border-outline-variant bg-transparent py-4 focus:ring-0 focus:border-primary text-body-md">
+<option>Oil on Canvas</option>
+<option>Acrylic on Wood</option>
+<option>Mixed Media</option>
+<option>Charcoal Drawing</option>
+</select>
+</div>
+<div>
+<label class="font-label-md text-label-md text-primary uppercase block mb-2">Preferred Size</label>
+<select class="w-full border-0 border-b border-outline-variant bg-transparent py-4 focus:ring-0 focus:border-primary text-body-md">
+<option>Small (up to 40x40cm)</option>
+<option>Medium (up to 100x100cm)</option>
+<option>Large (up to 200x200cm)</option>
+<option>Custom Dimensions</option>
+</select>
+</div>
+<div>
+<label class="font-label-md text-label-md text-primary uppercase block mb-2">Piece Description</label>
+<textarea class="w-full border-0 border-b border-outline-variant bg-transparent py-4 focus:ring-0 focus:border-primary text-body-md resize-none" placeholder="Describe your vision, color preferences, or specific series you're inspired by..." rows="4"></textarea>
+</div>
+<div>
+<label class="font-label-md text-label-md text-primary uppercase block mb-2">Estimated Budget ($)</label>
+<input class="w-full border-0 border-b border-outline-variant bg-transparent py-4 focus:ring-0 focus:border-primary text-body-md" placeholder="Enter your budget range" type="number"/>
+</div>
+<div class="pt-8">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-6 italic flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+                            Secure Request: Your details are only shared with the artist and gallery.
+                        </p>
+<button class="w-full bg-primary text-on-primary py-5 rounded-lg font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all" type="button">
+                            SEND REQUEST
+                        </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md text-primary">Artisane</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+                    Connecting discerning collectors with the world's most evocative contemporary artists.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<p class="font-label-md text-label-md text-primary">Resources</p>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Artist Resources</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Community Guidelines</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Secure Payments</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<p class="font-label-md text-label-md text-primary">Legal</p>
+<ul class="space-y-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Terms of Service</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all" href="#">Contact Support</a></li>
+</ul>
+</div>
+</div>
+<div class="space-y-6">
+<p class="font-label-md text-label-md text-primary">Newsletter</p>
+<div class="flex border-b border-outline">
+<input class="bg-transparent border-none py-2 focus:ring-0 text-body-md w-full" placeholder="Email address" type="email"/>
+<button class="text-primary font-label-md">Join</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Artisane Gallery. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        function toggleRequestSidebar() {
+            const sidebar = document.getElementById('request-sidebar');
+            if (sidebar.classList.contains('translate-x-full')) {
+                sidebar.classList.remove('translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                document.body.style.overflow = 'hidden';
+            } else {
+                sidebar.classList.add('translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Tab switching logic (simple visual only)
+        document.querySelectorAll('section button.relative.font-label-md').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('section button.relative.font-label-md').forEach(btn => {
+                    btn.classList.remove('tab-active', 'text-primary');
+                    btn.classList.add('text-on-surface-variant');
+                });
+                button.classList.add('tab-active', 'text-primary');
+                button.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

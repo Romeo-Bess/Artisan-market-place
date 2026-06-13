@@ -1,0 +1,41 @@
+Created At: 2026-06-13T08:14:09Z
+Completed At: 2026-06-13T08:14:09Z
+
+				The command completed successfully.
+				Output:
+				1: document.addEventListener('DOMContentLoaded', () => {
+2:     // Locate all follow buttons
+3:     const followButtons = document.querySelectorAll('button, a');
+4:     
+5:     followButtons.forEach(btn => {
+6:         const text = btn.textContent.trim().toLowerCase();
+7:         if (text === 'follow artist' || text === 'following') {
+8:             btn.classList.add('follow-artist-btn');
+9:             
+10:             // Set initial state
+11:             btn.setAttribute('data-following', 'false');
+12:             
+13:             // Set up follow counter reference
+14:             let followersEl = null;
+15:             const labels = document.querySelectorAll('p, span, div');
+16:             for (let label of labels) {
+17:                 if (label.textContent.trim().toLowerCase() === 'followers') {
+18:                     let parent = label.parentElement;
+19:                     if (parent) {
+20:                         followersEl = parent.querySelector('.font-headline-md, p:nth-child(2), span:nth-child(2)');
+21:                     }
+22:                     break;
+23:                 }
+24:             }
+25: 
+26:             btn.addEventListener('click', (e) => {
+27:                 e.preventDefault();
+28:                 e.stopPropagation();
+29: 
+30:                 const isFollowing = btn.getAttribute('data-following') === 'true';
+31:                 
+32:                 if (isFollowing) {
+33:                     btn.setAttribute('data-following', 'false');
+34:                     btn.textContent = 'FOLLOW ARTIST';
+35:                     btn.clas
+

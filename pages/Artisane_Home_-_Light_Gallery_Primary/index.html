@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisane | Curated Silence and Intention</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .white-cube-border {
+            border: 1px solid #E5E5E5;
+        }
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#abc8f5",
+                      "background": "#faf9f7",
+                      "outline-variant": "#c3c6cf",
+                      "on-tertiary-container": "#d9b26d",
+                      "primary-container": "#2c4a70",
+                      "secondary": "#94492d",
+                      "on-primary-container": "#9cbae6",
+                      "inverse-on-surface": "#f1f1ef",
+                      "tertiary-fixed-dim": "#e8c17a",
+                      "surface-container-highest": "#e3e2e0",
+                      "on-primary-fixed-variant": "#2a486e",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e3e2e0",
+                      "surface": "#faf9f7",
+                      "tertiary-container": "#5f4407",
+                      "on-surface": "#1a1c1b",
+                      "tertiary": "#442e00",
+                      "secondary-container": "#fd9e7b",
+                      "outline": "#74777f",
+                      "on-error-container": "#93000a",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-low": "#f4f3f1",
+                      "surface-bright": "#faf9f7",
+                      "on-secondary-container": "#773319",
+                      "tertiary-fixed": "#ffdea7",
+                      "secondary-fixed": "#ffdbcf",
+                      "inverse-surface": "#2f3130",
+                      "on-background": "#1a1c1b",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#436087",
+                      "primary-fixed-dim": "#abc8f5",
+                      "surface-dim": "#dadad8",
+                      "on-secondary-fixed": "#380d00",
+                      "surface-container": "#efeeec",
+                      "on-secondary-fixed-variant": "#763218",
+                      "error": "#ba1a1a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-high": "#e9e8e6",
+                      "primary": "#123358",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#ffb59b",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#d4e3ff",
+                      "on-surface-variant": "#43474e",
+                      "on-primary-fixed": "#001c39",
+                      "on-tertiary-fixed-variant": "#5d4205",
+                      "on-tertiary-fixed": "#271900"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "container-max": "1280px",
+                      "section-gap": "120px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "headline-md": ["EB Garamond"],
+                      "display-lg": ["EB Garamond"],
+                      "headline-lg-mobile": ["EB Garamond"],
+                      "label-sm": ["Hanken Grotesk"],
+                      "headline-lg": ["EB Garamond"],
+                      "body-md": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-surface dark:bg-background border-b border-outline-variant dark:border-on-surface-variant">
+<nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-display-lg text-display-lg text-primary dark:text-primary-fixed tracking-tight" href="#">Artisane</a>
+<div class="hidden md:flex gap-8">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Discover</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 font-body-md text-body-md" href="#">Collectors</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 font-body-md text-body-md" href="#">Commissions</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 font-body-md text-body-md" href="#">Journal</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors" id="theme-toggle">
+<span class="material-symbols-outlined text-primary" data-icon="dark_mode">dark_mode</span>
+</button>
+<span class="font-label-md text-label-md text-primary dark:text-primary-fixed cursor-pointer">ZAR</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="shopping_bag">shopping_bag</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[921px] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 -z-10 bg-surface-container-lowest">
+<img class="w-full h-full object-cover opacity-20 filter grayscale" data-alt="A serene, expansive gallery space with towering white walls and polished concrete floors. Soft, diffused natural light filters from high skylights, creating a sense of infinite calm. In the center, a single minimalist sculpture stands, casting a long, gentle shadow. The aesthetic is extremely high-end, clean, and professional, utilizing a palette of off-whites and cool greys to emphasize the 'White Cube' concept." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdoPBjd0HQMJNIZw-GvfNyalfcLZcH6Ffm1AXJVBTMXXu0blzBpp2sxwOKgfE-tB-r2fNWERnhtAkEs2OCEF6isY5_4eUWSPx1V2DwV73Wi66GHhvqrNBgNlvo5DD1xxdPYNsC0EiBLvupL4ks_97PM_5z5Iw8yH7wEmUVRVEfxR7obRiPuqcjzts1GMUaPP0qb5VgOg_AdmZvrXMgQU3wPwU5vIPC7ewYfn871Ps2gk3YSOaEMvMh32x6AXvzbSUOscM8nNRYWktx"/>
+</div>
+<div class="max-w-4xl w-full reveal-on-scroll">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6">Restoring Silence to Art</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    A curated digital destination for intentional collecting. Discover pieces that command the room by whispering, not shouting.
+                </p>
+<!-- Elegant Search Bar -->
+<div class="relative max-w-2xl mx-auto mb-12 group">
+<div class="glass-overlay rounded-full px-8 py-5 flex items-center gap-4 transition-all duration-500 focus-within:ring-2 focus-within:ring-primary/20">
+<span class="material-symbols-outlined text-primary/60" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder:text-on-surface-variant/50" placeholder="Search by artist, medium, or emotion..." type="text"/>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-all transform hover:-translate-y-1">
+                        Discover the Collection
+                    </button>
+<button class="border border-outline text-primary px-10 py-4 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-all">
+                        Commission an Artist
+                    </button>
+</div>
+</div>
+</section>
+<!-- Shop by Medium Section -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-16 reveal-on-scroll">
+<h2 class="font-headline-lg text-headline-lg mb-4">Shop by Medium</h2>
+<div class="w-24 h-px bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Medium Card 1 -->
+<div class="group relative aspect-[3/4] overflow-hidden bg-surface-container reveal-on-scroll" style="transition-delay: 100ms;">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0" data-alt="An extreme close-up of thick, textured oil paint on a canvas. The brushstrokes are deliberate and rhythmic, creating a physical depth. The palette features muted earth tones, deep Gallery Blue, and subtle ivory highlights. The lighting is dramatic, coming from the side to emphasize the three-dimensional quality of the medium. The overall mood is sophisticated and tactile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuRWK1Y_MaJZL_hrZK1bGZMiskvlmrJPcrlK_lXdCtWBT5rjaBMWJVcgn7glS3ca9Pxk92wu5dP14VwzWdNQi_6RaBiXsbG3dqSl9VK5IYTJWMlqGOKDFdYsJwxE9x4KkdoLktO_hF9hk48ebQQ1GYaMJxArQWrzKzHAXCp1byJETC4ctNBGJ_-MLSZgVNre9GYpl_OM6uE3qfNIcqHmTCj5bkhSZd0gfkrvzKPxYp2k-M1txbLRG8fwLtsyGiFmITNyzVzfts7oRS"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-end items-end p-8">
+<div class="text-white">
+<span class="font-label-sm text-label-sm uppercase tracking-widest opacity-80 mb-2 block">Traditional</span>
+<h3 class="font-headline-md text-headline-md">Oil on Canvas</h3>
+</div>
+</div>
+</div>
+<!-- Medium Card 2 -->
+<div class="group relative aspect-[3/4] overflow-hidden bg-surface-container reveal-on-scroll" style="transition-delay: 200ms;">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0" data-alt="A minimalist white marble sculpture against a dark, velvet background. The form is abstract and organic, reminiscent of a flowing wave or a resting figure. The surface is polished to a high sheen, reflecting a single, soft studio light. The composition is balanced and elegant, emphasizing the purity of the material and the sophistication of modern sculptural art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdDa1-y6DJamD6FwKzSVQ99t0oiE490cqrFPS9tpyBN49YtYJjPnrX8Xqfs49HmEOBgfHD_dxenUDIPCabP_2587eQUL_sMqAcqSXTc7iCM5YuI7YeVibSqLgrpuH-DstymFOilCrA8S8lqoJrUL0Ef79rcs1QSZzS-O-jTb1iUUjL_r0u4z5hDDUFT79IPWgxqPj4b_mOP3m7qR5dIPxDmESZ75r0GrYowK9_lllZTi3zSziGUd8Cz3xhWXhOHJWRtVfb0fGkaJw5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-end items-end p-8">
+<div class="text-white">
+<span class="font-label-sm text-label-sm uppercase tracking-widest opacity-80 mb-2 block">Form</span>
+<h3 class="font-headline-md text-headline-md">Sculpture</h3>
+</div>
+</div>
+</div>
+<!-- Medium Card 3 -->
+<div class="group relative aspect-[3/4] overflow-hidden bg-surface-container reveal-on-scroll" style="transition-delay: 300ms;">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0" data-alt="A cutting-edge digital art piece displayed on a high-resolution flat panel. The artwork features complex, algorithmic patterns that resemble neural networks or star charts, glowing in a soft cyan and deep navy palette. The surrounding environment is a dim, modern interior, highlighting the artwork's luminous and technological nature. The mood is futuristic yet contemplative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3zIRwp-ocM0qkCQL_WRS_LaHQQnsE-5u5tcJLA-2E8976BSETYUWYjKiCzKhZY98IE3j5ID8XhLERy0p_uy4CMn7UKOiTJAuIBnryeJiR1qj0SASDFna7rkOasTC4Vl2jd6sBg9rBF-lWlswx3c2wwNmkcPGZ8c0eXiCx0JxYsdqjU0vIdRD0H3AKfKAkDdjXfN5Wp8kB-MWjc49p9IbZYK4nEuGKevy0wE5cQM82g92eJuVkJ_EyKdDl58Bgau7gN-Jz8Urty-xK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-end items-end p-8">
+<div class="text-white">
+<span class="font-label-sm text-label-sm uppercase tracking-widest opacity-80 mb-2 block">New Media</span>
+<h3 class="font-headline-md text-headline-md">Digital Art</h3>
+</div>
+</div>
+</div>
+<!-- Medium Card 4 -->
+<div class="group relative aspect-[3/4] overflow-hidden bg-surface-container reveal-on-scroll" style="transition-delay: 400ms;">
+<img class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0" data-alt="A high-contrast black and white architectural photograph capturing the geometric intersection of concrete and glass. The composition uses leading lines and deep shadows to create a dramatic, abstract feel. The lighting is harsh midday sun, creating sharp, clean boundaries between light and dark. The image evokes a sense of silence and structural permanence, fitting the professional gallery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTSEYuNIsqrcjCtFNrX12gAFfNZe99A5UAnjnyi9qEuWIRlH9oC7TcY8PsDZZFxV7obGvD9c_X1TVrdn9xTVPro3eHPKVhqAEf4g4Re1cKx3o2nOc7vJJnOjYEUIjaJmL1JUdG68nZbfQaVHfLD2tAVIJmgmg-RG0qVLOijHxgXoDaSL0HJcbLCc5lWU6FprGGwk9I0CoxdvNTbSGSixVkDLWKkam-tJyb_hxFPuqfuyIRQhexrUmpSVZW8YcpRugHb71gHqTzq_EE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-end items-end p-8">
+<div class="text-white">
+<span class="font-label-sm text-label-sm uppercase tracking-widest opacity-80 mb-2 block">Lens</span>
+<h3 class="font-headline-md text-headline-md">Photography</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Works (Bento Grid) -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto bg-surface-container-low/30">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal-on-scroll">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-4">Curated Selections</h2>
+<p class="font-body-md text-on-surface-variant">Exceptional pieces arriving this week from the Cape Town Collective.</p>
+</div>
+<a class="font-label-md text-label-md text-primary flex items-center gap-2 group" href="#">
+                    View All Works 
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 grid-rows-2 gap-gutter h-[1000px] md:h-[800px]">
+<!-- Large Featured Item -->
+<div class="md:col-span-8 md:row-span-2 group relative overflow-hidden bg-white white-cube-border reveal-on-scroll">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="A large-scale contemporary abstract painting dominated by soft blues, deep indigo, and wisps of ivory. The composition feels atmospheric, like a storm clearing over a vast ocean. The brushwork is expressive yet controlled. It is displayed in a minimalist black floater frame, hanging on a pristine gallery wall. The overall mood is one of serene power and high-end sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfEf9np0YntS9geqvWou9pMwD2d2DNo1SPKZtjky-HF-DYp_g7a7FC3BZDFGewt-igVBoCYfQ7EMHBEvU3qEM-Q2gIVTGaXW5A-m8VM__WnryhXcAqUasXwVfyZmR6vrGvC_a7dvf2-oGIEQTPzjFo2kvjW3Eir8VEf8s7zw4LXY375p6Ye2Qo7RGHEiSwxCFA3m2Z368_BPeNTgR0s9vgeJQbwQiaCtBRVngGO6ioWl6yxF40A0tVZubR2uH-tkzUgXiGB0lE2ErD"/>
+<div class="absolute bottom-0 left-0 right-0 p-12 bg-gradient-to-t from-white via-white/80 to-transparent transition-transform duration-500 translate-y-full group-hover:translate-y-0">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="font-headline-md text-headline-md mb-2">Oceanic Silence No. 12</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Elena Van der Merwe • Oil on Canvas</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary">R 45,000</p>
+<button class="mt-4 bg-primary text-on-primary px-6 py-2 rounded font-label-md text-label-md">Enquire</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Small Featured Item 1 -->
+<div class="md:col-span-4 md:row-span-1 group relative overflow-hidden bg-white white-cube-border reveal-on-scroll" style="transition-delay: 200ms;">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="A minimalist fine art photograph of a single desert tree against a vast, cloudless sky. The image is captured in soft morning light, creating a high-key aesthetic with very little shadow. The tones are warm and sandy, fitting a sophisticated light-mode UI. The framing is asymmetrical, emphasizing the vastness of the space around the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBepYRaR3vMs2l6SJU266tjqdC-Fms61lLunbqEcTqKBBL8d45xkaeOacZ5lt8lI3y9w3WCf1GklDtk8oejo_qTC5MqVXl6bmFCbbTKQIXjCMMz0D1KFPRa3H_xJOtA9ZLrusQtxTzBxIKJwCtBCP-7FbOEn9d18pJscvH2ZwC6H6WXWr6o4WbO2jOvHhX3J103ChqoVDR9O00yw9pw0mbNR88Xow5X08y6dokkw7cOAt1nZ3G5S3yUCFq5oFdEKOiIqdwbJW4vxrk5"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300"></div>
+<div class="absolute bottom-6 right-6">
+<span class="bg-white/90 backdrop-blur px-4 py-2 font-label-md text-label-md shadow-sm">R 12,500</span>
+</div>
+</div>
+<!-- Small Featured Item 2 -->
+<div class="md:col-span-4 md:row-span-1 group relative overflow-hidden bg-white white-cube-border reveal-on-scroll" style="transition-delay: 300ms;">
+<img class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" data-alt="A modern bronze sculpture with a dark, earthy patina. The piece is abstract, featuring sharp geometric angles that intersect in unexpected ways. It is positioned on a simple white pedestal in a high-end gallery setting. The lighting is focused, creating dramatic highlights on the metallic edges. The mood is structural, professional, and contemporary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMj-fwqYPVgb-8PZJhfazuXIC04xmJNi12p2rbIgYpZJyDKZkVLtPpZavQh9-9DyR_ONY1qCpDP6f_LcUqQ_B9B_9MqcPPtOpk4tCWQlVYgC8GcG9UZea3NaT45qEwCSvFFGVW0i95ZbOgiaInsFQnfFo7Q-otsn5-NT1q5_79o5ry_ybnzDdG8GF5VlLC3nMYT2KXHV5Y_-_sDl-ES6nfguHwO91JaoMf_XSxZvTitTzVm5HO1vhUFOBwTYOrfHTCwA4Y39TD3gJh"/>
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300"></div>
+<div class="absolute bottom-6 right-6">
+<span class="bg-white/90 backdrop-blur px-4 py-2 font-label-md text-label-md shadow-sm">R 28,000</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Journal -->
+<section class="py-section-gap px-margin-desktop max-w-3xl mx-auto text-center reveal-on-scroll">
+<span class="material-symbols-outlined text-4xl text-primary/30 mb-8" data-icon="auto_stories">auto_stories</span>
+<h2 class="font-headline-lg text-headline-lg mb-6">The Artisane Journal</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+                Join our circle of collectors for monthly essays on intentional living, artist interviews, and early access to new collections.
+            </p>
+<form class="flex flex-col md:flex-row gap-4">
+<input class="flex-grow border-b border-outline bg-transparent py-4 focus:ring-0 focus:border-primary font-body-md text-on-surface placeholder:text-outline" placeholder="Your email address" type="email"/>
+<button class="bg-primary text-on-primary px-10 py-4 font-label-md text-label-md hover:bg-primary/90 transition-all uppercase tracking-widest" type="submit">Subscribe</button>
+</form>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container dark:bg-surface-dim">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed mb-6 block" href="#">Artisane</a>
+<p class="font-body-md text-body-md text-on-surface dark:text-on-surface-variant mb-6">
+                    Curating silence and intention in the digital age.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="camera">camera</span>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-6 uppercase tracking-wider">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Artist Resources</a></li>
+<li><a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Gallery Locations</a></li>
+<li><a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Commission Flow</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-6 uppercase tracking-wider">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-6 uppercase tracking-wider">Support</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Contact</a></li>
+<li><a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 text-center max-w-container-max mx-auto">
+<p class="font-body-md text-body-md text-on-surface dark:text-on-surface-variant">© 2024 Artisane. All rights reserved. Curating silence and intention.</p>
+</div>
+</footer>
+<script>
+        // Reveal on scroll logic
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector('.material-symbols-outlined');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                icon.textContent = 'light_mode';
+                icon.setAttribute('data-icon', 'light_mode');
+            } else {
+                icon.textContent = 'dark_mode';
+                icon.setAttribute('data-icon', 'dark_mode');
+            }
+        });
+
+        // Simple mouse tracking for hero subtle movement
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            const heroImg = document.querySelector('section img');
+            if(heroImg) {
+                heroImg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    </script>
+</body></html>

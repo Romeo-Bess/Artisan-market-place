@@ -1,0 +1,84 @@
+Created At: 2026-06-01T06:49:05Z
+Completed At: 2026-06-01T06:49:05Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js`
+Total Lines: 362
+Total Bytes: 18166
+Showing lines 1 to 362
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: document.addEventListener('DOMContentLoaded', () => {
+2:     // Locate all follow buttons
+3:     const followButtons = document.querySelectorAll('button, a');
+4:     
+5:     followButtons.forEach(btn => {
+6:         const text = btn.textContent.trim().toLowerCase();
+7:         if (text === 'follow artist' || text === 'following') {
+8:             btn.classList.add('follow-artist-btn');
+9:             
+10:             // Set initial state
+11:             btn.setAttribute('data-following', 'false');
+12:             
+13:             // Set up follow counter reference
+14:             let followersEl = null;
+15:             const labels = document.querySelectorAll('p, span, div');
+16:             for (let label of labels) {
+17:                 if (label.textContent.trim().toLowerCase() === 'followers') {
+18:                     let parent = label.parentElement;
+19:                     if (parent) {
+20:                         followersEl = parent.querySelector('.font-headline-md, p:nth-child(2), span:nth-child(2)');
+21:                     }
+22:                     break;
+23:                 }
+24:             }
+25: 
+26:             btn.addEventListener('click', (e) => {
+27:                 e.preventDefault();
+28:                 e.stopPropagation();
+29: 
+30:                 const isFollowing = btn.getAttribute('data-following') === 'true';
+31:                 
+32:                 if (isFollowing) {
+33:                     btn.setAttribute('data-following', 'false');
+34:                     btn.textContent = 'FOLLOW ARTIST';
+35:                     btn.clas
+<truncated 16323 bytes>
+3: 
+324:     function setupCurrencyToggles() {
+325:         const elements = document.querySelectorAll('header span, footer span, header a, footer a, header button, footer button, nav span, nav a, nav button, .currency-toggle-trigger, [data-icon="currency"], .currency-selector');
+326:         const currencyTargets = [];
+327:         
+328:         elements.forEach(el => {
+329:             const text = el.textContent.trim().toUpperCase();
+330:             if (text === 'ZAR (R)' || text === 'EUR (€)' || text === 'ZAR' || text === 'EUR' || el.classList.contains('currency-toggle-trigger') || el.classList.contains('currency-selector')) {
+331:                 if (!currencyTargets.includes(el)) {
+332:                     currencyTargets.push(el);
+333:                 }
+334:             }
+335:         });
+336: 
+337:         currencyTargets.forEach(el => {
+338:             el.classList.add('cursor-pointer');
+339:             el.addEventListener('click', (e) => {
+340:                 e.preventDefault();
+341:                 e.stopPropagation();
+342:                 
+343:                 const currentCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
+344:                 const newCurrency = currentCurrency === 'ZAR' ? 'EUR' : 'ZAR';
+345:                 localStorage.setItem('artisane_currency', newCurrency);
+346:                 
+347:                 updateCurrencyToggleDisplays(newCurrency);
+348:                 updatePrices(newCurrency);
+349:                 showCurrencyToast(`Currency changed to ${newCurrency === 'ZAR' ? 'ZAR (R)' : 'EUR (€)'}`);
+350:             });
+351:         });
+352:     }
+353: 
+354:     // Run unified navbar, scan, and set active states
+355:     unifyNavbars();
+356:     scanPrices();
+357:     const savedCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
+358:     updateCurrencyToggleDisplays(savedCurrency);
+359:     updatePrices(savedCurrency);
+360:     setupCurrencyToggles();
+361: });
+362: 
+The above content shows the entire, complete file contents of the requested file.

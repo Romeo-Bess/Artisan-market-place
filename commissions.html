@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#94492d",
+                        "on-secondary-fixed-variant": "#763218",
+                        "on-secondary-container": "#773319",
+                        "tertiary-fixed": "#ffdea7",
+                        "outline-variant": "#c3c6cf",
+                        "on-tertiary-container": "#d9b26d",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "inverse-on-surface": "#f1f1ef",
+                        "inverse-surface": "#2f3130",
+                        "surface-variant": "#e3e2e0",
+                        "inverse-primary": "#abc8f5",
+                        "on-surface-variant": "#43474e",
+                        "secondary-container": "#fd9e7b",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "on-error": "#ffffff",
+                        "surface": "#faf9f7",
+                        "primary-fixed-dim": "#abc8f5",
+                        "primary-container": "#2c4a70",
+                        "primary": "#123358",
+                        "outline": "#74777f",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f4f3f1",
+                        "on-primary-container": "#9cbae6",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-bright": "#faf9f7",
+                        "on-background": "#1a1c1b",
+                        "background": "#faf9f7",
+                        "tertiary-container": "#5f4407",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-primary-fixed": "#001c39",
+                        "surface-tint": "#436087",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-surface": "#1a1c1b",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container-high": "#e9e8e6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#efeeec",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#442e00",
+                        "surface-dim": "#dadad8",
+                        "surface-container-highest": "#e3e2e0",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "section-gap": "120px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+<!-- TopNavBar -->
+<nav class="w-full sticky top-0 z-50 bg-surface dark:bg-background border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-display-lg text-primary dark:text-primary-fixed tracking-tight">Artisane</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">Discover</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">Collectors</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed font-bold border-b-2 border-primary pb-1 transition-colors duration-300" href="commissions.html">Commissions</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="journal.html">Journal</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4 text-label-md font-label-md">
+<span class="text-primary cursor-pointer">ZAR</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-80 transition-opacity" data-icon="dark_mode">dark_mode</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-80 transition-opacity" data-icon="shopping_bag">shopping_bag</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-80 transition-opacity" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-[870px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0 scale-105 transition-transform duration-[3s] hover:scale-100">
+<img alt="Artistic Interior" class="w-full h-full object-cover" data-alt="An expansive, high-ceilinged contemporary art gallery bathed in soft, natural morning light. A massive blank canvas sits on an easel in the center, waiting for its first brushstroke. The room is minimalist with polished concrete floors and white walls, creating a 'Quiet Curator' aesthetic. Subtle shadows dance across the space, evoking a sense of calm intentionality and creative potential." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiWolpj5L4e2PZhI4yprdkx8lCevSUxSy9s6yM8xNKaLWfEZd4lmAfESAkKCKKXAuqtvuSTmUQOJhKsy4P2q1Aq2WPWiM2CZUsFR2XCWlPe0E0PahdXz_ITpKZ6wFzXlCLKmjS5Eskw_237i3Cl5fNVJGjIpr5U9_nr3-VbIIyQl1HhoC7QnrwOiWtfOfaEeUfA5fFRRs6B1_ctxwRoYTW_4TU2JPgMNtAgeoSeU4JYhjaO_v4Q6JH652ZfemHmA-Igmnby1voK6FZ"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-[64px] md:text-[80px] leading-tight mb-6 animate-fade-in">
+                    Art Made for Your Space
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-md">
+                    Translate your vision into a timeless masterpiece. Artisane Commissions connects you with world-class artists to create bespoke works of art tailored to your environment and narrative.
+                </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md tracking-wider hover:opacity-90 transition-all uppercase">
+                        Start Your Commission
+                    </button>
+<button class="border border-outline text-primary px-8 py-4 rounded-lg font-label-md text-label-md tracking-wider hover:bg-surface-variant transition-all uppercase">
+                        View Portfolio
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto scroll-reveal">
+<div class="text-center mb-20">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em]">The Process</span>
+<h2 class="font-display-lg text-display-lg mt-4">Curating Your Vision</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+<!-- Connecting Line (Desktop) -->
+<div class="hidden md:block absolute top-1/4 left-0 w-full h-[1px] bg-outline-variant -z-10"></div>
+<!-- Step 1 -->
+<div class="group">
+<div class="w-12 h-12 bg-background border border-outline flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-on-primary transition-all duration-500">
+<span class="font-headline-md">01</span>
+</div>
+<h3 class="font-headline-md mb-4">Consultation</h3>
+<p class="font-body-md text-on-surface-variant">We begin with a deep dive into your space, preferences, and the emotional resonance you seek from the piece.</p>
+</div>
+<!-- Step 2 -->
+<div class="group">
+<div class="w-12 h-12 bg-background border border-outline flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-on-primary transition-all duration-500">
+<span class="font-headline-md">02</span>
+</div>
+<h3 class="font-headline-md mb-4">Artist Selection</h3>
+<p class="font-body-md text-on-surface-variant">Our curators match you with three artists whose style aligns perfectly with your stated aesthetic and thematic goals.</p>
+</div>
+<!-- Step 3 -->
+<div class="group">
+<div class="w-12 h-12 bg-background border border-outline flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-on-primary transition-all duration-500">
+<span class="font-headline-md">03</span>
+</div>
+<h3 class="font-headline-md mb-4">Creation</h3>
+<p class="font-body-md text-on-surface-variant">Follow the journey with regular studio updates. Witness the evolution of your artwork from sketch to final varnish.</p>
+</div>
+<!-- Step 4 -->
+<div class="group">
+<div class="w-12 h-12 bg-background border border-outline flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-on-primary transition-all duration-500">
+<span class="font-headline-md">04</span>
+</div>
+<h3 class="font-headline-md mb-4">Delivery</h3>
+<p class="font-body-md text-on-surface-variant">White-glove delivery and professional installation ensure your commission is showcased with the dignity it deserves.</p>
+</div>
+</div>
+</section>
+<!-- Past Commissions Gallery -->
+<section class="bg-surface-container-low py-section-gap">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em]">Our Portfolio</span>
+<h2 class="font-display-lg text-display-lg mt-4">Successful Commissions</h2>
+</div>
+<a class="font-label-md text-label-md text-primary border-b border-primary pb-1 hover:opacity-70 transition-opacity" href="#">Browse All Works</a>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Large Featured Item -->
+<div class="col-span-12 md:col-span-8 group relative aspect-[16/9] overflow-hidden cursor-pointer">
+<img alt="Commission Work 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A large-scale abstract oil painting featuring sweeping gestures of cobalt blue and ochre against a textured, bone-white background. The painting is hung in a luxury minimalist living room with floor-to-ceiling windows. Soft afternoon light hits the canvas, revealing thick impasto textures. The overall atmosphere is one of serene, high-end editorial elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4HNF4gYC1hsOdCrCspksoyjw6mlQXXoD7ePBSA-oFwMC4lWTbe-yvK_3-JvJyYrHIKbfG-O7PAJoNbBCPYXZJnuZaPYg5ZCKtb3W1tOEub99vZaiJ3Nf2ltJUvGAu9Y9xlQubbxwbpsVqda147jg9OZFLQnlZXDQkfVMqmJTjXgfAqj_sKExCSYNdHFH40z3IDnq5AAWalxe7mc8JNSuD17wxyKRZUyv6lx5nUNQ7T-C13Ncax70Mbsc1m-U4QifPW6KIZdTbstsW"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10 text-white">
+<span class="font-label-sm uppercase tracking-widest mb-2">Private Residence, Cape Town</span>
+<h4 class="font-headline-lg">Resonance in Blue</h4>
+<p class="font-body-md mt-2 opacity-80">Artist: Elena Vos | ZAR 45,000</p>
+</div>
+</div>
+<!-- Secondary Item -->
+<div class="col-span-12 md:col-span-4 group relative aspect-[4/5] overflow-hidden cursor-pointer">
+<img alt="Commission Work 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An intricate botanical illustration commission featuring South African flora, rendered in fine charcoal and gold leaf. The piece is framed in a thin, black minimalist frame. The lighting is focused and dramatic, highlighting the metallic sheen of the gold leaf. The background is a warm, neutral plaster wall, reinforcing a professional yet creative gallery mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAzc2E3RMMzj4lN8At4qg2MP-rkYYoYQ1sK-QalL_iSVFOeN8CFhGq3lsmZcfnHy-uxcyDu0xJoxsgRP4YeWIiMfAMn0eE_iJTaEwHNMLxm_Ysi-5wToYanT5Bzt9FM3cW2Dwkk0ui8sBg3JrN4usB2mdCU1ywI3M901649iB64kVeVztHKbDVVps1YgWlwV40xgt9YA10HsZO3Z5DTSfsT5o4HCAAFuGkxfjeQaS1D53Tz8vIvtrfX5pp1GIJ3r_Lq3lgEWHBCflh"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+<span class="font-label-sm uppercase tracking-widest mb-2">Corporate Suite, Sandton</span>
+<h4 class="font-headline-md text-glow">The Protea Study</h4>
+<p class="font-body-md mt-2 opacity-80">Artist: Marcus Thabo | ZAR 22,000</p>
+</div>
+</div>
+<!-- Small Grid Items -->
+<div class="col-span-12 md:col-span-4 group relative aspect-[1/1] overflow-hidden cursor-pointer">
+<img alt="Commission Work 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A modern geometric sculpture made of polished bronze, commissioned for a central atrium. The sculpture reflects the bright, white gallery lighting of the surrounding space. The shapes are fluid and organic yet clearly structured. The mood is sophisticated and quiet, embodying the 'Quiet Curator' design philosophy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf2QlzoBNzI6fVEzrtS1thBwqtrJd76o7gqJ_SjONPA0hWKIG2LT_TLbwzX-Jatza9Z8RNM621pjIa16HhbPuIEdjbg3gZLk4DKwq2ZUBW1NTOg5wRJGEswU5vc-2CeIhfzRReETt3MMC1D70U4R7mEtWAJyYiBwwWqTDT5WBt3r8kR8jFlIhuNJvZi0S1ndhGyeyPgzmZfOOlY7tdaanCa2Vqs0E4jME0upjQBjGTQbzxsThYBGzEfbJpWlIKN-J-yNnC0G6VrEr-"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
+<span class="font-label-sm uppercase tracking-widest mb-2">Boutique Hotel, Stellenbosch</span>
+<h4 class="font-headline-md">Fluid Form IV</h4>
+<p class="font-body-md mt-2 opacity-80">Artist: Sofia K. | ZAR 85,000</p>
+</div>
+</div>
+<div class="col-span-12 md:col-span-8 group relative aspect-[16/9] overflow-hidden cursor-pointer">
+<img alt="Commission Work 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A stunning triptych commission of mountain landscapes at dusk, painted with soft, hazy gradients of lavender, slate, and primary blue. Each panel is 1x2 meters, creating a wall-filling immersive experience. The lighting is dim and atmospheric, emphasizing the tranquility of the colors. A professional, trustworthy, and community-focused feel is achieved through the choice of local subject matter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkXfKtO2_l6oFfZQIwr-INyBL4Y8xRYd5r9tVGMmKynCiabdjzWSPXt9bGrWXRlpAJb_Eruy6EtYtlsQrufL6f7mSSTC3dIFR3gOzW9Uq06RegB5dYT6_MWqvSLwRl5bjSzwKL-zY7hkmynFCFIK_59GIuwhstK8rurrjS5pttkitAH2fsbXU_FIQbOYIembj0ziFb9bH7PwegOseSPQ668bFTquuA_z-W2Y3lRdD3vP9UBgxzdDTROXi5O_02L0whZELD6ZuP-UaB"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10 text-white">
+<span class="font-label-sm uppercase tracking-widest mb-2">Private Estate, Franschhoek</span>
+<h4 class="font-headline-lg">Veldt Whispers</h4>
+<p class="font-body-md mt-2 opacity-80">Artist: David M. | ZAR 120,000</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonial/Quote -->
+<section class="py-section-gap bg-background overflow-hidden">
+<div class="px-margin-desktop max-w-3xl mx-auto text-center scroll-reveal">
+<span class="material-symbols-outlined text-primary text-4xl mb-8" data-icon="format_quote">format_quote</span>
+<blockquote class="font-display-lg text-[32px] md:text-[40px] leading-relaxed mb-8 italic">
+                "The process was as transformative as the artwork itself. Artisane didn't just find me an artist; they helped me discover the story I wanted my home to tell."
+            </blockquote>
+<cite class="font-label-md text-label-md text-on-surface-variant not-italic uppercase tracking-widest">— Julian de Villiers, Collector</cite>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-gap px-margin-desktop">
+<div class="max-w-container-max mx-auto bg-primary py-24 px-12 text-center text-on-primary rounded-xl relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 pointer-events-none transition-transform duration-[10s] group-hover:scale-110">
+<img alt="Texture Background" class="w-full h-full object-cover" data-alt="A close-up high-resolution image of rich oil paint textures and brushstrokes in dark navy and charcoal. The lighting is dramatic and directional, highlighting the physical depth of the paint layers. This image serves as a subtle, sophisticated background for a call-to-action section in a luxury art gallery interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBporj5WQmIT2wweYed0n56T8HDAzelXssd1zV81FAn4GjWPs-iAXYCn2kJ4egqbu4LEh_1oaAIINVYRFbaVnQXce_bKA3PU7nhgWgfzx1CVug93WrDnyCoItbJIkuam5sJPhORBYS3E-G09tQHLvOU6SZyvesCxMxVKpt9r1B25dpC1Cc0-HheAVM102pjbzUpqg4Nua2_Nc5OItxUNfFhf52Teq-veKsOTayAnS8Ryo385giTGK4SCAfeouaoPDznXzwj8ARIkmDs"/>
+</div>
+<div class="relative z-10">
+<h2 class="font-display-lg text-display-lg mb-6">Ready to start your commission?</h2>
+<p class="font-body-lg mb-10 max-w-xl mx-auto opacity-90">
+                    Connect with our lead curator today for a complimentary 30-minute consultation on your custom art requirements.
+                </p>
+<button class="bg-on-primary text-primary px-12 py-5 rounded-lg font-label-md text-label-md tracking-widest hover:bg-primary-fixed transition-all uppercase">
+                    Inquire Now
+                </button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container dark:bg-surface-dim">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed mb-6 block">Artisane</span>
+<p class="font-body-md text-body-md text-on-surface dark:text-on-surface-variant max-w-xs">
+                    Curating silence and intention through contemporary African mastery.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Explore</span>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Artist Resources</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Gallery Locations</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed underline transition-colors" href="#">Commission Flow</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Legal</span>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Newsletter</span>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Join for private viewings.</p>
+<div class="flex border-b border-outline">
+<input class="bg-transparent border-none focus:ring-0 w-full px-0 py-2 font-body-md text-on-surface" placeholder="Email Address" type="email"/>
+<button class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 text-center">
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">
+                © 2024 Artisane. All rights reserved. Curating silence and intention.
+            </p>
+</div>
+</footer>
+<script>
+        // Reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Subtle parallax effect for hero image
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImg = document.querySelector('section img');
+            if (heroImg) {
+                heroImg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.05)`;
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,52 @@
+Created At: 2026-06-13T08:01:54Z
+Completed At: 2026-06-13T08:01:56Z
+
+				The command completed successfully.
+				Output:
+				document.addEventListener('DOMContentLoaded', () => {
+    // Locate all follow buttons
+    const followButtons = document.querySelectorAll('button, a');
+    
+    followButtons.forEach(btn => {
+        const text = btn.textContent.trim().toLowerCase();
+        if (text === 'follow artist' || text === 'following') {
+            btn.classList.add('follow-artist-btn');
+            
+            // Set initial state
+            btn.setAttribute('data-following', 'false');
+            
+            // Set up follow counter reference
+            let followersEl = null;
+            const labels = document.querySelectorAll('p, span, div');
+            for (let label of labels) {
+                if (label.textContent.trim().toLowerCase() === 'followers') {
+                    let parent = label.parentElement;
+                    if (parent) {
+                        followersEl = parent.querySelector('.font-headline-md, p:nth-child(2), span:nth-child(2)');
+                    }
+                    break;
+                }
+            }
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const isFollowing = btn.getAttribute('data-following') === 'true';
+                
+                if (isFollowing) {
+                    btn.setAttribute('data-following', 'false');
+                    btn.textContent = 'FOLLOW ARTIST';
+                    btn.className = btn.className.replace(/\bbg-primary\b/, '').replace(/\btext-on-primary\b/, '');
+                    if (!btn.className.includes('border-primary')) {
+                        btn.className += ' border border-primary text-primary';
+                    }
+                    if (followersEl) {
+                        followersEl.textContent = '12.4K';
+                    }
+                } else {
+                    btn.setAttribute('data-following', 'true');
+                    btn.textContent = 'FOLLOWING';
+                    btn.classNa
+<truncated 500 bytes>
+

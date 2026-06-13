@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c3c6cf;
+            border-radius: 10px;
+        }
+        .artisane-logo-anim {
+            letter-spacing: -0.05em;
+            animation: letter-fade 3s ease-in-out infinite alternate;
+        }
+        @keyframes letter-fade {
+            0% { opacity: 1; filter: blur(0px); }
+            50% { opacity: 0.7; filter: blur(0.5px); }
+            100% { opacity: 1; filter: blur(0px); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#abc8f5",
+                        "background": "#faf9f7",
+                        "outline-variant": "#c3c6cf",
+                        "on-tertiary-container": "#d9b26d",
+                        "primary-container": "#2c4a70",
+                        "secondary": "#94492d",
+                        "on-primary-container": "#9cbae6",
+                        "inverse-on-surface": "#f1f1ef",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e3e2e0",
+                        "surface": "#faf9f7",
+                        "tertiary-container": "#5f4407",
+                        "on-surface": "#1a1c1b",
+                        "tertiary": "#442e00",
+                        "secondary-container": "#fd9e7b",
+                        "outline": "#74777f",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-bright": "#faf9f7",
+                        "on-secondary-container": "#773319",
+                        "tertiary-fixed": "#ffdea7",
+                        "secondary-fixed": "#ffdbcf",
+                        "inverse-surface": "#2f3130",
+                        "on-background": "#1a1c1b",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#436087",
+                        "primary-fixed-dim": "#abc8f5",
+                        "surface-dim": "#dadad8",
+                        "on-secondary-fixed": "#380d00",
+                        "surface-container": "#efeeec",
+                        "on-secondary-fixed-variant": "#763218",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e9e8e6",
+                        "primary": "#123358",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#d4e3ff",
+                        "on-surface-variant": "#43474e",
+                        "on-primary-fixed": "#001c39",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-tertiary-fixed": "#271900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface custom-scrollbar selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="w-full sticky top-0 z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-display-lg text-display-lg text-primary tracking-tight artisane-logo-anim" href="#">Artisane</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Discover</a>
+<a class="font-body-md text-body-md text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Collectors</a>
+<a class="font-body-md text-body-md text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Commissions</a>
+<a class="font-body-md text-body-md text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Journal</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-4 px-4 py-2 bg-surface-container-low rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-48 font-label-md" placeholder="Search artists, works..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-label-md font-label-md">
+<button class="hover:text-primary transition-colors">ZAR</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors">dark_mode</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors">shopping_bag</button>
+<button class="material-symbols-outlined hover:text-primary transition-colors">account_circle</button>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-desktop min-h-screen">
+<!-- High-Impact Header -->
+<header class="py-section-gap">
+<div class="max-w-3xl">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">Seasonal Selection</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6 leading-tight">Curated Collection</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Explore a hand-picked assembly of contemporary masterpieces. From the visceral textures of classical oil painting to the infinite frontiers of digital synthesis.
+                </p>
+</div>
+</header>
+<!-- Filters and Content Layout -->
+<div class="flex flex-col md:flex-row gap-gutter pb-section-gap">
+<!-- Sidebar Filtering -->
+<aside class="w-full md:w-64 flex-shrink-0">
+<div class="sticky top-24 space-y-10">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Medium</h3>
+<div class="space-y-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded-sm border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Sculpture</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded-sm border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-primary font-medium">Painting</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded-sm border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Digital Art</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded-sm border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Photography</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Price Range</h3>
+<div class="space-y-4 pr-4">
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="500000" min="5000" type="range" value="125000"/>
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant">
+<span>R 5,000</span>
+<span>R 500,000+</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Availability</h3>
+<div class="space-y-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 border-outline text-primary focus:ring-primary" name="availability" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">All Works</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 border-outline text-primary focus:ring-primary" name="availability" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Available Now</span>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<!-- Art Grid -->
+<div class="flex-grow">
+<div class="flex justify-between items-baseline mb-8">
+<p class="font-label-md text-label-md text-outline">Showing 24 of 142 works</p>
+<div class="flex items-center gap-2 font-label-md text-label-md cursor-pointer hover:text-primary transition-colors">
+<span>Sort: Recommended</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-y-16 gap-x-gutter">
+<!-- Art Card 1 -->
+<article class="reveal group">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container mb-6 border border-outline-variant hover:border-primary transition-colors duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist abstract oil painting featuring sweeping strokes of gallery blue and soft ivory on a large textured canvas. The composition is asymmetrical and balanced, evoking a sense of calm and intentionality. The lighting is soft and natural, typical of a high-end contemporary art gallery setting with crisp white walls." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbk6CyGV4LY61108QzDIC4cD4_mINbKDpQmcGZ66jZPxNtsrHX0PbfjgqsaXkzUb3m-F4z4Wtsp38rbRZjBBbnA9MmJe-7b9AoTT2LAVCdBE3k-BYDAeCRRkTIoXXUicAU-9VWBejp9Lts0NW5Y_Gli83dHq9_isIe1xWfX24UWvpTJnXCgL93oGU2GgdvaJvxdw-4ZvHANFza8WWzq1q2UpdpWLbJpsn3bvFkAK1VQrTZM21MFIM7uShEpAEsie2zBgxl6YTa4i6N"/>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Ether Drift II</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Julian Valez</p>
+<span class="inline-block mt-3 px-3 py-1 bg-surface-container-high rounded-full font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Oil on Canvas</span>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface mb-2">R 45,000</p>
+<button class="block font-label-md text-label-md text-primary underline underline-offset-4 hover:text-secondary transition-colors">Inquire</button>
+</div>
+</div>
+</article>
+<!-- Art Card 2 -->
+<article class="reveal group">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container mb-6 border border-outline-variant hover:border-primary transition-colors duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A striking contemporary sculpture crafted from polished bronze with organic, fluid shapes that seem to defy gravity. The sculpture is displayed on a minimalist white plinth against a neutral, warm-toned background. Soft spotlighting highlights the metallic sheen and the sophisticated curves of the piece." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLczdplzjeWXMFmGI2wle-gpH28Wms9yQT4AI4uCj4mjsG7w6uNY63l-bBmK5VHVh7Pfn-WspY9ZJ3IqFN2560CPlRxrOKQWaRpK6D5Ou6uk_exHhVU1fkqUQ9cCkcKzCGePRQNeVYBms7HmIRH_2VDf3dyFVEZRepM_vm_QNIO7pz5q_W8IHgKE586s15XrV5F0TShsDqFczwwZfwcAXqKKf1jyD8LTLGkbFsh4i_w1KPq63nJs8PLln-SYPxSchGq7Ajpq1Pcgng"/>
+<div class="absolute top-4 right-4">
+<span class="bg-primary text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">New</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Silent Echo</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Elena Moretti</p>
+<span class="inline-block mt-3 px-3 py-1 bg-surface-container-high rounded-full font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Bronze Sculpture</span>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface mb-2">R 112,000</p>
+<button class="bg-primary text-on-primary px-4 py-2 font-label-md text-label-md hover:bg-primary-container transition-colors">Add to Bag</button>
+</div>
+</div>
+</article>
+<!-- Art Card 3 -->
+<article class="reveal group">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container mb-6 border border-outline-variant hover:border-primary transition-colors duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A vibrant digital art composition featuring layered translucent geometric shapes in hues of turquoise, deep blue, and muted coral. The work explores depth and transparency in a high-modernist style, presented as a high-quality archival print. The mood is serene and technologically sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4FwVMvL7qMSf-wZT1zwrWs8OqTcSnDsnelbEYarQoeepNUUONVCzZQhUhabW4VNLDBUcAcaWk31BUnYzbZ9Sl5Pkb8BHxIgu5S7bLQ71-4LDTnbMdEIP9QflTdMpFyNMuptwYSgOZRw-moWtuHDBmfyv6KLkmih3V_0cFUAIu-fNAaM5hluWUf_w53sDCnChRb781NwdNw9RcHTusx4ExLh6BkfmyuBa0gOlWXYa0nMbf1-3q7AWlRR9Oqjb1r9KSp5Jq62nIrO-Q"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Chromatic Phase 04</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Kaito Sato</p>
+<span class="inline-block mt-3 px-3 py-1 bg-surface-container-high rounded-full font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Digital Media</span>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface mb-2">R 28,500</p>
+<button class="block font-label-md text-label-md text-primary underline underline-offset-4 hover:text-secondary transition-colors">Inquire</button>
+</div>
+</div>
+</article>
+<!-- Art Card 4 -->
+<article class="reveal group">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container mb-6 border border-outline-variant hover:border-primary transition-colors duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A large-scale minimalist mixed media piece with heavy impasto textures and gold leaf accents on a matte grey background. The work is sophisticated and editorial, suggesting a luxury interior design context. The color palette is neutral and refined, focusing on material quality and light reflection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwCwYcaiRzpXNcdSjxHi16Ds00azdevyzb0bYqo-qWnpnttaNN33SxNi40opf_EiXGVTMkFYBKWmKUf0K5h_kpcvoZR-PleRGOKN9lYtVxTR5WBySxKDLRvvAUGqW0OTKtxTHixfe4lAKlch-AOSLWJXiCyQGZQSn2vH-qNa30k7wuLHt19A96UkVGHi0_EdHL_lDAUfuIPqUHTAEJp6G2_uNCxqLZkQwv3rFCWBznJNOTI1vEfLfpQ-V0w1nDMh7q1ZZRkO43mc-m"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Golden Gilded Void</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Amara Okoro</p>
+<span class="inline-block mt-3 px-3 py-1 bg-surface-container-high rounded-full font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Mixed Media</span>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface mb-2">R 89,000</p>
+<button class="bg-primary text-on-primary px-4 py-2 font-label-md text-label-md hover:bg-primary-container transition-colors">Add to Bag</button>
+</div>
+</div>
+</article>
+<!-- Art Card 5 -->
+<article class="reveal group">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container mb-6 border border-outline-variant hover:border-primary transition-colors duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A dramatic black and white architectural photograph capturing the sharp angles and shadows of a modern concrete building. High contrast lighting creates deep blacks and brilliant whites, emphasizing the geometric purity of the structure. The composition is focused and silent." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAorlbtP7N-H8BIt-JkQGvwlTdoA0kE6Fx0CvcBTs_YM6T8fe6UMqb_QYMJjoJ6o0up_KZt4STJNW_d2cLzn9_ymUOoC-6Qmyp3UNBSVJLNOJCzNMJTNgYoUTOz9qb5LjIq8DX1Iw63yvQlGtGArPKrD74ZYcfm7jrfLgVlihcIlkROXv4dyxUxh1pnwJrUcdh9XqToZUIAenLsk8dht82l_qCPM8WofJSBwILsl_DsN1mcxPGnvzxRBlR3mQLPpYzlKULSwNTBSOSa"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Brutalist Rhythm</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">David Stern</p>
+<span class="inline-block mt-3 px-3 py-1 bg-surface-container-high rounded-full font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Photography</span>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface mb-2">R 12,000</p>
+<button class="block font-label-md text-label-md text-primary underline underline-offset-4 hover:text-secondary transition-colors">Inquire</button>
+</div>
+</div>
+</article>
+<!-- Art Card 6 -->
+<article class="reveal group">
+<div class="relative overflow-hidden aspect-[4/5] bg-surface-container mb-6 border border-outline-variant hover:border-primary transition-colors duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An ethereal abstract painting with layers of watery pigments in seafoam green, charcoal, and warm sand tones. The work feels organic and fluid, like a landscape seen through mist. The application is delicate, with visible transparency and subtle textural variations." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnLCtSG2cl7pasCtQoUQTKZEM4GDyfT52TABdkbMMDr-JRcNxUVQZ6I0W9_0yFBW40OIXzpKkpdC7EGkY4-OaROUHkv7DkzbXFyg9Ba9GBU-TW3cWE_6j2U26ZmtqM4Fk7kuADpl01VbopWmnUWzGgOxWNnQ_YQCS2HSpasuTyRjehtevq34p2jgMVrlnrVD_hYjINaH12E-f8JLcHL9eFBhMo5ry7gQOWSisUM_oQ2vbMlVLblyiD8TPUSAgJFDbjiNG1EWsw6ANu"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-1">Liquescent Memory</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Sienna Rose</p>
+<span class="inline-block mt-3 px-3 py-1 bg-surface-container-high rounded-full font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Watercolor on Paper</span>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface mb-2">R 18,500</p>
+<button class="bg-primary text-on-primary px-4 py-2 font-label-md text-label-md hover:bg-primary-container transition-colors">Add to Bag</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Load More / Pagination -->
+<div class="mt-section-gap flex flex-col items-center">
+<button class="px-12 py-4 border border-outline text-label-md font-label-md hover:bg-on-surface hover:text-surface transition-all duration-300">Load More Works</button>
+<p class="mt-6 font-body-md text-body-md text-outline">Page 1 of 6</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<a class="font-headline-md text-headline-md text-primary block mb-6" href="#">Artisane</a>
+<p class="font-body-md text-body-md text-on-surface-variant pr-8">
+                    © 2024 Artisane. All rights reserved. Curating silence and intention.
+                </p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">Connect</h4>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Journal</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">Services</h4>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Artist Resources</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Gallery Locations</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Commission Flow</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">Legal</h4>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll Triggered Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const triggerBottom = window.innerHeight * 0.9;
+            revealElements.forEach(el => {
+                const elTop = el.getBoundingClientRect().top;
+                if(elTop < triggerBottom) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial check for elements already in view
+        window.addEventListener('load', revealOnScroll);
+
+        // Price Slider Micro-interaction
+        const slider = document.querySelector('input[type="range"]');
+        const priceLabel = slider.parentElement.nextElementSibling.lastElementChild;
+        
+        slider.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value).toLocaleString();
+            priceLabel.textContent = `R ${val}${e.target.value == e.target.max ? '+' : ''}`;
+        });
+    </script>
+</body></html>

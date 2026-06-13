@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join the Collective | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .white-cube-shadow {
+            box-shadow: 0 40px 80px -20px rgba(18, 51, 88, 0.04);
+        }
+        .text-balance {
+            text-wrap: balance;
+        }
+        .curtain-reveal {
+            animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        @keyframes reveal {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#94492d",
+                    "on-primary-fixed": "#001c39",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#d9b26d",
+                    "surface-variant": "#e3e2e0",
+                    "background": "#faf9f7",
+                    "surface-dim": "#dadad8",
+                    "secondary-container": "#fd9e7b",
+                    "on-surface-variant": "#43474e",
+                    "on-background": "#1a1c1b",
+                    "surface-container-high": "#e9e8e6",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#ffdbcf",
+                    "primary-fixed-dim": "#abc8f5",
+                    "on-primary-container": "#9cbae6",
+                    "on-tertiary-fixed": "#271900",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "surface-tint": "#436087",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e3e2e0",
+                    "surface-container": "#efeeec",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffdea7",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "on-secondary-fixed-variant": "#763218",
+                    "primary-fixed": "#d4e3ff",
+                    "tertiary": "#442e00",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "inverse-on-surface": "#f1f1ef",
+                    "primary": "#123358",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f4f3f1",
+                    "primary-container": "#2c4a70",
+                    "on-secondary-container": "#773319",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "tertiary-container": "#5f4407",
+                    "on-secondary-fixed": "#380d00",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c3c6cf",
+                    "on-surface": "#1a1c1b",
+                    "inverse-surface": "#2f3130",
+                    "inverse-primary": "#abc8f5",
+                    "outline": "#74777f",
+                    "surface-bright": "#faf9f7",
+                    "surface": "#faf9f7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-gap": "120px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-md": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-12">
+<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight" href="#">Artisane</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Browse</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Artists</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Collections</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Exhibitions</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<!-- Currency Selector Integrated -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 border border-outline-variant rounded-full font-label-md text-label-md text-on-surface-variant cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>USD ($)</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:text-primary-container transition-all active:opacity-80">shopping_cart</button>
+<button class="material-symbols-outlined text-primary hover:text-primary-container transition-all active:opacity-80">person</button>
+<button class="md:hidden material-symbols-outlined text-primary">menu</button>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="px-margin-desktop py-section-gap max-w-container-max mx-auto overflow-hidden">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="curtain-reveal">
+<span class="font-label-md text-label-md text-secondary tracking-widest block mb-6">OPEN CALL FOR ARTISTS</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-8 text-balance">Evolve your practice with a global audience.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-[540px]">Artisane is a curated collective for contemporary artists. We provide the infrastructure, logistics, and professional network you need to reach serious collectors worldwide.</p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md transition-all hover:opacity-90 active:scale-95" href="#apply">Apply to Join</a>
+<a class="border border-outline px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-surface-container transition-all" href="#benefits">Explore Benefits</a>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-[4/5] bg-surface-container-high overflow-hidden rounded-lg">
+<img alt="Professional Artist Studio" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-1000 ease-in-out" data-alt="A sun-drenched, high-ceilinged artist studio featuring large industrial windows and white brick walls. The space is filled with canvases in various stages of completion, reflecting a sophisticated minimalist aesthetic. Soft, natural morning light spills across a workspace organized with high-end brushes and palette knives. The atmosphere is serene and focused, dominated by muted tones and natural wood textures typical of a professional gallery environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB28VZqKH8p9oPyHcBgO4kDaAaH_Txll3cHlugKMvRVHIbG1RTFIZynHivMOK7In5oHauqzfwBmorfLj7fFtYaTeOS85gtfIONCQp8oqLHEBlv9HnlHfYGCRpWEWl5oHy280O0egnomvf3VB_5a1q5EtjqqDe3SDqxQiuc9TQzkc-zz33dUQm8pB2_q7eCHq5Y3abWTv0L4xgT2C7Lua-23vW4JA4dcdcXcFeMw_csr71gnECFxbU2SQbJSm-D5HlMRa8nxEf3LJKOC"/>
+</div>
+<div class="absolute -bottom-8 -left-8 bg-surface p-8 border border-outline-variant hidden xl:block max-w-xs">
+<p class="font-headline-md text-headline-md italic text-primary">"Artisane transformed my career from local shows to global acquisitions."</p>
+<p class="font-label-sm text-label-sm mt-4 uppercase tracking-tighter">— Julianne Vance, Painter</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Benefits Section -->
+<section class="bg-surface-container-low py-section-gap" id="benefits">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Why Artisane?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[600px] mx-auto">We aren't just an art marketplace. We are a gallery-standard partner dedicated to your professional growth.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-gutter">
+<div class="p-8 bg-surface border border-outline-variant hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-secondary mb-6 text-[32px]">public</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Global Network</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Connect with a pre-vetted network of private collectors and corporate curators across 40 countries.</p>
+</div>
+<div class="p-8 bg-surface border border-outline-variant hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-secondary mb-6 text-[32px]">inventory_2</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Elite Logistics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">White-glove shipping, specialized art insurance, and customs handling managed entirely by our operations team.</p>
+</div>
+<div class="p-8 bg-surface border border-outline-variant hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-secondary mb-6 text-[32px]">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Curation Support</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Receive professional guidance on pricing, series development, and digital presentation from our senior curators.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- The Process Section -->
+<section class="px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="grid lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-4 sticky top-32">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Selection Process</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Our curation team reviews applications on a rolling basis. We look for technical mastery, consistent vision, and professional commitment.</p>
+</div>
+<div class="lg:col-span-8 space-y-16">
+<!-- Step 1 -->
+<div class="flex gap-8 items-start border-b border-outline-variant pb-12">
+<span class="font-display-lg text-display-lg text-outline-variant">01</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Portfolio Submission</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Submit a digital portfolio of at least 10 recent works, an artist statement, and your professional CV. High-resolution imagery is mandatory for review.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high px-3 py-1 rounded text-label-sm font-label-sm text-on-surface-variant">High-Res JPG</span>
+<span class="bg-surface-container-high px-3 py-1 rounded text-label-sm font-label-sm text-on-surface-variant">Artist Bio</span>
+<span class="bg-surface-container-high px-3 py-1 rounded text-label-sm font-label-sm text-on-surface-variant">CV / Resume</span>
+</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-8 items-start border-b border-outline-variant pb-12">
+<span class="font-display-lg text-display-lg text-outline-variant">02</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Curation Review</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Our senior curators evaluate your work's alignment with the Artisane aesthetic. This process takes 7–10 business days. We may contact you for a brief virtual interview.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-8 items-start pb-12">
+<span class="font-display-lg text-display-lg text-outline-variant">03</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Onboarding</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Once accepted, you'll be paired with an Artist Success Manager to set up your profile, finalize shipping protocols, and plan your debut exhibition in the Artisane digital space.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Form Section -->
+<section class="bg-primary text-on-primary py-section-gap overflow-hidden relative" id="apply">
+<!-- Decorative atmospheric light -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-container/20 to-transparent pointer-events-none"></div>
+<div class="px-margin-desktop max-w-[800px] mx-auto relative z-10">
+<div class="text-center mb-16">
+<h2 class="font-display-lg text-display-lg mb-4">Start Your Application</h2>
+<p class="font-body-lg text-body-lg text-on-primary/70">Estimated completion time: 10 minutes</p>
+</div>
+<form class="space-y-10">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="group">
+<label class="block font-label-md text-label-md mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity">Full Name</label>
+<input class="w-full bg-transparent border-b border-on-primary/30 focus:border-on-primary focus:ring-0 outline-none py-3 font-body-md placeholder:text-on-primary/20" placeholder="Enter your full name" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity">Email Address</label>
+<input class="w-full bg-transparent border-b border-on-primary/30 focus:border-on-primary focus:ring-0 outline-none py-3 font-body-md placeholder:text-on-primary/20" placeholder="your@email.com" type="email"/>
+</div>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity">Primary Artistic Medium</label>
+<select class="w-full bg-transparent border-b border-on-primary/30 focus:border-on-primary focus:ring-0 outline-none py-3 font-body-md appearance-none">
+<option class="text-on-surface">Painting</option>
+<option class="text-on-surface">Photography</option>
+<option class="text-on-surface">Digital Art</option>
+<option class="text-on-surface">Sculpture</option>
+<option class="text-on-surface">Mixed Media</option>
+</select>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity">Portfolio Link (Website or Behance)</label>
+<input class="w-full bg-transparent border-b border-on-primary/30 focus:border-on-primary focus:ring-0 outline-none py-3 font-body-md placeholder:text-on-primary/20" placeholder="https://www.portfolio.com" type="url"/>
+</div>
+<div class="group">
+<label class="block font-label-md text-label-md mb-2 opacity-60 group-focus-within:opacity-100 transition-opacity">Tell us about your practice (Briefly)</label>
+<textarea class="w-full bg-transparent border-b border-on-primary/30 focus:border-on-primary focus:ring-0 outline-none py-3 font-body-md placeholder:text-on-primary/20 resize-none" placeholder="A few sentences about your vision and current series..." rows="4"></textarea>
+</div>
+<div class="flex justify-center pt-8">
+<button class="bg-surface text-primary px-12 py-5 rounded font-label-md text-label-md hover:scale-[1.02] active:scale-95 transition-all shadow-xl" type="submit">Submit Application</button>
+</div>
+<p class="text-center text-on-primary/40 font-label-sm text-label-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+                        All submissions are secure and strictly confidential.
+                    </p>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed" href="#">Artisane</a>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Connecting visionary artists with discerning global collectors since 2024.</p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:col-span-2">
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Artist Resources</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Community Guidelines</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Secure Payments</a></li>
+</ul>
+<ul class="space-y-4">
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Terms of Service</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary dark:hover:text-primary-fixed underline transition-all" href="#">Contact Support</a></li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 w-full max-w-container-max mx-auto text-center md:text-left">
+<p class="font-body-md text-body-md text-on-surface-variant/60">© 2024 Artisane Gallery. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple intersection observer for reveal effects
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('curtain-reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = '0';
+            el.addEventListener('animationend', () => el.style.opacity = '1');
+            observer.observe(el);
+        });
+
+        // Toggle currency selector (mock)
+        const currencyBtn = document.querySelector('.currency-selector');
+        if(currencyBtn) {
+            currencyBtn.addEventListener('click', () => {
+                alert('Currency selection would open here.');
+            });
+        }
+    </script>
+</body></html>

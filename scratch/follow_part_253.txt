@@ -1,0 +1,57 @@
+Created At: 2026-06-01T06:37:45Z
+Completed At: 2026-06-01T06:37:45Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/commissions.html`
+Total Lines: 458
+Total Bytes: 31513
+Showing lines 220 to 285
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+220:     </script>
+221: 
+222: <!-- Global Site Interaction Helpers -->
+223: <script type="module" src="./js/theme-toggle-helper.js"></script>
+224: <script type="module" src="./js/cart-helper.js"></script>
+225: <script type="module" src="./js/follow-helper.js"></script>
+226: </head>
+227: 
+228: <body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed antialiased">
+229: <!-- TopNavBar -->
+230: <nav class="w-full sticky top-0 z-50 bg-surface dark:bg-background border-b border-outline-variant dark:border-on-surface-variant">
+231: <div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+232: <div class="flex items-center gap-8">
+233: <span class="font-display-lg text-display-lg text-primary dark:text-primary-fixed tracking-tight">Artisane</span>
+234: <div class="hidden md:flex items-center gap-6">
+235: <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="browse-gallery.html">Discover</a>
+236: <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant font-medium hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="live-auctions.html">Collectors</a>
+237: <a class="font-body-md text-body-md text-primary dark:text-primary-fixed font-bold border-b-2 border-primary pb-1 transition-colors duration-300" href="commissions.html">Commissions</a>
+238: <a class="font-body-m
+<truncated 1991 bytes>
+t-to-r from-background via-background/40 to-transparent"></div>
+258: </div>
+259: <div class="relative z-10 px-margin-desktop max-w-container-max mx-auto w-full">
+260: <div class="max-w-2xl">
+261: <h1 class="font-display-lg text-[64px] md:text-[80px] leading-tight mb-6 animate-fade-in">
+262:                     Art Made for Your Space
+263:                 </h1>
+264: <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-md">
+265:                     Translate your vision into a timeless masterpiece. Artisane Commissions connects you with world-class artists to create bespoke works of art tailored to your environment and narrative.
+266:                 </p>
+267: <div class="flex gap-4">
+268: <button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md tracking-wider hover:opacity-90 transition-all uppercase" onclick="window.location.href='request-commission.html'">
+269:                         Start Your Commission
+270:                     </button>
+271: <button class="border border-outline text-primary px-8 py-4 rounded-lg font-label-md text-label-md tracking-wider hover:bg-surface-variant transition-all uppercase" onclick="window.location.href='browse-gallery.html'">
+272:                         View Portfolio
+273:                     </button>
+274: </div>
+275: </div>
+276: </div>
+277: </section>
+278: <!-- How It Works -->
+279: <section class="py-section-gap px-margin-desktop max-w-container-max mx-auto scroll-reveal">
+280: <div class="text-center mb-20">
+281: <span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em]">The Process</span>
+282: <h2 class="font-display-lg text-display-lg mt-4">Curating Your Vision</h2>
+283: </div>
+284: <div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+285: <!-- Connecting Line (Desktop) -->
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

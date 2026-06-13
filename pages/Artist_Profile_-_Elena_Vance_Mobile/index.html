@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Elena Vance | Artisane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e3e2e0",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "outline": "#74777f",
+                    "surface-dim": "#dadad8",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#abc8f5",
+                    "surface": "#faf9f7",
+                    "secondary": "#94492d",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#436087",
+                    "surface-container-low": "#f4f3f1",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fd9e7b",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "primary-fixed": "#d4e3ff",
+                    "on-tertiary-fixed": "#271900",
+                    "on-secondary-container": "#773319",
+                    "secondary-fixed": "#ffdbcf",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f1f1ef",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3130",
+                    "background": "#faf9f7",
+                    "tertiary-container": "#5f4407",
+                    "primary-container": "#2c4a70",
+                    "primary": "#123358",
+                    "surface-container": "#efeeec",
+                    "on-primary-container": "#9cbae6",
+                    "surface-container-high": "#e9e8e6",
+                    "on-surface-variant": "#43474e",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "on-primary-fixed": "#001c39",
+                    "primary-fixed-dim": "#abc8f5",
+                    "on-background": "#1a1c1b",
+                    "tertiary-fixed": "#ffdea7",
+                    "surface-container-highest": "#e3e2e0",
+                    "on-secondary-fixed": "#380d00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1a1c1b",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "tertiary": "#442e00",
+                    "surface-bright": "#faf9f7",
+                    "outline-variant": "#c3c6cf",
+                    "on-tertiary-container": "#d9b26d",
+                    "on-secondary-fixed-variant": "#763218"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface flex justify-between items-center px-margin-mobile h-16 w-full">
+<button class="hover:opacity-70 transition-opacity active:scale-95 duration-200 transition-transform">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-tight text-primary">Artisane</h1>
+<button class="hover:opacity-70 transition-opacity active:scale-95 duration-200 transition-transform">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</header>
+<main class="pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative w-full h-[530px] overflow-hidden">
+<img class="w-full h-full object-cover grayscale-[0.2] contrast-[1.05]" data-alt="A portrait of a contemporary female artist, Elena Vance, standing in her sun-drenched minimalist studio. She is surrounded by large-scale abstract paintings featuring soft gradients of cerulean and ochre. The lighting is ethereal and soft, emphasizing a high-end gallery aesthetic with clean lines and a sense of creative peace. The composition is editorial and sophisticated, capturing the quiet curator persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEFHqYDPgD5MrvqAGF-erxLSqJ_DkKHa9JHiko6xa_U0vHMLI7_oGK4ycPBoKu2VqWFkGYw2kezf13-SCOAFJw3zK0eBlfanZ0p5U9Jl9ck1DO5NbDcsQU57BK4nQtkH3YN5jkTGp8W1xCeNqlz5rfS0JeMHtnIs57HdnMdkpNhLr0Wo8QYqFPjSFM7IAo8OZn0Hgu_xPflZ3FNEaM2-i6htRcb6hwRfCy_EGQ8dkZQTXVi8k4VMnq7KSlfUMaMicUywPZdUE0xV-D"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-margin-mobile w-full">
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase mb-2 block">Featured Artist</span>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Elena Vance</h2>
+<div class="flex gap-2">
+<span class="bg-surface-container-high px-3 py-1 rounded-lg font-label-sm text-label-sm text-on-surface-variant">Oil on Canvas</span>
+<span class="bg-surface-container-high px-3 py-1 rounded-lg font-label-sm text-label-sm text-on-surface-variant">Abstract Expressionism</span>
+</div>
+</div>
+</section>
+<!-- Artist Bio Section -->
+<section class="px-margin-mobile py-10">
+<div class="max-w-[600px]">
+<p class="font-headline-md text-headline-md text-primary mb-6 leading-snug">
+                    "Art is the silence between the noise of modern life."
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 opacity-90 leading-relaxed">
+                    Based in London, Elena Vance explores the intersection of memory and landscape through luminous, layered oil paintings. Her work resides in the 'White Cube' space of emotion, using minimal palettes to evoke maximal resonance. A recipient of the 2023 Curator’s Choice Award, her pieces are collected globally.
+                </p>
+<div class="flex gap-4">
+<button class="flex-1 bg-primary text-on-primary py-4 font-label-md text-label-md rounded-lg active:scale-[0.98] transition-all">Follow Artist</button>
+<button class="flex-1 border border-outline-variant text-on-surface py-4 font-label-md text-label-md rounded-lg active:scale-[0.98] transition-all">Share Portfolio</button>
+</div>
+</div>
+</section>
+<!-- Active Auctions - Horizontal Scroll -->
+<section class="py-10 bg-surface-container-low">
+<div class="px-margin-mobile flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Active Auctions</h3>
+<p class="font-label-sm text-label-sm text-secondary">Exclusive bidding closes soon</p>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1">
+                    View All <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-gutter px-margin-mobile">
+<!-- Auction Card 1 -->
+<div class="min-w-[280px] bg-surface-container-lowest border border-outline-variant p-3 group">
+<div class="relative aspect-[3/4] overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A minimalist oil painting titled 'Eventide' by Elena Vance. The artwork features a serene gradient transition from deep indigo to a soft, hazy lavender at the horizon line. The texture is rich and palpable, suggesting multiple thin layers of glaze. The lighting in the photograph is professional and directional, highlighting the subtle impasto details in a clean gallery setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbdcXTr53rO8BpUpVn26pj2lcTXEHnU0JVdxNmCxITm_3GLs13oz_eJN9IBEOdHCgmtix5HIGq6MUHI5HGuNw4BU775QoN4PtWzwP0IZ4U4a7vcVYv201f5kIGTq8W4FbQ7RRVfltsskODDpsRddNPHqVPSOi-BvU5tGYRhbE64A-MDbNkperCuJgmu9GHNj7iqm3MXG8mXZt2rTXTDVb-kxEtI4UGsdQR6lIOgA64rPZTJLJmETZfgGhSpYGPqVh4HjyosHdpd2uC"/>
+<div class="absolute top-2 right-2 bg-error text-on-error font-label-sm text-label-sm px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+                            2h 14m
+                        </div>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface truncate">Eventide</h4>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Current Bid</span>
+<span class="font-headline-md text-headline-md text-secondary">£4,200</span>
+</div>
+</div>
+<!-- Auction Card 2 -->
+<div class="min-w-[280px] bg-surface-container-lowest border border-outline-variant p-3 group">
+<div class="relative aspect-[3/4] overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An abstract painting named 'Morning Ghost' by artist Elena Vance. The piece is dominated by vast areas of off-white and pale grey, with a single, sharp stroke of charcoal black cutting through the center. The aesthetic is extremely minimalist and sophisticated, mirroring a high-end contemporary art gallery environment. The lighting is bright and even, emphasizing the purity of the canvas." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4n3WrpGNbeOGcGrEIyChkyi7n8Sjc2uPp-F94ACiUE0l7lGXLx3VwKKzjftNr6j_LPOngtDOUrYFAsJtzqWFPafHuVtbE3M9DTwsKTKoMeTRohzfXj3JEk1YbGTsgX1jhsx6zH5JC8XcCocolLksSgx7RzSprdU7YnaP75wyLGmGnNig8lTN_8F4As0bZAFtT3ziI5hAe_fSeiB3KgOVPXWvj5uW2GsA-895t5zUaV5MSGz71GLwIozLgMqoIPLOqqkmLcbLG9ILM"/>
+<div class="absolute top-2 right-2 bg-error text-on-error font-label-sm text-label-sm px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+                            8h 45m
+                        </div>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface truncate">Morning Ghost</h4>
+<div class="flex justify-between items-center mt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Current Bid</span>
+<span class="font-headline-md text-headline-md text-secondary">£3,850</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Grid -->
+<section class="px-margin-mobile py-10">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8 border-b border-outline-variant pb-4">Gallery Portfolio</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Grid Item 1 (Tall) -->
+<div class="col-span-1 row-span-2 group">
+<div class="aspect-[2/3] overflow-hidden border border-outline-variant mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A vertical abstract landscape painting with rich textures in earthy tones. The piece, 'Silent Moor', features deep browns and muted greens that blend into a hazy sky. The lighting is soft and moody, reflecting a professional art photography style. The artwork is presented without a frame, emphasizing its modern, minimal essence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfec2NihE0XnQ3V62Pqvh2K4R6DeXgtOCC7tuo2BKjwpxbR6-CCmSypn1Xd0j_wEIVTXiL7H5zf4jkeM5EfXCeAMpYcdGjICWQHfy_v0o3Hd1dwbbLTng-iAURtI8vC9p-dHDkFYri9RMZk-WO-_ulfJMv1vfCon0WiHgumxDKXEYWEoxluDdQPpEli6oIux2d2Dg41uE7YH0xkpGj7zLsNGJAWrscyTCLu6769IMlFj5aBNQBw8NZZDgpmZOk9MjrS363dJ5BiE4h"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Silent Moor, 2023</span>
+</div>
+<!-- Grid Item 2 (Square) -->
+<div class="col-span-1 group">
+<div class="aspect-square overflow-hidden border border-outline-variant mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A square format contemporary art piece titled 'Refraction'. It features translucent layers of pale blue and silver leaf that catch the light. The photography highlights the metallic sheen and the subtle depth created by the artist Elena Vance. The background is a clean, neutral gallery wall, keeping the focus entirely on the delicate artistic technique." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLzWGsGAVu660CSm3v431kDw1ZJsa40ubBe6_3JYaXURI7rQXNXkTrT480_4DvAVZmKzX5kGji1cWzl7wkxaa-YAPIybfBVNDyO1Hwvj06AfFPErmdydwPb3hwyaNXw0HLHrQG4yXcPQ55YULRxjp1x8vuICcumyWkzww2zVuVk8BAjY6iJB6O-gPJ9Sv9DeccO0-4OYE-yurnhesxb4xVJpzR50SKQ-yE8YXr05AiCMxh-_Vtck5-SpBKMNg6kGhO6vWppdHZ0a86"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Refraction, 2022</span>
+</div>
+<!-- Grid Item 3 (Square) -->
+<div class="col-span-1 group">
+<div class="aspect-square overflow-hidden border border-outline-variant mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An expressive art piece by Elena Vance titled 'Echoes of Rain'. The composition uses vertical streaks of cool greys and blues to simulate a window on a rainy day. The visual style is editorial and high-end, with a soft blur effect in some areas to create a sense of movement. The lighting is diffused and natural, reinforcing the brand's quiet curator identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPqKQGRu8vr8aLaY8q0xjSlcwOKm6yyM5sUxVS5rQofE9J2O1m1HPhieIg1H11DicBYQly19FxHrR-caw0HE6ik4oEJA-m9c7A4R67buosojYDjj5V3TBmBHR-vqWDofQXir5XLEHEY9w0l3LnkIM0Qe9W8e-GB0Qk2_2QQ_JAWtL879RDv7ID5iupDQ9p1ZrUx3R29djIeACqqhfnygleZpfUXpciEwFD1Lk1qsZL5vO_ri2yd6k0VgOCi0QzqTyEjMDgiZzark7b"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Echoes of Rain, 2023</span>
+</div>
+<!-- Grid Item 4 (Wide/Asymmetric) -->
+<div class="col-span-2 mt-4 group">
+<div class="aspect-[16/9] overflow-hidden border border-outline-variant mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A panoramic abstract artwork titled 'The Horizon Study'. The painting is a study in texture and light, using varying shades of white and cream to create a landscape that is both minimal and complex. The photography is crisp and clear, showing every brushstroke and grain of the canvas. The overall mood is one of sophisticated serenity and professional artistry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQHwkHIaq1ijQXgwk4zsjXNaUV9fZPghmpfZvdvhCZhWaF229KZnXjc2DMKEb_9rWqA58kdIIv7ykSVOu6hqZKrdc4_mpFos8dVelA71YPOMkSAvW1Tirsv7CeRKR06pR3X4oEKhVY-VRQ94iiTOILHlpBujVxKmbPuD6n1Yzt0URWAEniBdpkAEI7A5XDPTPLBHZ91Gf38cFcUppsVKjupg0afDK_aLg9a2vPl37QbfG89sMrUBiaDbwZPE3YquhyHlkxytuox7qI"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">The Horizon Study, 2024</span>
+</div>
+</div>
+<button class="w-full mt-12 py-4 border border-primary text-primary font-label-md text-label-md rounded-lg active:scale-[0.98] transition-all">
+                Load Full Archives
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface px-4 pb-safe border-t border-outline-variant">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-sm text-label-sm">Auctions</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-all duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">palette</span>
+<span class="font-label-sm text-label-sm">Artists</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Subtle scroll effect for the header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-sm', 'bg-opacity-95', 'backdrop-blur-md');
+            } else {
+                header.classList.remove('shadow-sm', 'bg-opacity-95', 'backdrop-blur-md');
+            }
+        });
+
+        // Click interaction for auction cards
+        const cards = document.querySelectorAll('.group');
+        cards.forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for minimalist feel */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e3e2e0; border-radius: 10px; }
+        
+        .input-underline {
+            border: none;
+            border-bottom: 1px solid #c3c6cf;
+            background: transparent;
+            border-radius: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .input-underline:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom: 1px solid #123358;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d4e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dadad8",
+                        "on-background": "#1a1c1b",
+                        "surface-bright": "#faf9f7",
+                        "secondary": "#94492d",
+                        "tertiary-fixed-dim": "#e8c17a",
+                        "inverse-on-surface": "#f1f1ef",
+                        "tertiary": "#442e00",
+                        "on-primary-fixed": "#001c39",
+                        "surface-container-low": "#f4f3f1",
+                        "surface-variant": "#e3e2e0",
+                        "surface-container-high": "#e9e8e6",
+                        "tertiary-container": "#5f4407",
+                        "surface-container-highest": "#e3e2e0",
+                        "outline-variant": "#c3c6cf",
+                        "on-surface-variant": "#43474e",
+                        "secondary-fixed": "#ffdbcf",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fd9e7b",
+                        "on-secondary-container": "#773319",
+                        "tertiary-fixed": "#ffdea7",
+                        "error": "#ba1a1a",
+                        "surface-container": "#efeeec",
+                        "primary-fixed-dim": "#abc8f5",
+                        "on-primary": "#ffffff",
+                        "outline": "#74777f",
+                        "inverse-surface": "#2f3130",
+                        "primary": "#123358",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#9cbae6",
+                        "primary-container": "#2c4a70",
+                        "on-primary-fixed-variant": "#2a486e",
+                        "on-tertiary-fixed": "#271900",
+                        "surface-tint": "#436087",
+                        "on-secondary-fixed": "#380d00",
+                        "on-secondary": "#ffffff",
+                        "surface": "#faf9f7",
+                        "on-error": "#ffffff",
+                        "background": "#faf9f7",
+                        "on-surface": "#1a1c1b",
+                        "on-tertiary-fixed-variant": "#5d4205",
+                        "on-tertiary-container": "#d9b26d",
+                        "on-secondary-fixed-variant": "#763218",
+                        "secondary-fixed-dim": "#ffb59b",
+                        "inverse-primary": "#abc8f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "section-gap": "120px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-lg": ["EB Garamond"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight cursor-pointer">
+                Artisane
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="browse-gallery.html">Browse</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="artists.html">Artists</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Collections</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors duration-200" href="#">Exhibitions</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container rounded-full px-4 py-1.5 border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-40 placeholder:text-outline" placeholder="Search curated art..." type="text"/>
+</div>
+<div class="flex gap-4">
+<button class="scale-95 active:opacity-80 transition-all text-primary">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="scale-95 active:opacity-80 transition-all text-primary">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+<!-- Breadcrumb & Header -->
+<div class="mb-12">
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Gallery</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Cart</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Checkout</span>
+</div>
+<h1 class="font-display-lg text-display-lg mb-2">Finalize Your Acquisition</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Complete the details below to secure your selected artwork. Each piece is handled with museum-grade care.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Forms -->
+<div class="lg:col-span-7 space-y-16">
+<!-- Shipping Details -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<span class="bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center font-label-md">1</span>
+<h2 class="font-headline-md text-headline-md">Shipping Address</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">First Name</label>
+<input class="input-underline font-body-md" placeholder="Julian" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">Last Name</label>
+<input class="input-underline font-body-md" placeholder="Vandermeer" type="text"/>
+</div>
+<div class="md:col-span-2 flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">Street Address</label>
+<input class="input-underline font-body-md" placeholder="128 Artistry Lane, Suite 400" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">City</label>
+<input class="input-underline font-body-md" placeholder="Amsterdam" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">Postal Code</label>
+<input class="input-underline font-body-md" placeholder="1011 AB" type="text"/>
+</div>
+</div>
+</section>
+<!-- Payment Methods -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<span class="bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center font-label-md">2</span>
+<h2 class="font-headline-md text-headline-md">Payment Method</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+<!-- Card Option -->
+<button class="payment-tab border-primary border-2 p-6 flex flex-col items-center gap-3 transition-all" id="pay-card" onclick="selectPayment('card')">
+<span class="material-symbols-outlined text-primary text-[32px]">credit_card</span>
+<span class="font-label-md text-label-md">Credit / Debit</span>
+</button>
+<!-- EFT Option -->
+<button class="payment-tab border border-outline-variant p-6 flex flex-col items-center gap-3 transition-all hover:border-primary/50" id="pay-eft" onclick="selectPayment('eft')">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">account_balance</span>
+<span class="font-label-md text-label-md">Instant EFT</span>
+</button>
+<!-- PayPal Option -->
+<button class="payment-tab border border-outline-variant p-6 flex flex-col items-center gap-3 transition-all hover:border-primary/50" id="pay-paypal" onclick="selectPayment('paypal')">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">payments</span>
+<span class="font-label-md text-label-md">PayPal</span>
+</button>
+</div>
+<!-- Card Details Drawer -->
+<div class="bg-surface-container-low p-8 border border-outline-variant" id="card-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:col-span-2 flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">Cardholder Name</label>
+<input class="input-underline font-body-md" placeholder="Julian Vandermeer" type="text"/>
+</div>
+<div class="md:col-span-2 flex flex-col gap-2 relative">
+<label class="font-label-md text-label-md text-outline">Card Number</label>
+<input class="input-underline font-body-md" placeholder="0000 0000 0000 0000" type="text"/>
+<div class="absolute right-0 bottom-2 flex gap-2">
+<span class="material-symbols-outlined text-outline">credit_card</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">Expiry Date</label>
+<input class="input-underline font-body-md" placeholder="MM / YY" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-outline">CVV</label>
+<input class="input-underline font-body-md" placeholder="123" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Badges -->
+<div class="flex flex-wrap items-center gap-12 pt-8 opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-tighter">Secure Checkout</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">encrypted</span>
+<span class="font-label-sm text-label-sm uppercase tracking-tighter">256-Bit SSL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<span class="font-label-sm text-label-sm uppercase tracking-tighter">Insured Delivery</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Order Summary -->
+<aside class="lg:col-span-5 sticky top-32">
+<div class="bg-surface-container-low p-10 border border-outline-variant">
+<h3 class="font-headline-md text-headline-md mb-8">Purchase Summary</h3>
+<!-- Item -->
+<div class="flex gap-6 pb-8 border-b border-outline-variant mb-8">
+<div class="w-32 h-32 flex-shrink-0 bg-surface-variant overflow-hidden">
+<img alt="Artwork thumbnail" class="w-full h-full object-cover" data-alt="A detailed oil painting featuring abstract vibrant strokes of Gallery Blue and earthy sienna. The artwork is presented in a minimalist high-end gallery setting with soft atmospheric lighting, casting a sophisticated and creative mood. The colors are rich and textured, highlighting the premium quality of the piece." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_RNUdLk7mTAL1flCzWdi7eqNFFx0qzIsQSgFn-6aJBkiT9sbEM9xpS3vktXzga2l22i6W-iM9U8Sc7f9umjQsm00zh4DI6ZnSxVdpbkfgAkNw7FHnUWIK-EZA-8U-dL5WRYZegUYqsk6kI1wAVGrfzIFMzi92Rdh0zkRxeSwJqW6pLP_eIDohcEE4gcF1Kc93-4TpbZjp8rXgodnJ8YjzUT_kdX0ROLGC7-SHtPRDuOXjf_IeIJ1gQx5FN6QMdNT2vYgGzLf5YW_N"/>
+</div>
+<div class="flex flex-col justify-between">
+<div>
+<p class="font-headline-md text-headline-md text-[20px] mb-1 leading-tight">Ephemeral Echoes No. 4</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Elena Rossi</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-high px-2 py-1 font-label-sm text-label-sm rounded">Oil on Canvas</span>
+<span class="bg-surface-container-high px-2 py-1 font-label-sm text-label-sm rounded">80 x 120 cm</span>
+</div>
+</div>
+<div class="ml-auto">
+<span class="font-label-md text-label-md">R 4,250.00</span>
+</div>
+</div>
+<!-- Totals -->
+<div class="space-y-4 mb-10">
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>R 4,250.00</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Secure Shipping (Insured)</span>
+<span>R 120.00</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Applicable Taxes</span>
+<span>R 350.00</span>
+</div>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="font-headline-md text-headline-md">Total</span>
+<span class="font-headline-md text-headline-md text-primary">R 4,720.00</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-5 px-8 font-label-md text-label-md uppercase tracking-widest hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-[0.98]">
+                        Complete Acquisition
+                    </button>
+<p class="mt-6 text-center text-outline font-label-sm text-label-sm">
+                        By clicking "Complete Acquisition", you agree to our Terms of Sale and Artist Resale Rights policies.
+                    </p>
+</div>
+<!-- Assistance Card -->
+<div class="mt-8 p-6 flex items-center gap-4 border border-outline-variant border-dashed">
+<span class="material-symbols-outlined text-secondary">support_agent</span>
+<div>
+<p class="font-label-md text-label-md">Need Private Consultation?</p>
+<p class="font-body-md text-label-sm text-on-surface-variant">Our curators are available for a secure call.</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest mt-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="flex flex-col gap-6">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Artisane</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+                    Curating the world's most evocative contemporary art for discerning collectors and new enthusiasts alike.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">public</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all">share</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest">Platform</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Artist Resources</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Community Guidelines</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Secure Payments</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest">Legal</h4>
+<nav class="flex flex-col gap-2">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Contact Support</a>
+</nav>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<h4 class="font-label-md text-label-md text-primary font-bold uppercase tracking-widest">Newsletter</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Join the circle for exhibition invites and collection drops.</p>
+<div class="flex border-b border-outline-variant pb-2">
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-outline" placeholder="Email Address" type="email"/>
+<button class="material-symbols-outlined text-primary">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 w-full max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-md text-label-md text-on-surface-variant/80">© 2024 Artisane Gallery. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">London</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">Paris</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">New York</span>
+</div>
+</div>
+</footer>
+<script>
+        function selectPayment(type) {
+            // Reset all tabs
+            const tabs = document.querySelectorAll('.payment-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('border-primary', 'border-2');
+                tab.classList.add('border', 'border-outline-variant');
+                tab.querySelector('.material-symbols-outlined').classList.replace('text-primary', 'text-on-surface-variant');
+            });
+
+            // Select active tab
+            const activeTab = document.getElementById('pay-' + type);
+            activeTab.classList.remove('border-outline-variant', 'border');
+            activeTab.classList.add('border-primary', 'border-2');
+            activeTab.querySelector('.material-symbols-outlined').classList.replace('text-on-surface-variant', 'text-primary');
+
+            // Show/Hide forms
+            const cardForm = document.getElementById('card-form');
+            if (type === 'card') {
+                cardForm.classList.remove('hidden');
+                cardForm.classList.add('block');
+            } else {
+                cardForm.classList.add('hidden');
+            }
+        }
+    </script>
+</body></html>

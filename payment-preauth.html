@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisane | Payment Pre-authorization</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus {
+            outline: none;
+            border-bottom-color: #123358 !important;
+            ring: 0 !important;
+        }
+        .step-active {
+            color: #123358;
+            border-bottom: 2px solid #123358;
+        }
+    </style>
+
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed": "#ffdbcf",
+                "error-container": "#ffdad6",
+                "on-background": "#1a1c1b",
+                "on-tertiary-fixed-variant": "#5d4205",
+                "secondary": "#94492d",
+                "surface-variant": "#e3e2e0",
+                "on-primary-fixed-variant": "#2a486e",
+                "inverse-on-surface": "#f1f1ef",
+                "on-primary": "#ffffff",
+                "inverse-surface": "#2f3130",
+                "background": "#faf9f7",
+                "surface-bright": "#faf9f7",
+                "surface-container": "#efeeec",
+                "primary-fixed": "#d4e3ff",
+                "surface-container-high": "#e9e8e6",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#5f4407",
+                "surface-container-highest": "#e3e2e0",
+                "primary": "#123358",
+                "secondary-container": "#fd9e7b",
+                "primary-fixed-dim": "#abc8f5",
+                "on-secondary-fixed": "#380d00",
+                "on-error-container": "#93000a",
+                "surface": "#faf9f7",
+                "on-error": "#ffffff",
+                "outline-variant": "#c3c6cf",
+                "on-primary-container": "#9cbae6",
+                "on-surface-variant": "#43474e",
+                "on-surface": "#1a1c1b",
+                "inverse-primary": "#abc8f5",
+                "error": "#ba1a1a",
+                "tertiary-fixed": "#ffdea7",
+                "surface-container-low": "#f4f3f1",
+                "on-secondary-fixed-variant": "#763218",
+                "surface-dim": "#dadad8",
+                "secondary-fixed-dim": "#ffb59b",
+                "primary-container": "#2c4a70",
+                "tertiary-fixed-dim": "#e8c17a",
+                "outline": "#74777f",
+                "on-primary-fixed": "#001c39",
+                "surface-container-lowest": "#ffffff",
+                "tertiary": "#442e00",
+                "on-secondary": "#ffffff",
+                "on-secondary-container": "#773319",
+                "on-tertiary-fixed": "#271900",
+                "on-tertiary-container": "#d9b26d",
+                "surface-tint": "#436087"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "container-max": "1280px",
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "unit": "8px",
+                "section-gap": "120px",
+                "margin-desktop": "64px"
+        },
+        "fontFamily": {
+                "label-sm": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["EB Garamond"],
+                "headline-md": ["EB Garamond"],
+                "headline-lg": ["EB Garamond"],
+                "body-lg": ["Hanken Grotesk"],
+                "label-md": ["Hanken Grotesk"],
+                "display-lg": ["EB Garamond"],
+                "body-md": ["Hanken Grotesk"]
+        },
+        "fontSize": {
+                "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<!-- Top Navigation Bar -->
+<header class="bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline fixed top-0 left-0 right-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tight">Artisane</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="browse-gallery.html">Browse</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="artists.html">Artists</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Collections</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Exhibitions</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">shopping_cart</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">person</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Progress Indicator -->
+<div class="flex justify-center mb-16">
+<div class="flex items-center space-x-12">
+<div class="flex items-center space-x-3 opacity-40">
+<span class="font-label-md text-label-md w-6 h-6 flex items-center justify-center border border-on-surface rounded-full">1</span>
+<span class="font-label-md text-label-md">Identity</span>
+</div>
+<div class="w-12 h-px bg-outline-variant"></div>
+<div class="flex items-center space-x-3 text-primary">
+<span class="font-label-md text-label-md w-6 h-6 flex items-center justify-center bg-primary text-on-primary rounded-full">2</span>
+<span class="font-label-md text-label-md">Payment</span>
+</div>
+<div class="w-12 h-px bg-outline-variant"></div>
+<div class="flex items-center space-x-3 opacity-40">
+<span class="font-label-md text-label-md w-6 h-6 flex items-center justify-center border border-on-surface rounded-full">3</span>
+<span class="font-label-md text-label-md">Terms</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Main Form Section -->
+<div class="lg:col-span-7">
+<h1 class="font-display-lg text-display-lg mb-6">Payment Pre-authorization</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-xl">
+                To ensure a fair and secure auction environment, a temporary hold of R 1,000 will be placed on your selected payment method. This is not a charge and will be released following the auction close.
+            </p>
+<form class="space-y-10">
+<!-- Payment Method Selection -->
+<div class="space-y-4">
+<label class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Select Payment Method</label>
+<div class="flex gap-4">
+<button class="flex-1 py-4 px-6 border border-primary bg-surface-container-low flex items-center justify-between transition-all" type="button">
+<span class="font-label-md text-label-md">Credit / Debit Card</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">radio_button_checked</span>
+</button>
+<button class="flex-1 py-4 px-6 border border-outline-variant hover:border-primary transition-all flex items-center justify-between" type="button">
+<span class="font-label-md text-label-md">Digital Wallet</span>
+<span class="material-symbols-outlined text-outline-variant">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+<!-- Card Details -->
+<div class="space-y-8 pt-4">
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Cardholder Name</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant py-3 font-body-md text-body-md transition-all" placeholder="Full name as it appears on card" type="text"/>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Card Number</label>
+<div class="flex items-center">
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant py-3 font-body-md text-body-md transition-all" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="material-symbols-outlined text-on-surface-variant absolute right-0">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">Expiry Date</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant py-3 font-body-md text-body-md transition-all" placeholder="MM / YY" type="text"/>
+</div>
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">CVV</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline-variant py-3 font-body-md text-body-md transition-all" placeholder="123" type="text"/>
+<span class="material-symbols-outlined text-on-surface-variant absolute right-0 bottom-3 text-sm cursor-help" title="3-digit security code on the back of your card">info</span>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<div class="pt-8 flex flex-col sm:flex-row items-center gap-6">
+<button class="w-full sm:w-auto bg-primary text-on-primary font-label-md text-label-md py-5 px-12 rounded-[4px] hover:opacity-90 active:scale-95 transition-all" type="submit">
+                        CONTINUE TO TERMS
+                    </button>
+<button class="text-on-surface-variant font-label-md text-label-md underline underline-offset-4 hover:text-primary transition-colors" type="button">
+                        Save and finish later
+                    </button>
+</div>
+</form>
+</div>
+<!-- Sidebar Section -->
+<aside class="lg:col-span-5 lg:pl-16">
+<div class="sticky top-40 space-y-12">
+<!-- Visual Anchor -->
+<div class="group overflow-hidden border border-outline-variant aspect-[4/5] relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A highly detailed close-up of a contemporary abstract oil painting with heavy impasto textures and gold leaf accents. The color palette features deep navy blues, warm ochres, and pristine whites, reflecting a sophisticated gallery aesthetic. The lighting is soft and directed, highlighting the dimensionality of the paint strokes on the canvas. The mood is one of quiet luxury and creative precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcH-AV6V0sA_Lom57p0S87SJSNXrcS86UXYE7tbdlpNGEy1mD-bZhK_xptdTA_TvscLTDFLIX09EDd3vbgpQpCte7k4mW822y3WoZARIi2FOPGB0WnWh72wb9CBLfKHBYuvtHz1xEh7SjxO9tq6r7MiZxqxsuA8aCJ45K767pQPfnat6s-N1YvArJut7llxoyjCy4HOHlDEEt674wtqPHIAdgnJXbQvSmECxXr5vtJGxHZvBFLp09-lWgiiRAAJZVSmIMCe5ywMtKI"/>
+<div class="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
+</div>
+<!-- Trust Badges -->
+<div class="space-y-8 bg-surface-container-low p-8">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<div>
+<h4 class="font-label-md text-label-md mb-1">Bidder Security</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Your credentials and payment data are encrypted using industry-standard SSL protocols, ensuring total privacy.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<div>
+<h4 class="font-label-md text-label-md mb-1">Transparent Bidding</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Pre-authorization ensures all participants are committed, maintaining the integrity of the Artisane marketplace.</p>
+</div>
+</div>
+</div>
+<!-- Footer Summary Info -->
+<div class="pt-4 border-t border-outline-variant">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Hold Amount</span>
+<span class="font-headline-md text-headline-md text-primary">R 1,000.00</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant/70 italic">Held for the duration of: Summer Contemporary Auction (July 15-20)</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Artisane</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Curating excellence in the digital and physical art spaces. Connecting visionaries with collectors since 2024.</p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-label-md uppercase tracking-widest mb-6">Resources</h5>
+<ul class="space-y-3">
+<li><a class="font-label-md text-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Artist Resources</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Community Guidelines</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Secure Payments</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-label-md uppercase tracking-widest mb-6">Legal &amp; Support</h5>
+<ul class="space-y-3">
+<li><a class="font-label-md text-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Terms of Service</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant/80 hover:text-primary underline transition-all" href="#">Contact Support</a></li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 flex justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 Artisane Gallery. All rights reserved.</span>
+</div>
+</footer>
+<script>
+    // Lightweight atmospheric effect: Micro-interaction for form inputs
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.parentElement.querySelector('label').style.color = '#123358';
+        });
+        input.addEventListener('blur', () => {
+            if (input.value === '') {
+                input.parentElement.querySelector('label').style.color = '';
+            }
+        });
+    });
+
+    // Simple payment method toggle simulation
+    const buttons = document.querySelectorAll('button[type="button"]');
+    buttons.forEach(btn => {
+        if (btn.innerText.includes('Card') || btn.innerText.includes('Wallet')) {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.classList.remove('border-primary', 'bg-surface-container-low');
+                    b.classList.add('border-outline-variant');
+                    const icon = b.querySelector('.material-symbols-outlined');
+                    if (icon) {
+                        icon.innerText = 'radio_button_unchecked';
+                        icon.classList.remove('text-primary');
+                        icon.classList.add('text-outline-variant');
+                        icon.style.fontVariationSettings = "'FILL' 0";
+                    }
+                });
+                btn.classList.add('border-primary', 'bg-surface-container-low');
+                btn.classList.remove('border-outline-variant');
+                const activeIcon = btn.querySelector('.material-symbols-outlined');
+                if (activeIcon) {
+                    activeIcon.innerText = 'radio_button_checked';
+                    activeIcon.classList.remove('text-outline-variant');
+                    activeIcon.classList.add('text-primary');
+                    activeIcon.style.fontVariationSettings = "'FILL' 1";
+                }
+            });
+        }
+    });
+</script>
+</body></html>

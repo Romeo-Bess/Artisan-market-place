@@ -1,0 +1,91 @@
+Created At: 2026-05-31T18:42:33Z
+Completed At: 2026-05-31T18:42:33Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/login/index.html`
+Total Lines: 188
+Total Bytes: 10337
+Showing lines 1 to 188
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: <!DOCTYPE html>
+2: <html lang="en">
+3: <head>
+4: <meta charset="utf-8"/>
+5: <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+6: <title>Sign In | Artisane</title>
+7: <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+8: <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+9: <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+10: <style>
+11:     :root {
+12:         --color-background: 250 249 247;
+13:         --color-on-background: 26 28 27;
+14:         --color-primary: 18 51 88;
+15:         --color-on-primary: 255 255 255;
+16:         --color-secondary: 148 73 45;
+17:         --color-on-secondary: 255 255 255;
+18:         --color-surface: 250 249 247;
+19:         --color-on-surface: 26 28 27;
+20:         --color-surface-container: 239 238 236;
+21:         --color-surface-container-low: 244 243 241;
+22:         --color-outline: 116 119 127;
+23:         --color-outline-variant: 195 198 207;
+24:         --color-error: 186 26 26;
+25:         --color-error-container: 255 218 214;
+26:         --color-on-error-container: 147 0 10;
+27:     }
+28:     html.dark {
+29:         --color-background: 15 17 21;
+30:         --color-on-background: 226 226 228;
+31:         --color-primary: 168 199 250;
+32:         --color-on-primary: 6 46 92;
+33:         --color-secondary: 253 158 123;
+34:       
+<truncated 7621 bytes>
+er:bg-primary-container dark:hover:bg-primary-fixed-dim transition-all active:scale-95">
+142:                 Sign In
+143:             </button>
+144:         </form>
+145:     </div>
+146: </main>
+147: 
+148: <footer class="bg-surface border-t border-outline-variant/30 py-8 text-center">
+149:     <p class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 Artisane Gallery. All rights reserved.</p>
+150: </footer>
+151: 
+152: <script type="module">
+153:     import { supabase } from '../js/supabase-auth.js';
+154: 
+155:     const errorEl = document.getElementById('auth-error');
+156:     const form = document.getElementById('form-login');
+157:     const btn = document.getElementById('btn-login');
+158: 
+159:     form.addEventListener('submit', async (e) => {
+160:         e.preventDefault();
+161:         errorEl.classList.add('hidden');
+162:         btn.disabled = true;
+163:         btn.textContent = 'Signing In...';
+164: 
+165:         const email = document.getElementById('login-email').value.trim();
+166:         const password = document.getElementById('login-password').value;
+167: 
+168:         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+169: 
+170:         if (error) {
+171:             errorEl.textContent = error.message;
+172:             errorEl.classList.remove('hidden');
+173:             btn.disabled = false;
+174:             btn.textContent = 'Sign In';
+175:         } else {
+176:             // Link cart to authenticated user if cart exists
+177:             const cartId = localStorage.getItem('artisane_cart_id');
+178:             if (cartId && cartId !== 'undefined') {
+179:                 await supabase.from('carts').update({ user_id: data.user.id }).eq('id', cartId);
+180:             }
+181:             // Redirect to collector dashboard
+182:             window.location.href = '../collector-dashboard.html';
+183:         }
+184:     });
+185: </script>
+186: </body>
+187: </html>
+188: 
+The above content shows the entire, complete file contents of the requested file.

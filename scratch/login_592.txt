@@ -1,0 +1,30 @@
+Created At: 2026-06-13T08:17:49Z
+Completed At: 2026-06-13T08:17:49Z
+File Path: `file:///C:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/login/index.html`
+Total Lines: 81
+Total Bytes: 3178
+Showing lines 60 to 81
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+60: 
+61:         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+62: 
+63:         if (error) {
+64:             errorEl.textContent = error.message;
+65:             errorEl.classList.remove('hidden');
+66:             btn.disabled = false;
+67:             btn.textContent = 'Sign In';
+68:         } else {
+69:             // Link cart to authenticated user if cart exists
+70:             const cartId = localStorage.getItem('artisane_cart_id');
+71:             if (cartId && cartId !== 'undefined') {
+72:                 await supabase.from('carts').update({ user_id: data.user.id }).eq('id', cartId);
+73:             }
+74:             // Redirect to collector dashboard
+75:             window.location.href = '../collector-dashboard.html';
+76:         }
+77:     });
+78: </script>
+79: </body>
+80: </html>
+81: 
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

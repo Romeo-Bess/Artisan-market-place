@@ -1,0 +1,91 @@
+1: {"ArtifactMetadata": "{\"ArtifactType\":\"other\",\"Summary\":\"Created dedicated login directory fallback index.html page to support automated login page navigation tests.\"}", "CodeContent": "\"<!DOCTYPE html>\\
+2:     <p class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 Artisane Gallery. All rights reserved.</p>
+3: with open('C:\\Users\\USER-PC\\Downloads\\stitch_artisan_marketplace_hub\\scratch\\login_step_874.txt', 'r', encoding='utf-8') as f:
+4: log_path = r'C:\Users\USER-PC\.gemini\antigravity-ide\brain\73eb0d29-0380-4a46-8d96-2fc5456717b6\.system_generated\logs\transcript.jsonl'
+5: <meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"/>\
+6: <title>Sign In | Artisane</title>\
+7: The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+8: <link href=\"https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap\" rel=\"stylesheet\"/>\
+9: <link href=\"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap\" rel=\"stylesheet\"/>\
+10:     # We want to find strings that match pattern like: <idx> '<line_no>: <content>' or <idx> "<line_no>: <content>"
+11:             # Find the starting brace of the tool call args dictionary representation
+12:             m = re.search(r"'CodeContent': '\"(.*?)\"', 'Description'", content_str)
+13:         artistPortfolioUpdated: resolve(__dirname, 'artist-portfolio-updated.html'),
+14:                 # ast.literal_eval is extremely safe and handles python dict syntax perfectly!
+15: 8: <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+16: 9: <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+17:                 # Let's extract line number and value if it matches the format: <num>: <val>
+18:         auctionHistory: resolve(__dirname, 'auction-history.html'),
+19:                 # The code_content starts with "<!DOCTYPE html> ... let's write it to index.html under login
+20:                 with open('C:\\Users\\USER-PC\\Downloads\\stitch_artisan_marketplace_hub\\login\\index.html', 'w', encoding='utf-8') as out:
+21:                 code_decoded = code_decoded.replace('\\"', '"').replace('\\
+22:                 with open('C:\\Users\\USER-PC\\Downloads\\stitch_artisan_marketplace_hub\\login\\index.html', 'w', encoding='utf-8') as out:
+23:         browseGallery: resolve(__dirname, 'browse-gallery.html'),
+24: with open('C:\\Users\\USER-PC\\Downloads\\stitch_artisan_marketplace_hub\\login\\index.html', 'w', encoding='utf-8') as out:
+25:         certificate: resolve(__dirname, 'certificate.html'),
+26:         collectorDashboard: resolve(__dirname, 'collector-dashboard.html'),
+27:         collectorDashboardMobile: resolve(__dirname, 'collector-dashboard-mobile.html'),
+28:             with open('C:\\Users\\USER-PC\\Downloads\\stitch_artisan_marketplace_hub\\login\\index.html', 'w', encoding='utf-8') as out:
+29:         shippingTracking: resolve(__dirname, 'shipping-tracking.html'),
+30:             print("Wrote login/index.html reconstructed from step 600!")
+31:         liveAuctions: resolve(__dirname, 'live-auctions.html'),
+32:         liveBidding: resolve(__dirname, 'live-bidding.html'),
+33:         paymentPreauth: resolve(__dirname, 'payment-preauth.html'),
+34:         registrationSuccessful: resolve(__dirname, 'registration-successful.html'),
+35:         requestCommission: resolve(__dirname, 'request-commission.html'),
+36:         requestReceived: resolve(__dirname, 'request-received.html'),
+37:         checkout: resolve(__dirname, 'checkout.html'),
+38:         termsConditions: resolve(__dirname, 'terms-conditions.html'),
+39:         userCommissions: resolve(__dirname, 'user-commissions.html'),
+40:         login: resolve(__dirname, 'login/index.html')
+41: \u003cfooter class=\\\"bg-surface border-t border-outline-variant/30 py-8 text-center\\\"\u003e\\
+42:     \u003cp class=\\\"font-label-sm text-label-sm text-on-surface-variant/60\\\"\u003e\\u00a9 2024 Artisane Gallery. All rights reserved.\u003c/p\u003e\\
+43: 36:             </button>
+44:     .material-symbols-outlined {
+45:         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+46:     import { supabase } from '../js/supabase-auth.js';\\
+47: </style>
+48: 41: <footer class="bg-surface border-t border-outline-variant/30 py-8 text-center">
+49: 42:     <p class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 Artisane Gallery. All rights reserved.</p>
+50:     const btn = document.getElementById('btn-login');\\
+51: 44: 
+52:     form.addEventListener('submit', async (e) =\u003e {\\
+53: 46:     import { supabase } from '../js/supabase-auth.js';
+54:         errorEl.classList.add('hidden');\\
+55: 48:     const errorEl = document.getElementById('auth-error');
+56: 49:     const form = document.getElementById('form-login');
+57: 50:     const btn = document.getElementById('btn-login');
+58:         const email = document.getElementById('login-email').value.trim();\\
+59:         const password = document.getElementById('login-password').value;\\
+60: 53:         e.preventDefault();
+61:         const { data, error } = await supabase.auth.signInWithPassword({ email, password });\
+62: 55:         btn.disabled = true;
+63: 56:         btn.textContent = 'Signing In...';
+64:             errorEl.textContent = error.message;\
+65: 58:         const email = document.getElementById('login-email').value.trim();
+66: 59:         const password = document.getElementById('login-password').value;
+67:             btn.textContent = 'Sign In';\
+68: The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+69:             // Link cart to authenticated user if cart exists\
+70:             const cartId = localStorage.getItem('artisane_cart_id');\
+71:             if (cartId && cartId !== 'undefined') {\
+72:                 await supabase.from('carts').update({ user_id: data.user.id }).eq('id', cartId);\
+73: 66:             btn.disabled = false;
+74:             // Redirect to collector dashboard\
+75:             window.location.href = '../collector-dashboard.html';\
+76: 69:             // Link cart to authenticated user if cart exists
+77: 70:             const cartId = localStorage.getItem('artisane_cart_id');
+78: 71:             if (cartId && cartId !== 'undefined') {
+79: 72:                 await supabase.from('carts').update({ user_id: data.user.id }).eq('id', cartId);
+80: 73:             }
+81: 74:             // Redirect to collector dashboard
+82: 75:             window.location.href = '../collector-dashboard.html';
+83: 76:         }
+84: 77:     });
+85: 78: </script>
+86: 79: </body>
+87: 80: </html>
+88: 81: 
+89: The above content shows the entire, complete file contents of the requested file.
+123: content\\
+151: '\

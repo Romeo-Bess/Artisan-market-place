@@ -1,0 +1,77 @@
+Created At: 2026-06-01T07:10:53Z
+Completed At: 2026-06-01T07:10:53Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/follow-helper.js`
+Total Lines: 411
+Total Bytes: 20793
+Showing lines 151 to 300
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+151:                 dropdown.style.right = `${window.innerWidth - rect.right}px`;
+152:                 dropdown.style.top = `${rect.bottom + window.scrollY + 8}px`;
+153: 
+154:                 if (dropdown.classList.contains('hidden')) {
+155:                     dropdown.classList.remove('hidden');
+156:                     // Force reflow
+157:                     void dropdown.offsetWidth;
+158:                     dropdown.classList.add('show');
+159:                 } else {
+160:                     dropdown.classList.remove('show');
+161:                     setTimeout(() => {
+162:                         dropdown.classList.add('hidden');
+163:                     }, 300);
+164:                 }
+165:             });
+166:         });
+167:     }
+168: 
+169:     // Non-invasive Navbar Active Link Highlighter and Unifier
+170:     function highlightActiveNavbar() {
+171:         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+172:         
+173:         // Find desktop navigation container
+174:         const container = document.querySelector('header nav .hidden.md\\:flex, header .hidden.md\\:flex, nav .hidden.md\\:flex');
+175:         if (container) {
+176:             container.innerHTML = `
+177:                 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-inverse-on-surface/70 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="browse-gallery.html">Discover</a>
+178:                 <a class="nav-link font-label-md text-label-md text-on-surface-variant dar
+<truncated 5119 bytes>
+ency', newCurrency);
+262:             
+263:             updateCurrencyToggleDisplays(newCurrency);
+264:             updatePrices(newCurrency);
+265:             window.dispatchEvent(new CustomEvent('currencyChanged', { detail: { currency: newCurrency } }));
+266:             showCurrencyToast(`Currency changed to ${newCurrency === 'ZAR' ? 'ZAR (R)' : 'EUR (€)'}`);
+267:         });
+268: 
+269:         // Insert before personBtn
+270:         parent.insertBefore(currencyBtn, personBtn);
+271:     }
+272: 
+273:     // ZAR/EUR Currency Conversion and Price Scanner
+274:     let priceElements = [];
+275: 
+276:     function convertZARtoEUR(text) {
+277:         const regex = /((\+|-|Final:\s*)?)R\s?(\d+(?:\.\d+)?(?:,\d{3})*(?:\.\d{2})?)(k?)(\+?)/gi;
+278:         return text.replace(regex, (match, prefixGroup, prefixSign, numStr, kSuffix, plusSuffix) => {
+279:             let val = parseFloat(numStr.replace(/,/g, ''));
+280:             if (isNaN(val)) return match;
+281:             
+282:             let converted = val / 20;
+283:             let formattedNum = '';
+284:             if (numStr.includes('.')) {
+285:                 formattedNum = converted.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+286:             } else {
+287:                 formattedNum = Math.round(converted).toLocaleString('en-US');
+288:             }
+289:             
+290:             return `${prefixGroup || ''}€\u00A0${formattedNum}${kSuffix || ''}${plusSuffix || ''}`;
+291:         });
+292:     }
+293: 
+294:     function scanPrices() {
+295:         priceElements = [];
+296:         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+297:         let node;
+298:         const zarRegex = /R\s?\d+/i;
+299:         while (node = walker.nextNode()) {
+300:             const parent = node.parentElement;
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

@@ -1,0 +1,76 @@
+Created At: 2026-06-01T06:24:16Z
+Completed At: 2026-06-01T06:24:16Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/collector-dashboard.html`
+Total Lines: 576
+Total Bytes: 38216
+Showing lines 1 to 576
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: <!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+2: <meta charset="utf-8">
+3: <meta content="width=device-width, initial-scale=1.0" name="viewport">
+4: <title>Collector Dashboard | Artisane Gallery</title>
+5: <!-- Google Fonts -->
+6: <link href="https://fonts.googleapis.com" rel="preconnect">
+7: <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+8: <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+9: <!-- Material Symbols -->
+10: <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+11: <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+12: <!-- Tailwind CSS -->
+13: <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+14: <script id="tailwind-config">
+15:       tailwind.config = {
+16:         darkMode: "class",
+17:         theme: {
+18:           extend: {
+19:             "colors": {
+20:                     "background": "rgb(var(--color-background) / <alpha-value>)",
+21:                     "on-background": "rgb(var(--color-on-background) / <alpha-value>)",
+22:                     "primary": "rgb(var(--color-primary) / <alpha-value>)",
+23:                     "on-primary": "rgb(var(--color-on-primary) / <alpha-value>)",
+24:                     "secondary": "rgb(var(--
+<truncated 37448 bytes>
+de nav a');
+535:         navLinks.forEach(link => {
+536:             link.addEventListener('click', (e) => {
+537:                 // For demo purposes, we won't prevent default, just show the state change
+538:                 navLinks.forEach(l => {
+539:                     l.classList.remove('text-primary', 'font-bold', 'border-r-4', 'border-primary', 'bg-surface-container-high', 'translate-x-1');
+540:                     l.classList.add('text-on-surface-variant');
+541:                 });
+542:                 link.classList.remove('text-on-surface-variant');
+543:                 link.classList.add('text-primary', 'font-bold', 'border-r-4', 'border-primary', 'bg-surface-container-high', 'translate-x-1');
+544:             });
+545:         });
+546: 
+547:         // Hover effects for the grid cards
+548:         const artCards = document.querySelectorAll('.group');
+549:         artCards.forEach(card => {
+550:             card.addEventListener('mouseenter', () => {
+551:                 card.classList.add('shadow-sm');
+552:             });
+553:             card.addEventListener('mouseleave', () => {
+554:                 card.classList.remove('shadow-sm');
+555:             });
+556:         });
+557:     </script>
+558: <script type="module">
+559:     import { supabase, initAuth } from './js/supabase-auth.js';
+560:     initAuth();
+561: 
+562:     async function checkArtistRole() {
+563:         const { data: { session } } = await supabase.auth.getSession();
+564:         if (session?.user?.user_metadata?.role === 'artist') {
+565:             const artistActions = document.getElementById('artist-actions');
+566:             if (artistActions) {
+567:                 artistActions.classList.remove('hidden');
+568:             }
+569:         }
+570:     }
+571:     checkArtistRole();
+572:     supabase.auth.onAuthStateChange(() => {
+573:         checkArtistRole();
+574:     });
+575: </script>
+576: </body></html>
+The above content shows the entire, complete file contents of the requested file.

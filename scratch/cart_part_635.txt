@@ -1,0 +1,86 @@
+Created At: 2026-06-01T07:10:46Z
+Completed At: 2026-06-01T07:10:46Z
+File Path: `file:///c:/Users/USER-PC/Downloads/stitch_artisan_marketplace_hub/js/cart-helper.js`
+Total Lines: 461
+Total Bytes: 18837
+Showing lines 151 to 300
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+151: 
+152:     // Wire close buttons
+153:     document.getElementById('cart-drawer-close').addEventListener('click', closeCartDrawer);
+154:     document.getElementById('cart-drawer-close-backdrop').addEventListener('click', closeCartDrawer);
+155: }
+156: 
+157: // Open / Close actions
+158: export async function openCartDrawer() {
+159:     injectCartDrawerHTML();
+160:     const overlay = document.getElementById('cart-drawer-overlay');
+161:     const drawer = document.getElementById('cart-drawer');
+162: 
+163:     overlay.classList.remove('hidden');
+164:     // Force reflow
+165:     void overlay.offsetWidth;
+166: 
+167:     overlay.classList.replace('opacity-0', 'opacity-100');
+168:     drawer.classList.replace('translate-x-full', 'translate-x-0');
+169: 
+170:     await loadCartDrawerItems();
+171: }
+172: 
+173: export function closeCartDrawer() {
+174:     const overlay = document.getElementById('cart-drawer-overlay');
+175:     const drawer = document.getElementById('cart-drawer');
+176: 
+177:     if (!overlay || !drawer) return;
+178: 
+179:     overlay.classList.replace('opacity-100', 'opacity-0');
+180:     drawer.classList.replace('translate-x-0', 'translate-x-full');
+181: 
+182:     setTimeout(() => {
+183:         overlay.classList.add('hidden');
+184:     }, 400);
+185: }
+186: 
+187: // Load items from database and render
+188: async function loadCartDrawerItems() {
+189:     const cartId = await getOrCreateCartId();
+190:     const container = document.getElementById('cart-drawer-items');
+191:     const subtotalEl = document.getElementById('cart-drawer-subtotal');
+19
+<truncated 4004 bytes>
+:                     
+267:                     <div class="flex items-center gap-3">
+268:                         <span class="font-label-md text-sm text-on-surface dark:text-white">R ${art.price.toLocaleString()}</span>
+269:                         <button class="delete-item-btn material-symbols-outlined text-on-surface-variant hover:text-error dark:text-inverse-on-surface/50 scale-75 transition-colors" data-item-id="${item.id}">delete</button>
+270:                     </div>
+271:                 </div>
+272:             </div>
+273:         `;
+274:         container.appendChild(itemEl);
+275:     });
+276: 
+277:     const shipping = 120.00;
+278:     const tax = Math.round(subtotal * 0.08);
+279:     const grandTotal = subtotal + shipping + tax;
+280: 
+281:     subtotalEl.textContent = `R ${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+282:     taxEl.textContent = `R ${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+283:     totalEl.textContent = `R ${grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+284: 
+285:     // Wire Qty buttons
+286:     container.querySelectorAll('.inc-qty-btn').forEach(btn => {
+287:         btn.addEventListener('click', async (e) => {
+288:             const itemId = btn.getAttribute('data-item-id');
+289:             const currentQty = parseInt(btn.getAttribute('data-qty'));
+290:             await updateItemQuantity(itemId, currentQty + 1);
+291:         });
+292:     });
+293: 
+294:     container.querySelectorAll('.dec-qty-btn').forEach(btn => {
+295:         btn.addEventListener('click', async (e) => {
+296:             const itemId = btn.getAttribute('data-item-id');
+297:             const currentQty = parseInt(btn.getAttribute('data-qty'));
+298:             if (currentQty <= 1) {
+299:                 await deleteCartItem(itemId);
+300:             } else {
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.

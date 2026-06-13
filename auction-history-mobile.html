@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Auction History - Artisane</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e3e2e0",
+                    "secondary-fixed-dim": "#ffb59b",
+                    "outline": "#74777f",
+                    "surface-dim": "#dadad8",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#abc8f5",
+                    "surface": "#faf9f7",
+                    "secondary": "#94492d",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#436087",
+                    "surface-container-low": "#f4f3f1",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fd9e7b",
+                    "tertiary-fixed-dim": "#e8c17a",
+                    "primary-fixed": "#d4e3ff",
+                    "on-tertiary-fixed": "#271900",
+                    "on-secondary-container": "#773319",
+                    "secondary-fixed": "#ffdbcf",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f1f1ef",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2f3130",
+                    "background": "#faf9f7",
+                    "tertiary-container": "#5f4407",
+                    "primary-container": "#2c4a70",
+                    "primary": "#123358",
+                    "surface-container": "#efeeec",
+                    "on-primary-container": "#9cbae6",
+                    "surface-container-high": "#e9e8e6",
+                    "on-surface-variant": "#43474e",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4205",
+                    "on-primary-fixed": "#001c39",
+                    "primary-fixed-dim": "#abc8f5",
+                    "on-background": "#1a1c1b",
+                    "tertiary-fixed": "#ffdea7",
+                    "surface-container-highest": "#e3e2e0",
+                    "on-secondary-fixed": "#380d00",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1a1c1b",
+                    "on-primary-fixed-variant": "#2a486e",
+                    "tertiary": "#442e00",
+                    "surface-bright": "#faf9f7",
+                    "outline-variant": "#c3c6cf",
+                    "on-tertiary-container": "#d9b26d",
+                    "on-secondary-fixed-variant": "#763218"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["EB Garamond"],
+                    "label-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["EB Garamond"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .mask-fade-bottom {
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  
+<!-- Global Site Interaction Helpers -->
+<script type="module" src="./js/theme-toggle-helper.js"></script>
+<script type="module" src="./js/cart-helper.js"></script>
+<script type="module" src="./js/follow-helper.js"></script>
+<link rel="stylesheet" href="./css/global.css">
+<script type="module" src="./js/supabase-auth.js"></script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface dark:bg-surface-bright">
+<button class="hover:opacity-70 transition-opacity Active: scale-95 duration-200 transition-transform text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-tight text-primary">Artisane</h1>
+<button class="hover:opacity-70 transition-opacity Active: scale-95 duration-200 transition-transform text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile">
+<!-- Page Title -->
+<section class="mb-8">
+<h2 class="font-headline-md text-headline-md mb-2">Auction History</h2>
+<p class="font-body-md text-on-surface-variant opacity-80">Track your curation journey and acquisitions.</p>
+</section>
+<!-- Summary Cards - Horizontal Scroll Layout for Mobile -->
+<section class="flex overflow-x-auto gap-4 pb-6 -mx-margin-mobile px-margin-mobile no-scrollbar">
+<!-- Total Acquisitions -->
+<div class="min-w-[160px] flex-1 bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-2">inventory_2</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Acquisitions</p>
+<p class="font-headline-md text-headline-md text-primary">12</p>
+</div>
+<!-- Total Invested -->
+<div class="min-w-[160px] flex-1 bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-2">payments</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Total Invested</p>
+<p class="font-headline-md text-headline-md text-primary">R 42.8k</p>
+</div>
+<!-- Winning Rate -->
+<div class="min-w-[160px] flex-1 bg-surface-container-low border border-outline-variant p-4 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-2">trending_up</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Winning Rate</p>
+<p class="font-headline-md text-headline-md text-primary">68%</p>
+</div>
+</section>
+<!-- Participation List -->
+<section class="space-y-6">
+<h3 class="font-label-md text-label-md text-on-surface-variant border-b border-outline-variant pb-2 mb-4">Past Participations</h3>
+<!-- Item 1: Won -->
+<div class="flex gap-4 group active:scale-[0.98] transition-transform duration-200">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-high rounded overflow-hidden">
+<img alt="Abstract painting" class="w-full h-full object-cover" data-alt="A high-resolution detail shot of a sophisticated abstract oil painting with thick impasto textures. The artwork features a palette of deep navy blue, muted gold, and clean gallery white, shot in bright, natural morning light within a minimalist studio. The overall mood is one of refined, high-end artistic expression consistent with a luxury art gallery brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFAFXViOsGgkMONVc9fPRm36dzkDpv-Qy0fUM51k9dvCbhXUUa_Oul7u2ZIdnzGsiYBOAIXQTJO4mIzftXxcUKPsON8yEZ4rgxwgh1cvofSTiB8nnAwSWvTO1x-98mBXP6JvMy6rdz8739PA8aA8jpLjy5q6cWU2X2YOOD_HmX0Nnes7fC9RqX7LiAs0LtCu44HvgPOBqORkYcdcRi67wvPyhwwYPKtDv-CzOJ1ssNtNVPlQzfSfB-jXFT5z8cJgbekSsFXNPIQ3-s"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-[18px] leading-tight">Ethereal Bloom No. 4</h4>
+<span class="bg-primary text-on-primary px-2 py-0.5 rounded-sm font-label-sm text-[10px] uppercase tracking-tighter">Won</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Helena Vane</p>
+</div>
+<div class="flex justify-between items-end">
+<p class="font-body-md text-body-md text-primary font-semibold">R 8,400</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">Oct 12, 2023</p>
+</div>
+</div>
+</div>
+<!-- Item 2: Outbid -->
+<div class="flex gap-4 group active:scale-[0.98] transition-transform duration-200 opacity-80">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-high rounded overflow-hidden grayscale-[0.5]">
+<img alt="Sculptural piece" class="w-full h-full object-cover" data-alt="A minimalist studio photograph of a contemporary marble sculpture with flowing, organic curves. The piece is set against a soft, neutral grey background and illuminated by a single directional light source that creates deep, elegant shadows. The visual aesthetic is clean, professional, and editorial, emphasizing the fine texture of the stone and its high-end gallery context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-HTPG_A5uY8xkNivMZ1cNpyx5HB8eIbnFee65zlAfBdYd1-NEIufOyapkjs6xF8Y4cdOtrNKbOxbM_9o1CD7Me847z2z54kXbCg1JqCY4GOVc4353dsab9wkFJCJ-ViotNhwLec8mwwUd9xxxo9fqv0yqyRBuXem0j9X-jDZw2s68RIbb18EJOcb1m65EUv6YDLzaVe-VujcUqMdGBw3CNSTagxHGfWaGVzJIMFwZDhxEM7gDldrgJBKPj2VGfN7H8xxJXk7a5aOv"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-[18px] leading-tight">Fragmented Silence</h4>
+<span class="border border-outline-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-sm text-[10px] uppercase tracking-tighter">Outbid</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Marcus Thorne</p>
+</div>
+<div class="flex justify-between items-end">
+<p class="font-body-md text-body-md text-on-surface-variant">R 12,200</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">Sep 28, 2023</p>
+</div>
+</div>
+</div>
+<!-- Item 3: Won -->
+<div class="flex gap-4 group active:scale-[0.98] transition-transform duration-200">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-high rounded overflow-hidden">
+<img alt="Architectural photography" class="w-full h-full object-cover" data-alt="A striking black and white fine art photograph capturing the geometric patterns of modern architecture. The image features sharp lines, high contrast between light and shadow, and a deep sense of atmospheric depth. The presentation is professional and sophisticated, mirroring the visual language of a high-end contemporary art gallery's photography collection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfXBabflgccENIj826-muzzgeFP2r-UpZ6VIHA0j1uYam3BxV6Ww2CSikpJrwKIw5qWeAB-cPhbmdoFndjuFm-A2IWhhtFqX6aSIDXkMksGpIiueLD9EP9wfr2qsJoRaon_VhoTOJqP8l-VnZU5BKpLV81611aE1OijxmkTGZVItRB5Jm5GcrlXgiJb7DVPU8Fp1gk0Ee8d0MG6ZX5zyNM1hA7R8voaKXV0_hxsszblgaBnvNvjBGbpPaPHXgwvsJTCqjLT8riLd9z"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-[18px] leading-tight">Urban Geometry I</h4>
+<span class="bg-primary text-on-primary px-2 py-0.5 rounded-sm font-label-sm text-[10px] uppercase tracking-tighter">Won</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Julian Grey</p>
+</div>
+<div class="flex justify-between items-end">
+<p class="font-body-md text-body-md text-primary font-semibold">R 3,150</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">Aug 05, 2023</p>
+</div>
+</div>
+</div>
+<!-- Item 4: Outbid -->
+<div class="flex gap-4 group active:scale-[0.98] transition-transform duration-200 opacity-80">
+<div class="w-24 h-24 flex-shrink-0 bg-surface-container-high rounded overflow-hidden grayscale-[0.5]">
+<img alt="Digital art" class="w-full h-full object-cover" data-alt="A vibrant digital art piece featuring flowing, neon-colored vaporwave aesthetics and surreal landscapes. The artwork is presented with high-definition clarity, showcasing intricate glowing details and a futuristic mood. The overall visual style is modern, innovative, and perfectly aligned with a curation of high-end digital collectibles and contemporary masterpieces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT81vNic0mmcaT6D3fER4FvhLqqHptjpdBKEkyU7BQCCWkbUh4nwuctgIO5SYSErEh8rnBlDdZOZhQ5_67vdg-Hn0HuEp-4kLoTHFUvJ41TZRfWLXTTgzTIl1jRRp6LKFWOSQkstTSGeAulUxAxeSDTBREVxJR5Sf5Sm_ni7PRgwWAHBCpmIwCp8PfviMN79_cOaOcaPmb-UU-ZILnUBx1h0Y7K3FY-omBFnKN7DtPeoF6STPgsxLAzpQ1X_8OVNiBD778AbfvAHXS"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="font-headline-md text-[18px] leading-tight">Neon Pulse</h4>
+<span class="border border-outline-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-sm text-[10px] uppercase tracking-tighter">Outbid</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Sora Lee</p>
+</div>
+<div class="flex justify-between items-end">
+<p class="font-body-md text-body-md text-on-surface-variant">R 1,800</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">Jul 19, 2023</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim px-4 pb-safe border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-sm text-label-sm mt-1">Auctions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">palette</span>
+<span class="font-label-sm text-label-sm mt-1">Artists</span>
+</a>
+<!-- Active Tab: Profile (since this is an account/history page) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-secondary-fixed-dim font-bold transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for summary cards scroll fade
+        const scrollContainer = document.querySelector('.overflow-x-auto');
+        scrollContainer.addEventListener('scroll', () => {
+            const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            const scrollLeft = scrollContainer.scrollLeft;
+            const opacity = Math.max(0, 1 - (scrollLeft / 50));
+            // Optional: add visual cues for scrolling
+        });
+
+        // Simple active state simulation for buttons
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('touchstart', () => {
+                el.style.transform = 'scale(0.96)';
+            });
+            el.addEventListener('touchend', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>
