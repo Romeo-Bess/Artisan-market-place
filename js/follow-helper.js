@@ -140,7 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (isActive) {
-                    link.className = link.className.replace(/\btext-on-surface-variant\b/, 'text-primary dark:text-white font-bold');
+                    link.className = link.className
+                        .replace(/\btext-on-surface-variant\b/, 'text-primary font-bold')
+                        .replace(/\bdark:text-zinc-300\b/, 'dark:text-white font-bold');
                     link.classList.add('border-b-2', 'border-primary', 'dark:border-white', 'pb-1');
                 }
             });

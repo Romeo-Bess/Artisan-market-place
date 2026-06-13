@@ -219,8 +219,28 @@ function setupModalEvents() {
 function updateAuthButton(user) {
   // Find person/avatar trigger button in navbar
   let authBtn = document.getElementById('auth-person-btn');
+  
   if (!authBtn) {
-    // Fallback: look for button or anchor containing person icon
+    // 1. Look for img with alt containing "Avatar" or "Profile" or "Collector"
+    const avatarImg = document.querySelector('img[alt*="Avatar"], img[alt*="Profile"], img[alt*="Collector"]');
+    if (avatarImg) {
+      let parent = avatarImg.parentElement;
+      while (parent && parent.tagName !== 'HEADER' && parent.tagName !== 'NAV') {
+        if (parent.tagName === 'BUTTON' || parent.tagName === 'A' || parent.classList.contains('cursor-pointer')) {
+          authBtn = parent;
+          break;
+        }
+        parent = parent.parentElement;
+      }
+      if (!authBtn) {
+        authBtn = avatarImg.parentElement;
+        authBtn.classList.add('cursor-pointer');
+      }
+    }
+  }
+
+  if (!authBtn) {
+    // 2. Fallback: look for button or anchor containing person icon
     const icons = document.querySelectorAll('.material-symbols-outlined');
     for (let icon of icons) {
       if (icon.textContent.trim() === 'person') {
@@ -236,12 +256,18 @@ function updateAuthButton(user) {
   const newAuthBtn = authBtn.cloneNode(true);
   authBtn.parentNode.replaceChild(newAuthBtn, authBtn);
 
-  newAuthBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  if (user) {
+    // Render round avatar image
+    newAuthBtn.innerHTML = `
+      <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant flex items-center justify-center">
+        <img alt="Collector Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpbCh32QpTno_Cj_sPnlQzT0FozFHmPGQIRVKZlYuqHnaiUYesqfRmzuG3UVqHjUNhg04DDQBpLKDdMZ93F5BOZqlm2QxAsSFOSPoBgGmdCY5JwtTSQ7IObGQ0VgdTzxAjsYMxhiFN8pMSToskZ6TlyyEBJfILqbIuKNz97Ld_0eYV83aXjhyttDS00B793553pExU6RvfdQ69hzq6ndeBlGK-YC8ZOc0-WXisa3TWyjIcUp75lPBjXMmusgzJwEDoeTei1lNIGxeH"/>
+      </div>
+    `;
+    
+    newAuthBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    if (user) {
-      // Toggle dropdown menu
       const userMenu = document.getElementById('user-menu');
       if (userMenu) {
         if (userMenu.classList.contains('hidden')) {
@@ -253,13 +279,21 @@ function updateAuthButton(user) {
           userMenu.classList.add('hidden');
         }
       }
-    } else {
-      // Open modal
+    });
+  } else {
+    // Render default person icon
+    newAuthBtn.innerHTML = `<span class="material-symbols-outlined">person</span>`;
+    
+    newAuthBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       injectModal();
       const modal = document.getElementById('auth-modal');
-      modal.classList.replace('hidden', 'flex');
-    }
-  });
+      if (modal) {
+        modal.classList.replace('hidden', 'flex');
+      }
+    });
+  }
 }
 
 // Global initialization
