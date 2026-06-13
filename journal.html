@@ -200,15 +200,15 @@
 <p class="text-on-surface-variant mt-2">In conversation with the creators of today.</p>
 </div>
 <div class="hidden md:block">
-<button class="p-3 border border-outline-variant rounded-full hover:bg-surface transition-colors mr-2">
+<button class="p-3 border border-outline-variant rounded-full hover:bg-surface transition-colors mr-2" onclick="document.getElementById('spotlights-grid').scrollLeft -= 380">
 <span class="material-symbols-outlined">chevron_left</span>
 </button>
-<button class="p-3 border border-outline-variant rounded-full hover:bg-surface transition-colors">
+<button class="p-3 border border-outline-variant rounded-full hover:bg-surface transition-colors" onclick="document.getElementById('spotlights-grid').scrollLeft += 380">
 <span class="material-symbols-outlined">chevron_right</span>
 </button>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 overflow-x-auto snap-x scroll-smooth hide-scrollbar" id="spotlights-grid">
 <!-- Article 1 -->
 <article class="group cursor-pointer">
 <div class="aspect-[4/5] overflow-hidden mb-6">
@@ -388,8 +388,8 @@
             }
         });
 
-        // Hover animation for list items
-        document.querySelectorAll('.group').forEach(item => {
+        // Hover animation for list items (modified for translate compatibility)
+        document.querySelectorAll('.group-row').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 item.style.transform = 'translateX(8px)';
             });
@@ -397,5 +397,245 @@
                 item.style.transform = 'translateX(0)';
             });
         });
+
+        // Article Database for Interactive Reader
+        const journalDb = {
+            'intersection-bone-canvas': {
+                title: 'The Intersection of Bone and Canvas',
+                category: 'Volume IV: Intentional Spaces',
+                readTime: '6 min read',
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb4dpSpQ_SvKnuz0Oe1p3-eiFwdOZc86sdiUb7GMkwyG7u5qKhUB97GMgj7favOctuPAaZtOOpTptw-7ycJOy9MgaZQLsa3Xgs4T5cxVFpqIdY5XNcOnAJvKZtZ7PmLNl4mOqk_AFj_xh9Dv2hHWjg5dFTvdDKJTYUGMZ1p_31KS0eYtVZZM-XeKLh2QwVvi6Gr_3ukrnPfg7v56biiUmOglUithSCXWEmpkMJxGsuas3t7pQDlPmV8v7WQ_CVOO9SIGvYjut1-xf8',
+                paragraphs: [
+                    'Brutalist architecture, with its raw concrete planes, exposed structural elements, and monolithic scale, has long been regarded as cold or uninviting. However, for contemporary minimalist artists, it serves as the ultimate silent partner. The unyielding textures of shuttered concrete provide a rich, tactile counterpoint to the quiet precision of canvas.',
+                    'In this issue, we tour the home of master curator Elena Rossi. Nestled on the outskirts of Berlin, the residence is a study in material contrast. Pristine off-white canvases are suspended directly against raw, bush-hammered concrete walls. Light, streaming through towering steel-framed windows, plays across both surfaces throughout the day, constantly redefining their boundary.',
+                    '\"A canvas needs a wall that speaks,\" Elena explains. \"When you place a quiet, minimalist painting on a completely flat, white drywall, it can get lost. But when it competes with, and ultimately balances, the aggressive honesty of concrete, both pieces of art are elevated.\"'
+                ]
+            },
+            'marcello-vance': {
+                title: 'Marcello Vance: Capturing the Void',
+                category: 'Photography Spotlight',
+                readTime: '5 min read',
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvxYar0n6G38C5kZDUTNNaQKZ3ryX8W4QhymOLjeE97ngl7HffAPtcmqW7q6QfiBS6V4pvWrxOguTgWy-rba0NQaS7kffO7-_CQ0NvG72pmMv7y0B_sTZLGJKLFUPDJhZ2x4dz0K7QlcfbLqkivB_l7AgNE9vO5BbDFStlyCvfDZG9kakqP9tl3gKJGeZBGFMSYtoZnOKCBFObOLTR14NH-vKr5Wh8zsHwKhZyz-mfjtfqlacJMpEUMK4V7152f2FYPDAVyjSdCNS0',
+                paragraphs: [
+                    'Photographer Marcello Vance spent three years in the high-altitude deserts of northern Chile, isolated from civilization. Armed with only a medium-format film camera and a tripod, he sought to document the most elusive subject of all: negative space.',
+                    'The resulting series, \"The Atacama Chronicles,\" is a breathtaking study of void and structural light. In Vance\'s frames, the desert sky is not a backdrop but a solid, textured element that bends around distant mountain peaks. The light, sharp and unfiltered at 4,000 meters above sea level, carves deep architectural shadows into the landscape.',
+                    '\"In the desert, what is missing is always more powerful than what is there,\" Vance states. \"My work is about capturing that absence. The void is not empty; it is pregnant with possibility.\"'
+                ]
+            },
+            'weight-of-pigment': {
+                title: 'The Weight of Pigment',
+                category: 'Material Process',
+                readTime: '8 min read',
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBGTr4nhh4t-0dtmRCetZxqME5CqzTOuxU6uGhijRosXbQ6hxg_Hcnfx-qxy6ZpsR0x6UuhsWsrVdUGOUokJMV856fkX_I-s2TOJUiGvrod0hbHC9Oaxay_Kot2FO9lbWR514Jvp--S09aP7sH8bBLHcg6IDm7Xd68Srba922T7DIwdt6wf62p-ZdKkDHpO5KRycsLIn5AkDoGOXTorFY6xz--rgyrknsFNbVsvjyw6-MQjl0sRdr2hcdxHTW0G2S3dIjSVNLjHR_fq',
+                paragraphs: [
+                    'Sarah Chen\'s studio smells of earth, oil, and crushed stone. Unlike modern artists who buy premixed acrylics from tubes, Chen prepares every ounce of her paint by hand. She sources raw minerals from quarries around the world: lapis lazuli from Afghanistan, cinnabar from Spain, and ochres from the hills of Roussillon.',
+                    'This ancient, labor-intensive process is more than a technique; it is a philosophy. By grinding the pigments herself and blending them with walnut oil and natural binders, Chen achieves a depth of tone and texture that cannot be replicated synthetically.',
+                    '\"There is a physical weight to genuine lapis lazuli that you can feel on the canvas,\" Sarah explains. \"The light doesn\'t just bounce off the surface; it penetrates the mineral layers and glows from within. It is a slow art form, but one that connects us directly to the earth.\"'
+                ]
+            },
+            'structures-of-solitude': {
+                title: 'Structures of Solitude',
+                category: 'Architecture Spotlight',
+                readTime: '12 min read',
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADdoyNijSJVvYsczj8ZuNtetq2ej9rDA-CLkT6kcgi4XjFNbOeS40ud8eJdDjClUURFFGB_WDmBVprRx23fTalTmpQWwH3BVAMXb-JoZdCh67dG77xKlutvGamLqC-vBuWgCSlAvFngqtQ43VlJgzxlYS70O9gXPkVJZ5ihk4mkOh_tEGf7HY2DQNNVFKvDmzqj5pJ88cTlIlQvHFt_l6Xux1pSsgScpR7gIwCfd1Mst0QOlKvGo3vRO9vcZwrIJiThvcBZ40dsCNA',
+                paragraphs: [
+                    'The minimalist, concrete masterpieces of architect Tadao Ando are famous for their spiritual focus. By stripping away all ornamentation and utilizing light as a primary building material, Ando creates spaces that invite quiet introspection and solitude.',
+                    'For contemporary textile artists, Ando\'s spatial philosophy is a major source of inspiration. The raw, geometric grids of his concrete panels find an organic echo in the warp and weft of hand-loomed wool tapestries. The play of shadows across concrete grids translates beautifully into structured, three-dimensional fabric installations.',
+                    'In this profile, we interview artists who have installed works inside Ando\'s structures, exploring the dialogue between concrete wall grids and woven textile modules.'
+                ]
+            },
+            'alchemy-of-clay': {
+                title: 'The Alchemy of Clay',
+                category: 'Mediums',
+                readTime: '7 min read',
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC4We3XvrHjVNN1zivYxgdQnF941JvT7dfLbUM3KTB0kjfts1DLgoRlvCK0ZzClUYMydQwIdVmrGBM2OcL4YtKTwQBGQ74Es3ppLDjCxuiq5e8s-M-ObW48J3qYD9TpXLcI1S-5rVm8EwGht9lXT6elsIiv_65EeoZhBrDZXBSQIYgasas95ennvg8EMXSymbjdXTY17coepDZwaVCG4ARDc541mN0juWwuzsdUG7hl8Ao_HW-NG1GaXseWoEoIyFhS4l3VJL9vF_YA',
+                paragraphs: [
+                    'Contemporary ceramics have transcended functional craft to take their rightful place on gallery pedestals. The tactile purity of unglazed stoneware and organic, hand-built vessels acts as a perfect grounding element in high-modernist interiors.',
+                    'We trace the revival of studio pottery and its integration with minimalist spatial designs, looking at how curators are pairing raw earthenware with sleek, contemporary painting.'
+                ]
+            },
+            'living-with-light': {
+                title: 'Living with Light',
+                category: 'Profiles',
+                readTime: '9 min read',
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCmIAiwU7IyZTl619BeUBqc6wfi82miSyvnF-jb-3NsKZ6H1AXjQWrKBdfhspBQbatTNpSPIKpT-ihJYTUZoaJWicktsr51o5x3LhUAqUpwaV1-eCOMDDdjGZjd9ysT2DqM2BDjqyoudSPKY2AG6ah0sFrOm44maqI6P0MxMs7FRfug19VBkkHLvfn_5dxIf8-ceYxl7yzRyfaXpfKWxTuZrRuKRXXkCvo5lqZZdEKGJctQWnyknUln7aEAI2Tq3vGLpNztLyXEX1x_',
+                paragraphs: [
+                    'Ingo Maurer was not just a lighting designer; he was a poet of illumination. His work challenges our preconceptions of what a lamp can be, using light to create dramatic, temporary sculptures inside a room.',
+                    'This retrospective traces Maurer\'s most iconic installations, exploring his use of paper, feathers, and custom halogen systems to transform spatial architecture.'
+                ]
+            }
+        };
+
+        // Create Modal Elements and Inject into DOM
+        const modal = document.createElement('div');
+        modal.id = 'journal-modal';
+        modal.className = 'fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4 md:p-10 hidden';
+        modal.innerHTML = `
+            <div class="bg-surface dark:bg-zinc-900 w-full max-w-3xl border border-outline-variant dark:border-zinc-700 max-h-[85vh] flex flex-col relative text-on-surface">
+                <button id="close-journal-modal" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-primary hover:text-white transition-all z-10">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <div class="overflow-y-auto p-8 md:p-12 space-y-6">
+                    <span id="modal-category" class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block">Category</span>
+                    <h2 id="modal-title" class="font-headline-lg text-headline-lg text-primary dark:text-white leading-tight">Title</h2>
+                    <p id="modal-read-time" class="font-label-md text-xs text-outline">Time</p>
+                    <div class="aspect-video w-full overflow-hidden bg-surface-container border border-outline-variant dark:border-zinc-800">
+                        <img id="modal-image" class="w-full h-full object-cover" src=""/>
+                    </div>
+                    <div id="modal-content" class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        <!-- Paragraphs -->
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Toast System Injector
+        const toast = document.createElement('div');
+        toast.id = 'journal-toast';
+        toast.className = 'fixed bottom-8 right-8 bg-primary text-white px-6 py-4 rounded-lg shadow-2xl font-label-md text-label-md uppercase tracking-wider translate-y-20 opacity-0 transition-all duration-300 z-[100]';
+        toast.textContent = 'Subscribed successfully!';
+        document.body.appendChild(toast);
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Open Modal Reader Action
+        function openArticle(key) {
+            const article = journalDb[key];
+            if (!article) return;
+
+            document.getElementById('modal-category').textContent = article.category;
+            document.getElementById('modal-title').textContent = article.title;
+            document.getElementById('modal-read-time').textContent = article.readTime;
+            document.getElementById('modal-image').src = article.image;
+
+            const contentDiv = document.getElementById('modal-content');
+            contentDiv.innerHTML = article.paragraphs.map(p => `<p class="mb-4">${p}</p>`).join('');
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal Action
+        document.getElementById('close-journal-modal').addEventListener('click', () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Bind Main Stories
+        const mainStoryBtn = document.querySelector('a.inline-flex.items-center');
+        if (mainStoryBtn) {
+            mainStoryBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openArticle('intersection-bone-canvas');
+            });
+        }
+
+        // Bind Spotlights
+        const spotlightArticles = document.querySelectorAll('#spotlights-grid article');
+        const spotlightKeys = ['marcello-vance', 'weight-of-pigment', 'structures-of-solitude'];
+        spotlightArticles.forEach((art, idx) => {
+            art.addEventListener('click', () => {
+                const key = spotlightKeys[idx];
+                if (key) openArticle(key);
+            });
+        });
+
+        // Bind Archive Rows
+        const archiveRows = document.querySelectorAll('.py-section-gap.bg-white .group');
+        const archiveKeys = ['alchemy-of-clay', 'living-with-light'];
+        archiveRows.forEach((row, idx) => {
+            // Assign custom classes for translate compatibility
+            row.classList.add('group-row');
+            row.addEventListener('click', () => {
+                const key = archiveKeys[idx];
+                if (key) openArticle(key);
+            });
+        });
+
+        // Form subscription handler
+        const subForm = document.querySelector('form.max-w-lg');
+        if (subForm) {
+            subForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const input = subForm.querySelector('input');
+                if (input && input.value) {
+                    showToast('Thank you for subscribing to The Weekly Dispatch!');
+                    input.value = '';
+                }
+            });
+        }
+
+        // View All Stories dynamic loader
+        const viewAllStoriesBtn = document.querySelector('.mt-16 button');
+        if (viewAllStoriesBtn) {
+            viewAllStoriesBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Check if already expanded
+                if (document.getElementById('expanded-archive')) {
+                    showToast('All stories are currently loaded.');
+                    return;
+                }
+
+                const archiveContainer = document.querySelector('.py-section-gap.bg-white .space-y-0');
+                if (archiveContainer) {
+                    const expandedDiv = document.createElement('div');
+                    expandedDiv.id = 'expanded-archive';
+                    expandedDiv.className = 'space-y-0';
+                    expandedDiv.innerHTML = `
+                        <div class="group-row py-8 border-b border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:bg-surface transition-colors px-4 -mx-4 cursor-pointer" onclick="openArticle('intersection-bone-canvas')">
+                            <div class="flex items-center gap-10">
+                                <span class="font-label-sm text-label-sm text-outline w-12">11.23</span>
+                                <div class="max-w-md">
+                                    <h4 class="font-headline-md text-headline-md text-primary mb-1 transition-colors">The Architecture of Silence</h4>
+                                    <p class="text-on-surface-variant text-sm">Concrete and lighting in modern Japanese homes</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-12">
+                                <span class="hidden md:block font-label-sm text-label-sm text-outline uppercase tracking-widest">Architecture</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">north_east</span>
+                            </div>
+                        </div>
+                        <div class="group-row py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:bg-surface transition-colors px-4 -mx-4 cursor-pointer" onclick="openArticle('marcello-vance')">
+                            <div class="flex items-center gap-10">
+                                <span class="font-label-sm text-label-sm text-outline w-12">10.23</span>
+                                <div class="max-w-md">
+                                    <h4 class="font-headline-md text-headline-md text-primary mb-1 transition-colors">Capturing the Void II</h4>
+                                    <p class="text-on-surface-variant text-sm">Marcello Vance discusses raw natural textures</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-12">
+                                <span class="hidden md:block font-label-sm text-label-sm text-outline uppercase tracking-widest">Profiles</span>
+                                <span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">north_east</span>
+                            </div>
+                        </div>
+                    `;
+                    archiveContainer.appendChild(expandedDiv);
+                    showToast('Loaded archived stories from late 2023.');
+
+                    // Bind hover transitions to newly loaded rows
+                    expandedDiv.querySelectorAll('.group-row').forEach(item => {
+                        item.addEventListener('mouseenter', () => {
+                            item.style.transform = 'translateX(8px)';
+                        });
+                        item.addEventListener('mouseleave', () => {
+                            item.style.transform = 'translateX(0)';
+                        });
+                    });
+                }
+            });
+        }
     </script>
 </body></html>
