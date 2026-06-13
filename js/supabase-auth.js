@@ -124,6 +124,24 @@ function setupModalEvents() {
     btn.disabled = true;
     btn.textContent = 'Signing In...';
 
+    // Intercept admin/admin login
+    if (email === 'admin@gmail.com' && password === 'admin') {
+      const mockUser = {
+        id: 'mock-admin-id-00000000',
+        email: 'admin@gmail.com',
+        user_metadata: {
+          full_name: 'Admin User',
+          role: 'collector'
+        }
+      };
+      localStorage.setItem('supabase_mock_session', JSON.stringify({ user: mockUser }));
+      btn.disabled = false;
+      btn.textContent = 'Sign In';
+      closeModal();
+      window.location.reload();
+      return;
+    }
+
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     btn.disabled = false;
     btn.textContent = 'Sign In';
@@ -144,6 +162,26 @@ function setupModalEvents() {
     const email = document.getElementById('signup-email').value.trim();
     const password = document.getElementById('signup-password').value;
     const isArtist = document.getElementById('signup-role-artist').checked;
+
+    // Intercept admin/admin signup
+    if (email === 'admin@gmail.com' && password === 'admin') {
+      const mockUser = {
+        id: 'mock-admin-id-00000000',
+        email: 'admin@gmail.com',
+        user_metadata: {
+          full_name: fullName || 'Admin User',
+          role: isArtist ? 'artist' : 'collector'
+        }
+      };
+      localStorage.setItem('supabase_mock_session', JSON.stringify({ user: mockUser }));
+      alertEl.textContent = 'Account created successfully! Auto-logging in...';
+      alertEl.className = 'mb-6 p-4 text-sm bg-green-50 text-green-700 border border-green-200 rounded-sm';
+      setTimeout(() => {
+        closeModal();
+        window.location.reload();
+      }, 1000);
+      return;
+    }
 
     if (password.length < 8) {
       alertEl.textContent = 'Password must be at least 8 characters.';
@@ -231,6 +269,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Sign out event listener
   document.getElementById('btn-signout').addEventListener('click', async (e) => {
     e.preventDefault();
+    localStorage.removeItem('supabase_mock_session');
     await supabase.auth.signOut();
     document.getElementById('user-menu').classList.add('hidden');
     window.location.reload();
@@ -247,10 +286,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Set up auth state change listener
   supabase.auth.onAuthStateChange((_event, session) => {
+    if (localStorage.getItem('supabase_mock_session')) {
+      return;
+    }
     updateAuthButton(session?.user ?? null);
   });
 
   // Check current session
-  const { data: { session } } = await supabase.auth.getSession();
-  updateAuthButton(session?.user ?? null);
+  let sessionUser = null;
+  const mockSession = localStorage.getItem('supabase_mock_session');
+  if (mockSession) {
+    try {
+      const parsed = JSON.parse(mockSession);
+      sessionUser = parsed.user;
+    } catch(err) {}
+  }
+
+  if (sessionUser) {
+    updateAuthButton(sessionUser);
+  } else {
+    const { data: { session } } = await supabase.auth.getSession();
+    updateAuthButton(session?.user ?? null);
+  }
 });
