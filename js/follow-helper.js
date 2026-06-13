@@ -227,38 +227,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.textContent = `${currency} (${symbols[currency].trim()})`;
             }
         });
+
+        // Update active checkmarks inside dropdown
+        const options = document.querySelectorAll('.currency-option');
+        options.forEach(opt => {
+            const optCurrency = opt.getAttribute('data-currency');
+            const check = opt.querySelector('.currency-check');
+            if (check) {
+                if (optCurrency === currency) {
+                    check.classList.remove('hidden');
+                } else {
+                    check.classList.add('hidden');
+                }
+            }
+        });
     }
 
     function injectCurrencyToggle() {
-        // Find user navigation container (e.g. gap-4, containing shopping_cart, person, etc.)
         const userContainer = document.querySelector('header nav .flex.items-center.gap-4, header .flex.items-center.gap-4, nav .flex.items-center.gap-4');
-        if (userContainer && !document.querySelector('.currency-toggle-trigger')) {
-            const toggleWrapper = document.createElement('div');
-            toggleWrapper.className = 'currency-toggle-trigger flex items-center bg-surface-container-low dark:bg-zinc-800 border border-outline-variant dark:border-zinc-700 rounded-lg px-2.5 py-1 gap-2 cursor-pointer hover:bg-surface-container dark:hover:bg-zinc-700 transition-all text-on-surface-variant scale-95 active:scale-90';
-            toggleWrapper.innerHTML = `
-                <span class="font-label-sm text-label-sm">ZAR (R)</span>
-                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+        if (userContainer && !document.querySelector('.currency-dropdown-wrapper')) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'currency-dropdown-wrapper relative';
+            wrapper.innerHTML = `
+                <div class="currency-toggle-trigger flex items-center bg-surface-container-low dark:bg-zinc-800 border border-outline-variant dark:border-zinc-700 rounded-lg px-2.5 py-1 gap-2 cursor-pointer hover:bg-surface-container dark:hover:bg-zinc-700 transition-all text-on-surface-variant scale-95 active:scale-90">
+                    <span class="font-label-sm text-label-sm">ZAR (R)</span>
+                    <span class="material-symbols-outlined text-[16px] pointer-events-none">expand_more</span>
+                </div>
+                <div class="currency-dropdown-menu absolute hidden right-0 mt-2 top-full w-36 bg-surface dark:bg-zinc-900 border border-outline-variant dark:border-zinc-700 rounded-lg shadow-xl py-1 z-[110] text-on-surface">
+                    <div class="currency-option px-4 py-2 hover:bg-surface-container-low dark:hover:bg-zinc-800 cursor-pointer flex justify-between items-center text-xs" data-currency="ZAR">
+                        <span>ZAR (R)</span>
+                        <span class="currency-check material-symbols-outlined text-[14px] hidden">check</span>
+                    </div>
+                    <div class="currency-option px-4 py-2 hover:bg-surface-container-low dark:hover:bg-zinc-800 cursor-pointer flex justify-between items-center text-xs" data-currency="USD">
+                        <span>USD ($)</span>
+                        <span class="currency-check material-symbols-outlined text-[14px] hidden">check</span>
+                    </div>
+                    <div class="currency-option px-4 py-2 hover:bg-surface-container-low dark:hover:bg-zinc-800 cursor-pointer flex justify-between items-center text-xs" data-currency="EUR">
+                        <span>EUR (€)</span>
+                        <span class="currency-check material-symbols-outlined text-[14px] hidden">check</span>
+                    </div>
+                    <div class="currency-option px-4 py-2 hover:bg-surface-container-low dark:hover:bg-zinc-800 cursor-pointer flex justify-between items-center text-xs" data-currency="GBP">
+                        <span>GBP (£)</span>
+                        <span class="currency-check material-symbols-outlined text-[14px] hidden">check</span>
+                    </div>
+                </div>
             `;
-            // Insert it before the first child (e.g. shopping_cart)
-            userContainer.insertBefore(toggleWrapper, userContainer.firstChild);
+            userContainer.insertBefore(wrapper, userContainer.firstChild);
         }
     }
 
     function setupCurrencyToggles() {
-        const triggers = document.querySelectorAll('.currency-toggle-trigger, .currency-selector');
-        triggers.forEach(el => {
-            el.addEventListener('click', (e) => {
+        const wrapper = document.querySelector('.currency-dropdown-wrapper');
+        if (!wrapper) return;
+
+        const trigger = wrapper.querySelector('.currency-toggle-trigger');
+        const menu = wrapper.querySelector('.currency-dropdown-menu');
+
+        // Toggle dropdown
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            menu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!wrapper.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Select currency options
+        const options = menu.querySelectorAll('.currency-option');
+        options.forEach(opt => {
+            opt.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
 
-                const current = localStorage.getItem('artisane_currency') || 'ZAR';
-                const nextIdx = (currencies.indexOf(current) + 1) % currencies.length;
-                const next = currencies[nextIdx];
-
+                const next = opt.getAttribute('data-currency');
                 localStorage.setItem('artisane_currency', next);
                 updateCurrencyToggleDisplays(next);
                 updatePrices(next);
                 window.dispatchEvent(new CustomEvent('currencyChanged', { detail: { currency: next } }));
+                menu.classList.add('hidden');
             });
         });
     }
