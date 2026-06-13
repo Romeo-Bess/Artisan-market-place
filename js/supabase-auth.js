@@ -366,6 +366,31 @@ window.closePremiumDialog = () => {
 document.addEventListener('DOMContentLoaded', async () => {
   injectModal();
 
+  // Bind Upgrade, Settings, and Support buttons if they exist
+  const upgradeBtn = document.getElementById('btn-upgrade-membership');
+  if (upgradeBtn) {
+    upgradeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPremiumDialog('Upgrade Membership', 'Membership upgrades are handled through our private concierge. A consultant will reach out to your registered email.');
+    });
+  }
+
+  const settingsBtn = document.getElementById('btn-settings');
+  if (settingsBtn) {
+    settingsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPremiumDialog('Account Settings', 'Account settings are managed securely. Contact support to change your verified details.');
+    });
+  }
+
+  const supportBtn = document.getElementById('btn-support');
+  if (supportBtn) {
+    supportBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPremiumDialog('Customer Support', 'Our live support is currently online. Email support@artisane.com or reply to your concierge dispatch thread.');
+    });
+  }
+
   // Sign out event listener
   document.getElementById('btn-signout').addEventListener('click', async (e) => {
     e.preventDefault();
