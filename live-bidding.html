@@ -324,8 +324,6 @@
 </div>
 </footer>
 <script>
-        // Simple Real-Time Interaction Simulation
-        
         // 1. Countdown Timer
         let time = 15738; // Seconds (roughly 4h 22m)
         const countdownEl = document.getElementById('countdown');
@@ -340,18 +338,90 @@
             }
         }, 1000);
 
-        // 2. Micro-interactions for Bid Buttons
-        const bidButtons = document.querySelectorAll('button');
-        bidButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.classList.add('scale-95');
-                setTimeout(() => btn.classList.remove('scale-95'), 150);
+        // 2. Interactive Bidding System
+        let currentHighestBid = 185000;
+        const bidDisplay = document.querySelector('.font-headline-lg.text-primary'); // Current Bid element
+        const activityFeed = document.querySelector('.space-y-4.max-h-60'); // Activity feed
+
+        function formatCurrency(val) {
+            return 'R ' + val.toLocaleString('en-US');
+        }
+
+        function addBidToFeed(amount) {
+            const row = document.createElement('div');
+            row.className = 'flex justify-between items-center opacity-100 border-l-2 border-secondary pl-3 bg-surface-container-low py-2 transition-all duration-500';
+            row.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-label-sm">YC</div>
+                    <div>
+                        <p class="font-label-sm text-label-sm text-primary font-bold">You (Collector)</p>
+                        <p class="text-[10px] uppercase text-on-surface-variant">Just now</p>
+                    </div>
+                </div>
+                <p class="font-label-md text-label-md text-primary font-bold">${formatCurrency(amount)}</p>
+            `;
+            activityFeed.insertBefore(row, activityFeed.firstChild);
+        }
+
+        function placeBid(amountToAdd) {
+            currentHighestBid += amountToAdd;
+            if (bidDisplay) {
+                bidDisplay.textContent = formatCurrency(currentHighestBid);
+            }
+            addBidToFeed(currentHighestBid);
+            
+            // Trigger universal currency conversions if follow-helper.js or cart-helper.js needs to scan
+            if (window.scanAndConvertPrices) {
+                window.scanAndConvertPrices();
+            }
+        }
+
+        // Quick bid buttons
+        const quickBidButtons = document.querySelectorAll('.grid-cols-3 button');
+        const incrementValues = [5000, 10000, 25000];
+        quickBidButtons.forEach((btn, idx) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const val = incrementValues[idx] || 5000;
+                placeBid(val);
             });
         });
 
-        // 3. Simple Theme Persistence (Optional)
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // document.documentElement.classList.add('dark'); // Keeping it Light Mode as requested
+        // Place custom bid button
+        const customBidInput = document.querySelector('input[type="number"]');
+        const customBidButton = document.querySelector('button.w-full.bg-primary');
+        if (customBidButton && customBidInput) {
+            customBidButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                const value = parseFloat(customBidInput.value);
+                if (isNaN(value) || value <= currentHighestBid) {
+                    alert(`Your bid must be higher than the current highest bid of ${formatCurrency(currentHighestBid)}`);
+                    return;
+                }
+                currentHighestBid = value;
+                if (bidDisplay) {
+                    bidDisplay.textContent = formatCurrency(currentHighestBid);
+                }
+                addBidToFeed(currentHighestBid);
+                customBidInput.value = '';
+
+                if (window.scanAndConvertPrices) {
+                    window.scanAndConvertPrices();
+                }
+            });
         }
+
+        // Micro-interactions scaling for all buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.classList.add('scale-95');
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.classList.remove('scale-95');
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('scale-95');
+            });
+        });
     </script>
 </body></html>
