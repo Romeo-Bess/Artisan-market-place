@@ -116,8 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = `
                 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="browse-gallery.html">Browse</a>
                 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="artists.html">Artists</a>
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="browse-gallery.html">Collections</a>
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="live-auctions.html">Exhibitions</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="live-auctions.html">Auctions</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="journal.html">Journal</a>
             `;
             container.classList.remove('gap-12');
             if (!container.classList.contains('gap-8')) {
@@ -133,7 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (idx === 0) isActive = true;
                 } else if (currentPath === 'artists.html' || currentPath.startsWith('artist')) {
                     if (idx === 1) isActive = true;
-                } else if (currentPath === 'live-auctions.html' || currentPath.includes('auction') || currentPath.includes('bidding')) {
+                } else if (currentPath === 'live-auctions.html' || currentPath.includes('auction') || currentPath.includes('bidding') || currentPath.includes('preauth') || currentPath.includes('verification')) {
+                    if (idx === 2) isActive = true;
+                } else if (currentPath === 'journal.html') {
                     if (idx === 3) isActive = true;
                 }
 
@@ -156,25 +158,48 @@ document.addEventListener('DOMContentLoaded', () => {
         priceElements = [];
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
         let node;
-        const priceRegex = /(R\s?|\$|€|£)\s?\d+(?:[.,]\d+)*(?:\s?[kK])?/i;
+        const priceRegex = /(ZAR\s?|R\s?|\$|€|£)\s?\d+(?:[.,]\d+)*(?:\s?[kK])?/i;
         while (node = walker.nextNode()) {
             const parent = node.parentElement;
             if (parent && ['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) {
                 continue;
             }
+            
+            // Check if this node has already been parsed and cached
+            if (node.baseZar !== undefined) {
+                if (node.baseZar !== null && !isNaN(node.baseZar)) {
+                    priceElements.push({
+                        node: node,
+                        originalText: node.originalText,
+                        baseZar: node.baseZar
+                    });
+                }
+                continue;
+            }
+
             const text = node.nodeValue;
             if (priceRegex.test(text)) {
                 // Parse base ZAR price if it's ZAR
                 let zarVal = null;
-                const zarMatch = /R\s?(\d+(?:[.,]\d+)*)/i.exec(text);
+                const zarMatch = /(?:ZAR|R)\s?(\d+(?:[.,]\d+)*)/i.exec(text);
                 if (zarMatch) {
                     zarVal = parseFloat(zarMatch[1].replace(/,/g, ''));
                 }
-                priceElements.push({
-                    node: node,
-                    originalText: text,
-                    baseZar: zarVal
-                });
+                
+                // Cache on the node itself so subsequent scans don't lose it when text node changes
+                node.baseZar = zarVal;
+                node.originalText = text;
+
+                if (zarVal !== null && !isNaN(zarVal)) {
+                    priceElements.push({
+                        node: node,
+                        originalText: text,
+                        baseZar: zarVal
+                    });
+                }
+            } else {
+                // Mark as processed but not a price node
+                node.baseZar = null;
             }
         }
     }
@@ -195,8 +220,28 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCurrencyToggleDisplays(currency) {
         const triggers = document.querySelectorAll('.currency-toggle-trigger, .currency-selector');
         triggers.forEach(el => {
-            el.textContent = `${currency} (${symbols[currency].trim()})`;
+            const span = el.querySelector('span:not(.material-symbols-outlined)');
+            if (span) {
+                span.textContent = `${currency} (${symbols[currency].trim()})`;
+            } else {
+                el.textContent = `${currency} (${symbols[currency].trim()})`;
+            }
         });
+    }
+
+    function injectCurrencyToggle() {
+        // Find user navigation container (e.g. gap-4, containing shopping_cart, person, etc.)
+        const userContainer = document.querySelector('header nav .flex.items-center.gap-4, header .flex.items-center.gap-4, nav .flex.items-center.gap-4');
+        if (userContainer && !document.querySelector('.currency-toggle-trigger')) {
+            const toggleWrapper = document.createElement('div');
+            toggleWrapper.className = 'currency-toggle-trigger flex items-center bg-surface-container-low dark:bg-zinc-800 border border-outline-variant dark:border-zinc-700 rounded-lg px-2.5 py-1 gap-2 cursor-pointer hover:bg-surface-container dark:hover:bg-zinc-700 transition-all text-on-surface-variant scale-95 active:scale-90';
+            toggleWrapper.innerHTML = `
+                <span class="font-label-sm text-label-sm">ZAR (R)</span>
+                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+            `;
+            // Insert it before the first child (e.g. shopping_cart)
+            userContainer.insertBefore(toggleWrapper, userContainer.firstChild);
+        }
     }
 
     function setupCurrencyToggles() {
@@ -221,8 +266,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Navbar, Prices & Currency Toggles
     highlightActiveNavbar();
     scanPrices();
+    injectCurrencyToggle();
     const savedCurrency = localStorage.getItem('artisane_currency') || 'ZAR';
     updateCurrencyToggleDisplays(savedCurrency);
     updatePrices(savedCurrency);
     setupCurrencyToggles();
+
+    // Expose dynamic helper to window for dynamic content (like cart drawer re-renders)
+    window.scanAndConvertPrices = () => {
+        scanPrices();
+        const cur = localStorage.getItem('artisane_currency') || 'ZAR';
+        updatePrices(cur);
+    };
 });

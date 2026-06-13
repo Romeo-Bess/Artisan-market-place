@@ -156,9 +156,9 @@
 <input class="bg-transparent border-none focus:ring-0 text-label-md w-48 p-0" placeholder="Search artists..." type="text"/>
 </div>
 <div class="flex items-center gap-4">
-<button class="scale-95 active:opacity-80 transition-all text-on-surface-variant hover:text-primary">
+<a href="checkout.html" class="scale-95 active:opacity-80 transition-all text-on-surface-variant hover:text-primary">
 <span class="material-symbols-outlined">shopping_cart</span>
-</button>
+</a>
 <button class="scale-95 active:opacity-80 transition-all text-on-surface-variant hover:text-primary">
 <span class="material-symbols-outlined">person</span>
 </button>
@@ -173,54 +173,61 @@
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Discover silent luxury through our exclusive directory of international masters. Each piece is hand-selected to evoke deep aesthetic contemplation.</p>
 </header>
 <!-- Filter Bar -->
-<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-gutter mb-12 py-6 border-y border-white/5">
-<div class="flex flex-wrap gap-4">
-<button class="px-5 py-2 border border-secondary text-secondary font-interactive text-interactive bg-secondary/10">All Works</button>
-<button class="px-5 py-2 border border-white/10 text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors">Sculpture</button>
-<button class="px-5 py-2 border border-white/10 text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors">Painting</button>
-<button class="px-5 py-2 border border-white/10 text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors">Digital Art</button>
-<button class="px-5 py-2 border border-white/10 text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors">Photography</button>
-</div>
-<div class="flex items-center gap-6 w-full md:w-auto">
-<div class="flex flex-col gap-1 w-full md:w-64">
-<div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant uppercase">
-<span>Price Range</span>
-<span>ZAR 500k+</span>
-</div>
-<input class="w-full accent-secondary bg-surface-variant h-1 rounded-full appearance-none" max="1000000" min="0" type="range"/>
-</div>
-<button class="material-symbols-outlined p-2 border border-white/10 text-on-surface-variant">tune</button>
-</div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-gutter mb-12 py-6 border-y border-outline-variant">
+  <div class="flex flex-wrap gap-4 items-center">
+    <button class="filter-btn active px-5 py-2 border border-secondary text-secondary font-interactive text-interactive bg-secondary/10" data-category="all">All Works</button>
+    <button class="filter-btn px-5 py-2 border border-outline-variant text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors" data-category="sculpture">Sculpture</button>
+    <button class="filter-btn px-5 py-2 border border-outline-variant text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors" data-category="painting">Painting</button>
+    <button class="filter-btn px-5 py-2 border border-outline-variant text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors" data-category="digital">Digital Art</button>
+    <button class="filter-btn px-5 py-2 border border-outline-variant text-on-surface-variant font-interactive text-interactive hover:border-secondary/50 transition-colors" data-category="photography">Photography</button>
+    
+    <div class="flex items-center bg-surface-container-low px-4 py-1.5 rounded-lg border border-outline-variant ml-2">
+      <span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2">search</span>
+      <input id="gallery-search" class="bg-transparent border-none focus:ring-0 text-label-md w-48 p-0" placeholder="Search masterpieces..." type="text"/>
+    </div>
+  </div>
+  <div class="flex items-center gap-6 w-full md:w-auto">
+    <div class="flex flex-col gap-1 w-full md:w-64">
+      <div class="flex justify-between font-label-caps text-label-caps text-on-surface-variant uppercase">
+        <span>Price Range</span>
+        <span id="price-slider-label">ZAR 1,000,000</span>
+      </div>
+      <input id="price-slider" class="w-full accent-secondary bg-surface-variant h-1 rounded-full appearance-none cursor-pointer" max="1000000" min="0" value="1000000" type="range"/>
+    </div>
+    <select id="sort-select" class="bg-transparent text-on-surface-variant dark:text-zinc-300 border border-outline-variant rounded-lg px-3 py-2 font-interactive text-interactive focus:outline-none focus:border-secondary">
+      <option value="default" class="bg-surface">Sort By</option>
+      <option value="price-asc" class="bg-surface">Price: Low to High</option>
+      <option value="price-desc" class="bg-surface">Price: High to Low</option>
+      <option value="title" class="bg-surface">Name: A-Z</option>
+    </select>
+  </div>
 </div>
 <!-- Art Grid (Asymmetrical Layout) -->
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
 <!-- Featured Piece -->
-<div class="md:col-span-8 group art-card relative featured-glow overflow-hidden bg-surface-container" data-artwork-id="744216cb-a9ed-4a6a-a06c-ad0973650506">
-<div class="aspect-[16/9] w-full overflow-hidden">
+<div class="md:col-span-8 group art-card relative featured-glow overflow-hidden bg-surface-container" data-artwork-id="744216cb-a9ed-4a6a-a06c-ad0973650506" data-title="Ethereal Silence No. 4" data-artist="Elena Vance" data-price="845000" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuBb4dpSpQ_SvKnuz0Oe1p3-eiFwdOZc86sdiUb7GMkwyG7u5qKhUB97GMgj7favOctuPAaZtOOpTptw-7ycJOy9MgaZQLsa3Xgs4T5cxVFpqIdY5XNcOnAJvKZtZ7PmLNl4mOqk_AFj_xh9Dv2hHWjg5dFTvdDKJTYUGMZ1p_31KS0eYtVZZM-XeKLh2QwVvi6Gr_3ukrnPfg7v56biiUmOglUithSCXWEmpkMJxGsuas3t7pQDlPmV8v7WQ_CVOO9SIGvYjut1-xf8">
+<div class="aspect-[16/9] w-full overflow-hidden relative">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A large-scale contemporary abstract painting with thick, expressive oil brushstrokes in shades of obsidian, charcoal, and shimmering gold. The piece is mounted on a stark white gallery wall, illuminated by focused warm spotlighting that highlights the texture and depth of the paint. The atmosphere is quiet, sophisticated, and evokes a sense of high-end artistic curation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb4dpSpQ_SvKnuz0Oe1p3-eiFwdOZc86sdiUb7GMkwyG7u5qKhUB97GMgj7favOctuPAaZtOOpTptw-7ycJOy9MgaZQLsa3Xgs4T5cxVFpqIdY5XNcOnAJvKZtZ7PmLNl4mOqk_AFj_xh9Dv2hHWjg5dFTvdDKJTYUGMZ1p_31KS0eYtVZZM-XeKLh2QwVvi6Gr_3ukrnPfg7v56biiUmOglUithSCXWEmpkMJxGsuas3t7pQDlPmV8v7WQ_CVOO9SIGvYjut1-xf8"/>
+<div class="art-card-overlay absolute inset-0 bg-surface-container-highest/40 backdrop-blur-md flex items-center justify-center">
+<a href="room-view.html?artworkId=744216cb-a9ed-4a6a-a06c-ad0973650506" class="px-6 py-2 border border-white text-white font-interactive text-interactive hover:bg-white hover:text-black transition-all">Quick View</a>
 </div>
-<div class="art-card-overlay absolute inset-0 bg-background/60 backdrop-blur-sm flex flex-col justify-end p-12">
-<div class="mb-4">
-<span class="font-label-caps text-label-caps text-secondary mb-2 block uppercase tracking-[0.3em]">Featured Masterpiece</span>
-<h3 class="font-display-sm text-display-sm text-white">Ethereal Silence No. 4</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Elena Vance | Oil on Canvas</p>
 </div>
+<div class="p-6">
+<h3 class="font-headline-lg text-headline-lg mb-1">Ethereal Silence No. 4</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Elena Vance | Oil on Canvas</p>
 <div class="flex justify-between items-center">
-<span class="font-headline-lg text-headline-lg text-secondary">ZAR 845,000</span>
-<div class="flex gap-4">
-<button class="px-8 py-3 border border-white text-white font-interactive text-interactive hover:bg-white hover:text-black transition-all">Quick View</button>
-<button class="px-8 py-3 bg-secondary text-on-secondary font-interactive text-interactive hover:shadow-lg transition-all">Add to Bag</button>
+<span class="font-body-lg text-body-lg font-bold">ZAR 845,000</span>
+<button onclick="addArtworkToCart('744216cb-a9ed-4a6a-a06c-ad0973650506', this)" class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
 </div>
 </div>
-</div>
-<div class="absolute top-6 left-6 bg-secondary text-on-secondary px-3 py-1 font-label-caps text-label-caps uppercase">Invested Asset</div>
+<div class="absolute top-6 left-6 bg-secondary text-on-secondary px-3 py-1 font-label-caps text-label-caps uppercase z-10">Invested Asset</div>
 </div>
 <!-- Side Piece 1 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000001">
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000001" data-title="Fluidity II" data-artist="Julian Thorne" data-price="120000" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuB3_2s_4P7SXlwnBoH1LlVaLNytiIhZC3Cv5u97lfSqzfLWO5uftOjn9c0Ecxg3G9P6H0R2OpS5ZlDnj0y0rVXGkUkKAxGhYrfxBBmu9Ap9zVjOUmumjSX6vodvWwpOCx4m1x9iaMrnGYSGAPc9vOTHj5hn18QDR3G5ZFCte1IdM0Yd4Zk2L89qIXu3MJ_4apUzyoqNJY78k-cmNikGlse90UaHbPciAVQPC-S73Rm6OQz2Z2x0xxNTpIjGF1Aa99RdzhLy3dW3GitJ">
 <div class="aspect-[4/5] w-full overflow-hidden relative">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A minimalist marble sculpture of a fluid, organic form, smooth and polished to a mirror-like finish. The sculpture sits on a dark obsidian pedestal in a dimly lit, high-end gallery environment. Luminous silver highlights dance across the curves of the stone. The mood is one of stoic elegance and timeless luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3_2s_4P7SXlwnBoH1LlVaLNytiIhZC3Cv5u97lfSqzfLWO5uftOjn9c0Ecxg3G9P6H0R2OpS5ZlDnj0y0rVXGkUkKAxGhYrfxBBmu9Ap9zVjOUmumjSX6vodvWwpOCx4m1x9iaMrnGYSGAPc9vOTHj5hn18QDR3G5ZFCte1IdM0Yd4Zk2L89qIXu3MJ_4apUzyoqNJY78k-cmNikGlse90UaHbPciAVQPC-S73Rm6OQz2Z2x0xxNTpIjGF1Aa99RdzhLy3dW3GitJ"/>
 <div class="art-card-overlay absolute inset-0 bg-surface-container-highest/40 backdrop-blur-md flex items-center justify-center">
-<button class="px-6 py-2 border border-white text-white font-interactive text-interactive">View Details</button>
+<a href="room-view.html?artworkId=44444444-aaaa-1111-bbbb-000000000001" class="px-6 py-2 border border-white text-white font-interactive text-interactive hover:bg-white hover:text-black transition-all">View Details</a>
 </div>
 </div>
 <div class="p-6">
@@ -228,49 +235,59 @@
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Julian Thorne | Marble Sculpture</p>
 <div class="flex justify-between items-center">
 <span class="font-body-lg text-body-lg font-bold">ZAR 120,000</span>
-<button class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
+<button onclick="addArtworkToCart('44444444-aaaa-1111-bbbb-000000000001', this)" class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
 </div>
 </div>
 </div>
 <!-- Piece 3 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000002">
-<div class="aspect-[1/1] w-full overflow-hidden">
-<img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A high-contrast digital art piece featuring complex geometric structures in a glowing champagne gold hue against a deep abyssal black background. The lighting is dramatic, creating sharp shadows and brilliant highlights that suggest immense digital scale. It embodies the modern 'white cube' aesthetic with a futuristic, technological twist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqrjSYBblVtUP_vyIoyqVlxjuTmVXIN0RNHCnugcm3Ty8akN_kPyMA06IfgzETolRcI8DfMIG7y0MyOG6ZhaJRssfMG4jbpfiU5tft_MbK8MzYEanrtKtdTWqiD5flMakk8lnqElreKQkTjcS05Uz86gG7X5l01F6AHn5O1v8r8bhd2q2RA4cu706yrISIKMundK_BD0UA9FwueJpjoxN5Su6GcPq7ZIeb3S8PmTzv9brrHwyvhnKCfNLoZnJ4Mij6Nfju1WWX3w3O"/>
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000002" data-title="Monolith Alpha" data-artist="Marcus Reed" data-price="45000" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuCqrjSYBblVtUP_vyIoyqVlxjuTmVXIN0RNHCnugcm3Ty8akN_kPyMA06IfgzETolRcI8DfMIG7y0MyOG6ZhaJRssfMG4jbpfiU5tft_MbK8MzYEanrtKtdTWqiD5flMakk8lnqElreKQkTjcS05Uz86gG7X5l01F6AHn5O1v8r8bhd2q2RA4cu706yrISIKMundK_BD0UA9FwueJpjoxN5Su6GcPq7ZIeb3S8ZumTzv9brrHwyvhnKCfNLoZnJ4Mij6Nfju1WWX3w3O">
+<div class="aspect-[1/1] w-full overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A high-contrast digital art piece featuring complex geometric structures in a glowing champagne gold hue against a deep abyssal black background. The lighting is dramatic, creating sharp shadows and brilliant highlights that suggest immense digital scale. It embodies the modern 'white cube' aesthetic with a futuristic, technological twist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqrjSYBblVtUP_vyIoyqVlxjuTmVXIN0RNHCnugcm3Ty8akN_kPyMA06IfgzETolRcI8DfMIG7y0MyOG6ZhaJRssfMG4jbpfiU5tft_MbK8MzYEanrtKtdTWqiD5flMakk8lnqElreKQkTjcS05Uz86gG7X5l01F6AHn5O1v8r8bhd2q2RA4cu706yrISIKMundK_BD0UA9FwueJpjoxN5Su6GcPq7ZIeb3S8ZumTzv9brrHwyvhnKCfNLoZnJ4Mij6Nfju1WWX3w3O"/>
+<div class="art-card-overlay absolute inset-0 bg-surface-container-highest/40 backdrop-blur-md flex items-center justify-center">
+<a href="room-view.html?artworkId=44444444-aaaa-1111-bbbb-000000000002" class="px-6 py-2 border border-white text-white font-interactive text-interactive hover:bg-white hover:text-black transition-all">View Details</a>
+</div>
 </div>
 <div class="p-6">
 <h3 class="font-headline-lg text-headline-lg mb-1">Monolith Alpha</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Marcus Reed | Digital Render</p>
 <div class="flex justify-between items-center">
 <span class="font-body-lg text-body-lg font-bold">ZAR 45,000</span>
-<button class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
+<button onclick="addArtworkToCart('44444444-aaaa-1111-bbbb-000000000002', this)" class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
 </div>
 </div>
 </div>
 <!-- Piece 4 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000003">
-<div class="aspect-[1/1] w-full overflow-hidden">
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000003" data-title="The Void" data-artist="Sarah K." data-price="32500" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuBXrrUH0uWXLx39-NweIcyLiYdovkGHihdsn2jK0045EjYMbYWHT_V50VFMtrAvmlIHp0sF8ZFWoetYQvXKD70eJ1wC6nPfvNdUrmcwswP_2zCiczdR6OGOQZbuWwIGkopMSakdZ9rk5WKk38Fj3LgO1K07Tn4_mG43PmWBkBmevp1Rfk5a8tt7E1aEOy-3PSYJaXMpsdL5wv8_oDMX2HsafG_-8PQfVJ8aLAFmf_D5UeU45B6Knz1QHV_z71DCzSDWwaFMxF6wmafB">
+<div class="aspect-[1/1] w-full overflow-hidden relative">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A breathtaking landscape photograph of a desolate, volcanic desert under a midnight sky. The lighting is ethereal, with cool blue tones and stark silver highlights on the jagged rock formations. The composition is wide and cinematic, capturing a sense of profound silence and natural majesty in a high-art photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXrrUH0uWXLx39-NweIcyLiYdovkGHihdsn2jK0045EjYMbYWHT_V50VFMtrAvmlIHp0sF8ZFWoetYQvXKD70eJ1wC6nPfvNdUrmcwswP_2zCiczdR6OGOQZbuWwIGkopMSakdZ9rk5WKk38Fj3LgO1K07Tn4_mG43PmWBkBmevp1Rfk5a8tt7E1aEOy-3PSYJaXMpsdL5wv8_oDMX2HsafG_-8PQfVJ8aLAFmf_D5UeU45B6Knz1QHV_z71DCzSDWwaFMxF6wmafB"/>
+<div class="art-card-overlay absolute inset-0 bg-surface-container-highest/40 backdrop-blur-md flex items-center justify-center">
+<a href="room-view.html?artworkId=44444444-aaaa-1111-bbbb-000000000003" class="px-6 py-2 border border-white text-white font-interactive text-interactive hover:bg-white hover:text-black transition-all">View Details</a>
+</div>
 </div>
 <div class="p-6">
 <h3 class="font-headline-lg text-headline-lg mb-1">The Void</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Sarah K. | Fine Art Print</p>
 <div class="flex justify-between items-center">
 <span class="font-body-lg text-body-lg font-bold">ZAR 32,500</span>
-<button class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
+<button onclick="addArtworkToCart('44444444-aaaa-1111-bbbb-000000000003', this)" class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
 </div>
 </div>
 </div>
 <!-- Piece 5 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d">
-<div class="aspect-[1/1] w-full overflow-hidden">
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d" data-title="Textural Echo" data-artist="Amina Chen" data-price="195000" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuDjNPjdubFMgLTvvjT8qm92g2nB86HsPPtzmAiXPjgwLhjGZxArBTHaWUP0oLmpirYKT5DRJMZThvClD6iZ0eKMXEaavNhDSFMWHBjZColBRDstKkqs-hXLvpG_dxCVE5OXDfXDhrRPAHqsKmwjh1F1jF2VcZe5RdRRL_LHeCqqSIAGc6Va9_sMUJnq3S3250xbR20vO3wQmME0EyglAy7CM0ozslwVed_VqkwrWCZqIUNy0hrRgx8EV4N6Ax4j2GoiMXV5oLxo79qA">
+<div class="aspect-[1/1] w-full overflow-hidden relative">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="Close-up detail of a textured impasto painting. Bold, thick strokes of beige, bone-white, and deep charcoal interact to create a chaotic yet balanced surface. The lighting is low and directional, casting shadows within the paint's valleys. It represents the tactile luxury of modern canvas work in an elite private viewing setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjNPjdubFMgLTvvjT8qm92g2nB86HsPPtzmAiXPjgwLhjGZxArBTHaWUP0oLmpirYKT5DRJMZThvClD6iZ0eKMXEaavNhDSFMWHBjZColBRDstKkqs-hXLvpG_dxCVE5OXDfXDhrRPAHqsKmwjh1F1jF2VcZe5RdRRL_LHeCqqSIAGc6Va9_sMUJnq3S3250xbR20vO3wQmME0EyglAy7CM0ozslwVed_VqkwrWCZqIUNy0hrRgx8EV4N6Ax4j2GoiMXV5oLxo79qA"/>
+<div class="art-card-overlay absolute inset-0 bg-surface-container-highest/40 backdrop-blur-md flex items-center justify-center">
+<a href="room-view.html?artworkId=e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d" class="px-6 py-2 border border-white text-white font-interactive text-interactive hover:bg-white hover:text-black transition-all">View Details</a>
+</div>
 </div>
 <div class="p-6">
 <h3 class="font-headline-lg text-headline-lg mb-1">Textural Echo</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Amina Chen | Mixed Media</p>
 <div class="flex justify-between items-center">
 <span class="font-body-lg text-body-lg font-bold">ZAR 195,000</span>
-<button class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
+<button onclick="addArtworkToCart('e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d', this)" class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
+</div>
 </div>
 </div>
 </div>
@@ -313,6 +330,122 @@
 </div>
 </footer>
 <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('gallery-search');
+            const priceSlider = document.getElementById('price-slider');
+            const priceLabel = document.getElementById('price-slider-label');
+            const sortSelect = document.getElementById('sort-select');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const grid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-12');
+            
+            if (!grid) return;
+            const cards = Array.from(grid.querySelectorAll('.art-card'));
+
+            // Store original details
+            const cardData = cards.map((card, index) => {
+                const title = card.querySelector('h3')?.textContent?.trim() || '';
+                const subtitle = card.querySelector('p')?.textContent?.trim() || '';
+                const categoryText = subtitle.toLowerCase();
+                
+                let category = 'painting';
+                if (categoryText.includes('sculpture')) {
+                    category = 'sculpture';
+                } else if (categoryText.includes('digital') || categoryText.includes('render')) {
+                    category = 'digital';
+                } else if (categoryText.includes('print') || categoryText.includes('photography') || categoryText.includes('photo')) {
+                    category = 'photography';
+                } else if (categoryText.includes('canvas') || categoryText.includes('oil') || categoryText.includes('mixed') || categoryText.includes('paint')) {
+                    category = 'painting';
+                }
+
+                // Extract base ZAR price
+                let price = 0;
+                const priceEl = card.querySelector('.font-headline-lg, .font-body-lg, span, .text-secondary, .price');
+                const priceText = priceEl ? priceEl.textContent : '';
+                // Matches numbers, strips spaces/commas/currencies
+                const numMatch = priceText.replace(/,/g, '').match(/\d+/);
+                if (numMatch) {
+                    price = parseInt(numMatch[0]);
+                }
+
+                return {
+                    element: card,
+                    originalIndex: index,
+                    title,
+                    subtitle,
+                    category,
+                    price
+                };
+            });
+
+            let currentCategory = 'all';
+
+            function updateGallery() {
+                const searchText = searchInput ? searchInput.value.toLowerCase().trim() : '';
+                const maxPrice = priceSlider ? parseInt(priceSlider.value) : 1000000;
+                if (priceLabel) {
+                    priceLabel.textContent = `ZAR ${maxPrice.toLocaleString()}`;
+                }
+
+                // Filter cards
+                const filtered = cardData.filter(item => {
+                    const matchesCategory = (currentCategory === 'all' || item.category === currentCategory);
+                    const matchesSearch = (item.title.toLowerCase().includes(searchText) || item.subtitle.toLowerCase().includes(searchText));
+                    const matchesPrice = item.price <= maxPrice;
+                    return matchesCategory && matchesSearch && matchesPrice;
+                });
+
+                // Sort cards
+                const sortBy = sortSelect ? sortSelect.value : 'default';
+                if (sortBy === 'price-asc') {
+                    filtered.sort((a, b) => a.price - b.price);
+                } else if (sortBy === 'price-desc') {
+                    filtered.sort((a, b) => b.price - a.price);
+                } else if (sortBy === 'title') {
+                    filtered.sort((a, b) => a.title.localeCompare(b.title));
+                } else {
+                    filtered.sort((a, b) => a.originalIndex - b.originalIndex);
+                }
+
+                // Detach all and re-append in new order
+                cards.forEach(card => card.style.display = 'none');
+                
+                filtered.forEach(item => {
+                    item.element.style.display = 'block';
+                    grid.appendChild(item.element);
+                });
+            }
+
+            // Category click event
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'border-secondary', 'text-secondary', 'bg-secondary/10');
+                        b.classList.add('border-outline-variant', 'text-on-surface-variant');
+                    });
+                    btn.classList.add('active', 'border-secondary', 'text-secondary', 'bg-secondary/10');
+                    btn.classList.remove('border-outline-variant', 'text-on-surface-variant');
+                    currentCategory = btn.getAttribute('data-category');
+                    updateGallery();
+                });
+            });
+
+            // Input events
+            if (searchInput) {
+                searchInput.addEventListener('input', updateGallery);
+                searchInput.addEventListener('focus', () => {
+                    searchInput.parentElement.classList.replace('border-outline-variant', 'border-secondary');
+                });
+                searchInput.addEventListener('blur', () => {
+                    searchInput.parentElement.classList.replace('border-secondary', 'border-outline-variant');
+                });
+            }
+            if (priceSlider) priceSlider.addEventListener('input', updateGallery);
+            if (sortSelect) sortSelect.addEventListener('change', updateGallery);
+
+            updateGallery();
+        });
+
         // Micro-interaction for art card parallax effect
         document.querySelectorAll('.art-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -332,15 +465,6 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
             });
-        });
-
-        // Search bar interaction
-        const searchInput = document.querySelector('input[placeholder="Search Masterpieces..."]');
-        searchInput.addEventListener('focus', () => {
-            searchInput.parentElement.classList.replace('border-outline-variant', 'border-secondary');
-        });
-        searchInput.addEventListener('blur', () => {
-            searchInput.parentElement.classList.replace('border-secondary', 'border-outline-variant');
         });
     </script>
 </body></html>

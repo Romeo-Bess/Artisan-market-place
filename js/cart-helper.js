@@ -1,41 +1,108 @@
 import { supabase } from './supabase-auth.js';
 
+// Fallback registry to ensure metadata (especially prices) resolves correctly even if DB relation is null
+const artworksLookup = {
+    '744216cb-a9ed-4a6a-a06c-ad0973650506': {
+        title: 'Ethereal Silence No. 4',
+        artist: 'Elena Vance',
+        price: 845000,
+        image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBb4dpSpQ_SvKnuz0Oe1p3-eiFwdOZc86sdiUb7GMkwyG7u5qKhUB97GMgj7favOctuPAaZtOOpTptw-7ycJOy9MgaZQLsa3Xgs4T5cxVFpqIdY5XNcOnAJvKZtZ7PmLNl4mOqk_AFj_xh9Dv2hHWjg5dFTvdDKJTYUGMZ1p_31KS0eYtVZZM-XeKLh2QwVvi6Gr_3ukrnPfg7v56biiUmOglUithSCXWEmpkMJxGsuas3t7pQDlPmV8v7WQ_CVOO9SIGvYjut1-xf8'
+    },
+    '44444444-aaaa-1111-bbbb-000000000001': {
+        title: 'Fluidity II',
+        artist: 'Julian Thorne',
+        price: 120000,
+        image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB3_2s_4P7SXlwnBoH1LlVaLNytiIhZC3Cv5u97lfSqzfLWO5uftOjn9c0Ecxg3G9P6H0R2OpS5ZlDnj0y0rVXGkUkKAxGhYrfxBBmu9Ap9zVjOUmumjSX6vodvWwpOCx4m1x9iaMrnGYSGAPc9vOTHj5hn18QDR3G5ZFCte1IdM0Yd4Zk2L89qIXu3MJ_4apUzyoqNJY78k-cmNikGlse90UaHbPciAVQPC-S73Rm6OQz2Z2x0xxNTpIjGF1Aa99RdzhLy3dW3GitJ'
+    },
+    '44444444-aaaa-1111-bbbb-000000000002': {
+        title: 'Monolith Alpha',
+        artist: 'Marcus Reed',
+        price: 45000,
+        image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCqrjSYBblVtUP_vyIoyqVlxjuTmVXIN0RNHCnugcm3Ty8akN_kPyMA06IfgzETolRcI8DfMIG7y0MyOG6ZhaJRssfMG4jbpfiU5tft_MbK8MzYEanrtKtdTWqiD5flMakk8lnqElreKQkTjcS05Uz86gG7X5l01F6AHn5O1v8r8bhd2q2RA4cu706yrISIKMundK_BD0UA9FwueJpjoxN5Su6GcPq7ZIeb3S8ZumTzv9brrHwyvhnKCfNLoZnJ4Mij6Nfju1WWX3w3O'
+    },
+    '44444444-aaaa-1111-bbbb-000000000003': {
+        title: 'The Void',
+        artist: 'Sarah K.',
+        price: 32500,
+        image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBXrrUH0uWXLx39-NweIcyLiYdovkGHihdsn2jK0045EjYMbYWHT_V50VFMtrAvmlIHp0sF8ZFWoetYQvXKD70eJ1wC6nPfvNdUrmcwswP_2zCiczdR6OGOQZbuWwIGkopMSakdZ9rk5WKk38Fj3LgO1K07Tn4_mG43PmWBkBmevp1Rfk5a8tt7E1aEOy-3PSYJaXMpsdL5wv8_oDMX2HsafG_-8PQfVJ8aLAFmf_D5UeU45B6Knz1QHV_z71DCzSDWwaFMxF6wmafB'
+    },
+    'e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d': {
+        title: 'Textural Echo',
+        artist: 'Amina Chen',
+        price: 195000,
+        image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDjNPjdubFMgLTvvjT8qm92g2nB86HsPPtzmAiXPjgwLhjGZxArBTHaWUP0oLmpirYKT5DRJMZThvClD6iZ0eKMXEaavNhDSFMWHBjZColBRDstKkqs-hXLvpG_dxCVE5OXDfXDhrRPAHqsKmwjh1F1jF2VcZe5RdRRL_LHeCqqSIAGc6Va9_sMUJnq3S3250xbR20vO3wQmME0EyglAy7CM0ozslwVed_VqkwrWCZqIUNy0hrRgx8EV4N6Ax4j2GoiMXV5oLxo79qA'
+    }
+};
+
 // Setup cart session ID
 async function getOrCreateCartId() {
     let cartId = localStorage.getItem('artisane_cart_id');
     if (!cartId || cartId === 'undefined') {
-        const { data, error } = await supabase
-            .from('carts')
-            .insert([{}])
-            .select('id')
-            .single();
-        if (error) {
-            console.error('Error creating cart session:', error);
-            cartId = crypto.randomUUID();
-            localStorage.setItem('artisane_cart_id', cartId);
-        } else {
+        try {
+            const { data, error } = await supabase
+                .from('carts')
+                .insert([{}])
+                .select('id')
+                .single();
+            if (error) throw error;
             cartId = data.id;
+            localStorage.setItem('artisane_cart_id', cartId);
+        } catch (e) {
+            console.warn('Error creating cart session on server, using local ID:', e);
+            cartId = crypto.randomUUID();
             localStorage.setItem('artisane_cart_id', cartId);
         }
     }
     return cartId;
 }
 
+// Local storage fallback helpers
+function getLocalCartItems() {
+    try {
+        const items = localStorage.getItem('artisane_local_cart');
+        return items ? JSON.parse(items) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveLocalCartItems(items) {
+    try {
+        localStorage.setItem('artisane_local_cart', JSON.stringify(items));
+    } catch (e) {
+        console.error('Error saving local cart:', e);
+    }
+}
+
 // Function to update cart badge from database
 export async function syncCartBadge() {
-    const cartId = await getOrCreateCartId();
-    const { error, data } = await supabase
-        .from('cart_items')
-        .select('quantity')
-        .eq('cart_id', cartId);
+    let totalItems = 0;
+    
+    // Instant badge update using LocalStorage
+    const localItems = getLocalCartItems();
+    totalItems = localItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    renderBadgeHTML(totalItems);
 
-    if (error) {
-        console.error('Error fetching cart items count:', error);
-        return;
+    // Fetch database badge in background
+    try {
+        const cartId = await getOrCreateCartId();
+        const { error, data } = await supabase
+            .from('cart_items')
+            .select('quantity')
+            .eq('cart_id', cartId);
+
+        if (!error && data) {
+            const dbTotalItems = data.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            if (dbTotalItems !== totalItems) {
+                renderBadgeHTML(dbTotalItems);
+            }
+        }
+    } catch (err) {
+        console.warn('Database error syncing badge count:', err);
     }
+}
 
-    const totalItems = data ? data.reduce((sum, item) => sum + (item.quantity || 1), 0) : 0;
-
+function renderBadgeHTML(totalItems) {
     const cartIcons = document.querySelectorAll('.material-symbols-outlined');
     let cartLink = null;
     for (let icon of cartIcons) {
@@ -149,6 +216,7 @@ export async function openCartDrawer() {
     await loadCartDrawerItems();
 }
 
+// Close cart drawer
 export function closeCartDrawer() {
     const overlay = document.getElementById('cart-drawer-overlay');
     const drawer = document.getElementById('cart-drawer');
@@ -165,43 +233,22 @@ export function closeCartDrawer() {
     }, 300);
 }
 
-// Load items from database and render
-async function loadCartDrawerItems() {
-    const cartId = await getOrCreateCartId();
-    const container = document.getElementById('cart-drawer-items');
-    const subtotalEl = document.getElementById('cart-drawer-subtotal');
-    const taxEl = document.getElementById('cart-drawer-tax');
-    const totalEl = document.getElementById('cart-drawer-total');
-
-    if (!container) return;
-
-    container.innerHTML = '<p class="text-on-surface-variant text-center font-body-md py-8">Loading your items...</p>';
-
-    const { data: items, error } = await supabase
-        .from('cart_items')
-        .select('*, artworks(*)')
-        .eq('cart_id', cartId);
-
-    if (error) {
-        console.error('Error loading cart items:', error);
-        container.innerHTML = '<p class="text-error text-center font-body-md py-8">Error loading items.</p>';
-        return;
-    }
-
+// Render dynamic item list
+function renderItemsHTML(items, container, subtotalEl, taxEl, totalEl) {
     container.innerHTML = '';
 
     if (!items || items.length === 0) {
         container.innerHTML = '<p class="text-on-surface-variant text-center font-body-md py-8">Your bag is empty.</p>';
-        subtotalEl.textContent = 'R 0.00';
-        taxEl.textContent = 'R 0.00';
-        totalEl.textContent = 'R 0.00';
+        if (subtotalEl) subtotalEl.textContent = 'R 0.00';
+        if (taxEl) taxEl.textContent = 'R 0.00';
+        if (totalEl) totalEl.textContent = 'R 0.00';
         return;
     }
 
     let subtotal = 0;
 
     items.forEach(item => {
-        const art = item.artworks || { title: 'Artwork', price: 0, image_url: '', artist: 'Unknown Artist' };
+        const art = item.artworks || artworksLookup[item.artwork_id] || { title: 'Artwork', price: 0, image_url: '', artist: 'Unknown Artist' };
         const itemPrice = art.price || 0;
         const itemTotal = itemPrice * (item.quantity || 1);
         subtotal += itemTotal;
@@ -237,93 +284,241 @@ async function loadCartDrawerItems() {
     const tax = Math.round(subtotal * 0.08);
     const grandTotal = subtotal + shipping + tax;
 
-    subtotalEl.textContent = `R ${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
-    taxEl.textContent = `R ${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
-    totalEl.textContent = `R ${grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+    if (subtotalEl) subtotalEl.textContent = `R ${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+    if (taxEl) taxEl.textContent = `R ${tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+    if (totalEl) totalEl.textContent = `R ${grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
 
     // Wire Qty and Delete buttons
     container.querySelectorAll('.inc-qty-btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
             const itemId = btn.getAttribute('data-item-id');
             const currentQty = parseInt(btn.getAttribute('data-qty'));
-            await updateItemQuantity(itemId, currentQty + 1);
+            updateItemQuantity(itemId, currentQty + 1);
         });
     });
 
     container.querySelectorAll('.dec-qty-btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
             const itemId = btn.getAttribute('data-item-id');
             const currentQty = parseInt(btn.getAttribute('data-qty'));
             if (currentQty <= 1) {
-                await deleteCartItem(itemId);
+                deleteCartItem(itemId);
             } else {
-                await updateItemQuantity(itemId, currentQty - 1);
+                updateItemQuantity(itemId, currentQty - 1);
             }
         });
     });
 
     container.querySelectorAll('.delete-item-btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
             const itemId = btn.getAttribute('data-item-id');
-            await deleteCartItem(itemId);
+            deleteCartItem(itemId);
         });
     });
-}
 
-// Database helper functions
-async function updateItemQuantity(itemId, quantity) {
-    const { error } = await supabase
-        .from('cart_items')
-        .update({ quantity: quantity })
-        .eq('id', itemId);
-
-    if (error) {
-        console.error('Error updating quantity:', error);
-    } else {
-        await syncCartBadge();
-        await loadCartDrawerItems();
+    // Invoke the currency converter dynamically so cart amounts reflect active currency selection
+    if (window.scanAndConvertPrices) {
+        window.scanAndConvertPrices();
     }
 }
 
-async function deleteCartItem(itemId) {
-    const { error } = await supabase
-        .from('cart_items')
-        .delete()
-        .eq('id', itemId);
+// Load items from database and render (reads locally first, then updates from DB asynchronously)
+export async function loadCartDrawerItems() {
+    const container = document.getElementById('cart-drawer-items');
+    const subtotalEl = document.getElementById('cart-drawer-subtotal');
+    const taxEl = document.getElementById('cart-drawer-tax');
+    const totalEl = document.getElementById('cart-drawer-total');
 
-    if (error) {
-        console.error('Error deleting cart item:', error);
-    } else {
-        await syncCartBadge();
-        await loadCartDrawerItems();
-    }
-}
+    if (!container) return;
 
-// Function to add item to database cart
-export async function addArtworkToCart(artworkId) {
-    const cartId = await getOrCreateCartId();
-    
-    // Check if item already exists in cart, if so increment quantity
-    const { data: existing } = await supabase
-        .from('cart_items')
-        .select('*')
-        .eq('cart_id', cartId)
-        .eq('artwork_id', artworkId);
+    // 1. Initial Instant Render using LocalStorage
+    const localItems = getLocalCartItems();
+    renderItemsHTML(localItems, container, subtotalEl, taxEl, totalEl);
 
-    if (existing && existing.length > 0) {
-        const currentQty = existing[0].quantity || 1;
-        await supabase
+    // 2. Background Database Refresh
+    try {
+        const cartId = await getOrCreateCartId();
+        const { data, error } = await supabase
             .from('cart_items')
-            .update({ quantity: currentQty + 1 })
-            .eq('id', existing[0].id);
-    } else {
-        await supabase
-            .from('cart_items')
-            .insert([{ cart_id: cartId, artwork_id: artworkId, quantity: 1 }]);
+            .select('*, artworks(*)')
+            .eq('cart_id', cartId);
+
+        if (!error && data) {
+            const dbItems = data.map(item => {
+                const artworkDetails = item.artworks || artworksLookup[item.artwork_id] || getLocalCartItems().find(local => local.artwork_id === item.artwork_id)?.artworks || { title: 'Artwork', price: 0, image_url: '', artist: 'Unknown Artist' };
+                return {
+                    id: item.id,
+                    artwork_id: item.artwork_id,
+                    quantity: item.quantity,
+                    artworks: artworkDetails
+                };
+            });
+
+            // Save and re-render only if there are differences to avoid redundant flashing
+            const currentLocalStr = JSON.stringify(localItems);
+            const newDbStr = JSON.stringify(dbItems);
+            if (currentLocalStr !== newDbStr) {
+                saveLocalCartItems(dbItems);
+                renderItemsHTML(dbItems, container, subtotalEl, taxEl, totalEl);
+            }
+        }
+    } catch (e) {
+        console.warn('Background cart DB sync failed, relying on local storage state:', e);
+    }
+}
+
+// Database helper functions - Optimistic updates
+export async function updateItemQuantity(itemId, quantity) {
+    // 1. Optimistic LocalStorage Update
+    const localItems = getLocalCartItems();
+    const item = localItems.find(i => i.id === itemId);
+    if (item) {
+        item.quantity = quantity;
+        saveLocalCartItems(localItems);
     }
 
-    await syncCartBadge();
-    await openCartDrawer();
+    // Instant redraw
+    syncCartBadge();
+    const container = document.getElementById('cart-drawer-items');
+    const subtotalEl = document.getElementById('cart-drawer-subtotal');
+    const taxEl = document.getElementById('cart-drawer-tax');
+    const totalEl = document.getElementById('cart-drawer-total');
+    if (container) {
+        renderItemsHTML(localItems, container, subtotalEl, taxEl, totalEl);
+    }
+
+    // 2. Background Database Mutation
+    try {
+        const { error } = await supabase
+            .from('cart_items')
+            .update({ quantity: quantity })
+            .eq('id', itemId);
+        if (error) throw error;
+    } catch (error) {
+        console.warn('Background quantity sync failed:', error);
+    }
+}
+
+export async function deleteCartItem(itemId) {
+    // 1. Optimistic LocalStorage Update
+    let localItems = getLocalCartItems();
+    localItems = localItems.filter(i => i.id !== itemId);
+    saveLocalCartItems(localItems);
+
+    // Instant redraw
+    syncCartBadge();
+    const container = document.getElementById('cart-drawer-items');
+    const subtotalEl = document.getElementById('cart-drawer-subtotal');
+    const taxEl = document.getElementById('cart-drawer-tax');
+    const totalEl = document.getElementById('cart-drawer-total');
+    if (container) {
+        renderItemsHTML(localItems, container, subtotalEl, taxEl, totalEl);
+    }
+
+    // 2. Background Database Mutation
+    try {
+        const { error } = await supabase
+            .from('cart_items')
+            .delete()
+            .eq('id', itemId);
+        if (error) throw error;
+    } catch (error) {
+        console.warn('Background item deletion sync failed:', error);
+    }
+}
+
+// Function to add item to database cart (prioritizing data attributes)
+export async function addArtworkToCart(artworkId, btn) {
+    // 1. Resolve Metadata directly from lookup or DOM attributes to prevent currency-conversion errors
+    let title = artworksLookup[artworkId]?.title || 'Artwork';
+    let artist = artworksLookup[artworkId]?.artist || 'Unknown Artist';
+    let price = artworksLookup[artworkId]?.price || 0;
+    let image_url = artworksLookup[artworkId]?.image_url || '';
+
+    const card = btn 
+        ? (btn.closest('.art-card') || btn.closest('article') || btn.closest('.group') || document.querySelector(`[data-artwork-id="${artworkId}"]`))
+        : document.querySelector(`[data-artwork-id="${artworkId}"]`);
+
+    if (card && (!price || title === 'Artwork')) {
+        title = card.getAttribute('data-title') || card.querySelector('h3, h2, h4')?.textContent?.trim() || title;
+        
+        artist = card.getAttribute('data-artist') || artist;
+        if (artist === 'Unknown Artist') {
+            const pText = card.querySelector('p')?.textContent?.trim() || '';
+            artist = pText.split('|')[0].trim() || artist;
+        }
+        
+        image_url = card.getAttribute('data-image') || card.querySelector('img')?.src || '';
+
+        const dataPrice = card.getAttribute('data-price');
+        if (dataPrice) {
+            price = parseFloat(dataPrice);
+        } else {
+            const priceEl = card.querySelector('.font-headline-lg, .font-body-lg, span, .text-secondary, .price');
+            if (priceEl) {
+                const match = priceEl.textContent.match(/\d+([.,]\d+)*/);
+                if (match) {
+                    price = parseFloat(match[0].replace(/,/g, ''));
+                }
+            }
+        }
+    }
+
+    // 2. Optimistic LocalStorage Update
+    const localItems = getLocalCartItems();
+    const existingLocal = localItems.find(item => item.artwork_id === artworkId);
+
+    if (existingLocal) {
+        existingLocal.quantity = (existingLocal.quantity || 1) + 1;
+    } else {
+        localItems.push({
+            id: artworkId, // Temporary ID matches artworkId for optimistic display
+            artwork_id: artworkId,
+            quantity: 1,
+            artworks: {
+                title: title,
+                artist: artist,
+                price: price,
+                image_url: image_url
+            }
+        });
+    }
+    saveLocalCartItems(localItems);
+
+    // Instant redraw and open drawer
+    syncCartBadge();
+    openCartDrawer();
+
+    // 3. Background Database Mutation
+    try {
+        const cartId = await getOrCreateCartId();
+        const { data: existing, error: selectError } = await supabase
+            .from('cart_items')
+            .select('*')
+            .eq('cart_id', cartId)
+            .eq('artwork_id', artworkId);
+
+        if (selectError) throw selectError;
+
+        if (existing && existing.length > 0) {
+            const currentQty = existing[0].quantity || 1;
+            const { error: updateError } = await supabase
+                .from('cart_items')
+                .update({ quantity: currentQty + 1 })
+                .eq('id', existing[0].id);
+            if (updateError) throw updateError;
+        } else {
+            const { error: insertError } = await supabase
+                .from('cart_items')
+                .insert([{ cart_id: cartId, artwork_id: artworkId, quantity: 1 }]);
+            if (insertError) throw insertError;
+        }
+    } catch (err) {
+        console.warn('Background add-to-cart sync failed:', err);
+    }
 }
 
 // DOM Setup
@@ -371,9 +566,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    addArtworkToCart(artworkId);
+                    addArtworkToCart(artworkId, btn);
                 });
             }
         }
     });
 });
+
+// Bind to window for absolute reliability in inline handlers
+window.addArtworkToCart = addArtworkToCart;
+window.openCartDrawer = openCartDrawer;
+window.closeCartDrawer = closeCartDrawer;

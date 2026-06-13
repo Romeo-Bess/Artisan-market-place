@@ -125,32 +125,38 @@
 
 <body class="bg-background text-on-surface font-body-md text-body-md smooth-scroll">
 <!-- TopNavBar -->
-<header class="w-full top-0 sticky bg-surface z-50 border-b border-outline-variant">
-<nav class="flex justify-between items-center w-full px-6 md:px-margin-desktop max-w-container-max mx-auto h-20">
-<div class="flex items-center gap-10">
-<a class="font-display-lg text-display-lg text-primary tracking-tight" href="#">Artisane</a>
-<div class="hidden md:flex gap-8">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="browse-gallery.html">Gallery</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="artists.html">Artists</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="live-auctions.html">Auctions</a>
-<a class="font-body-md text-body-md text-primary border-b-2 border-primary pb-1" href="collector-dashboard.html">Dashboard</a>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 border border-outline-variant rounded-lg">
-<span class="material-symbols-outlined text-outline mr-2">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-body-md placeholder-outline-variant w-48" placeholder="Search the archive..." type="text"/>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary transition-colors">payments</span>
-<span class="material-symbols-outlined cursor-pointer text-on-surface-variant hover:text-primary transition-colors">dark_mode</span>
-<button class="hidden md:block font-label-md text-label-md bg-primary text-on-primary px-6 py-2.5 rounded hover:opacity-90 transition-opacity">Commission</button>
-<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
-<img alt="Collector Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgjfp7y_oyavZOySsfDfVCrVS0le8uhRBSN2sqJRJ3yRBwnH7T6HhRNIUbdJLj076VUjwo41yQGwh8e0Mm5lcCV-tg3kvcAwq6V7cXXah4348uAJj139-nxWjzAT5baI2ZCyld71hRuY4JJoX4vWRriiwVBdIcPR_zBvMemanFtSZdfkiq8c3qPEOPLWVASznXS7rFgS09xNYeBeOCpRIZUe8nJTBhfnd53YqNMvVrUgoQCp29coMtonilEq6z0p4UEw32D-RWdKWc"/>
-</div>
-</div>
-</div>
-</nav>
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant">
+  <nav class="flex justify-between items-center px-margin-desktop py-4 w-full max-w-container-max mx-auto">
+    <div class="flex items-center gap-12">
+      <a class="font-headline-md text-headline-md text-primary tracking-tight" href="index.html">Artisane</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+          href="browse-gallery.html">Browse</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+          href="artists.html">Artists</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+          href="live-auctions.html">Collections</a>
+        <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200"
+          href="#">Exhibitions</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-6">
+      <div
+        class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-lg border border-outline-variant">
+        <span class="material-symbols-outlined text-on-surface-variant text-[20px] mr-2">search</span>
+        <input class="bg-transparent border-none focus:ring-0 text-label-md w-48 p-0" placeholder="Search artists..."
+          type="text" />
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="checkout.html" class="scale-95 active:opacity-80 transition-all text-on-surface-variant hover:text-primary">
+          <span class="material-symbols-outlined">shopping_cart</span>
+        </a>
+        <button class="scale-95 active:opacity-80 transition-all text-on-surface-variant hover:text-primary">
+          <span class="material-symbols-outlined">person</span>
+        </button>
+      </div>
+    </div>
+  </nav>
 </header>
 <main>
 <!-- Featured Story Hero -->
