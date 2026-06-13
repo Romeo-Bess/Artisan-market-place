@@ -1,51 +1,58 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin:wght@400;500;600;700&display=swap');
 
 :root {
-    --color-primary: 124 58 237; /* #7C3AED */
-    --color-on-primary: 255 255 255; /* #FFFFFF */
-    --color-secondary: 167 139 250; /* #A78BFA */
-    --color-accent: 22 163 74; /* #16A34A */
-    --color-background: 250 245 255; /* #FAF5FF */
-    --color-foreground: 76 29 149; /* #4C1D95 */
-    --color-muted: 236 238 249; /* #ECEEF9 */
-    --color-border: 221 214 254; /* #DDD6FE */
-    --color-destructive: 220 38 38; /* #DC2626 */
-    --color-ring: 124 58 237; /* #7C3AED */
+    --color-primary: 18 51 88; /* #123358 */
+    --color-on-primary: 255 255 255;
+    --color-secondary: 148 73 45; /* #94492d */
+    --color-background: 250 249 247; /* #faf9f7 */
+    --color-on-background: 26 28 27; /* #1a1c1b */
+    --color-muted: 233 232 230; /* #e9e8e6 */
+    --color-border: 195 198 207; /* #c3c6cf */
+    --color-destructive: 186 26 26; /* #ba1a1a */
     
-    /* Fallbacks for existing variable names to prevent breaking */
-    --color-on-background: 76 29 149;
     --color-on-secondary: 255 255 255;
-    --color-surface: 255 255 255;
-    --color-on-surface: 76 29 149;
-    --color-surface-container: 250 245 255;
-    --color-surface-container-low: 255 255 255;
-    --color-surface-container-high: 236 238 249;
-    --color-outline-variant: 221 214 254;
-    --color-outline: 167 139 250;
-    --color-on-surface-variant: 76 29 149;
-    --color-surface-bright: 255 255 255;
-    --color-inverse-surface: 76 29 149;
-    --color-inverse-on-surface: 250 245 255;
+    --color-surface: 250 249 247;
+    --color-on-surface: 26 28 27;
+    --color-surface-container: 239 238 236;
+    --color-surface-container-low: 244 243 241;
+    --color-surface-container-high: 233 232 230;
+    --color-outline-variant: 195 198 207;
+    --color-outline: 116 119 127;
+    --color-on-surface-variant: 67 71 78;
+    --color-surface-bright: 250 249 247;
+    --color-inverse-surface: 47 49 48;
+    --color-surface-variant: 227 226 224;
+    --color-surface-container-highest: 227 226 224;
+    --color-surface-lowest: 255 255 255;
+    --color-primary-fixed: 212 227 255;
 }
 
 html.dark {
-    /* Dark mode inverse palette */
-    --color-background: 15 23 42;
-    --color-on-background: 250 245 255;
-    --color-primary: 167 139 250;
-    --color-on-primary: 76 29 149;
-    --color-secondary: 124 58 237;
-    --color-surface: 30 41 59;
-    --color-on-surface: 250 245 255;
-    --color-surface-container: 15 23 42;
-    --color-surface-container-low: 15 23 42;
-    --color-surface-container-high: 51 65 85;
-    --color-outline-variant: 71 85 105;
-    --color-outline: 148 163 184;
-    --color-on-surface-variant: 250 245 255;
-    --color-surface-bright: 30 41 59;
-    --color-inverse-surface: 250 245 255;
-    --color-inverse-on-surface: 15 23 42;
+    --color-primary: 171 200 245; /* #abc8f5 */
+    --color-on-primary: 0 28 57;
+    --color-secondary: 255 181 155; /* #ffb59b */
+    --color-background: 16 19 25; /* #101319 */
+    --color-on-background: 225 226 234;
+    --color-muted: 39 42 48;
+    --color-border: 69 71 75;
+    --color-destructive: 255 180 171;
+    
+    --color-on-secondary: 56 13 0;
+    --color-surface: 16 19 25;
+    --color-on-surface: 225 226 234;
+    --color-surface-container: 29 32 38;
+    --color-surface-container-low: 25 28 34;
+    --color-surface-container-high: 39 42 48;
+    --color-outline-variant: 69 71 75;
+    --color-outline: 144 144 149;
+    --color-on-surface-variant: 198 198 203;
+    --color-surface-bright: 54 57 64;
+    --color-inverse-surface: 225 226 234;
+    --color-inverse-on-surface: 45 48 55;
+    --color-surface-variant: 50 53 59;
+    --color-surface-container-highest: 50 53 59;
+    --color-surface-lowest: 11 14 20;
+    --color-primary-fixed: 26 28 32;
 }
 
 .material-symbols-outlined {
