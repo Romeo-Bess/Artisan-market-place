@@ -143,32 +143,32 @@
 </div>
 </div>
 <nav class="flex-grow flex flex-col gap-1">
-<a class="flex items-center gap-3 px-3 py-3 rounded-sm transition-all text-primary font-bold border-r-4 border-primary bg-surface-container-high translate-x-1" href="#">
+<a class="flex items-center gap-3 px-3 py-3 rounded-sm transition-all text-primary font-bold border-r-4 border-primary bg-surface-container-high translate-x-1" href="#top">
 <span class="material-symbols-outlined text-[20px]">dashboard</span>
 <span class="font-label-md text-label-md">Overview</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<a class="flex items-center gap-3 px-3 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#active-bids-section">
 <span class="material-symbols-outlined text-[20px]">gavel</span>
 <span class="font-label-md text-label-md">Active Bids</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<a class="flex items-center gap-3 px-3 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#curated-section">
 <span class="material-symbols-outlined text-[20px]">star</span>
 <span class="font-label-md text-label-md">Saved Artists</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<a class="flex items-center gap-3 px-3 py-3 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="auction-history.html">
 <span class="material-symbols-outlined text-[20px]">history</span>
 <span class="font-label-md text-label-md">Auction History</span>
 </a>
 </nav>
 <div class="mt-auto flex flex-col gap-1 border-t border-outline-variant pt-6">
-<button class="mb-4 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-sm hover:opacity-90 transition-opacity">
+<button onclick="alert('Membership upgrades are handled through our private concierge. A consultant will reach out to your registered email.')" class="mb-4 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-sm hover:opacity-90 transition-opacity">
                 Upgrade Membership
             </button>
-<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<a onclick="alert('Account settings are managed securely. Contact support to change your verified details.')" class="cursor-pointer flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all">
 <span class="material-symbols-outlined text-[20px]">settings</span>
 <span class="font-label-md text-label-md">Settings</span>
 </a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all" href="#">
+<a onclick="alert('Our live support is currently online. Email support@artisane.com or reply to your concierge dispatch thread.')" class="cursor-pointer flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all">
 <span class="material-symbols-outlined text-[20px]">help_outline</span>
 <span class="font-label-md text-label-md">Support</span>
 </a>
@@ -187,15 +187,15 @@
 <input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-sm w-72 text-label-md focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Search artists, works, or movements" type="text">
 </div>
 <nav class="hidden lg:flex gap-6">
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Discover</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="browse-gallery.html">Discover</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="live-auctions.html">Auctions</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="artists.html">Artists</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Exhibitions</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="journal.html">Journal</a>
 </nav>
 </div>
 <div class="flex items-center gap-5">
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-1">favorite</button>
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-1 relative">
+<button onclick="alert('Favorites list is synced. Visit Browse Gallery to save new artworks.')" class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-1">favorite</button>
+<button onclick="alert('You have 2 new notifications about active bids.')" class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-1 relative">
                         notifications
                         <span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full border-2 border-surface"></span>
 </button>
@@ -243,10 +243,10 @@
 </div>
 </section>
 <!-- Active Bids Grid -->
-<section class="mb-section-gap">
+<section id="active-bids-section" class="mb-section-gap">
 <div class="flex justify-between items-end mb-8">
 <h2 class="font-headline-lg text-headline-lg text-primary">Your Active Bids</h2>
-<a class="text-label-md text-primary hover:underline transition-all underline-offset-4" href="#">View All Auction Activity</a>
+<a class="text-label-md text-primary hover:underline transition-all underline-offset-4" href="auction-history.html">View All Auction Activity</a>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
 <!-- Bid Item 1 -->
@@ -275,7 +275,7 @@
 <p class="font-label-md text-label-md text-primary">02d : 14h : 22m</p>
 </div>
 </div>
-<button class="mt-6 w-full border border-primary py-2 text-label-md text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<button onclick="window.location.href='live-bidding.html'" class="mt-6 w-full border border-primary py-2 text-label-md text-primary hover:bg-primary hover:text-on-primary transition-colors">
                                 Increase Bid
                             </button>
 </div>
@@ -304,7 +304,7 @@
 <p class="font-label-md text-label-md text-primary">04h : 18m : 05s</p>
 </div>
 </div>
-<p class="mt-4 text-label-sm text-secondary font-medium">Next required bid: R 36,500</p><button class="mt-2 w-full bg-secondary text-on-secondary py-2 text-label-md transition-all hover:opacity-90 shadow-sm">
+<p class="mt-4 text-label-sm text-secondary font-medium">Next required bid: R 36,500</p><button onclick="window.location.href='live-bidding.html'" class="mt-2 w-full bg-secondary text-on-secondary py-2 text-label-md transition-all hover:opacity-90 shadow-sm">
                                 Counter Bid
                             </button>
 </div>
@@ -312,7 +312,7 @@
 </div>
 </section>
 <!-- Recent Acquisitions/History Table -->
-<section class="mb-section-gap">
+<section id="recent-acquisitions-section" class="mb-section-gap">
 <div class="mb-8">
 <h2 class="font-headline-lg text-headline-lg text-primary">Recent Acquisitions</h2>
 </div>
@@ -328,7 +328,7 @@
 </tr>
 </thead>
 <tbody class="text-on-surface font-body-md">
-<tr class="border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<tr onclick="window.location.href='certificate.html'" class="border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors group cursor-pointer">
 <td class="py-6 flex items-center gap-4">
 <div class="w-12 h-12 bg-surface-container overflow-hidden rounded-sm">
 <img alt="Art thumbnail" class="w-full h-full object-cover" data-alt="A small detailed thumbnail of a classical landscape painting with a modern twist, showing rolling hills under a dramatic stormy sky. The lighting is moody and evocative, with a single ray of light breaking through the clouds. High contrast and fine detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq_2t9I3hBzp4i1J5jf87jwXqEmbiDaTvUu3vA5n7tOu8jYEH-BFMFSJmi9HrOB9t1TmocGXg2SuKRnBxXYNy0x0buBuNxOvPWor92m7IAbabaqadn3eP8L6zYR8E0G8NhrrWG_ESpiYZv1QGnScSiFlmIMOrL_WiE-MyGYo1L38rYOq5FkztNWBzpU345iAoIzdL1k1GdjufsDQXs8WChCguadCfSrQyNfdNabmpi883GMBE_4C-fGfp6DjsBPRBmo5WsgDram1yM">
@@ -342,7 +342,7 @@
 <span class="text-label-sm bg-surface-container-high px-2 py-1 rounded-sm">In Transit</span>
 </td>
 </tr>
-<tr class="border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors group cursor-pointer">
+<tr onclick="window.location.href='room-view.html?artworkId=44444444-aaaa-1111-bbbb-000000000001'" class="border-b border-outline-variant/30 hover:bg-surface-container-low transition-colors group cursor-pointer">
 <td class="py-6 flex items-center gap-4">
 <div class="w-12 h-12 bg-surface-container overflow-hidden rounded-sm">
 <img alt="Art thumbnail" class="w-full h-full object-cover" data-alt="A high-contrast black and white photography piece of a geometric architectural structure. The lines are sharp and precise, creating an almost abstract pattern. The lighting creates deep, dramatic shadows and bright, clean highlights. A contemporary, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO4SwJlrYXm_RHOvcTla0bD0KCiXpNw5o7R1Wbni6Umiy5l1ZC9O7pByOYX-iHYtK83h52qGZ4g8AfYLDFAKyUeXWAUQYkHGxgZ4pFfkxNWIC9BwapaH-nKX-ynZAPd5beD9_UAOjNn9fdPxUCgtG5QUykpoL8duC3pqX3SqZjFudE36lGHKyTesPPrRXgli6Rr8fmQT7MH1WbCwYBJpcgGkwc_8tChjGaDoqkOrlYsQeusRp5Na-Em7owC4RPGLjym9rH4-YSx8Gw">
@@ -361,7 +361,7 @@
 </div>
 </section>
 <!-- Recommended for You -->
-<section class="mb-12">
+<section id="curated-section" class="mb-12">
 <div class="flex justify-between items-end mb-8">
 <h2 class="font-headline-lg text-headline-lg text-primary">Curated For You</h2>
 <p class="text-label-md text-on-surface-variant italic">Based on your saved artists</p>

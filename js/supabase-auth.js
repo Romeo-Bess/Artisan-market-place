@@ -221,20 +221,23 @@ function updateAuthButton(user) {
   let authBtn = document.getElementById('auth-person-btn');
   
   if (!authBtn) {
-    // 1. Look for img with alt containing "Avatar" or "Profile" or "Collector"
-    const avatarImg = document.querySelector('img[alt*="Avatar"], img[alt*="Profile"], img[alt*="Collector"]');
-    if (avatarImg) {
-      let parent = avatarImg.parentElement;
-      while (parent && parent.tagName !== 'HEADER' && parent.tagName !== 'NAV') {
-        if (parent.tagName === 'BUTTON' || parent.tagName === 'A' || parent.classList.contains('cursor-pointer')) {
-          authBtn = parent;
-          break;
+    // 1. Look for img inside header or nav
+    const header = document.querySelector('header, nav');
+    if (header) {
+      const avatarImg = header.querySelector('img[alt*="Avatar"], img[alt*="Profile"], img[alt*="Collector"]');
+      if (avatarImg) {
+        let parent = avatarImg.parentElement;
+        while (parent && parent !== header) {
+          if (parent.tagName === 'BUTTON' || parent.tagName === 'A' || parent.classList.contains('cursor-pointer')) {
+            authBtn = parent;
+            break;
+          }
+          parent = parent.parentElement;
         }
-        parent = parent.parentElement;
-      }
-      if (!authBtn) {
-        authBtn = avatarImg.parentElement;
-        authBtn.classList.add('cursor-pointer');
+        if (!authBtn) {
+          authBtn = avatarImg.parentElement;
+          authBtn.classList.add('cursor-pointer');
+        }
       }
     }
   }
@@ -296,6 +299,38 @@ function updateAuthButton(user) {
   }
 }
 
+function updateDashboardProfile(user) {
+  if (!user) return;
+  const fullName = user.user_metadata?.full_name || 'Admin User';
+  const role = user.user_metadata?.role || 'collector';
+
+  // 1. Welcome back headings
+  const welcomeHeaders = document.querySelectorAll('h1.font-display-lg');
+  welcomeHeaders.forEach(header => {
+    if (header.textContent.includes('Welcome back,') || header.textContent.includes('Welcome back')) {
+      header.textContent = `Welcome back, ${fullName.split(' ')[0]}`;
+    }
+  });
+
+  // 2. Sidebar user name
+  const sidebarName = document.querySelector('aside h4.font-label-md');
+  if (sidebarName) {
+    sidebarName.textContent = fullName;
+  }
+
+  // 3. Sidebar user role / status
+  const sidebarRole = document.querySelector('aside p.tracking-widest');
+  if (sidebarRole) {
+    sidebarRole.textContent = role === 'artist' ? 'Artist Member' : 'Premium Member';
+  }
+
+  // 4. Sidebar avatar image
+  const sidebarAvatarImg = document.querySelector('aside img[alt*="Collector Profile"], aside img[alt*="Profile"]');
+  if (sidebarAvatarImg) {
+    sidebarAvatarImg.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBpbCh32QpTno_Cj_sPnlQzT0FozFHmPGQIRVKZlYuqHnaiUYesqfRmzuG3UVqHjUNhg04DDQBpLKDdMZ93F5BOZqlm2QxAsSFOSPoBgGmdCY5JwtTSQ7IObGQ0VgdTzxAjsYMxhiFN8pMSToskZ6TlyyEBJfILqbIuKNz97Ld_0eYV83aXjhyttDS00B793553pExU6RvfdQ69hzq6ndeBlGK-YC8ZOc0-WXisa3TWyjIcUp75lPBjXMmusgzJwEDoeTei1lNIGxeH';
+  }
+}
+
 // Global initialization
 document.addEventListener('DOMContentLoaded', async () => {
   injectModal();
@@ -324,6 +359,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
     updateAuthButton(session?.user ?? null);
+    updateDashboardProfile(session?.user ?? null);
   });
 
   // Check current session
@@ -338,8 +374,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (sessionUser) {
     updateAuthButton(sessionUser);
+    updateDashboardProfile(sessionUser);
   } else {
     const { data: { session } } = await supabase.auth.getSession();
     updateAuthButton(session?.user ?? null);
+    updateDashboardProfile(session?.user ?? null);
   }
 });
