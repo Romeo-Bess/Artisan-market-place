@@ -331,6 +331,37 @@ function updateDashboardProfile(user) {
   }
 }
 
+function showPremiumDialog(title, message) {
+  let dialog = document.getElementById('premium-dialog');
+  if (!dialog) {
+    const dialogHTML = `
+      <div id="premium-dialog" class="fixed inset-0 z-[300] hidden items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="window.closePremiumDialog()"></div>
+        <div class="relative bg-surface dark:bg-zinc-900 border border-outline-variant dark:border-zinc-700 rounded-xl shadow-2xl w-full max-w-md p-8 z-10 text-on-surface">
+          <button onclick="window.closePremiumDialog()" class="absolute top-4 right-4 material-symbols-outlined text-on-surface-variant dark:text-zinc-400 hover:text-primary dark:hover:text-white transition-colors">close</button>
+          <h3 id="premium-dialog-title" class="font-headline-md text-2xl font-bold text-primary dark:text-white tracking-tight mb-4">Notification</h3>
+          <p id="premium-dialog-message" class="text-sm text-on-surface-variant dark:text-zinc-300 mb-6 leading-relaxed"></p>
+          <button onclick="window.closePremiumDialog()" class="w-full bg-primary dark:bg-white dark:text-zinc-900 text-white py-3 rounded-sm font-medium hover:bg-opacity-90 transition-opacity">Dismiss</button>
+        </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', dialogHTML);
+    dialog = document.getElementById('premium-dialog');
+  }
+
+  document.getElementById('premium-dialog-title').textContent = title;
+  document.getElementById('premium-dialog-message').textContent = message;
+  dialog.classList.replace('hidden', 'flex');
+}
+
+window.showPremiumDialog = showPremiumDialog;
+window.closePremiumDialog = () => {
+  const dialog = document.getElementById('premium-dialog');
+  if (dialog) {
+    dialog.classList.replace('flex', 'hidden');
+  }
+};
+
 // Global initialization
 document.addEventListener('DOMContentLoaded', async () => {
   injectModal();

@@ -1,4 +1,4 @@
-﻿import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 import crypto from 'crypto';
 
 const SUPABASE_URL = 'https://yakfjagdluabbpkbwkmy.supabase.co';
@@ -44,5 +44,16 @@ async function runTests() {
 [TEST 2] Adding artwork to cart...');
         const testArtworkId = '744216cb-a9ed-4a6a-a06c-ad0973650506'; // Ethereal Silence No. 4
         const { data: addedItem, error: addError } = await supabase
-            .from('cart_it
+            .from('cart_items')
+            .insert([{ cart_id: testCartId, artwork_id: testArtworkId, quantity: 1 }])
+            .select()
+            .single();
+
+        if (addError) throw new Error(`Failed to add item to cart: ${addError.message}`);
+        console.log(`✅ Success: Added item to cart.`);
+    } catch (err) {
+        console.error(`❌ Test failed: ${err.message}`);
+    }
+}
+runTests();
 <truncated 4106 bytes>

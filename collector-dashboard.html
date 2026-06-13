@@ -112,7 +112,12 @@
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
         .nav-item-active {
-            @apply text-primary font-bold border-r-4 border-primary bg-surface-container-high translate-x-1 transition-transform;
+            color: #123358;
+            font-weight: 700;
+            border-right: 4px solid #123358;
+            background-color: #e9e8e6;
+            transform: translateX(0.25rem);
+            transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
         }
         .custom-shadow {
             box-shadow: 0 40px 40px rgba(18, 51, 88, 0.04);
@@ -161,14 +166,14 @@
 </a>
 </nav>
 <div class="mt-auto flex flex-col gap-1 border-t border-outline-variant pt-6">
-<button onclick="alert('Membership upgrades are handled through our private concierge. A consultant will reach out to your registered email.')" class="mb-4 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-sm hover:opacity-90 transition-opacity">
+<button onclick="window.showPremiumDialog('Upgrade Membership', 'Membership upgrades are handled through our private concierge. A consultant will reach out to your registered email.')" class="mb-4 bg-primary text-on-primary font-label-md text-label-md py-3 rounded-sm hover:opacity-90 transition-opacity">
                 Upgrade Membership
             </button>
-<a onclick="alert('Account settings are managed securely. Contact support to change your verified details.')" class="cursor-pointer flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all">
+<a onclick="window.showPremiumDialog('Account Settings', 'Account settings are managed securely. Contact support to change your verified details.')" class="cursor-pointer flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all">
 <span class="material-symbols-outlined text-[20px]">settings</span>
 <span class="font-label-md text-label-md">Settings</span>
 </a>
-<a onclick="alert('Our live support is currently online. Email support@artisane.com or reply to your concierge dispatch thread.')" class="cursor-pointer flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all">
+<a onclick="window.showPremiumDialog('Customer Support', 'Our live support is currently online. Email support@artisane.com or reply to your concierge dispatch thread.')" class="cursor-pointer flex items-center gap-3 px-3 py-2 rounded-sm text-on-surface-variant hover:bg-surface-container transition-all">
 <span class="material-symbols-outlined text-[20px]">help_outline</span>
 <span class="font-label-md text-label-md">Support</span>
 </a>

@@ -1,4 +1,4 @@
-﻿tailwind.config = {
+tailwind.config = {
     darkMode: "class",
     theme: {
         extend: {
@@ -24,6 +24,8 @@
             "primary-fixed": "rgb(var(--color-primary-fixed) / <alpha-value>)",
             "surface-container-lowest": "rgb(var(--color-surface-container-lowest) / <alpha-value>)",
             "surface-dim": "rgb(var(--color-surface-dim) / <alpha-value>)",
-            "tertiary-fixed-dim": "rgb(var(--color-tertiary-fixed-dim) / <alpha-value>)",
-        
+            "tertiary-fixed-dim": "rgb(var(--color-tertiary-fixed-dim) / <alpha-value>)"
+        }
+    }
+};
 <truncated 4150 bytes>

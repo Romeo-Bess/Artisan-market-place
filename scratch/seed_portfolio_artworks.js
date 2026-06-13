@@ -1,4 +1,4 @@
-﻿import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = 'https://yakfjagdluabbpkbwkmy.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlha2ZqYWdkbHVhYmJwa2J3a215Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5MDM4NTQsImV4cCI6MjA5NTQ3OTg1NH0.4t5lqtXuoKSpwU3wUyG-9X5TZLw8M6mELAQU9ohvtCk';
@@ -31,5 +31,14 @@ const artworksToSeed = [
     price: 22000,
     medium: 'Ceramics',
     artist_id: '44444444-4444-4444-4444-444444444444',
-    image_url: 'h
+    image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAzFsBpnVVRbJ61at-FJBQBuuapGfcrfOmjS2oZT6nJIIqPTGLtHFRIxSYz3dJebeNyw_tWhoo5Gpg98GQR7SSIJCxQScDiOnk4KFWXG4WkUctUNjN8qdgF_tdSTkcrDi6f3Ih4Ph_sXymqCuEQ_-sKnaf42DAumApN4koKWQeCK5XwaOyk3rIPvbMX90Nno9FcBBMx7lCL5NK3TlLsNUdubAGeZXN3DO8zsh5CwHfMORyBLe6oJdxJfTouSUwv_94nTmcZwanprzP4'
+  }
+];
+
+async function seed() {
+  const { data, error } = await supabase.from('artworks').insert(artworksToSeed);
+  if (error) console.error('Error seeding artworks:', error);
+  else console.log('Successfully seeded:', data);
+}
+seed();
 <truncated 5026 bytes>
