@@ -86,40 +86,44 @@
                     "on-surface": "rgb(var(--color-on-surface))",
                     "background": "rgb(var(--color-background))"
             },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "section-gap": "128px",
-                    "container-max": "1440px",
-                    "unit": "8px",
-                    "gutter": "32px",
-                    "margin-desktop": "64px",
-                    "margin-mobile": "24px"
-            },
-            "fontFamily": {
-                    "headline-lg": ["EB Garamond"],
-                    "interactive": ["Hanken Grotesk"],
-                    "body-lg": ["Hanken Grotesk"],
-                    "body-md": ["Hanken Grotesk"],
-                    "headline-lg-mobile": ["EB Garamond"],
-                    "display-lg": ["EB Garamond"],
-                    "display-sm": ["EB Garamond"],
-                    "label-caps": ["Hanken Grotesk"]
-            },
-            "fontSize": {
-                    "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "0.03em", "fontWeight": "400"}],
-                    "interactive": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
-                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
-                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
-                    "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "letterSpacing": "0.03em", "fontWeight": "400"}],
-                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "400"}],
-                    "display-sm": ["40px", {"lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "400"}],
-                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "600"}]
-            }
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "section-gap": "120px",
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "body-md": ["Hanken Grotesk"],
+                      "label-md": ["Hanken Grotesk"],
+                      "headline-lg": ["EB Garamond"],
+                      "label-sm": ["Hanken Grotesk"],
+                      "headline-md": ["EB Garamond"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["EB Garamond"],
+                      "display-lg": ["EB Garamond"],
+                      "interactive": ["Hanken Grotesk"],
+                      "label-caps": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                      "interactive": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "600"}]
+              }
           },
         },
       }
@@ -191,7 +195,7 @@
 <!-- Art Grid (Asymmetrical Layout) -->
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
 <!-- Featured Piece -->
-<div class="md:col-span-8 group art-card relative featured-glow overflow-hidden bg-surface-container">
+<div class="md:col-span-8 group art-card relative featured-glow overflow-hidden bg-surface-container" data-artwork-id="744216cb-a9ed-4a6a-a06c-ad0973650506">
 <div class="aspect-[16/9] w-full overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A large-scale contemporary abstract painting with thick, expressive oil brushstrokes in shades of obsidian, charcoal, and shimmering gold. The piece is mounted on a stark white gallery wall, illuminated by focused warm spotlighting that highlights the texture and depth of the paint. The atmosphere is quiet, sophisticated, and evokes a sense of high-end artistic curation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb4dpSpQ_SvKnuz0Oe1p3-eiFwdOZc86sdiUb7GMkwyG7u5qKhUB97GMgj7favOctuPAaZtOOpTptw-7ycJOy9MgaZQLsa3Xgs4T5cxVFpqIdY5XNcOnAJvKZtZ7PmLNl4mOqk_AFj_xh9Dv2hHWjg5dFTvdDKJTYUGMZ1p_31KS0eYtVZZM-XeKLh2QwVvi6Gr_3ukrnPfg7v56biiUmOglUithSCXWEmpkMJxGsuas3t7pQDlPmV8v7WQ_CVOO9SIGvYjut1-xf8"/>
 </div>
@@ -212,9 +216,12 @@
 <div class="absolute top-6 left-6 bg-secondary text-on-secondary px-3 py-1 font-label-caps text-label-caps uppercase">Invested Asset</div>
 </div>
 <!-- Side Piece 1 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container">
-<div class="aspect-[4/5] w-full overflow-hidden">
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000001">
+<div class="aspect-[4/5] w-full overflow-hidden relative">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A minimalist marble sculpture of a fluid, organic form, smooth and polished to a mirror-like finish. The sculpture sits on a dark obsidian pedestal in a dimly lit, high-end gallery environment. Luminous silver highlights dance across the curves of the stone. The mood is one of stoic elegance and timeless luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3_2s_4P7SXlwnBoH1LlVaLNytiIhZC3Cv5u97lfSqzfLWO5uftOjn9c0Ecxg3G9P6H0R2OpS5ZlDnj0y0rVXGkUkKAxGhYrfxBBmu9Ap9zVjOUmumjSX6vodvWwpOCx4m1x9iaMrnGYSGAPc9vOTHj5hn18QDR3G5ZFCte1IdM0Yd4Zk2L89qIXu3MJ_4apUzyoqNJY78k-cmNikGlse90UaHbPciAVQPC-S73Rm6OQz2Z2x0xxNTpIjGF1Aa99RdzhLy3dW3GitJ"/>
+<div class="art-card-overlay absolute inset-0 bg-surface-container-highest/40 backdrop-blur-md flex items-center justify-center">
+<button class="px-6 py-2 border border-white text-white font-interactive text-interactive">View Details</button>
+</div>
 </div>
 <div class="p-6">
 <h3 class="font-headline-lg text-headline-lg mb-1">Fluidity II</h3>
@@ -224,12 +231,9 @@
 <button class="material-symbols-outlined text-secondary hover:scale-110 transition-transform" data-weight="fill">add_shopping_cart</button>
 </div>
 </div>
-<div class="art-card-overlay absolute inset-0 bg-surface-container-highest/40 backdrop-blur-md flex items-center justify-center">
-<button class="px-6 py-2 border border-white text-white font-interactive text-interactive">View Details</button>
-</div>
 </div>
 <!-- Piece 3 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container">
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000002">
 <div class="aspect-[1/1] w-full overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A high-contrast digital art piece featuring complex geometric structures in a glowing champagne gold hue against a deep abyssal black background. The lighting is dramatic, creating sharp shadows and brilliant highlights that suggest immense digital scale. It embodies the modern 'white cube' aesthetic with a futuristic, technological twist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqrjSYBblVtUP_vyIoyqVlxjuTmVXIN0RNHCnugcm3Ty8akN_kPyMA06IfgzETolRcI8DfMIG7y0MyOG6ZhaJRssfMG4jbpfiU5tft_MbK8MzYEanrtKtdTWqiD5flMakk8lnqElreKQkTjcS05Uz86gG7X5l01F6AHn5O1v8r8bhd2q2RA4cu706yrISIKMundK_BD0UA9FwueJpjoxN5Su6GcPq7ZIeb3S8PmTzv9brrHwyvhnKCfNLoZnJ4Mij6Nfju1WWX3w3O"/>
 </div>
@@ -243,7 +247,7 @@
 </div>
 </div>
 <!-- Piece 4 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container">
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="44444444-aaaa-1111-bbbb-000000000003">
 <div class="aspect-[1/1] w-full overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="A breathtaking landscape photograph of a desolate, volcanic desert under a midnight sky. The lighting is ethereal, with cool blue tones and stark silver highlights on the jagged rock formations. The composition is wide and cinematic, capturing a sense of profound silence and natural majesty in a high-art photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXrrUH0uWXLx39-NweIcyLiYdovkGHihdsn2jK0045EjYMbYWHT_V50VFMtrAvmlIHp0sF8ZFWoetYQvXKD70eJ1wC6nPfvNdUrmcwswP_2zCiczdR6OGOQZbuWwIGkopMSakdZ9rk5WKk38Fj3LgO1K07Tn4_mG43PmWBkBmevp1Rfk5a8tt7E1aEOy-3PSYJaXMpsdL5wv8_oDMX2HsafG_-8PQfVJ8aLAFmf_D5UeU45B6Knz1QHV_z71DCzSDWwaFMxF6wmafB"/>
 </div>
@@ -257,7 +261,7 @@
 </div>
 </div>
 <!-- Piece 5 -->
-<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container">
+<div class="md:col-span-4 group art-card relative overflow-hidden bg-surface-container" data-artwork-id="e4cbb8ab-ccde-4da5-a6c5-bbbc2b3a606d">
 <div class="aspect-[1/1] w-full overflow-hidden">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0" data-alt="Close-up detail of a textured impasto painting. Bold, thick strokes of beige, bone-white, and deep charcoal interact to create a chaotic yet balanced surface. The lighting is low and directional, casting shadows within the paint's valleys. It represents the tactile luxury of modern canvas work in an elite private viewing setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjNPjdubFMgLTvvjT8qm92g2nB86HsPPtzmAiXPjgwLhjGZxArBTHaWUP0oLmpirYKT5DRJMZThvClD6iZ0eKMXEaavNhDSFMWHBjZColBRDstKkqs-hXLvpG_dxCVE5OXDfXDhrRPAHqsKmwjh1F1jF2VcZe5RdRRL_LHeCqqSIAGc6Va9_sMUJnq3S3250xbR20vO3wQmME0EyglAy7CM0ozslwVed_VqkwrWCZqIUNy0hrRgx8EV4N6Ax4j2GoiMXV5oLxo79qA"/>
 </div>

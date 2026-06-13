@@ -116,29 +116,25 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = `
                 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="browse-gallery.html">Browse</a>
                 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="artists.html">Artists</a>
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="live-auctions.html">Collections</a>
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="#">Exhibitions</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="browse-gallery.html">Collections</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="live-auctions.html">Exhibitions</a>
             `;
             container.classList.remove('gap-12');
             if (!container.classList.contains('gap-8')) {
                 container.classList.add('gap-8');
             }
 
-            // Highlight active link
+            // Highlight active link index-based
             const links = container.querySelectorAll('.nav-link');
-            links.forEach(link => {
-                const href = link.getAttribute('href');
-                const linkPath = href.split('/').pop();
+            links.forEach((link, idx) => {
                 let isActive = false;
 
-                if (linkPath === currentPath) {
-                    isActive = true;
-                } else if (currentPath === 'index.html' || currentPath === 'home-light.html' || currentPath === 'browse-gallery.html' || currentPath === 'browse-gallery-light.html') {
-                    if (linkPath === 'browse-gallery.html') isActive = true;
-                } else if (currentPath.startsWith('artist') && linkPath === 'artists.html') {
-                    isActive = true;
-                } else if ((currentPath.includes('auction') || currentPath.includes('bidding')) && linkPath === 'live-auctions.html') {
-                    isActive = true;
+                if (currentPath === 'browse-gallery.html' || currentPath === 'browse-gallery-light.html' || currentPath === 'index.html' || currentPath === 'home-light.html') {
+                    if (idx === 0) isActive = true;
+                } else if (currentPath === 'artists.html' || currentPath.startsWith('artist')) {
+                    if (idx === 1) isActive = true;
+                } else if (currentPath === 'live-auctions.html' || currentPath.includes('auction') || currentPath.includes('bidding')) {
+                    if (idx === 3) isActive = true;
                 }
 
                 if (isActive) {
