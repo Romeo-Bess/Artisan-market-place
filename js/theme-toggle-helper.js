@@ -15,6 +15,19 @@ const initThemeToggle = () => {
         }
     }
 
+    // If still not found, dynamically inject one into header/nav action container
+    if (!themeToggle) {
+        const container = document.querySelector('header .flex.items-center.gap-4, nav .flex.items-center.gap-4, header .flex.gap-4, nav .flex.gap-4, header .flex.items-center.gap-6, nav .flex.items-center.gap-6, header .flex.gap-6, nav .flex.gap-6');
+        if (container) {
+            const button = document.createElement('button');
+            button.id = 'theme-toggle';
+            button.className = 'p-2 rounded-full hover:bg-surface-container/20 dark:hover:bg-zinc-800 transition-colors scale-95 active:opacity-80 text-on-surface-variant hover:text-primary dark:hover:text-white flex items-center justify-center';
+            button.innerHTML = `<span class="material-symbols-outlined">dark_mode</span>`;
+            container.insertBefore(button, container.firstChild);
+            themeToggle = button;
+        }
+    }
+
     // Function to apply class and update icon
     const applyTheme = (isDark) => {
         const html = document.documentElement;
@@ -33,8 +46,7 @@ const initThemeToggle = () => {
                 : themeToggle.querySelector('.material-symbols-outlined');
                 
             if (icon) {
-                // Ensure the icon text is "dark_mode" in dark mode to satisfy the test assertions
-                const text = isDark ? 'dark_mode' : 'light_mode';
+                const text = isDark ? 'light_mode' : 'dark_mode';
                 icon.textContent = text;
                 if (icon.hasAttribute('data-icon')) {
                     icon.setAttribute('data-icon', text);
@@ -48,7 +60,6 @@ const initThemeToggle = () => {
         themeToggle.addEventListener('click', (e) => {
             e.preventDefault();
             const html = document.documentElement;
-            // If it currently has dark, switch to light
             const isDarkNow = html.classList.contains('dark');
             const newDark = !isDarkNow;
             localStorage.setItem('theme', newDark ? 'dark' : 'light');
@@ -74,4 +85,5 @@ if (document.readyState === 'interactive' || document.readyState === 'complete')
 } else {
     document.addEventListener('DOMContentLoaded', initThemeToggle);
 }
+
 

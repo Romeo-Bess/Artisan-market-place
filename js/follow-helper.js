@@ -114,11 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.querySelector('header nav .hidden.md\\:flex, header .hidden.md\\:flex, nav .hidden.md\\:flex');
         if (container) {
             container.innerHTML = `
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="browse-gallery.html">Discover</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="browse-gallery.html">Browse</a>
                 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="artists.html">Artists</a>
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="live-auctions.html">Auctions</a>
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="commissions.html">Commissions</a>
-                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="journal.html">Journal</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="live-auctions.html">Collections</a>
+                <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-zinc-300 hover:text-primary dark:hover:text-white transition-colors duration-200" href="#">Exhibitions</a>
             `;
             container.classList.remove('gap-12');
             if (!container.classList.contains('gap-8')) {
@@ -144,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (isActive) {
                     link.className = link.className.replace(/\btext-on-surface-variant\b/, 'text-primary dark:text-white font-bold');
+                    link.classList.add('border-b-2', 'border-primary', 'dark:border-white', 'pb-1');
                 }
             });
         }
