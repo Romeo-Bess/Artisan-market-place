@@ -368,5 +368,197 @@
                 button.classList.remove('text-on-surface-variant');
             });
         });
+
+        // Dynamic artist profile data loader
+        const artistDb = {
+            'elena-rostova': {
+                name: 'Elena Rostova',
+                title: 'Elena Rostova | Artisane Gallery',
+                heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAwCn-WXcdA-oiVjBx_W_G4o9qFIlON4q9lRV_O1sDldLV7AD5HSIfgM3y7UrhE3mjFPTko8YWW3kIA0mPsStYDEoDLjMMDrpa4l3jiPQCTLKlw5DYSAJ3yNqaLP3rxlXjEdxBrFiVM26kGvzG7sWMEA_pSv8vYxYm4WS99mFmR9ZQOulX71TxsJo_FARz5u-TDVINGzaxFNx64wvFTVmiLUSIOQpKig4I3DnWlEj9HVi8JxDdGmkfumBe1incH2OqdNO3OVp_NbyBk',
+                followers: '12.8K',
+                worksSold: '94',
+                medium: 'Oil Painting',
+                bio: 'Elena explores the intersection of subconscious memory and physical landscape through atmospheric oil paintings that blur the line between reality and dreamscape.',
+                artworks: [
+                    {
+                        title: 'Ethereal Horizon',
+                        type: 'large',
+                        details: 'Oil on Canvas, 100x120cm',
+                        price: 'R 3,800',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDp5n-Wh9GSgvhpbdNbELKY9aRZ-nQQeqnVWIVq0CTDqxeqOcYTMzRWhGkPQjywH02baB-on2UlQ7DVEIijTUAi89b_zg9OpE8EMUqnXZHUW11QvlDxxadqCPhXBMBkiHCC1AQxjjVS-PdNR0WGb4MEFVDmW4zx3mltVSyiVHUGY1SJBdsDM58ReemLT4WdhkrSdgBJB4Bm6NUZ79efU9fOy8uLM1TPPZlG2EDFlTI0Hfo9QzPR8YGN2K8959N1E6uRYsNNpqN9dBbn'
+                    },
+                    {
+                        title: 'Subconscious Flow',
+                        type: 'vertical',
+                        details: 'Oil on Canvas, 80x80cm',
+                        price: 'R 2,400',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3jVoBzl7yptWfVZshxyi79yeNnDMplJOh4Ddqnvq0640JiRYHOcc6Rbgetk3w9HcG5vlefqKcoMMmK07duerXCdI6X3ZR56GeckXE7xNLcL69PeNuXH_XO-lV-81CL1FCdXw9v5q8gWT8tQ0VkHu4_a1PaP6QxAiiCPNT448dcYLpYVpeBsIEP4XlW-ALp64S9mNGlzYqsG1na293gYDdvlmVMBW1OAVVsRX-AfdszcwfmxSSdf5RNHSUSyXyEQ2a_Cr78bE-JgBx'
+                    },
+                    {
+                        title: 'Subtle Impasto',
+                        type: 'small',
+                        details: 'Oil on Canvas, 60x60cm',
+                        price: 'R 1,500',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCfx9ruBCEOpDLInT276IUBS1sa-EWLQSFPJPr61kwD_juH_cuzLqAi7UrQ3Q4DNSztn2fMHjS7WsL2AErDXNWSYTxGff8jlbmR5u3lPkmT-pxmwRTGQy__Ps_hckraISsbPtgggyOME0Xx0199HnQDEp3jNIwIEbJ-Yj1LdIQABzAAnsUIcMSfMuU-GZE15oejl66wBJRhzcX0lpO-nR9iKpMLzDZC6USUYYFohgd4y6a1I8vARxUUZNIzk89XNxX4A2x7sPcLBQDe'
+                    }
+                ]
+            },
+            'julian-thorne': {
+                name: 'Julian Thorne',
+                title: 'Julian Thorne | Artisane Gallery',
+                heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCXwztVSa15RfS5Hm69srcneQecsDoh5Zis7_YUHZ1ebFiPpjZ6rxtItTAWNs4i0wOHjKS3ViuPm_U-BZtO6feCkA8l861a7BQx3ih4zyBxpKtbTCvyiuE1Hxv0mihFWPpIX-mABiCfvC-ayeFDrPFoEdHaW7LW8YZGf0m7GzyhuH2uwbACMVLjyCok6GOEKS2UGuIeAXeULYsba0ENkK-k1_svawG2911h1fW8Ab0yxI0z3zY9WOr2UfIImcQDAy0Ll2oNRDWuYJCn',
+                followers: '8.5K',
+                worksSold: '62',
+                medium: 'Sculpture & Bronze',
+                bio: "Julian's work focuses on the geometric purity of marble and bronze, creating site-specific installations that challenge our perception of gravity and space.",
+                artworks: [
+                    {
+                        title: 'Purity of Form',
+                        type: 'large',
+                        details: 'Marble Sculpture, 45x30x60cm',
+                        price: 'R 8,500',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCHYSfoD17rFtRV3wOaoxIv6f87bsFJJxrkVOmuEk7nkaezxqX_g_PqaJnkvyZblAkOYA82hBLVbK7p1n0y0UISIK7C-w5PbJTfX5hqXIhK6fFPnv8MkKaU_s7GybuerdD9ZWP56d_VoUG_vy8M_QzbVp6bO4gOVrhMwUA6uisSH9yvA2_5xF4O7NuQDs09F1Y_BtVcxuptMlcXRM-NnRRZA-ywYZ-zFna59r8MsUsghHa9dVDwmpLlmkyRsvHehJ4y_l9hLzoiGFDF'
+                    },
+                    {
+                        title: 'Dark Patina Curve',
+                        type: 'vertical',
+                        details: 'Bronze Sculpture, 20x20x40cm',
+                        price: 'R 6,200',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCtK78c5QYn0I74prJjQBXmq9fEgYpAzvijmnF553PpDhiURp_DHyB0OAPZvUhjPt8dES2_DASsj2apsVbpdTfdcMuzUP50U1Mulsgl9bWlGYwNmWiQSv84dfG5BX-TaSf6KQRsdJXbmXi6w7xnDcVB18xlykxR4NcWmYKMeEEF9qXAgtmCK_rBzntc85w0o2LLZFgJeSBXlIbMT_Uy86Fnv-gdEEh3FLyJmG6ZCIHGtGp3ByBg-MEVZC0U5JIYZWgK7dp-QLZmJJsG'
+                    },
+                    {
+                        title: 'Architectural Fragment',
+                        type: 'small',
+                        details: 'Stone, 30x30x30cm',
+                        price: 'R 3,100',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDGxGytPwCo_2ez2NRJRIHDJ97gCIZEk-htYUMpOlz_vdo97z1llylLMMPKdrKIECftrYqPOzOKlFX4WbxpQCJq6lE9DeAwX8DdZGLRz-jLso9TKrLdMOu_OvGdAjHpyF3F9OydMUlg4fv9MyFfpTcSTAcNZsSMAB91yN5dt8RFEhx6D3ZGM172_mq8Od4EPXP5AHoJ9r9h_SCVr6iTCewDdECM1yUBbZpfy8TSklVR2hkaEHhThytu6NpSouEgoXnNxAp6t99TUYy1'
+                    }
+                ]
+            },
+            'amara-okafor': {
+                name: 'Amara Okafor',
+                title: 'Amara Okafor | Artisane Gallery',
+                heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCaX6fy1oIpoDYe_qkEJUD0twLD9tuRRA0uK5HyI0T5K95uXHz_MSBsnMLcNWXTCGw5Dwz0UwhuwoMdgNabp2Ljcz48zqbKATp0-d57aSc26JAYbIgkPJpzQyewbTA7W9Oj-9TOMKM8TtyPMXU4CwlY5nTf7MgLM7SF51b9PTYHg4-PncHlDijUtBHhKxGWDcq65hGdUn3HWgPBvTXsiR2BxCNJS7iGalwCy9Iez2PHj8OPc37XPv32FaA-OsLKjU8pgD9Q-Y22mcbl',
+                followers: '24.2K',
+                worksSold: '310',
+                medium: 'Digital Art',
+                bio: 'Amara blends traditional West African motifs with hyper-modern digital techniques to create vibrant, narrative-driven works that envision a bold futuristic vision.',
+                artworks: [
+                    {
+                        title: 'Futuristic Textures',
+                        type: 'large',
+                        details: 'Digital Print, 90x90cm',
+                        price: 'R 2,900',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuABysw-F2cau1IahlXYcNFTwZFN253rvuXkGfwsJnxXre3vXVNV7omVAJNsCb_1mRF3zSEmY_g0xn3YBLd7zkvScIesHAhrYUhCPPOOwyblnmausjPxcIlUNPIIm9UBwYy3nII3ZYevIDKF1818v7lXK3H94V8kv-bW0sIkro8H_JgBwiGS-b-NuA99a78YynNa9NQLEkA69kagKuwx8urF6mvGMTTw4KfHSnxyeyRCNLSFmTCZzgmOatExljRjPNB4YYbogbj1DSPR'
+                    },
+                    {
+                        title: 'Neon Vision',
+                        type: 'vertical',
+                        details: 'Digital Art, 70x100cm',
+                        price: 'R 3,400',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBVdDTjtEM3QCRWs80Y0_Z90zW-TeDixO3S9LA1uXigSnKaV_fKq7Lk2JeT5ARXkvi3qhj7Kys7K7BfS9YaKX_L01gEufXCtLXqvzWA_WTXtW0pSxHgqdp3o3MOCARuiM0Sd_kX0_L0FYBVVAKAVMpXWcqvKc_pQMbO0XEJGQp1tflLfmH1xhAS9vNq8qeWPjOTTDIBDc4ubI5-GmfmzjQ_eHXO0Uas0SyFLmaDY3xiqArW7PEn0HwmWsrAb0Pw9fDMosOxkZCaFuBQ'
+                    },
+                    {
+                        title: 'Organic Shapes',
+                        type: 'small',
+                        details: 'Digital Print, 80x80cm',
+                        price: 'R 1,800',
+                        image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDre2PewgD-GE392RVOjsFYsj7flenEX6ZNDqNtuVdKqR6Lie9YSlLHa4VbuoEj8kkotyCkk-kfvMg_gMVCljvezDGVNlzlWodRnDhjMM1_TEg8GyIwxMXYB_TJJstP1cG98ZFJyYDIRPQ81XIi723tpLDKAGaiGZX2jKZ_d3pvfci6Prcll_sBf5oaLxbn1rlJwRmYJDt_pgE6gMWhHnsNi88Hm640Lz7NVZ3Rl2lm3KkiILuqL2hxX7-GsOTGimBU4rR2l1EuAPwZ'
+                    }
+                ]
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const artistKey = params.get('artist');
+        if (artistKey && artistDb[artistKey]) {
+            const data = artistDb[artistKey];
+            
+            // Update title
+            document.title = data.title;
+
+            // Update hero image
+            const heroImg = document.querySelector('section.relative img');
+            if (heroImg) {
+                heroImg.src = data.heroImage;
+                heroImg.setAttribute('data-alt', `Studio of ${data.name}`);
+            }
+
+            // Update name
+            const nameHeader = document.querySelector('h1.font-display-lg');
+            if (nameHeader) {
+                nameHeader.textContent = data.name;
+            }
+
+            // Update stats
+            const statsContainer = document.querySelector('.flex.gap-12');
+            if (statsContainer) {
+                const statsDivs = statsContainer.querySelectorAll('div');
+                if (statsDivs.length >= 3) {
+                    statsDivs[0].querySelector('p:nth-child(2)').textContent = data.followers;
+                    statsDivs[1].querySelector('p:nth-child(2)').textContent = data.worksSold;
+                    statsDivs[2].querySelector('p:nth-child(2)').textContent = data.medium;
+                }
+            }
+
+            // Update bio
+            const bioText = document.querySelector('p.font-body-lg');
+            if (bioText) {
+                bioText.textContent = data.bio;
+            }
+
+            // Update sidebar description
+            const sidebarDesc = document.querySelector('#request-sidebar p.font-body-md');
+            if (sidebarDesc) {
+                sidebarDesc.textContent = `Request a bespoke piece from ${data.name}. Commissions typically take 4-8 weeks to complete depending on complexity.`;
+            }
+
+            // Update artworks grid
+            const gridContainer = document.querySelector('div.grid.grid-cols-1.md\\:grid-cols-12');
+            if (gridContainer && data.artworks) {
+                let gridHtml = '';
+                data.artworks.forEach(item => {
+                    if (item.type === 'large') {
+                        gridHtml += `
+                        <div class="md:col-span-8 group cursor-pointer">
+                            <div class="aspect-[16/10] overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${item.image}"/>
+                            </div>
+                            <div class="flex justify-between items-baseline">
+                                <div>
+                                    <h3 class="font-headline-md text-headline-md text-primary">${item.title}</h3>
+                                    <span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-1 rounded text-on-surface-variant">${item.details}</span>
+                                </div>
+                                <p class="font-headline-md text-headline-md text-secondary">${item.price}</p>
+                            </div>
+                        </div>`;
+                    } else if (item.type === 'vertical') {
+                        gridHtml += `
+                        <div class="md:col-span-4 group cursor-pointer">
+                            <div class="aspect-[3/4] overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${item.image}"/>
+                            </div>
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-primary">${item.title}</h3>
+                                <span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-1 rounded text-on-surface-variant">${item.details}</span>
+                                <p class="font-headline-md text-headline-md text-secondary mt-2">${item.price}</p>
+                            </div>
+                        </div>`;
+                    } else if (item.type === 'small') {
+                        gridHtml += `
+                        <div class="md:col-span-6 group cursor-pointer">
+                            <div class="aspect-square overflow-hidden bg-surface-container mb-4 border border-outline-variant transition-all group-hover:border-primary">
+                                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${item.image}"/>
+                            </div>
+                            <div class="flex justify-between">
+                                <h3 class="font-headline-md text-headline-md text-primary">${item.title}</h3>
+                                <p class="font-headline-md text-headline-md text-secondary">${item.price}</p>
+                            </div>
+                        </div>`;
+                    }
+                });
+                gridContainer.innerHTML = gridHtml;
+            }
+        }
     </script>
 </body></html>
